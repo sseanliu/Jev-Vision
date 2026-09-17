@@ -9,12 +9,14 @@ export HF_HUB_DISABLE_PROGRESS_BARS=1 TRANSFORMERS_VERBOSITY=error TOKENIZERS_PA
 INIT=runs/s1-1.7b/step6900
 COMMON="--base $INIT/backbone --init-heads $INIT/heads.pt --epochs 1 --bsz 8 --grad-accum 2 --lr 1e-5 --head-lr 3e-4 --warmup 50 --max-tokens 2048 --eval-every 400 --grad-ckpt --keep 1"
 
-echo "=== 2b: Jev soft labels $(date -u) ==="
-python train.py $COMMON --data data/jsonl_jev --out runs/s1-1.7b-2b-jev
+if [ ! -f runs/s1-1.7b-2b-jev/final/heads.pt ]; then
+  echo "=== 2b: Jev soft labels $(date -u) ==="
+  python train.py $COMMON --data data/jsonl_jev --out runs/s1-1.7b-2b-jev
+fi
 
 echo "=== scoring open-model soft labels with Qwen3-30B-A3B-Base $(date -u) ==="
 python distill_open.py --teacher Qwen/Qwen3-30B-A3B-Base --in data/jsonl_jev --out data/jsonl_open --per-source 3000 --bsz 32
-rm -rf ~/.cache/huggingface/hub/models--Qwen--Qwen3-30B-A3B-Base
+rm -rf ~/.cache/huggingface/hub/blobs  # hf_hub>=1.x keeps weights in a shared blob store
 
 echo "=== 2a: open soft labels $(date -u) ==="
 python train.py $COMMON --data data/jsonl_open --out runs/s1-1.7b-2a-open

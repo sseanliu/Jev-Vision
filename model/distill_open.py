@@ -94,7 +94,7 @@ def fit_temperature(rows_scored: list[tuple[dict, dict]]) -> float:
                 s = soft[q["qid"]]
                 z = torch.tensor(s["scores"]) / T
                 p = torch.softmax(z, -1)
-                hard = row["targets"][q["qid"]]
+                hard = row.get("targets_hard", row["targets"])[q["qid"]]  # input may already carry soft labels
                 gold = s["keys"].index(hard if q["qtype"] == "choice" else str(hard))
                 conf += p.max().item()
                 acc += float(int(p.argmax()) == gold)
@@ -136,7 +136,7 @@ def main():
                         targets[q["qid"]] = float(p[0])
                     else:
                         targets[q["qid"]] = {k: round(v, 4) for k, v in zip(s["keys"], p)}
-                f.write(json.dumps({**row, "targets_hard": row["targets"], "targets": targets,
+                f.write(json.dumps({**row, "targets_hard": row.get("targets_hard", row["targets"]), "targets": targets,
                                     "teacher": a.teacher, "temperature": T}, ensure_ascii=False) + "\n")
         print(f"{path.name:32s} n={len(scored)} T={T}", flush=True)
 
