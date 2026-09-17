@@ -1,0 +1,832 @@
+{
+ "o200k_base": {
+  "total": [
+   329,
+   415
+  ],
+  "by_family": {
+   "run": [
+    152,
+    188
+   ],
+   "word": [
+    138,
+    171
+   ],
+   "pretok": [
+    39,
+    56
+   ]
+  },
+  "no_digit": [
+   323,
+   391
+  ],
+  "digit": [
+   6,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "pre['\uff11\uff12\uff13']",
+    3,
+    [
+     2
+    ]
+   ],
+   [
+    "word['Ti\u1ebfng Vi\u1ec7t']",
+    4,
+    [
+     2,
+     3
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['0']x8",
+    8,
+    [
+     3
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ]
+  ]
+ },
+ "o200k_harmony": {
+  "total": [
+   329,
+   415
+  ],
+  "by_family": {
+   "run": [
+    152,
+    188
+   ],
+   "word": [
+    138,
+    171
+   ],
+   "pretok": [
+    39,
+    56
+   ]
+  },
+  "no_digit": [
+   323,
+   391
+  ],
+  "digit": [
+   6,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "pre['\uff11\uff12\uff13']",
+    3,
+    [
+     2
+    ]
+   ],
+   [
+    "word['Ti\u1ebfng Vi\u1ec7t']",
+    4,
+    [
+     2,
+     3
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['0']x8",
+    8,
+    [
+     3
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ]
+  ]
+ },
+ "o200k_base+per-digit": {
+  "total": [
+   347,
+   415
+  ],
+  "by_family": {
+   "run": [
+    159,
+    188
+   ],
+   "word": [
+    138,
+    171
+   ],
+   "pretok": [
+    50,
+    56
+   ]
+  },
+  "no_digit": [
+   323,
+   391
+  ],
+  "digit": [
+   24,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "word['Ti\u1ebfng Vi\u1ec7t']",
+    4,
+    [
+     2,
+     3
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     0,
+     1
+    ]
+   ],
+   [
+    "run['_']x33",
+    8,
+    [
+     1,
+     2
+    ]
+   ]
+  ]
+ },
+ "o200k_harmony+per-digit": {
+  "total": [
+   347,
+   415
+  ],
+  "by_family": {
+   "run": [
+    159,
+    188
+   ],
+   "word": [
+    138,
+    171
+   ],
+   "pretok": [
+    50,
+    56
+   ]
+  },
+  "no_digit": [
+   323,
+   391
+  ],
+  "digit": [
+   24,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "word['Ti\u1ebfng Vi\u1ec7t']",
+    4,
+    [
+     2,
+     3
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     0,
+     1
+    ]
+   ],
+   [
+    "run['_']x33",
+    8,
+    [
+     1,
+     2
+    ]
+   ]
+  ]
+ },
+ "cl100k_base": {
+  "total": [
+   332,
+   415
+  ],
+  "by_family": {
+   "run": [
+    150,
+    188
+   ],
+   "word": [
+    142,
+    171
+   ],
+   "pretok": [
+    40,
+    56
+   ]
+  },
+  "no_digit": [
+   326,
+   391
+  ],
+  "digit": [
+   6,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "word['Ti\u1ebfng Vi\u1ec7t']",
+    4,
+    [
+     5,
+     6
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['0']x8",
+    8,
+    [
+     3
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     3,
+     4
+    ]
+   ]
+  ]
+ },
+ "Qwen2.5-7B": {
+  "total": [
+   349,
+   415
+  ],
+  "by_family": {
+   "run": [
+    157,
+    188
+   ],
+   "word": [
+    142,
+    171
+   ],
+   "pretok": [
+    50,
+    56
+   ]
+  },
+  "no_digit": [
+   326,
+   391
+  ],
+  "digit": [
+   23,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "run['_']x33",
+    8,
+    [
+     2
+    ]
+   ],
+   [
+    "run['_']x17",
+    4,
+    [
+     2
+    ]
+   ]
+  ]
+ },
+ "Qwen3-8B": {
+  "total": [
+   347,
+   415
+  ],
+  "by_family": {
+   "run": [
+    157,
+    188
+   ],
+   "word": [
+    140,
+    171
+   ],
+   "pretok": [
+    50,
+    56
+   ]
+  },
+  "no_digit": [
+   324,
+   391
+  ],
+  "digit": [
+   23,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "run['_']x33",
+    8,
+    [
+     2
+    ]
+   ],
+   [
+    "run['_']x17",
+    4,
+    [
+     2
+    ]
+   ]
+  ]
+ },
+ "gpt-oss-120b": {
+  "total": [
+   328,
+   415
+  ],
+  "by_family": {
+   "run": [
+    152,
+    188
+   ],
+   "word": [
+    137,
+    171
+   ],
+   "pretok": [
+    39,
+    56
+   ]
+  },
+  "no_digit": [
+   322,
+   391
+  ],
+  "digit": [
+   6,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "pre['\uff11\uff12\uff13']",
+    3,
+    [
+     2
+    ]
+   ],
+   [
+    "word['Ti\u1ebfng Vi\u1ec7t']",
+    4,
+    [
+     2,
+     3
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['0']x8",
+    8,
+    [
+     3
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ]
+  ]
+ },
+ "DeepSeek-V3": {
+  "total": [
+   318,
+   415
+  ],
+  "by_family": {
+   "run": [
+    141,
+    188
+   ],
+   "word": [
+    138,
+    171
+   ],
+   "pretok": [
+    39,
+    56
+   ]
+  },
+  "no_digit": [
+   313,
+   391
+  ],
+  "digit": [
+   5,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "pre['\uff11\uff12\uff13']",
+    3,
+    [
+     2
+    ]
+   ],
+   [
+    "run['=']x48",
+    1,
+    [
+     2,
+     4
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['0']x8",
+    8,
+    [
+     3
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ]
+  ]
+ },
+ "Mistral-Small-3.1": {
+  "total": [
+   311,
+   415
+  ],
+  "by_family": {
+   "run": [
+    126,
+    188
+   ],
+   "word": [
+    133,
+    171
+   ],
+   "pretok": [
+    52,
+    56
+   ]
+  },
+  "no_digit": [
+   287,
+   391
+  ],
+  "digit": [
+   24,
+   24
+  ],
+  "misses": [
+   [
+    "run['e']x64",
+    16,
+    [
+     32
+    ]
+   ],
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "run['=']x48",
+    1,
+    [
+     2,
+     3
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['#']x12",
+    1,
+    [
+     2
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     0,
+     2
+    ]
+   ]
+  ]
+ },
+ "GLM-4.5": {
+  "total": [
+   328,
+   415
+  ],
+  "by_family": {
+   "run": [
+    150,
+    188
+   ],
+   "word": [
+    138,
+    171
+   ],
+   "pretok": [
+    40,
+    56
+   ]
+  },
+  "no_digit": [
+   322,
+   391
+  ],
+  "digit": [
+   6,
+   24
+  ],
+  "misses": [
+   [
+    "word['responsibility']",
+    4,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "word[' tokenization']",
+    4,
+    [
+     2
+    ]
+   ],
+   [
+    "run['0']x8",
+    8,
+    [
+     3
+    ]
+   ],
+   [
+    "word['unbelievable']",
+    4,
+    [
+     0,
+     3
+    ]
+   ],
+   [
+    "word['\u0627\u0644\u0633\u0644\u0627\u0645']",
+    6,
+    [
+     0,
+     2
+    ]
+   ],
+   [
+    "run['_']x33",
+    8,
+    [
+     2
+    ]
+   ]
+  ]
+ }
+}

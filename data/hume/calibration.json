@@ -1,0 +1,7275 @@
+{
+  "dataset": "MMLU baseline",
+  "n": 1200,
+  "source": "bench_results.jsonl",
+  "source_sha256": "68a40a98ed23c336e85150f916e6b006abcbace8add46dca8ea056a1c1999d43",
+  "definition": "Confidence = rounded returned probability of chosen answer. Ten equal-width bins [0.0,0.1), ... [0.9,1.0]; floating artifacts rounded to 2 decimals before binning. Empty bins omitted. ECE = sum n_bin/N * abs(accuracy_bin - mean_p_bin). Wilson 95% intervals describe binomial sampling uncertainty only, not benchmark selection or training exposure.",
+  "bins": [
+    {
+      "low": 0.3,
+      "high": 0.4,
+      "n": 6,
+      "accuracy": 0.6666666666666666,
+      "meanProbability": 0.365,
+      "wilsonLow": 0.29998832134152864,
+      "wilsonHigh": 0.9032306674407831
+    },
+    {
+      "low": 0.4,
+      "high": 0.5,
+      "n": 18,
+      "accuracy": 0.5,
+      "meanProbability": 0.45666666666666667,
+      "wilsonLow": 0.2903070395897999,
+      "wilsonHigh": 0.7096929604102
+    },
+    {
+      "low": 0.5,
+      "high": 0.6,
+      "n": 28,
+      "accuracy": 0.39285714285714285,
+      "meanProbability": 0.5275,
+      "wilsonLow": 0.23565451827580033,
+      "wilsonHigh": 0.575912739650937
+    },
+    {
+      "low": 0.6,
+      "high": 0.7,
+      "n": 39,
+      "accuracy": 0.6410256410256411,
+      "meanProbability": 0.652051282051282,
+      "wilsonLow": 0.484178631846895,
+      "wilsonHigh": 0.772581153035089
+    },
+    {
+      "low": 0.7,
+      "high": 0.8,
+      "n": 46,
+      "accuracy": 0.6956521739130435,
+      "meanProbability": 0.7473913043478261,
+      "wilsonLow": 0.5519408125976183,
+      "wilsonHigh": 0.8092032919255109
+    },
+    {
+      "low": 0.8,
+      "high": 0.9,
+      "n": 73,
+      "accuracy": 0.9178082191780822,
+      "meanProbability": 0.8524657534246576,
+      "wilsonLow": 0.8320540661871378,
+      "wilsonHigh": 0.9617867700265796
+    },
+    {
+      "low": 0.9,
+      "high": 1.0,
+      "n": 990,
+      "accuracy": 0.9626262626262626,
+      "meanProbability": 0.9865151515151515,
+      "wilsonLow": 0.948910609756659,
+      "wilsonHigh": 0.9727654400283369
+    }
+  ],
+  "ece": 0.031324999999999964,
+  "predictions": [
+    {
+      "id": "mmlu-2647",
+      "subject": "global_facts",
+      "probability": 0.8,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12862",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7372",
+      "subject": "medical_genetics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3424",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12257",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3040",
+      "subject": "high_school_chemistry",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6030",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5536",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13916",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1215",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-437",
+      "subject": "business_ethics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7211",
+      "subject": "marketing",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8285",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11037",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4432",
+      "subject": "high_school_mathematics",
+      "probability": 0.84,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6734",
+      "subject": "logical_fallacies",
+      "probability": 0.67,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8979",
+      "subject": "moral_scenarios",
+      "probability": 0.87,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3964",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6521",
+      "subject": "international_law",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3263",
+      "subject": "high_school_computer_science",
+      "probability": 0.74,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4853",
+      "subject": "high_school_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9910",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2084",
+      "subject": "elementary_mathematics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12172",
+      "subject": "professional_medicine",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4395",
+      "subject": "high_school_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5801",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8056",
+      "subject": "miscellaneous",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6283",
+      "subject": "human_aging",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10539",
+      "subject": "professional_accounting",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12301",
+      "subject": "professional_medicine",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9302",
+      "subject": "moral_scenarios",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-978",
+      "subject": "college_chemistry",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13634",
+      "subject": "us_foreign_policy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10434",
+      "subject": "professional_accounting",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5008",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3253",
+      "subject": "high_school_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9558",
+      "subject": "nutrition",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-434",
+      "subject": "business_ethics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1291",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9959",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5907",
+      "subject": "high_school_world_history",
+      "probability": 0.5,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4215",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7900",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11186",
+      "subject": "professional_law",
+      "probability": 0.62,
+      "correct": true
+    },
+    {
+      "id": "mmlu-527",
+      "subject": "clinical_knowledge",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6210",
+      "subject": "human_aging",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12410",
+      "subject": "professional_medicine",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10825",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10984",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8251",
+      "subject": "moral_disputes",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8353",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12959",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4649",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10371",
+      "subject": "professional_accounting",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6133",
+      "subject": "human_aging",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9434",
+      "subject": "nutrition",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5350",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13636",
+      "subject": "us_foreign_policy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-608",
+      "subject": "clinical_knowledge",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2466",
+      "subject": "formal_logic",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6338",
+      "subject": "human_sexuality",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7142",
+      "subject": "marketing",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7533",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13619",
+      "subject": "us_foreign_policy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10757",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11277",
+      "subject": "professional_law",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4382",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1137",
+      "subject": "college_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5194",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9323",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10259",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5193",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7267",
+      "subject": "marketing",
+      "probability": 0.55,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10279",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9150",
+      "subject": "moral_scenarios",
+      "probability": 0.66,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10466",
+      "subject": "professional_accounting",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2859",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12075",
+      "subject": "professional_law",
+      "probability": 0.65,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4933",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-992",
+      "subject": "college_chemistry",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6687",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3485",
+      "subject": "high_school_geography",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5092",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7483",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6601",
+      "subject": "jurisprudence",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11207",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1516",
+      "subject": "computer_security",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4356",
+      "subject": "high_school_mathematics",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12897",
+      "subject": "professional_psychology",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1621",
+      "subject": "conceptual_physics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4785",
+      "subject": "high_school_physics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6112",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5333",
+      "subject": "high_school_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5414",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10839",
+      "subject": "professional_law",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1184",
+      "subject": "college_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11464",
+      "subject": "professional_law",
+      "probability": 0.51,
+      "correct": false
+    },
+    {
+      "id": "mmlu-5587",
+      "subject": "high_school_statistics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8278",
+      "subject": "moral_disputes",
+      "probability": 0.38,
+      "correct": false
+    },
+    {
+      "id": "mmlu-1903",
+      "subject": "econometrics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7782",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8414",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5881",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7574",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4207",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1972",
+      "subject": "electrical_engineering",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1751",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11081",
+      "subject": "professional_law",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10930",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11380",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8869",
+      "subject": "moral_scenarios",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3240",
+      "subject": "high_school_computer_science",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9676",
+      "subject": "nutrition",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7410",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5082",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8153",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6011",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2232",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12367",
+      "subject": "professional_medicine",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6787",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6476",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-303",
+      "subject": "astronomy",
+      "probability": 0.78,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13865",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11485",
+      "subject": "professional_law",
+      "probability": 0.81,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3267",
+      "subject": "high_school_computer_science",
+      "probability": 0.66,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4309",
+      "subject": "high_school_mathematics",
+      "probability": 0.43,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6431",
+      "subject": "human_sexuality",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5851",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12830",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5687",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12497",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9196",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-801",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3257",
+      "subject": "high_school_computer_science",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-814",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6115",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12242",
+      "subject": "professional_medicine",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7345",
+      "subject": "medical_genetics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13458",
+      "subject": "sociology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9070",
+      "subject": "moral_scenarios",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5705",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3109",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11592",
+      "subject": "professional_law",
+      "probability": 0.77,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8896",
+      "subject": "moral_scenarios",
+      "probability": 0.87,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7526",
+      "subject": "miscellaneous",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13707",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7781",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5582",
+      "subject": "high_school_statistics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13391",
+      "subject": "security_studies",
+      "probability": 0.71,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2043",
+      "subject": "electrical_engineering",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10493",
+      "subject": "professional_accounting",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13996",
+      "subject": "world_religions",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-791",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-2581",
+      "subject": "global_facts",
+      "probability": 0.53,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10901",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4012",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3924",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8748",
+      "subject": "moral_scenarios",
+      "probability": 0.7,
+      "correct": false
+    },
+    {
+      "id": "mmlu-2636",
+      "subject": "global_facts",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1513",
+      "subject": "computer_security",
+      "probability": 0.63,
+      "correct": false
+    },
+    {
+      "id": "mmlu-6357",
+      "subject": "human_sexuality",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-206",
+      "subject": "anatomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8272",
+      "subject": "moral_disputes",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5653",
+      "subject": "high_school_us_history",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-604",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4179",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9382",
+      "subject": "moral_scenarios",
+      "probability": 0.55,
+      "correct": false
+    },
+    {
+      "id": "mmlu-11921",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11200",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3051",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3845",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.53,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8288",
+      "subject": "moral_disputes",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11100",
+      "subject": "professional_law",
+      "probability": 0.51,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6677",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8762",
+      "subject": "moral_scenarios",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9454",
+      "subject": "nutrition",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8013",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2858",
+      "subject": "high_school_biology",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7150",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4084",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7614",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6263",
+      "subject": "human_aging",
+      "probability": 0.7,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10768",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8253",
+      "subject": "moral_disputes",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3099",
+      "subject": "high_school_chemistry",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4157",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1053",
+      "subject": "college_computer_science",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10949",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4044",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3858",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8429",
+      "subject": "moral_disputes",
+      "probability": 0.92,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3360",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10640",
+      "subject": "professional_law",
+      "probability": 0.87,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13417",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11313",
+      "subject": "professional_law",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5888",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9084",
+      "subject": "moral_scenarios",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2882",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12438",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10887",
+      "subject": "professional_law",
+      "probability": 0.45,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12660",
+      "subject": "professional_psychology",
+      "probability": 0.74,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10695",
+      "subject": "professional_law",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5447",
+      "subject": "high_school_statistics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10647",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-819",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3566",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10133",
+      "subject": "prehistory",
+      "probability": 0.96,
+      "correct": false
+    },
+    {
+      "id": "mmlu-12295",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12700",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11547",
+      "subject": "professional_law",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8582",
+      "subject": "moral_scenarios",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6057",
+      "subject": "high_school_world_history",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-304",
+      "subject": "astronomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1871",
+      "subject": "econometrics",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2955",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3430",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5666",
+      "subject": "high_school_us_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3561",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6032",
+      "subject": "high_school_world_history",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5004",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2426",
+      "subject": "elementary_mathematics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13158",
+      "subject": "public_relations",
+      "probability": 0.71,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7817",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8840",
+      "subject": "moral_scenarios",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5576",
+      "subject": "high_school_statistics",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10282",
+      "subject": "prehistory",
+      "probability": 0.51,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7343",
+      "subject": "medical_genetics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2296",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11879",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7760",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3422",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1214",
+      "subject": "college_medicine",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7498",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11367",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7589",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12649",
+      "subject": "professional_psychology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9283",
+      "subject": "moral_scenarios",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10273",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11942",
+      "subject": "professional_law",
+      "probability": 0.82,
+      "correct": false
+    },
+    {
+      "id": "mmlu-12062",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12150",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5742",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12815",
+      "subject": "professional_psychology",
+      "probability": 0.46,
+      "correct": false
+    },
+    {
+      "id": "mmlu-983",
+      "subject": "college_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6488",
+      "subject": "international_law",
+      "probability": 0.61,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9791",
+      "subject": "philosophy",
+      "probability": 0.53,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9420",
+      "subject": "nutrition",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7920",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1831",
+      "subject": "econometrics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12461",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8986",
+      "subject": "moral_scenarios",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11251",
+      "subject": "professional_law",
+      "probability": 0.81,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6795",
+      "subject": "logical_fallacies",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9436",
+      "subject": "nutrition",
+      "probability": 0.81,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3856",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-734",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7510",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12074",
+      "subject": "professional_law",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1930",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4474",
+      "subject": "high_school_mathematics",
+      "probability": 0.76,
+      "correct": true
+    },
+    {
+      "id": "mmlu-424",
+      "subject": "business_ethics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11590",
+      "subject": "professional_law",
+      "probability": 0.95,
+      "correct": false
+    },
+    {
+      "id": "mmlu-5360",
+      "subject": "high_school_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12799",
+      "subject": "professional_psychology",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4283",
+      "subject": "high_school_mathematics",
+      "probability": 0.45,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6239",
+      "subject": "human_aging",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7225",
+      "subject": "marketing",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5997",
+      "subject": "high_school_world_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5239",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10349",
+      "subject": "professional_accounting",
+      "probability": 0.84,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7621",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4884",
+      "subject": "high_school_physics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2620",
+      "subject": "global_facts",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2202",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7539",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13327",
+      "subject": "security_studies",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13224",
+      "subject": "security_studies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12207",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2155",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10821",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-14041",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4009",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-150",
+      "subject": "anatomy",
+      "probability": 0.6,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12404",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9698",
+      "subject": "nutrition",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5490",
+      "subject": "high_school_statistics",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10998",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8864",
+      "subject": "moral_scenarios",
+      "probability": 0.87,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6005",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2171",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13199",
+      "subject": "security_studies",
+      "probability": 0.67,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13906",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5516",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13162",
+      "subject": "security_studies",
+      "probability": 0.71,
+      "correct": false
+    },
+    {
+      "id": "mmlu-413",
+      "subject": "business_ethics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12692",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13499",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5749",
+      "subject": "high_school_us_history",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2248",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13091",
+      "subject": "public_relations",
+      "probability": 0.47,
+      "correct": false
+    },
+    {
+      "id": "mmlu-2612",
+      "subject": "global_facts",
+      "probability": 0.48,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6953",
+      "subject": "management",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9788",
+      "subject": "philosophy",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11234",
+      "subject": "professional_law",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2175",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2837",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4908",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2042",
+      "subject": "electrical_engineering",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4107",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1770",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3786",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8267",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12658",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4949",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11219",
+      "subject": "professional_law",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8525",
+      "subject": "moral_scenarios",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7489",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8904",
+      "subject": "moral_scenarios",
+      "probability": 0.74,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4618",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5445",
+      "subject": "high_school_statistics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13900",
+      "subject": "world_religions",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10846",
+      "subject": "professional_law",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11331",
+      "subject": "professional_law",
+      "probability": 0.78,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13135",
+      "subject": "public_relations",
+      "probability": 0.65,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13779",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13804",
+      "subject": "virology",
+      "probability": 0.98,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8626",
+      "subject": "moral_scenarios",
+      "probability": 0.37,
+      "correct": false
+    },
+    {
+      "id": "mmlu-93",
+      "subject": "abstract_algebra",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8249",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-126",
+      "subject": "anatomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5348",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-193",
+      "subject": "anatomy",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2135",
+      "subject": "elementary_mathematics",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11675",
+      "subject": "professional_law",
+      "probability": 0.44,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1210",
+      "subject": "college_medicine",
+      "probability": 0.75,
+      "correct": false
+    },
+    {
+      "id": "mmlu-325",
+      "subject": "astronomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4127",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3141",
+      "subject": "high_school_chemistry",
+      "probability": 0.91,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13042",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5664",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12228",
+      "subject": "professional_medicine",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1653",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1837",
+      "subject": "econometrics",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-821",
+      "subject": "college_biology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4748",
+      "subject": "high_school_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1606",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8026",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9618",
+      "subject": "nutrition",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12587",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11436",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10145",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3071",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12239",
+      "subject": "professional_medicine",
+      "probability": 0.52,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7856",
+      "subject": "miscellaneous",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7002",
+      "subject": "management",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8382",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-794",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4190",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12176",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8773",
+      "subject": "moral_scenarios",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5326",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10185",
+      "subject": "prehistory",
+      "probability": 0.8,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12340",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2537",
+      "subject": "formal_logic",
+      "probability": 0.74,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7305",
+      "subject": "medical_genetics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3908",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7503",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-464",
+      "subject": "business_ethics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-272",
+      "subject": "astronomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8917",
+      "subject": "moral_scenarios",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4366",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-568",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1079",
+      "subject": "college_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13724",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1030",
+      "subject": "college_computer_science",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2469",
+      "subject": "formal_logic",
+      "probability": 0.65,
+      "correct": false
+    },
+    {
+      "id": "mmlu-11929",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1647",
+      "subject": "conceptual_physics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-128",
+      "subject": "anatomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9213",
+      "subject": "moral_scenarios",
+      "probability": 0.86,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8809",
+      "subject": "moral_scenarios",
+      "probability": 0.87,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1927",
+      "subject": "electrical_engineering",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7767",
+      "subject": "miscellaneous",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10383",
+      "subject": "professional_accounting",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9214",
+      "subject": "moral_scenarios",
+      "probability": 0.81,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4064",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8008",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10928",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6501",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5761",
+      "subject": "high_school_us_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11987",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4306",
+      "subject": "high_school_mathematics",
+      "probability": 0.35,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6059",
+      "subject": "high_school_world_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9607",
+      "subject": "nutrition",
+      "probability": 0.88,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7733",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4965",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5323",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7822",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4805",
+      "subject": "high_school_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9864",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1334",
+      "subject": "college_medicine",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9325",
+      "subject": "moral_scenarios",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5176",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9956",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-906",
+      "subject": "college_chemistry",
+      "probability": 0.79,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3946",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7802",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13012",
+      "subject": "professional_psychology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2143",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7124",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4305",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11255",
+      "subject": "professional_law",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10165",
+      "subject": "prehistory",
+      "probability": 0.9,
+      "correct": false
+    },
+    {
+      "id": "mmlu-12850",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5483",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1279",
+      "subject": "college_medicine",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-194",
+      "subject": "anatomy",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7888",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12997",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1388",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8241",
+      "subject": "moral_disputes",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10795",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13751",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3309",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13233",
+      "subject": "security_studies",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-841",
+      "subject": "college_biology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-14020",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6769",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5334",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5485",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6771",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5919",
+      "subject": "high_school_world_history",
+      "probability": 0.66,
+      "correct": false
+    },
+    {
+      "id": "mmlu-1306",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13554",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9317",
+      "subject": "moral_scenarios",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9729",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11280",
+      "subject": "professional_law",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11136",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1850",
+      "subject": "econometrics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-110",
+      "subject": "anatomy",
+      "probability": 0.65,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4209",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1383",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5472",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1635",
+      "subject": "conceptual_physics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12722",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2332",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11505",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12326",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7688",
+      "subject": "miscellaneous",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5513",
+      "subject": "high_school_statistics",
+      "probability": 0.82,
+      "correct": true
+    },
+    {
+      "id": "mmlu-696",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13057",
+      "subject": "public_relations",
+      "probability": 0.69,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13971",
+      "subject": "world_religions",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5173",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-988",
+      "subject": "college_chemistry",
+      "probability": 0.5,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3371",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11871",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9840",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9209",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10618",
+      "subject": "professional_accounting",
+      "probability": 0.63,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7089",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5982",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9031",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7654",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13416",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13425",
+      "subject": "sociology",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6291",
+      "subject": "human_aging",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6985",
+      "subject": "management",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11093",
+      "subject": "professional_law",
+      "probability": 0.62,
+      "correct": true
+    },
+    {
+      "id": "mmlu-131",
+      "subject": "anatomy",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12950",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-647",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7134",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3870",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-899",
+      "subject": "college_chemistry",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9866",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7851",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12706",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11727",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13673",
+      "subject": "us_foreign_policy",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5717",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7921",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7869",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3225",
+      "subject": "high_school_computer_science",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13785",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-5252",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13828",
+      "subject": "virology",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-466",
+      "subject": "business_ethics",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10601",
+      "subject": "professional_accounting",
+      "probability": 0.66,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2657",
+      "subject": "global_facts",
+      "probability": 0.72,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12550",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8843",
+      "subject": "moral_scenarios",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9086",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11296",
+      "subject": "professional_law",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12902",
+      "subject": "professional_psychology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8492",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10747",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9732",
+      "subject": "philosophy",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4206",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9371",
+      "subject": "moral_scenarios",
+      "probability": 0.73,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13309",
+      "subject": "security_studies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11714",
+      "subject": "professional_law",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12394",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10213",
+      "subject": "prehistory",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12446",
+      "subject": "professional_psychology",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11876",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1443",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2890",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1528",
+      "subject": "computer_security",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-643",
+      "subject": "clinical_knowledge",
+      "probability": 0.76,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7597",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12432",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3091",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7930",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2687",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1374",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12522",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11321",
+      "subject": "professional_law",
+      "probability": 0.49,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7608",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3751",
+      "subject": "high_school_government_and_politics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2988",
+      "subject": "high_school_chemistry",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3108",
+      "subject": "high_school_chemistry",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10735",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10979",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9000",
+      "subject": "moral_scenarios",
+      "probability": 0.59,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6426",
+      "subject": "human_sexuality",
+      "probability": 0.73,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8645",
+      "subject": "moral_scenarios",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12488",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6786",
+      "subject": "logical_fallacies",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3627",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6380",
+      "subject": "human_sexuality",
+      "probability": 0.82,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6937",
+      "subject": "machine_learning",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-490",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7281",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5920",
+      "subject": "high_school_world_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4989",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-457",
+      "subject": "business_ethics",
+      "probability": 0.61,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10082",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13406",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4138",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.45,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13743",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7535",
+      "subject": "miscellaneous",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13584",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7253",
+      "subject": "marketing",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3897",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12949",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10687",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3067",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10112",
+      "subject": "prehistory",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5211",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5530",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9095",
+      "subject": "moral_scenarios",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8653",
+      "subject": "moral_scenarios",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11033",
+      "subject": "professional_law",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9112",
+      "subject": "moral_scenarios",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1014",
+      "subject": "college_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13348",
+      "subject": "security_studies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5707",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3761",
+      "subject": "high_school_government_and_politics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12337",
+      "subject": "professional_medicine",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1863",
+      "subject": "econometrics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10733",
+      "subject": "professional_law",
+      "probability": 0.78,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11045",
+      "subject": "professional_law",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7774",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-919",
+      "subject": "college_chemistry",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9003",
+      "subject": "moral_scenarios",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4962",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7880",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6536",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9782",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3243",
+      "subject": "high_school_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13757",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11829",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8264",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2571",
+      "subject": "global_facts",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7408",
+      "subject": "miscellaneous",
+      "probability": 0.68,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2412",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8573",
+      "subject": "moral_scenarios",
+      "probability": 0.48,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4049",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11959",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-545",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9943",
+      "subject": "philosophy",
+      "probability": 0.76,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3374",
+      "subject": "high_school_european_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11639",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7034",
+      "subject": "management",
+      "probability": 0.87,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9405",
+      "subject": "moral_scenarios",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2533",
+      "subject": "formal_logic",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7850",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12065",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2320",
+      "subject": "elementary_mathematics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3925",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12812",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6751",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12003",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5275",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3700",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11017",
+      "subject": "professional_law",
+      "probability": 0.64,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8041",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2173",
+      "subject": "elementary_mathematics",
+      "probability": 0.51,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6770",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11361",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7057",
+      "subject": "marketing",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-758",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12256",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1144",
+      "subject": "college_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12008",
+      "subject": "professional_law",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5649",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3691",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5765",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11801",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-578",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2157",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10087",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13552",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13061",
+      "subject": "public_relations",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-739",
+      "subject": "clinical_knowledge",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4907",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3496",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1950",
+      "subject": "electrical_engineering",
+      "probability": 0.52,
+      "correct": false
+    },
+    {
+      "id": "mmlu-1265",
+      "subject": "college_medicine",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12585",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1123",
+      "subject": "college_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13897",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7075",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-318",
+      "subject": "astronomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13230",
+      "subject": "security_studies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8680",
+      "subject": "moral_scenarios",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1986",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4685",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13879",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8740",
+      "subject": "moral_scenarios",
+      "probability": 0.78,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9096",
+      "subject": "moral_scenarios",
+      "probability": 0.67,
+      "correct": false
+    },
+    {
+      "id": "mmlu-12101",
+      "subject": "professional_law",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3955",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6670",
+      "subject": "jurisprudence",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3910",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13497",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7352",
+      "subject": "medical_genetics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13214",
+      "subject": "security_studies",
+      "probability": 0.66,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1541",
+      "subject": "computer_security",
+      "probability": 0.52,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1987",
+      "subject": "electrical_engineering",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11765",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-619",
+      "subject": "clinical_knowledge",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1218",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8657",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6132",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-636",
+      "subject": "clinical_knowledge",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1028",
+      "subject": "college_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8211",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10427",
+      "subject": "professional_accounting",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11495",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13547",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1006",
+      "subject": "college_computer_science",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6513",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5080",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4419",
+      "subject": "high_school_mathematics",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9217",
+      "subject": "moral_scenarios",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9921",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7151",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11223",
+      "subject": "professional_law",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-438",
+      "subject": "business_ethics",
+      "probability": 0.87,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13374",
+      "subject": "security_studies",
+      "probability": 0.75,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12769",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8593",
+      "subject": "moral_scenarios",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9471",
+      "subject": "nutrition",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-280",
+      "subject": "astronomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3059",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-878",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13513",
+      "subject": "sociology",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2814",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-816",
+      "subject": "college_biology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7491",
+      "subject": "miscellaneous",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2665",
+      "subject": "global_facts",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12791",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1270",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3472",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10504",
+      "subject": "professional_accounting",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4463",
+      "subject": "high_school_mathematics",
+      "probability": 0.81,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2004",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4513",
+      "subject": "high_school_microeconomics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5121",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13316",
+      "subject": "security_studies",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9373",
+      "subject": "moral_scenarios",
+      "probability": 0.56,
+      "correct": false
+    },
+    {
+      "id": "mmlu-13925",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-912",
+      "subject": "college_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9596",
+      "subject": "nutrition",
+      "probability": 0.77,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4493",
+      "subject": "high_school_mathematics",
+      "probability": 0.54,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6232",
+      "subject": "human_aging",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12616",
+      "subject": "professional_psychology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3164",
+      "subject": "high_school_chemistry",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12441",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-514",
+      "subject": "clinical_knowledge",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11258",
+      "subject": "professional_law",
+      "probability": 0.36,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11441",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13026",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12753",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1376",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8305",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4232",
+      "subject": "high_school_mathematics",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13196",
+      "subject": "security_studies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8570",
+      "subject": "moral_scenarios",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-789",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1251",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3534",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9945",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11161",
+      "subject": "professional_law",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-533",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3595",
+      "subject": "high_school_geography",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8345",
+      "subject": "moral_disputes",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1527",
+      "subject": "computer_security",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7581",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3616",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11053",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3821",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12246",
+      "subject": "professional_medicine",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5503",
+      "subject": "high_school_statistics",
+      "probability": 0.4,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7747",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4457",
+      "subject": "high_school_mathematics",
+      "probability": 0.75,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8006",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4108",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6616",
+      "subject": "jurisprudence",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5890",
+      "subject": "high_school_world_history",
+      "probability": 0.51,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8517",
+      "subject": "moral_scenarios",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10076",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13809",
+      "subject": "virology",
+      "probability": 0.98,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4335",
+      "subject": "high_school_mathematics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-499",
+      "subject": "clinical_knowledge",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7742",
+      "subject": "miscellaneous",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7720",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2760",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4271",
+      "subject": "high_school_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5023",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10976",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8934",
+      "subject": "moral_scenarios",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1201",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4829",
+      "subject": "high_school_physics",
+      "probability": 0.57,
+      "correct": false
+    },
+    {
+      "id": "mmlu-6287",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-14021",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9985",
+      "subject": "philosophy",
+      "probability": 0.77,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7754",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-423",
+      "subject": "business_ethics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8113",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5581",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13701",
+      "subject": "us_foreign_policy",
+      "probability": 0.66,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10636",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3683",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1580",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-863",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6176",
+      "subject": "human_aging",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8275",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13247",
+      "subject": "security_studies",
+      "probability": 0.83,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11218",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2114",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2279",
+      "subject": "elementary_mathematics",
+      "probability": 0.82,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2896",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7180",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13387",
+      "subject": "security_studies",
+      "probability": 0.63,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8662",
+      "subject": "moral_scenarios",
+      "probability": 0.37,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4203",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5347",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4730",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13732",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-6120",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3759",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-996",
+      "subject": "college_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10153",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6484",
+      "subject": "international_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2471",
+      "subject": "formal_logic",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9627",
+      "subject": "nutrition",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13232",
+      "subject": "security_studies",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-846",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12964",
+      "subject": "professional_psychology",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11520",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7428",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12607",
+      "subject": "professional_psychology",
+      "probability": 0.5,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4644",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4516",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11461",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1182",
+      "subject": "college_mathematics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12349",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-979",
+      "subject": "college_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4732",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3659",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10551",
+      "subject": "professional_accounting",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4611",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3168",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11132",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4551",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-861",
+      "subject": "college_biology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6078",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6964",
+      "subject": "management",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3744",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-743",
+      "subject": "clinical_knowledge",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4910",
+      "subject": "high_school_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12665",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-15",
+      "subject": "abstract_algebra",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6834",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8970",
+      "subject": "moral_scenarios",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3834",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11117",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5673",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2980",
+      "subject": "high_school_chemistry",
+      "probability": 0.69,
+      "correct": true
+    },
+    {
+      "id": "mmlu-756",
+      "subject": "college_biology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12368",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3721",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7042",
+      "subject": "management",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8443",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7449",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12035",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9988",
+      "subject": "philosophy",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9810",
+      "subject": "philosophy",
+      "probability": 0.88,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4245",
+      "subject": "high_school_mathematics",
+      "probability": 0.5,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7330",
+      "subject": "medical_genetics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3920",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1307",
+      "subject": "college_medicine",
+      "probability": 0.62,
+      "correct": false
+    },
+    {
+      "id": "mmlu-2836",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11119",
+      "subject": "professional_law",
+      "probability": 0.4,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4067",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7791",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1492",
+      "subject": "computer_security",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10624",
+      "subject": "professional_accounting",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12972",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10935",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8123",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2443",
+      "subject": "formal_logic",
+      "probability": 0.48,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7669",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4213",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2943",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-167",
+      "subject": "anatomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1296",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6669",
+      "subject": "jurisprudence",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12040",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9376",
+      "subject": "moral_scenarios",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-738",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6643",
+      "subject": "jurisprudence",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-1670",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8204",
+      "subject": "moral_disputes",
+      "probability": 0.5,
+      "correct": false
+    },
+    {
+      "id": "mmlu-11439",
+      "subject": "professional_law",
+      "probability": 0.68,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4404",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11546",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-78",
+      "subject": "abstract_algebra",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5680",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3983",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8269",
+      "subject": "moral_disputes",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7685",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1436",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3679",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12468",
+      "subject": "professional_psychology",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13097",
+      "subject": "public_relations",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10438",
+      "subject": "professional_accounting",
+      "probability": 0.36,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10840",
+      "subject": "professional_law",
+      "probability": 0.7,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9370",
+      "subject": "moral_scenarios",
+      "probability": 0.49,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10701",
+      "subject": "professional_law",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7234",
+      "subject": "marketing",
+      "probability": 0.51,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10283",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13460",
+      "subject": "sociology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11824",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10760",
+      "subject": "professional_law",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1424",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-904",
+      "subject": "college_chemistry",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6062",
+      "subject": "high_school_world_history",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4178",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13768",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4150",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9872",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9246",
+      "subject": "moral_scenarios",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7457",
+      "subject": "miscellaneous",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7452",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-987",
+      "subject": "college_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4795",
+      "subject": "high_school_physics",
+      "probability": 0.45,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10771",
+      "subject": "professional_law",
+      "probability": 0.84,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5341",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6465",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5745",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9593",
+      "subject": "nutrition",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11544",
+      "subject": "professional_law",
+      "probability": 0.77,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12361",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5613",
+      "subject": "high_school_statistics",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-6102",
+      "subject": "human_aging",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-827",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6145",
+      "subject": "human_aging",
+      "probability": 0.56,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12221",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9812",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13718",
+      "subject": "virology",
+      "probability": 0.91,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4257",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-14028",
+      "subject": "world_religions",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11213",
+      "subject": "professional_law",
+      "probability": 0.69,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4567",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6196",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-826",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9204",
+      "subject": "moral_scenarios",
+      "probability": 0.64,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8727",
+      "subject": "moral_scenarios",
+      "probability": 0.75,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5139",
+      "subject": "high_school_psychology",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6650",
+      "subject": "jurisprudence",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12513",
+      "subject": "professional_psychology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8508",
+      "subject": "moral_disputes",
+      "probability": 0.86,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5345",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3473",
+      "subject": "high_school_geography",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8089",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2576",
+      "subject": "global_facts",
+      "probability": 0.77,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4900",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11170",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8045",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4914",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8127",
+      "subject": "miscellaneous",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7167",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5787",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7596",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2845",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12740",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4687",
+      "subject": "high_school_microeconomics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12419",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1207",
+      "subject": "college_medicine",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9027",
+      "subject": "moral_scenarios",
+      "probability": 0.53,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4874",
+      "subject": "high_school_physics",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9093",
+      "subject": "moral_scenarios",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12263",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-639",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3675",
+      "subject": "high_school_government_and_politics",
+      "probability": 0.75,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6386",
+      "subject": "human_sexuality",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8720",
+      "subject": "moral_scenarios",
+      "probability": 0.68,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4487",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10175",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13962",
+      "subject": "world_religions",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9122",
+      "subject": "moral_scenarios",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1083",
+      "subject": "college_computer_science",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6676",
+      "subject": "logical_fallacies",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11616",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4172",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13871",
+      "subject": "world_religions",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11307",
+      "subject": "professional_law",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8833",
+      "subject": "moral_scenarios",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7552",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4000",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.65,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4750",
+      "subject": "high_school_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3035",
+      "subject": "high_school_chemistry",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7243",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11278",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4856",
+      "subject": "high_school_physics",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3110",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10563",
+      "subject": "professional_accounting",
+      "probability": 0.75,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12498",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13803",
+      "subject": "virology",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5672",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8182",
+      "subject": "moral_disputes",
+      "probability": 0.84,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7908",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4783",
+      "subject": "high_school_physics",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11643",
+      "subject": "professional_law",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1975",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2739",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4799",
+      "subject": "high_school_physics",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13260",
+      "subject": "security_studies",
+      "probability": 0.49,
+      "correct": false
+    },
+    {
+      "id": "mmlu-6553",
+      "subject": "international_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-211",
+      "subject": "anatomy",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8654",
+      "subject": "moral_scenarios",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10084",
+      "subject": "prehistory",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12530",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10650",
+      "subject": "professional_law",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3598",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8859",
+      "subject": "moral_scenarios",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12639",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11488",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11745",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2702",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7934",
+      "subject": "miscellaneous",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9414",
+      "subject": "nutrition",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3687",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2594",
+      "subject": "global_facts",
+      "probability": 0.82,
+      "correct": true
+    },
+    {
+      "id": "mmlu-755",
+      "subject": "college_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8092",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6868",
+      "subject": "machine_learning",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5632",
+      "subject": "high_school_statistics",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2009",
+      "subject": "electrical_engineering",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-268",
+      "subject": "astronomy",
+      "probability": 0.8,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13395",
+      "subject": "security_studies",
+      "probability": 0.87,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2138",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12592",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7385",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-547",
+      "subject": "clinical_knowledge",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2750",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4303",
+      "subject": "high_school_mathematics",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7098",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7906",
+      "subject": "miscellaneous",
+      "probability": 0.52,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4398",
+      "subject": "high_school_mathematics",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6358",
+      "subject": "human_sexuality",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2989",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7812",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11336",
+      "subject": "professional_law",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8474",
+      "subject": "moral_disputes",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-733",
+      "subject": "clinical_knowledge",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6778",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1320",
+      "subject": "college_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13956",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12362",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4882",
+      "subject": "high_school_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6184",
+      "subject": "human_aging",
+      "probability": 0.86,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3447",
+      "subject": "high_school_geography",
+      "probability": 0.47,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5824",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3574",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12841",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10308",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6809",
+      "subject": "logical_fallacies",
+      "probability": 0.81,
+      "correct": false
+    },
+    {
+      "id": "mmlu-8390",
+      "subject": "moral_disputes",
+      "probability": 0.9,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9995",
+      "subject": "philosophy",
+      "probability": 0.96,
+      "correct": false
+    },
+    {
+      "id": "mmlu-1673",
+      "subject": "conceptual_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13794",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4984",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5603",
+      "subject": "high_school_statistics",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9897",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10699",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10999",
+      "subject": "professional_law",
+      "probability": 0.59,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5670",
+      "subject": "high_school_us_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9595",
+      "subject": "nutrition",
+      "probability": 0.79,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8807",
+      "subject": "moral_scenarios",
+      "probability": 0.72,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4197",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4396",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2828",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2855",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9938",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7482",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12353",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3215",
+      "subject": "high_school_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12929",
+      "subject": "professional_psychology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11821",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3493",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6265",
+      "subject": "human_aging",
+      "probability": 0.7,
+      "correct": false
+    },
+    {
+      "id": "mmlu-7804",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13808",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7751",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13726",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10960",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-596",
+      "subject": "clinical_knowledge",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9714",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9406",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12469",
+      "subject": "professional_psychology",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-478",
+      "subject": "business_ethics",
+      "probability": 0.44,
+      "correct": false
+    },
+    {
+      "id": "mmlu-6053",
+      "subject": "high_school_world_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1967",
+      "subject": "electrical_engineering",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3012",
+      "subject": "high_school_chemistry",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4776",
+      "subject": "high_school_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5287",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2121",
+      "subject": "elementary_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5441",
+      "subject": "high_school_statistics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1395",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5473",
+      "subject": "high_school_statistics",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3115",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9531",
+      "subject": "nutrition",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3124",
+      "subject": "high_school_chemistry",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8103",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10576",
+      "subject": "professional_accounting",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6356",
+      "subject": "human_sexuality",
+      "probability": 0.88,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9532",
+      "subject": "nutrition",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2705",
+      "subject": "high_school_biology",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2001",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3254",
+      "subject": "high_school_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6939",
+      "subject": "machine_learning",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9794",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7038",
+      "subject": "management",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11744",
+      "subject": "professional_law",
+      "probability": 0.84,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5825",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1984",
+      "subject": "electrical_engineering",
+      "probability": 0.72,
+      "correct": true
+    },
+    {
+      "id": "mmlu-88",
+      "subject": "abstract_algebra",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5661",
+      "subject": "high_school_us_history",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4293",
+      "subject": "high_school_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8235",
+      "subject": "moral_disputes",
+      "probability": 0.9,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9553",
+      "subject": "nutrition",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6738",
+      "subject": "logical_fallacies",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1049",
+      "subject": "college_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8709",
+      "subject": "moral_scenarios",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13278",
+      "subject": "security_studies",
+      "probability": 0.61,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6468",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6044",
+      "subject": "high_school_world_history",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-420",
+      "subject": "business_ethics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4427",
+      "subject": "high_school_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13965",
+      "subject": "world_religions",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8108",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2773",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-616",
+      "subject": "clinical_knowledge",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3057",
+      "subject": "high_school_chemistry",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9099",
+      "subject": "moral_scenarios",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12652",
+      "subject": "professional_psychology",
+      "probability": 0.78,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3193",
+      "subject": "high_school_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7763",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10902",
+      "subject": "professional_law",
+      "probability": 0.68,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10638",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13035",
+      "subject": "professional_psychology",
+      "probability": 0.95,
+      "correct": false
+    },
+    {
+      "id": "mmlu-336",
+      "subject": "astronomy",
+      "probability": 0.99,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3552",
+      "subject": "high_school_geography",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10328",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12331",
+      "subject": "professional_medicine",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-537",
+      "subject": "clinical_knowledge",
+      "probability": 0.77,
+      "correct": false
+    },
+    {
+      "id": "mmlu-9980",
+      "subject": "philosophy",
+      "probability": 0.5,
+      "correct": false
+    },
+    {
+      "id": "mmlu-3728",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7661",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11191",
+      "subject": "professional_law",
+      "probability": 0.69,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6098",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-39",
+      "subject": "abstract_algebra",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8139",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13483",
+      "subject": "sociology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1762",
+      "subject": "conceptual_physics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7628",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10693",
+      "subject": "professional_law",
+      "probability": 0.73,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13263",
+      "subject": "security_studies",
+      "probability": 0.71,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13753",
+      "subject": "virology",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11514",
+      "subject": "professional_law",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7916",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8996",
+      "subject": "moral_scenarios",
+      "probability": 0.77,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9399",
+      "subject": "moral_scenarios",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8731",
+      "subject": "moral_scenarios",
+      "probability": 0.79,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2396",
+      "subject": "elementary_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3543",
+      "subject": "high_school_geography",
+      "probability": 0.93,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1271",
+      "subject": "college_medicine",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6204",
+      "subject": "human_aging",
+      "probability": 0.85,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3727",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10172",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1156",
+      "subject": "college_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2951",
+      "subject": "high_school_biology",
+      "probability": 1.0,
+      "correct": false
+    },
+    {
+      "id": "mmlu-12162",
+      "subject": "professional_law",
+      "probability": 0.75,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9987",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9009",
+      "subject": "moral_scenarios",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8541",
+      "subject": "moral_scenarios",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7430",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7643",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-309",
+      "subject": "astronomy",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11620",
+      "subject": "professional_law",
+      "probability": 0.63,
+      "correct": false
+    },
+    {
+      "id": "mmlu-208",
+      "subject": "anatomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-394",
+      "subject": "business_ethics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8021",
+      "subject": "miscellaneous",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5007",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8519",
+      "subject": "moral_scenarios",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11816",
+      "subject": "professional_law",
+      "probability": 0.73,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6240",
+      "subject": "human_aging",
+      "probability": 0.94,
+      "correct": false
+    },
+    {
+      "id": "mmlu-10195",
+      "subject": "prehistory",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6375",
+      "subject": "human_sexuality",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2496",
+      "subject": "formal_logic",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13913",
+      "subject": "world_religions",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6950",
+      "subject": "management",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-594",
+      "subject": "clinical_knowledge",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3893",
+      "subject": "high_school_macroeconomics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3499",
+      "subject": "high_school_geography",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8569",
+      "subject": "moral_scenarios",
+      "probability": 0.84,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3626",
+      "subject": "high_school_geography",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9163",
+      "subject": "moral_scenarios",
+      "probability": 0.66,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8265",
+      "subject": "moral_disputes",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13846",
+      "subject": "virology",
+      "probability": 0.96,
+      "correct": false
+    },
+    {
+      "id": "mmlu-12473",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7735",
+      "subject": "miscellaneous",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2012",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8038",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13407",
+      "subject": "sociology",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1464",
+      "subject": "college_physics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12",
+      "subject": "abstract_algebra",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13728",
+      "subject": "virology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8672",
+      "subject": "moral_scenarios",
+      "probability": 0.73,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7085",
+      "subject": "marketing",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12990",
+      "subject": "professional_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12757",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7797",
+      "subject": "miscellaneous",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3003",
+      "subject": "high_school_chemistry",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1553",
+      "subject": "computer_security",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4508",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10698",
+      "subject": "professional_law",
+      "probability": 0.67,
+      "correct": false
+    },
+    {
+      "id": "mmlu-5305",
+      "subject": "high_school_psychology",
+      "probability": 0.78,
+      "correct": false
+    },
+    {
+      "id": "mmlu-11794",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9082",
+      "subject": "moral_scenarios",
+      "probability": 0.92,
+      "correct": false
+    },
+    {
+      "id": "mmlu-4386",
+      "subject": "high_school_mathematics",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-10894",
+      "subject": "professional_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7395",
+      "subject": "miscellaneous",
+      "probability": 0.8,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1925",
+      "subject": "electrical_engineering",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8691",
+      "subject": "moral_scenarios",
+      "probability": 0.91,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9459",
+      "subject": "nutrition",
+      "probability": 0.92,
+      "correct": true
+    },
+    {
+      "id": "mmlu-5431",
+      "subject": "high_school_psychology",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11501",
+      "subject": "professional_law",
+      "probability": 0.95,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3720",
+      "subject": "high_school_government_and_politics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3461",
+      "subject": "high_school_geography",
+      "probability": 0.86,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6299",
+      "subject": "human_aging",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13442",
+      "subject": "sociology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-2186",
+      "subject": "elementary_mathematics",
+      "probability": 0.89,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8167",
+      "subject": "moral_disputes",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6489",
+      "subject": "international_law",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9998",
+      "subject": "philosophy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11124",
+      "subject": "professional_law",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1478",
+      "subject": "computer_security",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6881",
+      "subject": "machine_learning",
+      "probability": 0.67,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3957",
+      "subject": "high_school_macroeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-9557",
+      "subject": "nutrition",
+      "probability": 0.64,
+      "correct": true
+    },
+    {
+      "id": "mmlu-7255",
+      "subject": "marketing",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8651",
+      "subject": "moral_scenarios",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-3229",
+      "subject": "high_school_computer_science",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-617",
+      "subject": "clinical_knowledge",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13043",
+      "subject": "professional_psychology",
+      "probability": 0.97,
+      "correct": true
+    },
+    {
+      "id": "mmlu-247",
+      "subject": "astronomy",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1162",
+      "subject": "college_mathematics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-13257",
+      "subject": "security_studies",
+      "probability": 0.96,
+      "correct": true
+    },
+    {
+      "id": "mmlu-12675",
+      "subject": "professional_psychology",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-8509",
+      "subject": "moral_disputes",
+      "probability": 0.98,
+      "correct": true
+    },
+    {
+      "id": "mmlu-1155",
+      "subject": "college_mathematics",
+      "probability": 0.94,
+      "correct": true
+    },
+    {
+      "id": "mmlu-11308",
+      "subject": "professional_law",
+      "probability": 0.99,
+      "correct": true
+    },
+    {
+      "id": "mmlu-4582",
+      "subject": "high_school_microeconomics",
+      "probability": 1.0,
+      "correct": true
+    },
+    {
+      "id": "mmlu-6322",
+      "subject": "human_sexuality",
+      "probability": 0.99,
+      "correct": true
+    }
+  ]
+}

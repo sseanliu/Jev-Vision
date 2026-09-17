@@ -1,0 +1,3485 @@
+{
+  "schema": "jev-public-evidence.v1",
+  "metadata": {
+    "date": "2026-09-17",
+    "model": "jev-1.13.0",
+    "probeLogRecords": 1029,
+    "benchmarkRecords": 6800,
+    "sourceDirectory": "jev_recon/",
+    "notes": [
+      "One date, region, early-access account and model version. Observations do not uniquely identify an implementation.",
+      "API service-time numbers are x-envoy-upstream-service-time response headers, not elapsed times measured on the local laptop or isolated GPU timings.",
+      "Source logs contain responses and experiment metadata. Request construction is in the named source scripts.",
+      "Rounded returned probabilities are used for all aggregates.",
+      "Only public-safe aggregate measurements, synthetic probe text and source-relative provenance are included."
+    ]
+  },
+  "questionIsolation": {
+    "source": {
+      "script": "probe.py",
+      "function": "exp_independence",
+      "line": 228,
+      "log": "calls.jsonl",
+      "tag": "visibility"
+    },
+    "sampleUnit": "API request; five requests per condition",
+    "question": "Which secret code is mentioned by another question in this request?",
+    "caveat": "The wording asks about another question even when the code is moved to state; the positive control therefore demonstrates retrieval despite that mismatch. Learned instruction boundaries can mimic hard attention isolation.",
+    "conditions": [
+      {
+        "variant": "with_secret",
+        "n": 5,
+        "logLines": [
+          282,
+          285,
+          288,
+          291,
+          294
+        ],
+        "pCode": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pNoul": [
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04
+        ]
+      },
+      {
+        "variant": "without_secret",
+        "n": 5,
+        "logLines": [
+          283,
+          286,
+          289,
+          292,
+          295
+        ],
+        "pCode": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pNoul": [
+          0.04,
+          0.04,
+          0.04,
+          0.04,
+          0.04
+        ]
+      },
+      {
+        "variant": "secret_in_state",
+        "n": 5,
+        "logLines": [
+          284,
+          287,
+          290,
+          293,
+          296
+        ],
+        "pCode": [
+          0.9,
+          0.92,
+          0.91,
+          0.92,
+          0.91
+        ],
+        "pNoul": [
+          0.15,
+          0.16,
+          0.15,
+          0.16,
+          0.15
+        ]
+      }
+    ]
+  },
+  "optionVisibility": {
+    "source": {
+      "script": "probe.py",
+      "function": "exp_opt_visibility",
+      "line": 403,
+      "log": "calls.jsonl",
+      "tag": "opt_visibility"
+    },
+    "sampleUnit": "API request; four requests per condition",
+    "instructions": "Exactly one option below is correct according to its own description. Which one?",
+    "options": {
+      "alphaWithSecret": "The secret code is ZEBRA-7741. This option is never correct.",
+      "alphaControl": "The sky is often blue. This option is never correct.",
+      "beta": "This option is correct if and only if some other option in this list mentions the code ZEBRA-7741.",
+      "gamma": "This option is correct if and only if no option in this list mentions any secret code."
+    },
+    "caveat": "Beta itself names the code in every condition. Gamma therefore creates a semantic ambiguity even in the nominal no-secret control. This measures order-dependent behaviour, not a recovered attention mask. A causal final readout can attend to every earlier option.",
+    "conditions": [
+      {
+        "order": "abg",
+        "variant": "with_secret",
+        "n": 4,
+        "logLines": [
+          486,
+          487,
+          488,
+          489
+        ],
+        "pBeta": [
+          0.94,
+          0.94,
+          0.93,
+          0.77
+        ],
+        "meanPBeta": 0.895,
+        "pGamma": [
+          0.03,
+          0.03,
+          0.03,
+          0.07
+        ]
+      },
+      {
+        "order": "abg",
+        "variant": "without_secret",
+        "n": 4,
+        "logLines": [
+          490,
+          491,
+          492,
+          493
+        ],
+        "pBeta": [
+          0.02,
+          0.02,
+          0.02,
+          0.02
+        ],
+        "meanPBeta": 0.02,
+        "pGamma": [
+          0.96,
+          0.96,
+          0.96,
+          0.96
+        ]
+      },
+      {
+        "order": "bga",
+        "variant": "with_secret",
+        "n": 4,
+        "logLines": [
+          494,
+          495,
+          496,
+          497
+        ],
+        "pBeta": [
+          0.01,
+          0.01,
+          0.02,
+          0.01
+        ],
+        "meanPBeta": 0.0125,
+        "pGamma": [
+          0.97,
+          0.97,
+          0.96,
+          0.97
+        ]
+      },
+      {
+        "order": "bga",
+        "variant": "without_secret",
+        "n": 4,
+        "logLines": [
+          498,
+          499,
+          500,
+          501
+        ],
+        "pBeta": [
+          0.01,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "meanPBeta": 0.01,
+        "pGamma": [
+          0.98,
+          0.98,
+          0.98,
+          0.98
+        ]
+      },
+      {
+        "order": "gba",
+        "variant": "with_secret",
+        "n": 4,
+        "logLines": [
+          502,
+          503,
+          504,
+          505
+        ],
+        "pBeta": [
+          0.02,
+          0.05,
+          0.05,
+          0.03
+        ],
+        "meanPBeta": 0.0375,
+        "pGamma": [
+          0.96,
+          0.93,
+          0.93,
+          0.96
+        ]
+      },
+      {
+        "order": "gba",
+        "variant": "without_secret",
+        "n": 4,
+        "logLines": [
+          506,
+          507,
+          508,
+          509
+        ],
+        "pBeta": [
+          0.02,
+          0.02,
+          0.02,
+          0.02
+        ],
+        "meanPBeta": 0.02,
+        "pGamma": [
+          0.97,
+          0.97,
+          0.97,
+          0.97
+        ]
+      }
+    ]
+  },
+  "iia": {
+    "source": {
+      "script": "batch_c.py",
+      "function": "exp_iia",
+      "line": 6,
+      "log": "calls.jsonl",
+      "tag": "iia"
+    },
+    "sampleUnit": "Three API requests per condition, each with forty identical questions. Duplicates within a request are not independent experimental replicates. Conditions were blocked, not interleaved.",
+    "addedOption": {
+      "weather": "Bad weather caused it"
+    },
+    "interpretation": "Changes to pairwise odds conflict with a simple independent fixed-score model followed only by softmax. They do not uniquely imply a final-position readout: list-dependent temperature, rescoring or other interactions can also change odds.",
+    "conditions": [
+      {
+        "variant": "base",
+        "nRequests": 3,
+        "answersPerRequest": 40,
+        "nAnswers": 120,
+        "logLines": [
+          946,
+          947,
+          948
+        ],
+        "customerVsUnknown": {
+          "meanLogOdds": 0.4848181972453585,
+          "requestMeanLogOdds": [
+            0.5324225307871738,
+            0.44594262899395937,
+            0.4760894319549424
+          ]
+        },
+        "customerVsProvider": {
+          "meanLogOdds": 0.9225774253868411,
+          "requestMeanLogOdds": [
+            0.8845481213427998,
+            1.0005764252573883,
+            0.8826077295603351
+          ]
+        }
+      },
+      {
+        "variant": "append",
+        "nRequests": 3,
+        "answersPerRequest": 40,
+        "nAnswers": 120,
+        "logLines": [
+          949,
+          950,
+          951
+        ],
+        "customerVsUnknown": {
+          "meanLogOdds": 0.0835486315002992,
+          "requestMeanLogOdds": [
+            0.07837063563720131,
+            0.10282610333643899,
+            0.06944915552725733
+          ]
+        },
+        "customerVsProvider": {
+          "meanLogOdds": 0.6728186780579722,
+          "requestMeanLogOdds": [
+            0.8238357103869842,
+            0.6119169094267832,
+            0.5827034143601494
+          ]
+        }
+      },
+      {
+        "variant": "prepend",
+        "nRequests": 3,
+        "answersPerRequest": 40,
+        "nAnswers": 120,
+        "logLines": [
+          952,
+          953,
+          954
+        ],
+        "customerVsUnknown": {
+          "meanLogOdds": 0.4560602831917332,
+          "requestMeanLogOdds": [
+            0.5459111830848588,
+            0.4066614276840198,
+            0.41560823880632114
+          ]
+        },
+        "customerVsProvider": {
+          "meanLogOdds": 0.4196336924913195,
+          "requestMeanLogOdds": [
+            0.5504805188197813,
+            0.21366524307435802,
+            0.49475531557981905
+          ]
+        }
+      }
+    ]
+  },
+  "outputAccounting": {
+    "source": {
+      "script": "probe.py",
+      "log": "calls.jsonl"
+    },
+    "longId": {
+      "short": {
+        "inputTokens": 268,
+        "outputTokens": 21,
+        "logLine": 423
+      },
+      "long": {
+        "inputTokens": 268,
+        "outputTokens": 32,
+        "logLine": 439
+      }
+    },
+    "choice255": [
+      {
+        "logLine": 334,
+        "inputTokens": 2738,
+        "outputTokens": 2714,
+        "serverMs": 86.0
+      },
+      {
+        "logLine": 339,
+        "inputTokens": 2738,
+        "outputTokens": 2714,
+        "serverMs": 152.0
+      },
+      {
+        "logLine": 346,
+        "inputTokens": 2738,
+        "outputTokens": 2714,
+        "serverMs": 70.0
+      }
+    ],
+    "interpretation": "The output token field changes for an ID outside the apparent model input. It therefore cannot be treated as a count of generated model tokens. Public statements, rather than this field alone, support no autoregressive text generation."
+  },
+  "tokenAccounting": {
+    "source": {
+      "script": "probe.py",
+      "log": "calls.jsonl",
+      "tag": "type_preamble"
+    },
+    "rows": [
+      {
+        "combo": "n",
+        "inputTokens": 268,
+        "outputTokens": 21,
+        "logLine": 423
+      },
+      {
+        "combo": "c",
+        "inputTokens": 284,
+        "outputTokens": 32,
+        "logLine": 424
+      },
+      {
+        "combo": "s",
+        "inputTokens": 286,
+        "outputTokens": 18,
+        "logLine": 425
+      },
+      {
+        "combo": "nn",
+        "inputTokens": 276,
+        "outputTokens": 38,
+        "logLine": 426
+      },
+      {
+        "combo": "cc",
+        "inputTokens": 308,
+        "outputTokens": 61,
+        "logLine": 427
+      },
+      {
+        "combo": "ss",
+        "inputTokens": 312,
+        "outputTokens": 32,
+        "logLine": 428
+      },
+      {
+        "combo": "nc",
+        "inputTokens": 292,
+        "outputTokens": 49,
+        "logLine": 429
+      },
+      {
+        "combo": "ns",
+        "inputTokens": 294,
+        "outputTokens": 35,
+        "logLine": 430
+      },
+      {
+        "combo": "cs",
+        "inputTokens": 310,
+        "outputTokens": 47,
+        "logLine": 431
+      },
+      {
+        "combo": "ncs",
+        "inputTokens": 318,
+        "outputTokens": 64,
+        "logLine": 432
+      },
+      {
+        "combo": "c3",
+        "inputTokens": 290,
+        "outputTokens": 39,
+        "logLine": 433
+      },
+      {
+        "combo": "c4",
+        "inputTokens": 296,
+        "outputTokens": 46,
+        "logLine": 434
+      },
+      {
+        "combo": "c2desc",
+        "inputTokens": 302,
+        "outputTokens": 32,
+        "logLine": 435
+      },
+      {
+        "combo": "s3",
+        "inputTokens": 292,
+        "outputTokens": 18,
+        "logLine": 436
+      },
+      {
+        "combo": "n_crit",
+        "inputTokens": 286,
+        "outputTokens": 21,
+        "logLine": 437
+      },
+      {
+        "combo": "n_crit_true",
+        "inputTokens": 280,
+        "outputTokens": 21,
+        "logLine": 438
+      },
+      {
+        "combo": "n_longkey",
+        "inputTokens": 268,
+        "outputTokens": 32,
+        "logLine": 439
+      }
+    ]
+  },
+  "stateLength": {
+    "source": {
+      "script": "probe.py",
+      "log": "calls.jsonl",
+      "tag": "state_len_hi"
+    },
+    "metric": "Server response header x-envoy-upstream-service-time, milliseconds",
+    "caveat": "Shared service load, queueing and scheduling are uncontrolled. A minimum is the smallest observation, not a verified uncontended time. No parameter count or GPU throughput can be identified from this curve.",
+    "rows": [
+      {
+        "inputTokens": 360,
+        "state": "",
+        "logLines": [
+          642,
+          649,
+          656,
+          664,
+          673,
+          676,
+          680,
+          684
+        ],
+        "n": 8,
+        "minimum": 66.0,
+        "median": 105.0,
+        "maximum": 203.0,
+        "trials": [
+          70.0,
+          66.0,
+          98.0,
+          139.0,
+          203.0,
+          109.0,
+          125.0,
+          101.0
+        ]
+      },
+      {
+        "inputTokens": 1869,
+        "state": "",
+        "logLines": [
+          645,
+          657,
+          663,
+          682,
+          685,
+          690,
+          692,
+          694
+        ],
+        "n": 8,
+        "minimum": 54.0,
+        "median": 114.0,
+        "maximum": 163.0,
+        "trials": [
+          95.0,
+          94.0,
+          93.0,
+          163.0,
+          162.0,
+          54.0,
+          148.0,
+          133.0
+        ]
+      },
+      {
+        "inputTokens": 4941,
+        "state": "",
+        "logLines": [
+          640,
+          646,
+          648,
+          655,
+          658,
+          672,
+          675,
+          701
+        ],
+        "n": 8,
+        "minimum": 59.0,
+        "median": 95.5,
+        "maximum": 195.0,
+        "trials": [
+          72.0,
+          59.0,
+          98.0,
+          148.0,
+          97.0,
+          81.0,
+          195.0,
+          94.0
+        ]
+      },
+      {
+        "inputTokens": 9796,
+        "state": "",
+        "logLines": [
+          641,
+          651,
+          654,
+          659,
+          667,
+          669,
+          671,
+          679
+        ],
+        "n": 8,
+        "minimum": 75.0,
+        "median": 122.0,
+        "maximum": 178.0,
+        "trials": [
+          157.0,
+          114.0,
+          130.0,
+          75.0,
+          113.0,
+          110.0,
+          178.0,
+          148.0
+        ]
+      },
+      {
+        "inputTokens": 15071,
+        "state": "",
+        "logLines": [
+          639,
+          650,
+          652,
+          662,
+          666,
+          677,
+          683,
+          702
+        ],
+        "n": 8,
+        "minimum": 116.0,
+        "median": 124.0,
+        "maximum": 261.0,
+        "trials": [
+          143.0,
+          121.0,
+          123.0,
+          116.0,
+          153.0,
+          125.0,
+          261.0,
+          116.0
+        ]
+      },
+      {
+        "inputTokens": 20423,
+        "state": "",
+        "logLines": [
+          643,
+          665,
+          668,
+          670,
+          687,
+          691,
+          693,
+          700
+        ],
+        "n": 8,
+        "minimum": 145.0,
+        "median": 177.5,
+        "maximum": 230.0,
+        "trials": [
+          186.0,
+          230.0,
+          172.0,
+          209.0,
+          162.0,
+          154.0,
+          145.0,
+          183.0
+        ]
+      },
+      {
+        "inputTokens": 26103,
+        "state": "",
+        "logLines": [
+          644,
+          647,
+          661,
+          678,
+          686,
+          689,
+          696,
+          697
+        ],
+        "n": 8,
+        "minimum": 193.0,
+        "median": 213.0,
+        "maximum": 692.0,
+        "trials": [
+          193.0,
+          200.0,
+          218.0,
+          380.0,
+          214.0,
+          692.0,
+          194.0,
+          212.0
+        ]
+      },
+      {
+        "inputTokens": 29835,
+        "state": "",
+        "logLines": [
+          653,
+          660,
+          674,
+          681,
+          688,
+          695,
+          698,
+          699
+        ],
+        "n": 8,
+        "minimum": 230.0,
+        "median": 237.0,
+        "maximum": 262.0,
+        "trials": [
+          239.0,
+          235.0,
+          233.0,
+          259.0,
+          249.0,
+          230.0,
+          234.0,
+          262.0
+        ]
+      }
+    ]
+  },
+  "questionCount": {
+    "source": {
+      "script": "probe.py",
+      "log": "calls.jsonl",
+      "tag": "q_sweep_fine"
+    },
+    "metric": "Server response header x-envoy-upstream-service-time, milliseconds",
+    "caveat": "Shared service load, queueing and scheduling are uncontrolled. A minimum is the smallest observation, not a verified uncontended time. No parameter count or GPU throughput can be identified from this curve.",
+    "rows": [
+      {
+        "questions": 100,
+        "state": "short",
+        "logLines": [
+          613,
+          621,
+          630
+        ],
+        "n": 3,
+        "minimum": 99.0,
+        "median": 100.0,
+        "maximum": 115.0,
+        "trials": [
+          115.0,
+          99.0,
+          100.0
+        ]
+      },
+      {
+        "questions": 250,
+        "state": "long",
+        "logLines": [
+          614,
+          618,
+          636
+        ],
+        "n": 3,
+        "minimum": 184.0,
+        "median": 211.0,
+        "maximum": 216.0,
+        "trials": [
+          216.0,
+          211.0,
+          184.0
+        ]
+      },
+      {
+        "questions": 250,
+        "state": "short",
+        "logLines": [
+          616,
+          619,
+          632
+        ],
+        "n": 3,
+        "minimum": 103.0,
+        "median": 108.0,
+        "maximum": 203.0,
+        "trials": [
+          203.0,
+          108.0,
+          103.0
+        ]
+      },
+      {
+        "questions": 500,
+        "state": "long",
+        "logLines": [
+          620,
+          624,
+          629
+        ],
+        "n": 3,
+        "minimum": 245.0,
+        "median": 302.0,
+        "maximum": 353.0,
+        "trials": [
+          353.0,
+          245.0,
+          302.0
+        ]
+      },
+      {
+        "questions": 500,
+        "state": "short",
+        "logLines": [
+          612,
+          625,
+          637
+        ],
+        "n": 3,
+        "minimum": 211.0,
+        "median": 278.0,
+        "maximum": 526.0,
+        "trials": [
+          526.0,
+          278.0,
+          211.0
+        ]
+      },
+      {
+        "questions": 750,
+        "state": "short",
+        "logLines": [
+          622,
+          623,
+          633
+        ],
+        "n": 3,
+        "minimum": 261.0,
+        "median": 264.0,
+        "maximum": 606.0,
+        "trials": [
+          261.0,
+          264.0,
+          606.0
+        ]
+      },
+      {
+        "questions": 1000,
+        "state": "long",
+        "logLines": [
+          627,
+          628,
+          634
+        ],
+        "n": 3,
+        "minimum": 387.0,
+        "median": 445.0,
+        "maximum": 491.0,
+        "trials": [
+          445.0,
+          491.0,
+          387.0
+        ]
+      },
+      {
+        "questions": 1000,
+        "state": "short",
+        "logLines": [
+          611,
+          626,
+          631
+        ],
+        "n": 3,
+        "minimum": 284.0,
+        "median": 638.0,
+        "maximum": 758.0,
+        "trials": [
+          284.0,
+          638.0,
+          758.0
+        ]
+      },
+      {
+        "questions": 1250,
+        "state": "short",
+        "logLines": [
+          617,
+          635,
+          638
+        ],
+        "n": 3,
+        "minimum": 366.0,
+        "median": 368.0,
+        "maximum": 506.0,
+        "trials": [
+          368.0,
+          366.0,
+          506.0
+        ]
+      },
+      {
+        "questions": 1500,
+        "state": "short",
+        "logLines": [
+          609,
+          610,
+          615
+        ],
+        "n": 3,
+        "minimum": 405.0,
+        "median": 413.0,
+        "maximum": 785.0,
+        "trials": [
+          405.0,
+          785.0,
+          413.0
+        ]
+      }
+    ]
+  },
+  "benchmarks": {
+    "sources": [
+      "bench_results.jsonl",
+      "bench2_results.jsonl"
+    ],
+    "sampleUnit": "One benchmark item per request; shuffled MMLU conditions reuse the same underlying 1200 items.",
+    "metric": "Accuracy and mean probability of the chosen answer; Noul uses max(p,1-p).",
+    "caveat": "Equality of these two aggregate values does not establish calibration within probability bands, subgroups or a deployment distribution. No ECE is included because the original summary does not record the binning implementation.",
+    "rows": [
+      {
+        "name": "arc_challenge",
+        "n": 600,
+        "accuracy": 0.9783333333333334,
+        "meanTopProbability": 0.9850833333333333,
+        "source": "bench_results.jsonl"
+      },
+      {
+        "name": "mmlu",
+        "n": 1200,
+        "accuracy": 0.9175,
+        "meanTopProbability": 0.9365583333333334,
+        "source": "bench_results.jsonl"
+      },
+      {
+        "name": "winogrande",
+        "n": 500,
+        "accuracy": 0.904,
+        "meanTopProbability": 0.93578,
+        "source": "bench_results.jsonl"
+      },
+      {
+        "name": "boolq",
+        "n": 500,
+        "accuracy": 0.904,
+        "meanTopProbability": 0.90156,
+        "source": "bench_results.jsonl"
+      },
+      {
+        "name": "hellaswag",
+        "n": 400,
+        "accuracy": 0.95,
+        "meanTopProbability": 0.9254,
+        "source": "bench_results.jsonl"
+      },
+      {
+        "name": "sciq_tf",
+        "n": 400,
+        "accuracy": 0.9525,
+        "meanTopProbability": 0.9248,
+        "source": "bench_results.jsonl"
+      },
+      {
+        "name": "mmlu_shuffled_neutralkeys",
+        "n": 1200,
+        "accuracy": 0.915,
+        "meanTopProbability": 0.9447166666666666,
+        "source": "bench2_results.jsonl"
+      },
+      {
+        "name": "mmlu_shuffled",
+        "n": 1200,
+        "accuracy": 0.9175,
+        "meanTopProbability": 0.9425749999999999,
+        "source": "bench2_results.jsonl"
+      },
+      {
+        "name": "mmlu_pro",
+        "n": 800,
+        "accuracy": 0.84625,
+        "meanTopProbability": 0.8225625,
+        "source": "bench2_results.jsonl"
+      }
+    ]
+  },
+  "freshMath": {
+    "source": "fresh_math_results.json",
+    "caveat": "Newly generated instances reduce exact-item reuse concerns; they do not prove absence of related training examples. Small, different task families cannot by themselves diagnose benchmark contamination.",
+    "rows": [
+      {
+        "name": "mult3x3",
+        "n": 30,
+        "accuracy": 0.8666666666666667,
+        "meanTopProbability": 0.8296666666666667
+      },
+      {
+        "name": "mult2x2",
+        "n": 25,
+        "accuracy": 0.96,
+        "meanTopProbability": 0.9776
+      },
+      {
+        "name": "word_2step",
+        "n": 25,
+        "accuracy": 0.32,
+        "meanTopProbability": 0.3044
+      },
+      {
+        "name": "linear_eq",
+        "n": 25,
+        "accuracy": 0.68,
+        "meanTopProbability": 0.7012
+      },
+      {
+        "name": "modexp",
+        "n": 25,
+        "accuracy": 0.56,
+        "meanTopProbability": 0.3488
+      },
+      {
+        "name": "binomial",
+        "n": 20,
+        "accuracy": 0.9,
+        "meanTopProbability": 0.866
+      },
+      {
+        "name": "arith_series",
+        "n": 20,
+        "accuracy": 0.4,
+        "meanTopProbability": 0.399
+      },
+      {
+        "name": "times_table",
+        "n": 20,
+        "accuracy": 1,
+        "meanTopProbability": 1.0
+      }
+    ]
+  },
+  "tokenizer": {
+    "sources": [
+      "fingerprint.py",
+      "fingerprint2.py",
+      "fingerprint_results.json",
+      "fingerprint2_results.json"
+    ],
+    "candidateNames": [
+      "01-ai/Yi-1.5-9B",
+      "01-ai/Yi-6B",
+      "01-ai/Yi-9B",
+      "Alibaba-NLP/gte-Qwen2-1.5B-instruct",
+      "BAAI/bge-m3",
+      "ByteDance-Seed/Seed-OSS-36B-Base",
+      "Deci/DeciLM-7B",
+      "EleutherAI/gpt-j-6b",
+      "EleutherAI/gpt-neox-20b",
+      "EleutherAI/pythia-1b",
+      "FacebookAI/roberta-base",
+      "GSAI-ML/LLaDA-8B-Base",
+      "HuggingFaceTB/SmolLM-135M",
+      "HuggingFaceTB/SmolLM2-360M",
+      "HuggingFaceTB/SmolLM3-3B",
+      "HuggingFaceTB/SmolLM3-3B-Base",
+      "KORMo-Team/KORMo-10B-sft",
+      "LGAI-EXAONE/EXAONE-4.0-32B",
+      "LLM360/Amber",
+      "LLM360/K2",
+      "LiquidAI/LFM2-1.2B",
+      "LiquidAI/LFM2-8B-A1B",
+      "MiniMaxAI/MiniMax-M1-80k",
+      "MiniMaxAI/MiniMax-M2",
+      "Motif-Technologies/Motif-2.6B",
+      "NousResearch/Llama-2-7b-hf",
+      "NousResearch/Meta-Llama-3.1-8B",
+      "PrimeIntellect/INTELLECT-3",
+      "Qwen/Qwen1.5-7B",
+      "Qwen/Qwen2.5-7B",
+      "Qwen/Qwen3-8B",
+      "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "Qwen/Qwen3.5-9B",
+      "Qwen/Qwen3.6-35B-A3B",
+      "Qwen/Qwen3.8-27B",
+      "Salesforce/codegen-350M-mono",
+      "ServiceNow-AI/Apriel-1.5-15b-Thinker",
+      "Snowflake/snowflake-arctic-base",
+      "TinyLlama/TinyLlama_v1.1",
+      "Zyphra/Zamba2-2.7B",
+      "adept/fuyu-8b",
+      "ai21labs/Jamba-v0.1",
+      "aleph-alpha/Pharia-1-LLM-7B-control-hf",
+      "allenai/OLMo-2-0425-1B",
+      "allenai/OLMo-2-1124-7B",
+      "allenai/OLMo-7B-hf",
+      "allenai/OLMoE-1B-7B-0924",
+      "allenai/Olmo-3-1025-7B",
+      "answerdotai/ModernBERT-base",
+      "apple/DCLM-7B",
+      "arcee-ai/AFM-4.5B",
+      "arcee-ai/Trinity-Mini",
+      "baidu/ERNIE-4.5-21B-A3B-PT",
+      "bigcode/starcoder2-7b",
+      "bigscience/bloom-560m",
+      "deepseek-ai/DeepSeek-V2-Lite",
+      "deepseek-ai/DeepSeek-V3",
+      "deepseek-ai/DeepSeek-V3.2",
+      "deepseek-ai/deepseek-coder-6.7b-base",
+      "deepseek-ai/deepseek-llm-7b-base",
+      "deepseek-ai/deepseek-moe-16b-base",
+      "facebook/galactica-1.3b",
+      "facebook/opt-1.3b",
+      "facebook/xglm-564M",
+      "google-bert/bert-base-uncased",
+      "google/byt5-small",
+      "google/flan-t5-base",
+      "google/gemma-4-26b-a4b-it",
+      "google/mt5-base",
+      "google/t5-v1_1-base",
+      "google/ul2",
+      "ibm-granite/granite-3.3-8b-base",
+      "ibm-granite/granite-4.0-h-small",
+      "inclusionAI/LLaDA2.0-flash",
+      "inclusionAI/Ling-flash-2.0",
+      "intfloat/multilingual-e5-large",
+      "jinaai/jina-embeddings-v3",
+      "marin-community/marin-8b-base",
+      "meituan-longcat/LongCat-Flash-Chat",
+      "microsoft/Phi-3-mini-4k-instruct",
+      "microsoft/Phi-4",
+      "microsoft/Phi-4-mini-instruct",
+      "microsoft/bitnet-b1.58-2B-4T",
+      "microsoft/deberta-v3-base",
+      "microsoft/phi-2",
+      "mistral-community/Mistral-7B-v0.2",
+      "mistralai/Mamba-Codestral-7B-v0.1",
+      "mistralai/Ministral-8B-Instruct-2410",
+      "mistralai/Mistral-7B-v0.1",
+      "mistralai/Mistral-7B-v0.3",
+      "mistralai/Mistral-Nemo-Base-2407",
+      "mistralai/Mistral-Small-3.1-24B-Base-2503",
+      "mistralai/Mixtral-8x7B-v0.1",
+      "nomic-ai/nomic-embed-text-v1.5",
+      "nvidia/Hymba-1.5B-Base",
+      "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+      "nvidia/Minitron-4B-Base",
+      "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+      "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+      "nvidia/Nemotron-4-Mini-Hindi-4B-Base",
+      "openai-community/gpt2",
+      "openai/gpt-oss-20b",
+      "openbmb/MiniCPM3-4B",
+      "openlm-research/open_llama_3b_v2",
+      "speakleash/Bielik-7B-v0.1",
+      "stabilityai/stablelm-2-1_6b",
+      "state-spaces/mamba-2.8b-hf",
+      "stepfun-ai/step3",
+      "swiss-ai/Apertus-8B-2509",
+      "tencent/Hunyuan-A13B-Instruct",
+      "tiiuae/Falcon-H1-7B-Base",
+      "tiiuae/Falcon3-7B-Base",
+      "tiiuae/falcon-11B",
+      "tiiuae/falcon-7b",
+      "togethercomputer/RedPajama-INCITE-7B-Base",
+      "trillionlabs/Tri-7B",
+      "unsloth/Llama-4-Scout-17B-16E-Instruct",
+      "unsloth/gemma-2-2b",
+      "unsloth/gemma-3-1b-it",
+      "unsloth/gemma-4-26b-a4b-it",
+      "unsloth/gemma-7b",
+      "upstage/SOLAR-10.7B-v1.0",
+      "utter-project/EuroLLM-1.7B",
+      "zai-org/GLM-4.5",
+      "zai-org/GLM-4.6"
+    ],
+    "candidateCount": 125,
+    "shortProbeSerializationModes": [
+      "json_ascii",
+      "json_escaped",
+      "json_quoted",
+      "raw"
+    ],
+    "shortProbeResultRows": 500,
+    "exactMatchesOnAllShortProbes": 0,
+    "longProbeCandidateCount": 125,
+    "exactMatchesOnAllLongProbes": 0,
+    "additionalTiktokenTests": "The source note reports four further tiktoken encodings; their results are not retained in these JSON files, so that count is not independently verified here.",
+    "caveat": "125 model-repository tokenizer candidates, not necessarily 125 distinct tokenizer algorithms. A mismatch supports a different tokenizer or input/accounting path; it does not establish in-house pretraining or exclude vocabulary adaptation."
+  },
+  "confidence": {
+    "source": "https://github.com/typesafe-ai/system-one-adapter-python/blob/main/src/system_one_adapter/_utils/confidence_metrics.py",
+    "choiceFormula": "First normalize p to sum to 1. For K>1: (max(p)-1/K)/(1-1/K). K=1 returns 1.",
+    "scoreFormula": "max(0, 1 - sum_i p_i*abs(i-mode(p)) / mean_i abs(i-(K-1)/2)), using normalized p. K=1 returns 1.",
+    "interpretation": "Public adapter code; the production API is not open source. Formula agreement supports the interpretation, but rounded API probabilities can prevent exact reconstruction."
+  },
+  "sources": [
+    {
+      "title": "TypeSafe launch announcement",
+      "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "verifiedQuote": "Jev outputs all probabilities in parallel instead of autoregressively generating by token."
+    },
+    {
+      "title": "TypeSafe AI primer",
+      "url": "https://docs.typesafe.ai/introduction/machine-learning-primer",
+      "verifiedQuote": "Reinforcement learning for calibrated decisions trains TypeSafe to return decisions and calibrated probabilities instead of generated text."
+    },
+    {
+      "title": "Public confidence implementation",
+      "url": "https://github.com/typesafe-ai/system-one-adapter-python/blob/main/src/system_one_adapter/_utils/confidence_metrics.py"
+    }
+  ],
+  "provenance": {
+    "method": "SHA-256 over original source bytes. Hashes identify the inputs used by this audit; they do not authenticate the remote API.",
+    "verificationScript": "scripts/jev/audit-original-evidence.py",
+    "sourceSha256": {
+      "probe.py": "cc7652eece72df93f1c6d518b0c4342550957951f041fa25eba7249fe8e048f9",
+      "batch_c.py": "709924ff62d17d1d7b0050b01579e7530f265f710f7629e4ebafed32072bd3e0",
+      "calls.jsonl": "e5c2efe860e43b2839fc70f99bc943d66f3ef04be9d78d6dc80c42aae1ba46dd",
+      "bench.py": "d70338a63298a1c023914f60f378c859778583c82579dd9d00b82c46ec34b82c",
+      "bench2.py": "0b86e8c5f01092f347e5cac22320331e41f7107d06f97ae58b8a2cba20a3fd4f",
+      "bench_results.jsonl": "68a40a98ed23c336e85150f916e6b006abcbace8add46dca8ea056a1c1999d43",
+      "bench2_results.jsonl": "7e813e9eb968bc34de1010124a98dd7bf5832b73a221d3a47f2b671a9b991f69",
+      "fresh_math.py": "ce00bdd8b5122ea088480267b5f789997c057170622add0adc444c29c249161e",
+      "fresh_math_results.json": "b1fb56f910acaa86910916407780d172c7af6ebcb691e1440398118961ed5019",
+      "fingerprint.py": "3300cadab97e79f30f69e7dde0b06b64727b744a97d12985b5e685339632ccff",
+      "fingerprint2.py": "f6e80a5bfcc60849f640c7fcf163be0b348f70e5f7672607698e94b1253f02dd",
+      "fingerprint_results.json": "65b9703367c53aafa4e33790fbc5d996b5172f8d0fd26b7e29eff4e47b3c1575",
+      "fingerprint2_results.json": "86a5f55625cbbb7990ad0fa63b37cb66e9562901ea5346d564bc2ebe99e6e224"
+    }
+  },
+  "optionOrder": {
+    "source": {
+      "script": "probe.py",
+      "function": "exp_option_order",
+      "tag": "option_order",
+      "log": "calls.jsonl"
+    },
+    "sampleUnit": "One API request; three repeats for each listed order.",
+    "conditions": [
+      {
+        "variant": "orig",
+        "n": 3,
+        "logLines": [
+          297,
+          298,
+          299
+        ],
+        "pTechnical": [
+          0.87,
+          0.89,
+          0.84
+        ]
+      },
+      {
+        "variant": "rev",
+        "n": 3,
+        "logLines": [
+          300,
+          301,
+          302
+        ],
+        "pTechnical": [
+          0.94,
+          0.96,
+          0.93
+        ]
+      },
+      {
+        "variant": "rot2",
+        "n": 3,
+        "logLines": [
+          303,
+          304,
+          305
+        ],
+        "pTechnical": [
+          0.94,
+          0.95,
+          0.95
+        ]
+      }
+    ]
+  },
+  "noise": {
+    "sources": {
+      "script": "probe.py",
+      "log": "calls.jsonl",
+      "tags": [
+        "noise",
+        "dup",
+        "determinism"
+      ]
+    },
+    "caveat": "These observed differences do not identify randomness, numerical precision, batch scheduling or worker count.",
+    "repeatNoulQuestions": [
+      {
+        "questionSlot": "s0",
+        "nRequests": 30,
+        "minimum": 0.99,
+        "maximum": 0.99,
+        "sampleStdDev": 0.0,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s1",
+        "nRequests": 30,
+        "minimum": 0.98,
+        "maximum": 0.99,
+        "sampleStdDev": 0.0018257418583505554,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.98,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s2",
+        "nRequests": 30,
+        "minimum": 0.02,
+        "maximum": 0.02,
+        "sampleStdDev": 0.0,
+        "probabilities": [
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02,
+          0.02
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s3",
+        "nRequests": 30,
+        "minimum": 0.56,
+        "maximum": 0.61,
+        "sampleStdDev": 0.012972118642263698,
+        "probabilities": [
+          0.6,
+          0.59,
+          0.58,
+          0.58,
+          0.56,
+          0.59,
+          0.6,
+          0.59,
+          0.56,
+          0.6,
+          0.58,
+          0.59,
+          0.59,
+          0.61,
+          0.58,
+          0.59,
+          0.57,
+          0.59,
+          0.59,
+          0.6,
+          0.58,
+          0.61,
+          0.59,
+          0.59,
+          0.58,
+          0.57,
+          0.6,
+          0.59,
+          0.58,
+          0.61
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s4",
+        "nRequests": 30,
+        "minimum": 0.9,
+        "maximum": 0.91,
+        "sampleStdDev": 0.005040069329937313,
+        "probabilities": [
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.91,
+          0.91,
+          0.9,
+          0.91,
+          0.9,
+          0.91,
+          0.91,
+          0.91,
+          0.9,
+          0.9,
+          0.91,
+          0.91,
+          0.9,
+          0.9,
+          0.9,
+          0.9,
+          0.91,
+          0.91,
+          0.9,
+          0.91,
+          0.91,
+          0.9,
+          0.9,
+          0.9,
+          0.91
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s5",
+        "nRequests": 30,
+        "minimum": 0.62,
+        "maximum": 0.67,
+        "sampleStdDev": 0.012015315896469567,
+        "probabilities": [
+          0.64,
+          0.64,
+          0.65,
+          0.65,
+          0.64,
+          0.66,
+          0.64,
+          0.64,
+          0.63,
+          0.67,
+          0.64,
+          0.64,
+          0.62,
+          0.65,
+          0.66,
+          0.64,
+          0.65,
+          0.63,
+          0.66,
+          0.66,
+          0.65,
+          0.62,
+          0.64,
+          0.65,
+          0.63,
+          0.64,
+          0.64,
+          0.63,
+          0.63,
+          0.64
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s6",
+        "nRequests": 30,
+        "minimum": 0.78,
+        "maximum": 0.8,
+        "sampleStdDev": 0.005632418479750465,
+        "probabilities": [
+          0.79,
+          0.79,
+          0.79,
+          0.79,
+          0.8,
+          0.79,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.79,
+          0.78,
+          0.8,
+          0.79,
+          0.8,
+          0.79,
+          0.79,
+          0.79,
+          0.79,
+          0.8,
+          0.8,
+          0.8,
+          0.79,
+          0.8,
+          0.8,
+          0.79,
+          0.8,
+          0.79,
+          0.79,
+          0.79
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s7",
+        "nRequests": 30,
+        "minimum": 0.21,
+        "maximum": 0.24,
+        "sampleStdDev": 0.009714309861845776,
+        "probabilities": [
+          0.22,
+          0.23,
+          0.21,
+          0.22,
+          0.21,
+          0.22,
+          0.22,
+          0.22,
+          0.21,
+          0.22,
+          0.23,
+          0.23,
+          0.23,
+          0.24,
+          0.22,
+          0.23,
+          0.21,
+          0.23,
+          0.21,
+          0.22,
+          0.24,
+          0.22,
+          0.21,
+          0.23,
+          0.21,
+          0.23,
+          0.22,
+          0.23,
+          0.24,
+          0.21
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s8",
+        "nRequests": 30,
+        "minimum": 0.1,
+        "maximum": 0.11,
+        "sampleStdDev": 0.0049827287912243955,
+        "probabilities": [
+          0.1,
+          0.11,
+          0.11,
+          0.11,
+          0.1,
+          0.11,
+          0.11,
+          0.1,
+          0.11,
+          0.11,
+          0.11,
+          0.11,
+          0.11,
+          0.11,
+          0.1,
+          0.11,
+          0.11,
+          0.1,
+          0.1,
+          0.1,
+          0.11,
+          0.1,
+          0.11,
+          0.1,
+          0.1,
+          0.11,
+          0.11,
+          0.1,
+          0.1,
+          0.11
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s9",
+        "nRequests": 30,
+        "minimum": 0.44,
+        "maximum": 0.48,
+        "sampleStdDev": 0.011058881072455404,
+        "probabilities": [
+          0.46,
+          0.46,
+          0.46,
+          0.45,
+          0.46,
+          0.46,
+          0.46,
+          0.46,
+          0.45,
+          0.46,
+          0.44,
+          0.48,
+          0.46,
+          0.47,
+          0.47,
+          0.47,
+          0.46,
+          0.46,
+          0.46,
+          0.47,
+          0.45,
+          0.44,
+          0.44,
+          0.48,
+          0.48,
+          0.47,
+          0.47,
+          0.47,
+          0.45,
+          0.47
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s10",
+        "nRequests": 30,
+        "minimum": 0.9,
+        "maximum": 0.91,
+        "sampleStdDev": 0.004660915996993994,
+        "probabilities": [
+          0.91,
+          0.91,
+          0.91,
+          0.9,
+          0.91,
+          0.91,
+          0.91,
+          0.9,
+          0.91,
+          0.91,
+          0.9,
+          0.9,
+          0.91,
+          0.91,
+          0.91,
+          0.9,
+          0.9,
+          0.91,
+          0.91,
+          0.91,
+          0.91,
+          0.9,
+          0.91,
+          0.91,
+          0.91,
+          0.9,
+          0.9,
+          0.91,
+          0.91,
+          0.91
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s11",
+        "nRequests": 30,
+        "minimum": 0.07,
+        "maximum": 0.09,
+        "sampleStdDev": 0.004025778999364486,
+        "probabilities": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.07,
+          0.08,
+          0.08,
+          0.09,
+          0.08,
+          0.09,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.09,
+          0.08,
+          0.08,
+          0.09,
+          0.08,
+          0.08
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s12",
+        "nRequests": 30,
+        "minimum": 0.99,
+        "maximum": 0.99,
+        "sampleStdDev": 0.0,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s13",
+        "nRequests": 30,
+        "minimum": 0.05,
+        "maximum": 0.06,
+        "sampleStdDev": 0.002537081317024623,
+        "probabilities": [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.06,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.06,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s14",
+        "nRequests": 30,
+        "minimum": 0.64,
+        "maximum": 0.67,
+        "sampleStdDev": 0.007111590022187602,
+        "probabilities": [
+          0.64,
+          0.65,
+          0.65,
+          0.65,
+          0.66,
+          0.65,
+          0.65,
+          0.66,
+          0.65,
+          0.65,
+          0.67,
+          0.65,
+          0.66,
+          0.66,
+          0.65,
+          0.66,
+          0.66,
+          0.65,
+          0.66,
+          0.64,
+          0.65,
+          0.66,
+          0.66,
+          0.66,
+          0.65,
+          0.65,
+          0.64,
+          0.65,
+          0.65,
+          0.66
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s15",
+        "nRequests": 30,
+        "minimum": 0.25,
+        "maximum": 0.29,
+        "sampleStdDev": 0.008502873077655146,
+        "probabilities": [
+          0.27,
+          0.27,
+          0.26,
+          0.27,
+          0.29,
+          0.27,
+          0.27,
+          0.28,
+          0.28,
+          0.27,
+          0.28,
+          0.28,
+          0.27,
+          0.26,
+          0.26,
+          0.26,
+          0.27,
+          0.25,
+          0.26,
+          0.27,
+          0.27,
+          0.27,
+          0.27,
+          0.28,
+          0.27,
+          0.28,
+          0.27,
+          0.26,
+          0.28,
+          0.27
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s16",
+        "nRequests": 30,
+        "minimum": 0.59,
+        "maximum": 0.62,
+        "sampleStdDev": 0.008847364696279093,
+        "probabilities": [
+          0.61,
+          0.61,
+          0.6,
+          0.61,
+          0.61,
+          0.62,
+          0.6,
+          0.62,
+          0.61,
+          0.61,
+          0.62,
+          0.59,
+          0.61,
+          0.62,
+          0.6,
+          0.59,
+          0.6,
+          0.61,
+          0.62,
+          0.62,
+          0.61,
+          0.61,
+          0.61,
+          0.6,
+          0.62,
+          0.6,
+          0.61,
+          0.6,
+          0.61,
+          0.62
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s17",
+        "nRequests": 30,
+        "minimum": 0.17,
+        "maximum": 0.22,
+        "sampleStdDev": 0.011724814044061255,
+        "probabilities": [
+          0.22,
+          0.2,
+          0.17,
+          0.19,
+          0.2,
+          0.21,
+          0.21,
+          0.21,
+          0.2,
+          0.21,
+          0.2,
+          0.19,
+          0.22,
+          0.22,
+          0.21,
+          0.2,
+          0.2,
+          0.19,
+          0.18,
+          0.19,
+          0.21,
+          0.21,
+          0.21,
+          0.2,
+          0.2,
+          0.2,
+          0.21,
+          0.2,
+          0.22,
+          0.2
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s18",
+        "nRequests": 30,
+        "minimum": 0.54,
+        "maximum": 0.59,
+        "sampleStdDev": 0.011566896880679583,
+        "probabilities": [
+          0.56,
+          0.57,
+          0.57,
+          0.55,
+          0.57,
+          0.56,
+          0.59,
+          0.58,
+          0.57,
+          0.58,
+          0.56,
+          0.57,
+          0.56,
+          0.58,
+          0.56,
+          0.57,
+          0.54,
+          0.56,
+          0.56,
+          0.56,
+          0.57,
+          0.58,
+          0.59,
+          0.56,
+          0.57,
+          0.59,
+          0.56,
+          0.57,
+          0.56,
+          0.57
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s19",
+        "nRequests": 30,
+        "minimum": 0.48,
+        "maximum": 0.52,
+        "sampleStdDev": 0.010742546199601606,
+        "probabilities": [
+          0.51,
+          0.51,
+          0.49,
+          0.51,
+          0.5,
+          0.49,
+          0.5,
+          0.5,
+          0.51,
+          0.5,
+          0.49,
+          0.51,
+          0.49,
+          0.5,
+          0.49,
+          0.48,
+          0.51,
+          0.51,
+          0.5,
+          0.51,
+          0.51,
+          0.52,
+          0.51,
+          0.48,
+          0.5,
+          0.51,
+          0.5,
+          0.49,
+          0.52,
+          0.49
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s20",
+        "nRequests": 30,
+        "minimum": 0.56,
+        "maximum": 0.58,
+        "sampleStdDev": 0.006064784348631182,
+        "probabilities": [
+          0.57,
+          0.57,
+          0.57,
+          0.57,
+          0.56,
+          0.56,
+          0.57,
+          0.57,
+          0.56,
+          0.56,
+          0.57,
+          0.56,
+          0.57,
+          0.56,
+          0.58,
+          0.56,
+          0.56,
+          0.57,
+          0.58,
+          0.57,
+          0.56,
+          0.57,
+          0.56,
+          0.56,
+          0.57,
+          0.57,
+          0.56,
+          0.57,
+          0.57,
+          0.57
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s21",
+        "nRequests": 30,
+        "minimum": 0.7,
+        "maximum": 0.76,
+        "sampleStdDev": 0.013113124074319821,
+        "probabilities": [
+          0.76,
+          0.73,
+          0.72,
+          0.73,
+          0.73,
+          0.74,
+          0.71,
+          0.74,
+          0.71,
+          0.71,
+          0.73,
+          0.74,
+          0.74,
+          0.73,
+          0.72,
+          0.74,
+          0.73,
+          0.74,
+          0.73,
+          0.71,
+          0.7,
+          0.73,
+          0.73,
+          0.73,
+          0.74,
+          0.72,
+          0.73,
+          0.74,
+          0.72,
+          0.75
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s22",
+        "nRequests": 30,
+        "minimum": 0.06,
+        "maximum": 0.08,
+        "sampleStdDev": 0.004497764451088036,
+        "probabilities": [
+          0.07,
+          0.07,
+          0.08,
+          0.07,
+          0.06,
+          0.07,
+          0.07,
+          0.07,
+          0.08,
+          0.07,
+          0.07,
+          0.08,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.08,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.07,
+          0.06
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      },
+      {
+        "questionSlot": "s23",
+        "nRequests": 30,
+        "minimum": 0.99,
+        "maximum": 1.0,
+        "sampleStdDev": 0.0018257418583505554,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          1.0,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ],
+        "logLines": [
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560
+        ]
+      }
+    ],
+    "duplicateRequests": [
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.58,
+        "maximum": 0.61,
+        "distinctProbabilities": 4,
+        "logLine": 510,
+        "repeat": 0
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.58,
+        "maximum": 0.62,
+        "distinctProbabilities": 5,
+        "logLine": 511,
+        "repeat": 1
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.58,
+        "maximum": 0.62,
+        "distinctProbabilities": 5,
+        "logLine": 512,
+        "repeat": 2
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.54,
+        "maximum": 0.6,
+        "distinctProbabilities": 6,
+        "logLine": 513,
+        "repeat": 3
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.57,
+        "maximum": 0.6,
+        "distinctProbabilities": 4,
+        "logLine": 514,
+        "repeat": 4
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.56,
+        "maximum": 0.6,
+        "distinctProbabilities": 5,
+        "logLine": 515,
+        "repeat": 5
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.6,
+        "maximum": 0.65,
+        "distinctProbabilities": 6,
+        "logLine": 516,
+        "repeat": 0
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.61,
+        "maximum": 0.66,
+        "distinctProbabilities": 6,
+        "logLine": 517,
+        "repeat": 1
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.61,
+        "maximum": 0.65,
+        "distinctProbabilities": 5,
+        "logLine": 518,
+        "repeat": 2
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.62,
+        "maximum": 0.65,
+        "distinctProbabilities": 4,
+        "logLine": 519,
+        "repeat": 3
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.63,
+        "maximum": 0.66,
+        "distinctProbabilities": 4,
+        "logLine": 520,
+        "repeat": 4
+      },
+      {
+        "type": "noul",
+        "nAnswers": 40,
+        "minimum": 0.62,
+        "maximum": 0.66,
+        "distinctProbabilities": 5,
+        "logLine": 521,
+        "repeat": 5
+      },
+      {
+        "type": "choice",
+        "nAnswers": 40,
+        "probabilityKey": "customer",
+        "minimum": 0.42,
+        "maximum": 0.55,
+        "distinctDistributions": 34,
+        "logLine": 522,
+        "repeat": 0
+      },
+      {
+        "type": "choice",
+        "nAnswers": 40,
+        "probabilityKey": "customer",
+        "minimum": 0.43,
+        "maximum": 0.54,
+        "distinctDistributions": 33,
+        "logLine": 523,
+        "repeat": 1
+      },
+      {
+        "type": "choice",
+        "nAnswers": 40,
+        "probabilityKey": "customer",
+        "minimum": 0.38,
+        "maximum": 0.51,
+        "distinctDistributions": 29,
+        "logLine": 524,
+        "repeat": 2
+      },
+      {
+        "type": "choice",
+        "nAnswers": 40,
+        "probabilityKey": "customer",
+        "minimum": 0.42,
+        "maximum": 0.5599999999999999,
+        "distinctDistributions": 33,
+        "logLine": 525,
+        "repeat": 3
+      },
+      {
+        "type": "choice",
+        "nAnswers": 40,
+        "probabilityKey": "customer",
+        "minimum": 0.43,
+        "maximum": 0.55,
+        "distinctDistributions": 31,
+        "logLine": 526,
+        "repeat": 4
+      },
+      {
+        "type": "choice",
+        "nAnswers": 40,
+        "probabilityKey": "customer",
+        "minimum": 0.43,
+        "maximum": 0.6,
+        "distinctDistributions": 34,
+        "logLine": 527,
+        "repeat": 5
+      }
+    ],
+    "determinism": [
+      {
+        "logLine": 247,
+        "repeat": 0,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 248,
+        "repeat": 1,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 249,
+        "repeat": 2,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 250,
+        "repeat": 3,
+        "noulProbability": 0.99,
+        "score": 0.04,
+        "scoreProbabilities": {
+          "0": 0.96,
+          "1": 0.04,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 251,
+        "repeat": 4,
+        "noulProbability": 0.99,
+        "score": 0.04,
+        "scoreProbabilities": {
+          "0": 0.96,
+          "1": 0.04,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 252,
+        "repeat": 5,
+        "noulProbability": 0.99,
+        "score": 0.04,
+        "scoreProbabilities": {
+          "0": 0.96,
+          "1": 0.04,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 253,
+        "repeat": 6,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 254,
+        "repeat": 7,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 255,
+        "repeat": 8,
+        "noulProbability": 0.99,
+        "score": 0.04,
+        "scoreProbabilities": {
+          "0": 0.96,
+          "1": 0.04,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 256,
+        "repeat": 9,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 257,
+        "repeat": 10,
+        "noulProbability": 0.99,
+        "score": 0.04,
+        "scoreProbabilities": {
+          "0": 0.96,
+          "1": 0.04,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 258,
+        "repeat": 11,
+        "noulProbability": 0.99,
+        "score": 0.04,
+        "scoreProbabilities": {
+          "0": 0.96,
+          "1": 0.04,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 259,
+        "repeat": 12,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 260,
+        "repeat": 13,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      },
+      {
+        "logLine": 261,
+        "repeat": 14,
+        "noulProbability": 0.99,
+        "score": 0.05,
+        "scoreProbabilities": {
+          "0": 0.95,
+          "1": 0.05,
+          "2": 0.0
+        }
+      }
+    ],
+    "choiceProbabilityKeyOrders": {
+      "nAnswers": 240,
+      "distinctOrders": 7,
+      "orders": [
+        {
+          "keys": [
+            "customer",
+            "provider",
+            "unknown",
+            "bank"
+          ],
+          "count": 97
+        },
+        {
+          "keys": [
+            "customer",
+            "bank",
+            "unknown",
+            "provider"
+          ],
+          "count": 24
+        },
+        {
+          "keys": [
+            "customer",
+            "unknown",
+            "provider",
+            "bank"
+          ],
+          "count": 39
+        },
+        {
+          "keys": [
+            "unknown",
+            "provider",
+            "customer",
+            "bank"
+          ],
+          "count": 21
+        },
+        {
+          "keys": [
+            "unknown",
+            "provider",
+            "bank",
+            "customer"
+          ],
+          "count": 47
+        },
+        {
+          "keys": [
+            "unknown",
+            "customer",
+            "provider",
+            "bank"
+          ],
+          "count": 9
+        },
+        {
+          "keys": [
+            "unknown",
+            "bank",
+            "customer",
+            "provider"
+          ],
+          "count": 3
+        }
+      ]
+    }
+  },
+  "tokenizerDiagnostics": {
+    "source": {
+      "script": "probe.py",
+      "function": "exp_tokenizer",
+      "log": "calls.jsonl",
+      "tag": "tokenizer"
+    },
+    "baseline": "State is the string x; all shown probes use the same question scaffolding.",
+    "interpretation": "The 100-digit string adds 99 input tokens relative to x. If x is one token and wrapper effects are unchanged, that is 100 digit tokens. The repeated whitespace counts are similarly relative measurements.",
+    "rows": [
+      {
+        "probe": "base_x",
+        "characters": 1,
+        "inputTokens": 273,
+        "logLine": 21
+      },
+      {
+        "probe": "spaces200",
+        "characters": 200,
+        "inputTokens": 275,
+        "logLine": 23
+      },
+      {
+        "probe": "newlines200",
+        "characters": 200,
+        "inputTokens": 297,
+        "logLine": 24
+      },
+      {
+        "probe": "tabs50",
+        "characters": 50,
+        "inputTokens": 275,
+        "logLine": 25
+      },
+      {
+        "probe": "a100",
+        "characters": 100,
+        "inputTokens": 297,
+        "logLine": 26
+      },
+      {
+        "probe": "digits100",
+        "characters": 100,
+        "inputTokens": 372,
+        "logLine": 27
+      }
+    ]
+  }
+}
