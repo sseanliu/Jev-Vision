@@ -43,6 +43,10 @@ def loss_for(model: DecisionModel, ids, seg, pos, examples, device):
         for z, t, qtype in zip(logits, ex.targets, ex.packed.qtypes):
             if qtype == "noul":
                 total = total + F.binary_cross_entropy_with_logits(z.float(), torch.tensor(t, device=device))
+            elif isinstance(t, list):  # soft target distribution (proper scoring rule: CE)
+                tt = torch.tensor(t, device=device)
+                tt = tt / tt.sum().clamp_min(1e-9)
+                total = total - (tt * F.log_softmax(z.float(), -1)).sum()
             else:
                 total = total + F.cross_entropy(z.float()[None], torch.tensor([t], device=device))
             n += 1
@@ -69,9 +73,10 @@ def evaluate(model, loader, device, max_batches=None):
                     tot += F.binary_cross_entropy_with_logits(z.float(), torch.tensor(float(t), device=device)).item()
                 else:
                     pr = torch.softmax(z.float(), -1)
-                    hit = int(pr.argmax()) == t
+                    ti = int(torch.tensor(t).argmax()) if isinstance(t, list) else t
+                    hit = int(pr.argmax()) == ti
                     confs.append(pr.max().item())
-                    tot += F.cross_entropy(z.float()[None], torch.tensor([t], device=device)).item()
+                    tot += F.cross_entropy(z.float()[None], torch.tensor([ti], device=device)).item()
                 hits.append(hit)
                 correct += hit
                 nq += 1
@@ -100,6 +105,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="Qwen/Qwen3-1.7B-Base")
     ap.add_argument("--data", default="data/jsonl")
+    ap.add_argument("--extra-data", nargs="*", default=[], help="extra dirs of *.train.jsonl (e.g. distilled)")
     ap.add_argument("--out", default="runs/s1")
     ap.add_argument("--epochs", type=float, default=1.0)
     ap.add_argument("--bsz", type=int, default=4)
@@ -136,6 +142,8 @@ def main():
 
     data = Path(a.data)
     train_paths = sorted(data.glob("*.train.jsonl"))
+    for d in a.extra_data:
+        train_paths += sorted(Path(d).glob("*.train.jsonl"))
     val_paths = sorted(data.glob("*.validation.jsonl"))
     train_ds = RequestDataset(train_paths, packer, a.max_tokens, augment=True, seed=a.seed)
     if a.limit:

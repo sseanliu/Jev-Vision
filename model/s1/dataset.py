@@ -79,17 +79,26 @@ class RequestDataset(torch.utils.data.Dataset):
         questions, targets = [], []
         for q in row["questions"]:
             t = row["targets"][q["qid"]]
-            if self.augment and q["qtype"] == "choice":
+            soft = isinstance(t, dict)  # distilled distribution over option keys
+            if self.augment and q["qtype"] == "choice" and not soft:
                 q, t = self._augment_choice(q, t, rng)
+            elif self.augment and q["qtype"] in ("choice", "score") and soft:
+                # soft rows: only shuffle option order (keeps the distribution valid)
+                items = list(q["criteria"].items()) if q["qtype"] == "choice" else None
+                if items is not None:
+                    rng.shuffle(items)
+                    q = {**q, "criteria": dict(items)}
             if q["qtype"] == "choice":
                 qq = Question(q["qid"], "choice", q["instructions"], q["criteria"])
-                targets.append(list(q["criteria"]).index(t))
+                targets.append([float(t.get(k, 0.0)) for k in q["criteria"]] if soft
+                               else list(q["criteria"]).index(t))
             elif q["qtype"] == "noul":
                 qq = Question(q["qid"], "noul", q["instructions"])
-                targets.append(1.0 if t else 0.0)
+                targets.append(float(t) if isinstance(t, float) else (1.0 if t else 0.0))
             else:
                 qq = Question(q["qid"], "score", q["instructions"], q["criteria"])
-                targets.append(int(t))
+                targets.append([float(t.get(str(i), 0.0)) for i in range(len(q["criteria"]))] if soft
+                               else int(t))
             questions.append(qq)
         packed = self.packer.pack(row["state"], questions)
         return Example(packed, targets)
