@@ -20,7 +20,11 @@ from .packing import Packed
 
 class DecisionModel(nn.Module):
     def __init__(self, backbone_name_or_config, rank: int = 256, new_vocab_size: int | None = None,
-                 attn_implementation: str = "eager", torch_dtype=None):
+                 attn_implementation: str = "eager", torch_dtype=None, lora: dict | None = None,
+                 trainable_token_ids: list[int] | None = None):
+        """lora: {"r": 32, "alpha": 64, "targets": ["q_proj","k_proj","v_proj","o_proj"]} wraps
+        the backbone with PEFT LoRA (experts/MLP frozen); the new special-token embedding
+        rows stay trainable via trainable_token_indices."""
         super().__init__()
         if isinstance(backbone_name_or_config, str):
             self.backbone = AutoModel.from_pretrained(
@@ -31,6 +35,14 @@ class DecisionModel(nn.Module):
                 backbone_name_or_config, attn_implementation=attn_implementation)
         if new_vocab_size is not None:
             self.backbone.resize_token_embeddings(new_vocab_size)
+        self.lora = lora
+        if lora:
+            from peft import LoraConfig, get_peft_model
+            cfg = LoraConfig(r=lora.get("r", 32), lora_alpha=lora.get("alpha", 2 * lora.get("r", 32)),
+                             lora_dropout=lora.get("dropout", 0.0), bias="none",
+                             target_modules=lora.get("targets", ["q_proj", "k_proj", "v_proj", "o_proj"]),
+                             trainable_token_indices={"embed_tokens": trainable_token_ids} if trainable_token_ids else None)
+            self.backbone = get_peft_model(self.backbone, cfg)
         d = self.backbone.config.hidden_size
         self.rank = rank
         self.q_proj = nn.Linear(d, rank, bias=False)

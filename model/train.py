@@ -22,7 +22,7 @@ from transformers import AutoTokenizer
 
 from s1.dataset import RequestDataset, collate
 from s1.model import DecisionModel
-from s1.packing import Packer
+from s1.packing import SPECIAL_TOKENS, Packer
 
 
 class Collate:
@@ -124,6 +124,9 @@ def main():
     ap.add_argument("--keep", type=int, default=2, help="keep only the last N step checkpoints")
     ap.add_argument("--init-heads", default=None, help="heads.pt from a previous run (stage-2 fine-tunes)")
     ap.add_argument("--val-limit", type=int, default=400)
+    ap.add_argument("--lora-r", type=int, default=0, help=">0 enables LoRA on attention projections")
+    ap.add_argument("--lora-alpha", type=int, default=0)
+    ap.add_argument("--lora-targets", default="q_proj,k_proj,v_proj,o_proj")
     a = ap.parse_args()
 
     torch.manual_seed(a.seed)
@@ -138,7 +141,14 @@ def main():
         model = DecisionModel(cfg, rank=32, attn_implementation="eager")
     else:
         dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
-        model = DecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn, torch_dtype=dtype)
+        lora = None
+        if a.lora_r > 0:
+            lora = {"r": a.lora_r, "alpha": a.lora_alpha or 2 * a.lora_r, "targets": a.lora_targets.split(",")}
+        new_ids = [tok.convert_tokens_to_ids(t) for t in SPECIAL_TOKENS]
+        model = DecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn,
+                              torch_dtype=dtype, lora=lora, trainable_token_ids=new_ids if lora else None)
+        if lora:
+            model.backbone.print_trainable_parameters()
         if a.grad_ckpt:
             model.backbone.gradient_checkpointing_enable()
         if a.init_heads:
@@ -164,7 +174,7 @@ def main():
     print(f"train rows={len(train_ds)} val rows={len(val_ds)} device={device}")
 
     head_params = [p for n, p in model.named_parameters() if not n.startswith("backbone.")]
-    bb_params = [p for n, p in model.named_parameters() if n.startswith("backbone.")]
+    bb_params = [p for n, p in model.named_parameters() if n.startswith("backbone.") and p.requires_grad]
     opt = torch.optim.AdamW([{"params": bb_params, "lr": a.lr}, {"params": head_params, "lr": a.head_lr}],
                             weight_decay=0.01, betas=(0.9, 0.95))
     steps_per_epoch = math.ceil(len(train_loader) / a.grad_accum)
@@ -228,7 +238,7 @@ def save(model: DecisionModel, tok, path: Path):
     tok.save_pretrained(path / "backbone")
     torch.save({k: v.cpu() for k, v in model.state_dict().items() if not k.startswith("backbone.")},
                path / "heads.pt")
-    (path / "s1_config.json").write_text(json.dumps({"rank": model.rank}))
+    (path / "s1_config.json").write_text(json.dumps({"rank": model.rank, "lora": model.lora}))
 
 
 if __name__ == "__main__":

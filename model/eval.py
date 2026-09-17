@@ -25,11 +25,20 @@ from s1.packing import Packer, Question  # noqa: E402
 from train import expected_calibration_error  # noqa: E402
 
 
-def load(path: Path, device):
+def load(path: Path, device, attn: str = "sdpa", dtype=None):
     cfg = json.loads((path / "s1_config.json").read_text())
     tok = AutoTokenizer.from_pretrained(path / "backbone")
-    model = DecisionModel(str(path / "backbone"), rank=cfg["rank"], attn_implementation="sdpa",
-                          torch_dtype=torch.bfloat16 if device.type == "cuda" else torch.float32)
+    dtype = dtype or (torch.bfloat16 if device.type == "cuda" else torch.float32)
+    adapter = path / "backbone" / "adapter_config.json"
+    if adapter.exists():
+        # LoRA checkpoint: rebuild base + resized vocab, then attach the adapter
+        from peft import PeftModel
+        base = json.loads(adapter.read_text())["base_model_name_or_path"]
+        model = DecisionModel(base, rank=cfg["rank"], new_vocab_size=len(tok), attn_implementation=attn, torch_dtype=dtype)
+        model.backbone = PeftModel.from_pretrained(model.backbone, str(path / "backbone"))
+        model.lora = cfg.get("lora")
+    else:
+        model = DecisionModel(str(path / "backbone"), rank=cfg["rank"], attn_implementation=attn, torch_dtype=dtype)
     heads = torch.load(path / "heads.pt", map_location="cpu")
     model.load_state_dict(heads, strict=False)
     packer = Packer(tok)
