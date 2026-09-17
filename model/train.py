@@ -121,6 +121,7 @@ def main():
     ap.add_argument("--attn", default="sdpa")
     ap.add_argument("--grad-ckpt", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--keep", type=int, default=2, help="keep only the last N step checkpoints")
     a = ap.parse_args()
 
     torch.manual_seed(a.seed)
@@ -198,11 +199,21 @@ def main():
                     log.write(json.dumps(rec) + "\n")
                     log.flush()
                     save(model, tok, out / f"step{step}")
+                    prune_checkpoints(out, a.keep)
                 if step >= total_steps:
                     done = True
                     break
     save(model, tok, out / "final")
     print("done", out / "final")
+
+
+def prune_checkpoints(out: Path, keep: int) -> None:
+    """Delete all but the newest `keep` step checkpoints (a 1.7B bf16 backbone
+    is ~3.4 GB; 24 of them filled an 80 GB pod disk in run 1)."""
+    import shutil
+    steps = sorted((p for p in out.glob("step*") if p.is_dir()), key=lambda p: int(p.name[4:]))
+    for p in steps[:-keep] if keep > 0 else []:
+        shutil.rmtree(p, ignore_errors=True)
 
 
 def save(model: DecisionModel, tok, path: Path):
