@@ -122,6 +122,8 @@ def main():
     ap.add_argument("--grad-ckpt", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--keep", type=int, default=2, help="keep only the last N step checkpoints")
+    ap.add_argument("--init-heads", default=None, help="heads.pt from a previous run (stage-2 fine-tunes)")
+    ap.add_argument("--val-limit", type=int, default=400)
     a = ap.parse_args()
 
     torch.manual_seed(a.seed)
@@ -139,6 +141,10 @@ def main():
         model = DecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn, torch_dtype=dtype)
         if a.grad_ckpt:
             model.backbone.gradient_checkpointing_enable()
+        if a.init_heads:
+            missing, unexpected = model.load_state_dict(torch.load(a.init_heads, map_location="cpu"), strict=False)
+            assert not unexpected, unexpected
+            print(f"loaded heads from {a.init_heads}")
     model.to(device)
 
     data = Path(a.data)
@@ -150,7 +156,7 @@ def main():
     if a.limit:
         train_ds.rows = random.Random(a.seed).sample(train_ds.rows, min(a.limit, len(train_ds.rows)))
     val_ds = RequestDataset(val_paths, packer, a.max_tokens, augment=False, seed=1)
-    val_ds.rows = random.Random(1).sample(val_ds.rows, min(400, len(val_ds.rows)))
+    val_ds.rows = random.Random(1).sample(val_ds.rows, min(a.val_limit, len(val_ds.rows)))
     pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
     col = Collate(pad)
     train_loader = torch.utils.data.DataLoader(train_ds, batch_size=a.bsz, shuffle=True, collate_fn=col, num_workers=2)
