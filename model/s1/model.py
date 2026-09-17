@@ -57,6 +57,7 @@ class DecisionModel(nn.Module):
         return self.readout(h, packed)
 
     def readout(self, h: torch.Tensor, packed: Packed) -> list[torch.Tensor]:
+        h = h.float()  # heads run in fp32 regardless of backbone dtype
         outs = []
         for qi, qtype in enumerate(packed.qtypes):
             h_read = h[packed.read_index[qi]]
