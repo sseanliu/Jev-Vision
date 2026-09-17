@@ -1,0 +1,1550 @@
+{
+ "schema": "jev-counter-vs-model-paired.v1",
+ "date": "2026-09-17T19:01:07.720234+00:00",
+ "empty_state_billed": 273,
+ "billed_per_unit": {
+  "plain": 44.02,
+  "latin_x2": 20.08,
+  "cyrillic": 12.02,
+  "cjk": 34.0
+ },
+ "pairs": 24,
+ "trials": [
+  {
+   "family": "plain",
+   "pair": 0,
+   "long": {
+    "status": 200,
+    "server_ms": 254,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 145,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 0,
+   "long": {
+    "status": 200,
+    "server_ms": 177,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 122,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 0,
+   "long": {
+    "status": 200,
+    "server_ms": 163,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 97,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 0,
+   "long": {
+    "status": 200,
+    "server_ms": 143,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 65,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 1,
+   "long": {
+    "status": 200,
+    "server_ms": 212,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 78,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 1,
+   "long": {
+    "status": 200,
+    "server_ms": 239,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 108,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 1,
+   "long": {
+    "status": 200,
+    "server_ms": 214,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 94,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 1,
+   "long": {
+    "status": 200,
+    "server_ms": 183,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 74,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 2,
+   "long": {
+    "status": 200,
+    "server_ms": 251,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 92,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 2,
+   "long": {
+    "status": 200,
+    "server_ms": 179,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 168,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 2,
+   "long": {
+    "status": 200,
+    "server_ms": 377,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 155,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 2,
+   "long": {
+    "status": 200,
+    "server_ms": 212,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 85,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 3,
+   "long": {
+    "status": 200,
+    "server_ms": 471,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 111,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 3,
+   "long": {
+    "status": 200,
+    "server_ms": 197,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 216,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 3,
+   "long": {
+    "status": 200,
+    "server_ms": 159,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 166,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 3,
+   "long": {
+    "status": 200,
+    "server_ms": 173,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 128,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 4,
+   "long": {
+    "status": 200,
+    "server_ms": 353,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 69,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 4,
+   "long": {
+    "status": 200,
+    "server_ms": 215,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 105,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 4,
+   "long": {
+    "status": 200,
+    "server_ms": 171,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 63,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 4,
+   "long": {
+    "status": 200,
+    "server_ms": 383,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 125,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 5,
+   "long": {
+    "status": 200,
+    "server_ms": 239,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 148,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 5,
+   "long": {
+    "status": 200,
+    "server_ms": 140,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 5,
+   "long": {
+    "status": 200,
+    "server_ms": 149,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 5,
+   "long": {
+    "status": 200,
+    "server_ms": 159,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 689,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 6,
+   "long": {
+    "status": 200,
+    "server_ms": 236,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 6,
+   "long": {
+    "status": 200,
+    "server_ms": 357,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 112,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 6,
+   "long": {
+    "status": 200,
+    "server_ms": 147,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 267,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 6,
+   "long": {
+    "status": 200,
+    "server_ms": 124,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 120,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 7,
+   "long": {
+    "status": 200,
+    "server_ms": 419,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 103,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 7,
+   "long": {
+    "status": 200,
+    "server_ms": 130,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 79,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 7,
+   "long": {
+    "status": 200,
+    "server_ms": 135,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 85,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 7,
+   "long": {
+    "status": 200,
+    "server_ms": 177,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 71,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 8,
+   "long": {
+    "status": 200,
+    "server_ms": 343,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 117,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 8,
+   "long": {
+    "status": 200,
+    "server_ms": 229,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 101,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 8,
+   "long": {
+    "status": 200,
+    "server_ms": 386,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 78,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 8,
+   "long": {
+    "status": 200,
+    "server_ms": 118,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 72,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 9,
+   "long": {
+    "status": 200,
+    "server_ms": 218,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 64,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 9,
+   "long": {
+    "status": 200,
+    "server_ms": 210,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 170,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 9,
+   "long": {
+    "status": 200,
+    "server_ms": 256,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 76,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 9,
+   "long": {
+    "status": 200,
+    "server_ms": 124,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 69,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 10,
+   "long": {
+    "status": 200,
+    "server_ms": 215,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 80,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 10,
+   "long": {
+    "status": 200,
+    "server_ms": 169,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 486,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 10,
+   "long": {
+    "status": 200,
+    "server_ms": 237,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 128,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 10,
+   "long": {
+    "status": 200,
+    "server_ms": 160,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 101,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 11,
+   "long": {
+    "status": 200,
+    "server_ms": 441,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 90,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 11,
+   "long": {
+    "status": 200,
+    "server_ms": 123,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 74,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 11,
+   "long": {
+    "status": 200,
+    "server_ms": 143,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 169,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 11,
+   "long": {
+    "status": 200,
+    "server_ms": 118,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 122,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 12,
+   "long": {
+    "status": 200,
+    "server_ms": 428,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 118,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 12,
+   "long": {
+    "status": 200,
+    "server_ms": 224,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 78,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 12,
+   "long": {
+    "status": 200,
+    "server_ms": 159,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 115,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 12,
+   "long": {
+    "status": 200,
+    "server_ms": 138,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 95,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 13,
+   "long": {
+    "status": 200,
+    "server_ms": 284,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 158,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 13,
+   "long": {
+    "status": 200,
+    "server_ms": 188,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 13,
+   "long": {
+    "status": 200,
+    "server_ms": 140,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 133,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 13,
+   "long": {
+    "status": 200,
+    "server_ms": 216,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 116,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 14,
+   "long": {
+    "status": 200,
+    "server_ms": 226,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 176,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 14,
+   "long": {
+    "status": 200,
+    "server_ms": 184,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 111,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 14,
+   "long": {
+    "status": 200,
+    "server_ms": 197,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 116,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 14,
+   "long": {
+    "status": 200,
+    "server_ms": 148,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 83,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 15,
+   "long": {
+    "status": 200,
+    "server_ms": 509,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 116,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 15,
+   "long": {
+    "status": 200,
+    "server_ms": 437,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 141,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 15,
+   "long": {
+    "status": 200,
+    "server_ms": 216,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 74,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 15,
+   "long": {
+    "status": 200,
+    "server_ms": 1004,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 16,
+   "long": {
+    "status": 200,
+    "server_ms": 583,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 480,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 16,
+   "long": {
+    "status": 200,
+    "server_ms": 280,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 90,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 16,
+   "long": {
+    "status": 200,
+    "server_ms": 155,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 129,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 16,
+   "long": {
+    "status": 200,
+    "server_ms": 159,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 88,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 17,
+   "long": {
+    "status": 200,
+    "server_ms": 302,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 78,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 17,
+   "long": {
+    "status": 200,
+    "server_ms": 175,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 170,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 17,
+   "long": {
+    "status": 200,
+    "server_ms": 151,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 97,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 17,
+   "long": {
+    "status": 200,
+    "server_ms": 220,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 148,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 18,
+   "long": {
+    "status": 200,
+    "server_ms": 684,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 97,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 18,
+   "long": {
+    "status": 200,
+    "server_ms": 249,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 113,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 18,
+   "long": {
+    "status": 200,
+    "server_ms": 3144,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 132,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 18,
+   "long": {
+    "status": 200,
+    "server_ms": 127,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 19,
+   "long": {
+    "status": 200,
+    "server_ms": 271,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 99,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 19,
+   "long": {
+    "status": 200,
+    "server_ms": 128,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 89,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 19,
+   "long": {
+    "status": 200,
+    "server_ms": 593,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 79,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 19,
+   "long": {
+    "status": 200,
+    "server_ms": 152,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 131,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 20,
+   "long": {
+    "status": 200,
+    "server_ms": 276,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 187,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 20,
+   "long": {
+    "status": 200,
+    "server_ms": 131,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 54,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 20,
+   "long": {
+    "status": 200,
+    "server_ms": 227,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 106,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 20,
+   "long": {
+    "status": 200,
+    "server_ms": 397,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 201,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 21,
+   "long": {
+    "status": 200,
+    "server_ms": 1005,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 114,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 21,
+   "long": {
+    "status": 200,
+    "server_ms": 153,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 169,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 21,
+   "long": {
+    "status": 200,
+    "server_ms": 330,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 130,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 21,
+   "long": {
+    "status": 200,
+    "server_ms": 146,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 269,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 22,
+   "long": {
+    "status": 200,
+    "server_ms": 410,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 284,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 22,
+   "long": {
+    "status": 200,
+    "server_ms": 309,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 80,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 22,
+   "long": {
+    "status": 200,
+    "server_ms": 319,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 219,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 22,
+   "long": {
+    "status": 200,
+    "server_ms": 160,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 157,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  },
+  {
+   "family": "plain",
+   "pair": 23,
+   "long": {
+    "status": 200,
+    "server_ms": 333,
+    "billed": 28258,
+    "qwen": 27985
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 74,
+    "billed": 4278,
+    "qwen": 4005
+   }
+  },
+  {
+   "family": "latin_x2",
+   "pair": 23,
+   "long": {
+    "status": 200,
+    "server_ms": 160,
+    "billed": 28157,
+    "qwen": 15336
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 73,
+    "billed": 4257,
+    "qwen": 2191
+   }
+  },
+  {
+   "family": "cyrillic",
+   "pair": 23,
+   "long": {
+    "status": 200,
+    "server_ms": 347,
+    "billed": 28222,
+    "qwen": 39594
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 75,
+    "billed": 4270,
+    "qwen": 5662
+   }
+  },
+  {
+   "family": "cjk",
+   "pair": 23,
+   "long": {
+    "status": 200,
+    "server_ms": 126,
+    "billed": 28289,
+    "qwen": 18952
+   },
+   "short": {
+    "status": 200,
+    "server_ms": 53,
+    "billed": 4285,
+    "qwen": 2714
+   }
+  }
+ ]
+}

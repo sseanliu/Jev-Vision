@@ -1,0 +1,104 @@
+[  2/192] plain      pair= 0 long=254ms short=145ms delta=109ms
+[  4/192] latin_x2   pair= 0 long=177ms short=122ms delta=55ms
+[  6/192] cyrillic   pair= 0 long=163ms short=97ms delta=66ms
+[  8/192] cjk        pair= 0 long=143ms short=65ms delta=78ms
+[ 10/192] plain      pair= 1 long=212ms short=78ms delta=134ms
+[ 12/192] latin_x2   pair= 1 long=239ms short=108ms delta=131ms
+[ 14/192] cyrillic   pair= 1 long=214ms short=94ms delta=120ms
+[ 16/192] cjk        pair= 1 long=183ms short=74ms delta=109ms
+[ 18/192] plain      pair= 2 long=251ms short=92ms delta=159ms
+[ 20/192] latin_x2   pair= 2 long=179ms short=168ms delta=11ms
+[ 22/192] cyrillic   pair= 2 long=377ms short=155ms delta=222ms
+[ 24/192] cjk        pair= 2 long=212ms short=85ms delta=127ms
+[ 26/192] plain      pair= 3 long=471ms short=111ms delta=360ms
+[ 28/192] latin_x2   pair= 3 long=197ms short=216ms delta=-19ms
+[ 30/192] cyrillic   pair= 3 long=159ms short=166ms delta=-7ms
+[ 32/192] cjk        pair= 3 long=173ms short=128ms delta=45ms
+[ 34/192] plain      pair= 4 long=353ms short=69ms delta=284ms
+[ 36/192] latin_x2   pair= 4 long=215ms short=105ms delta=110ms
+[ 38/192] cyrillic   pair= 4 long=171ms short=63ms delta=108ms
+[ 40/192] cjk        pair= 4 long=383ms short=125ms delta=258ms
+[ 42/192] plain      pair= 5 long=239ms short=148ms delta=91ms
+[ 44/192] latin_x2   pair= 5 long=140ms short=106ms delta=34ms
+[ 46/192] cyrillic   pair= 5 long=149ms short=106ms delta=43ms
+[ 48/192] cjk        pair= 5 long=159ms short=689ms delta=-530ms
+[ 50/192] plain      pair= 6 long=236ms short=106ms delta=130ms
+[ 52/192] latin_x2   pair= 6 long=357ms short=112ms delta=245ms
+[ 54/192] cyrillic   pair= 6 long=147ms short=267ms delta=-120ms
+[ 56/192] cjk        pair= 6 long=124ms short=120ms delta=4ms
+[ 58/192] plain      pair= 7 long=419ms short=103ms delta=316ms
+[ 60/192] latin_x2   pair= 7 long=130ms short=79ms delta=51ms
+[ 62/192] cyrillic   pair= 7 long=135ms short=85ms delta=50ms
+[ 64/192] cjk        pair= 7 long=177ms short=71ms delta=106ms
+[ 66/192] plain      pair= 8 long=343ms short=117ms delta=226ms
+[ 68/192] latin_x2   pair= 8 long=229ms short=101ms delta=128ms
+[ 70/192] cyrillic   pair= 8 long=386ms short=78ms delta=308ms
+[ 72/192] cjk        pair= 8 long=118ms short=72ms delta=46ms
+[ 74/192] plain      pair= 9 long=218ms short=64ms delta=154ms
+[ 76/192] latin_x2   pair= 9 long=210ms short=170ms delta=40ms
+[ 78/192] cyrillic   pair= 9 long=256ms short=76ms delta=180ms
+[ 80/192] cjk        pair= 9 long=124ms short=69ms delta=55ms
+[ 82/192] plain      pair=10 long=215ms short=80ms delta=135ms
+[ 84/192] latin_x2   pair=10 long=169ms short=486ms delta=-317ms
+[ 86/192] cyrillic   pair=10 long=237ms short=128ms delta=109ms
+[ 88/192] cjk        pair=10 long=160ms short=101ms delta=59ms
+[ 90/192] plain      pair=11 long=441ms short=90ms delta=351ms
+[ 92/192] latin_x2   pair=11 long=123ms short=74ms delta=49ms
+[ 94/192] cyrillic   pair=11 long=143ms short=169ms delta=-26ms
+[ 96/192] cjk        pair=11 long=118ms short=122ms delta=-4ms
+[ 98/192] plain      pair=12 long=428ms short=118ms delta=310ms
+[100/192] latin_x2   pair=12 long=224ms short=78ms delta=146ms
+[102/192] cyrillic   pair=12 long=159ms short=115ms delta=44ms
+[104/192] cjk        pair=12 long=138ms short=95ms delta=43ms
+[106/192] plain      pair=13 long=284ms short=158ms delta=126ms
+[108/192] latin_x2   pair=13 long=188ms short=106ms delta=82ms
+[110/192] cyrillic   pair=13 long=140ms short=133ms delta=7ms
+[112/192] cjk        pair=13 long=216ms short=116ms delta=100ms
+[114/192] plain      pair=14 long=226ms short=176ms delta=50ms
+[116/192] latin_x2   pair=14 long=184ms short=111ms delta=73ms
+[118/192] cyrillic   pair=14 long=197ms short=116ms delta=81ms
+[120/192] cjk        pair=14 long=148ms short=83ms delta=65ms
+[122/192] plain      pair=15 long=509ms short=116ms delta=393ms
+[124/192] latin_x2   pair=15 long=437ms short=141ms delta=296ms
+[126/192] cyrillic   pair=15 long=216ms short=74ms delta=142ms
+[128/192] cjk        pair=15 long=1004ms short=106ms delta=898ms
+[130/192] plain      pair=16 long=583ms short=480ms delta=103ms
+[132/192] latin_x2   pair=16 long=280ms short=90ms delta=190ms
+[134/192] cyrillic   pair=16 long=155ms short=129ms delta=26ms
+[136/192] cjk        pair=16 long=159ms short=88ms delta=71ms
+[138/192] plain      pair=17 long=302ms short=78ms delta=224ms
+[140/192] latin_x2   pair=17 long=175ms short=170ms delta=5ms
+[142/192] cyrillic   pair=17 long=151ms short=97ms delta=54ms
+[144/192] cjk        pair=17 long=220ms short=148ms delta=72ms
+[146/192] plain      pair=18 long=684ms short=97ms delta=587ms
+[148/192] latin_x2   pair=18 long=249ms short=113ms delta=136ms
+[150/192] cyrillic   pair=18 long=3144ms short=132ms delta=3012ms
+[152/192] cjk        pair=18 long=127ms short=106ms delta=21ms
+[154/192] plain      pair=19 long=271ms short=99ms delta=172ms
+[156/192] latin_x2   pair=19 long=128ms short=89ms delta=39ms
+[158/192] cyrillic   pair=19 long=593ms short=79ms delta=514ms
+[160/192] cjk        pair=19 long=152ms short=131ms delta=21ms
+[162/192] plain      pair=20 long=276ms short=187ms delta=89ms
+[164/192] latin_x2   pair=20 long=131ms short=54ms delta=77ms
+[166/192] cyrillic   pair=20 long=227ms short=106ms delta=121ms
+[168/192] cjk        pair=20 long=397ms short=201ms delta=196ms
+[170/192] plain      pair=21 long=1005ms short=114ms delta=891ms
+[172/192] latin_x2   pair=21 long=153ms short=169ms delta=-16ms
+[174/192] cyrillic   pair=21 long=330ms short=130ms delta=200ms
+[176/192] cjk        pair=21 long=146ms short=269ms delta=-123ms
+[178/192] plain      pair=22 long=410ms short=284ms delta=126ms
+[180/192] latin_x2   pair=22 long=309ms short=80ms delta=229ms
+[182/192] cyrillic   pair=22 long=319ms short=219ms delta=100ms
+[184/192] cjk        pair=22 long=160ms short=157ms delta=3ms
+[186/192] plain      pair=23 long=333ms short=74ms delta=259ms
+[188/192] latin_x2   pair=23 long=160ms short=73ms delta=87ms
+[190/192] cyrillic   pair=23 long=347ms short=75ms delta=272ms
+[192/192] cjk        pair=23 long=126ms short=53ms delta=73ms
+saved /Users/xiaoanliu/Github/typesafe/results/counter_vs_model_v2_trials.json
+
+Paired slope: (ms_long - ms_short) per 1k tokens
+family       n  vs billed: median      mean ± SE  vs qwen: median  billed/qwen
+cjk         24               2.58     3.11 ± 1.91             3.82         1.49
+cyrillic    24               4.34     9.79 ± 5.16             3.06         0.71
+latin_x2    24               3.14     3.25 ± 1.00             5.71         1.84
+plain       24               6.90    10.04 ± 1.59             6.90         1.01
