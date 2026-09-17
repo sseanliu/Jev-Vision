@@ -1,0 +1,150 @@
+empty-state billed tokens: 273
+plain      billed/unit=44.02 qwen/unit=44.02
+latin_x2   billed/unit=20.08 qwen/unit=11.04
+cyrillic   billed/unit=12.02 qwen/unit=17.02
+cjk        billed/unit=34.00 qwen/unit=23.00
+[  1/128] cjk        target=20000 billed=20265 qwen=13524 server=184ms status=200
+[  2/128] plain      target= 4000 billed=4278 qwen=4005 server=184ms status=200
+[  3/128] latin_x2   target=20000 billed=20197 qwen=10958 server=180ms status=200
+[  4/128] cjk        target= 4000 billed=4285 qwen=2714 server=301ms status=200
+[  5/128] latin_x2   target=20000 billed=20197 qwen=10958 server=171ms status=200
+[  6/128] cyrillic   target=12000 billed=12250 qwen=16967 server=219ms status=200
+[  7/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=123ms status=200
+[  8/128] plain      target=28000 billed=28258 qwen=27985 server=420ms status=200
+[  9/128] latin_x2   target=20000 billed=20197 qwen=10958 server=210ms status=200
+[ 10/128] latin_x2   target=12000 billed=12237 qwen=6580 server=192ms status=200
+[ 11/128] cjk        target=20000 billed=20265 qwen=13524 server=264ms status=200
+[ 12/128] plain      target=20000 billed=20250 qwen=19977 server=263ms status=200
+[ 13/128] cyrillic   target=20000 billed=20242 qwen=28289 server=840ms status=200
+[ 14/128] plain      target=20000 billed=20250 qwen=19977 server=248ms status=200
+[ 15/128] latin_x2   target=20000 billed=20197 qwen=10958 server=230ms status=200
+[ 16/128] cjk        target= 4000 billed=4285 qwen=2714 server=143ms status=200
+[ 17/128] latin_x2   target=12000 billed=12237 qwen=6580 server=352ms status=200
+[ 18/128] cyrillic   target=20000 billed=20242 qwen=28289 server=163ms status=200
+[ 19/128] plain      target=12000 billed=12286 qwen=12013 server=981ms status=200
+[ 20/128] cjk        target=12000 billed=12275 qwen=8119 server=240ms status=200
+[ 21/128] plain      target=20000 billed=20250 qwen=19977 server=221ms status=200
+[ 22/128] plain      target=20000 billed=20250 qwen=19977 server=461ms status=200
+[ 23/128] cyrillic   target=28000 billed=28222 qwen=39594 server=351ms status=200
+[ 24/128] cjk        target=12000 billed=12275 qwen=8119 server=262ms status=200
+[ 25/128] latin_x2   target=20000 billed=20197 qwen=10958 server=325ms status=200
+[ 26/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=206ms status=200
+[ 27/128] cjk        target=28000 billed=28289 qwen=18952 server=286ms status=200
+[ 28/128] plain      target=12000 billed=12286 qwen=12013 server=344ms status=200
+[ 29/128] plain      target=12000 billed=12286 qwen=12013 server=255ms status=200
+[ 30/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=157ms status=200
+[ 31/128] latin_x2   target=28000 billed=28157 qwen=15336 server=299ms status=200
+[ 32/128] cjk        target= 4000 billed=4285 qwen=2714 server=81ms status=200
+[ 33/128] cjk        target=28000 billed=28289 qwen=18952 server=154ms status=200
+[ 34/128] latin_x2   target=12000 billed=12237 qwen=6580 server=178ms status=200
+[ 35/128] cjk        target=28000 billed=28289 qwen=18952 server=128ms status=200
+[ 36/128] latin_x2   target=28000 billed=28157 qwen=15336 server=268ms status=200
+[ 37/128] cyrillic   target=28000 billed=28222 qwen=39594 server=332ms status=200
+[ 38/128] latin_x2   target=12000 billed=12237 qwen=6580 server=234ms status=200
+[ 39/128] cyrillic   target=28000 billed=28222 qwen=39594 server=191ms status=200
+[ 40/128] latin_x2   target=28000 billed=28157 qwen=15336 server=288ms status=200
+[ 41/128] latin_x2   target=28000 billed=28157 qwen=15336 server=223ms status=200
+[ 42/128] plain      target=12000 billed=12286 qwen=12013 server=162ms status=200
+[ 43/128] cyrillic   target=20000 billed=20242 qwen=28289 server=284ms status=200
+[ 44/128] cjk        target=12000 billed=12275 qwen=8119 server=163ms status=200
+[ 45/128] cyrillic   target=12000 billed=12250 qwen=16967 server=172ms status=200
+[ 46/128] cjk        target= 4000 billed=4285 qwen=2714 server=172ms status=200
+[ 47/128] plain      target=28000 billed=28258 qwen=27985 server=264ms status=200
+[ 48/128] plain      target=12000 billed=12286 qwen=12013 server=198ms status=200
+[ 49/128] cyrillic   target=12000 billed=12250 qwen=16967 server=104ms status=200
+[ 50/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=120ms status=200
+[ 51/128] plain      target=28000 billed=28258 qwen=27985 server=366ms status=200
+[ 52/128] cjk        target=20000 billed=20265 qwen=13524 server=164ms status=200
+[ 53/128] cyrillic   target=28000 billed=28222 qwen=39594 server=227ms status=200
+[ 54/128] cjk        target=12000 billed=12275 qwen=8119 server=100ms status=200
+[ 55/128] cyrillic   target=20000 billed=20242 qwen=28289 server=182ms status=200
+[ 56/128] plain      target=12000 billed=12286 qwen=12013 server=309ms status=200
+[ 57/128] cyrillic   target=12000 billed=12250 qwen=16967 server=255ms status=200
+[ 58/128] cyrillic   target=20000 billed=20242 qwen=28289 server=223ms status=200
+[ 59/128] cjk        target=12000 billed=12275 qwen=8119 server=143ms status=200
+[ 60/128] latin_x2   target=28000 billed=28157 qwen=15336 server=259ms status=200
+[ 61/128] plain      target= 4000 billed=4278 qwen=4005 server=179ms status=200
+[ 62/128] plain      target=20000 billed=20250 qwen=19977 server=288ms status=200
+[ 63/128] cyrillic   target=12000 billed=12250 qwen=16967 server=167ms status=200
+[ 64/128] cjk        target= 4000 billed=4285 qwen=2714 server=112ms status=200
+[ 65/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=172ms status=200
+[ 66/128] plain      target= 4000 billed=4278 qwen=4005 server=156ms status=200
+[ 67/128] cjk        target=12000 billed=12275 qwen=8119 server=315ms status=200
+[ 68/128] plain      target= 4000 billed=4278 qwen=4005 server=245ms status=200
+[ 69/128] cyrillic   target=28000 billed=28222 qwen=39594 server=229ms status=200
+[ 70/128] plain      target=12000 billed=12286 qwen=12013 server=147ms status=200
+[ 71/128] cjk        target=28000 billed=28289 qwen=18952 server=185ms status=200
+[ 72/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=136ms status=200
+[ 73/128] latin_x2   target=12000 billed=12237 qwen=6580 server=122ms status=200
+[ 74/128] cjk        target=12000 billed=12275 qwen=8119 server=112ms status=200
+[ 75/128] cjk        target=20000 billed=20265 qwen=13524 server=172ms status=200
+[ 76/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=141ms status=200
+[ 77/128] latin_x2   target=20000 billed=20197 qwen=10958 server=261ms status=200
+[ 78/128] cjk        target= 4000 billed=4285 qwen=2714 server=131ms status=200
+[ 79/128] cyrillic   target=20000 billed=20242 qwen=28289 server=154ms status=200
+[ 80/128] latin_x2   target=28000 billed=28157 qwen=15336 server=284ms status=200
+[ 81/128] latin_x2   target=20000 billed=20197 qwen=10958 server=282ms status=200
+[ 82/128] plain      target=28000 billed=28258 qwen=27985 server=267ms status=200
+[ 83/128] plain      target=28000 billed=28258 qwen=27985 server=243ms status=200
+[ 84/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=190ms status=200
+[ 85/128] latin_x2   target=12000 billed=12237 qwen=6580 server=234ms status=200
+[ 86/128] cyrillic   target=12000 billed=12250 qwen=16967 server=226ms status=200
+[ 87/128] plain      target=20000 billed=20250 qwen=19977 server=460ms status=200
+[ 88/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=60ms status=200
+[ 89/128] cyrillic   target=12000 billed=12250 qwen=16967 server=113ms status=200
+[ 90/128] cyrillic   target=28000 billed=28222 qwen=39594 server=257ms status=200
+[ 91/128] cjk        target=20000 billed=20265 qwen=13524 server=122ms status=200
+[ 92/128] latin_x2   target=28000 billed=28157 qwen=15336 server=218ms status=200
+[ 93/128] plain      target= 4000 billed=4278 qwen=4005 server=346ms status=200
+[ 94/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=206ms status=200
+[ 95/128] plain      target=12000 billed=12286 qwen=12013 server=208ms status=200
+[ 96/128] cyrillic   target=12000 billed=12250 qwen=16967 server=140ms status=200
+[ 97/128] plain      target=20000 billed=20250 qwen=19977 server=262ms status=200
+[ 98/128] plain      target= 4000 billed=4278 qwen=4005 server=222ms status=200
+[ 99/128] cyrillic   target=28000 billed=28222 qwen=39594 server=449ms status=200
+[100/128] cyrillic   target=28000 billed=28222 qwen=39594 server=393ms status=200
+[101/128] cjk        target=20000 billed=20265 qwen=13524 server=229ms status=200
+[102/128] plain      target= 4000 billed=4278 qwen=4005 server=434ms status=200
+[103/128] latin_x2   target=20000 billed=20197 qwen=10958 server=183ms status=200
+[104/128] cyrillic   target=20000 billed=20242 qwen=28289 server=648ms status=200
+[105/128] latin_x2   target=28000 billed=28157 qwen=15336 server=359ms status=200
+[106/128] cjk        target= 4000 billed=4285 qwen=2714 server=238ms status=200
+[107/128] plain      target=28000 billed=28258 qwen=27985 server=269ms status=200
+[108/128] cjk        target=28000 billed=28289 qwen=18952 server=183ms status=200
+[109/128] plain      target=28000 billed=28258 qwen=27985 server=362ms status=200
+[110/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=136ms status=200
+[111/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=68ms status=200
+[112/128] cjk        target=20000 billed=20265 qwen=13524 server=236ms status=200
+[113/128] cjk        target=28000 billed=28289 qwen=18952 server=176ms status=200
+[114/128] latin_x2   target=12000 billed=12237 qwen=6580 server=124ms status=200
+[115/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=113ms status=200
+[116/128] latin_x2   target=12000 billed=12237 qwen=6580 server=182ms status=200
+[117/128] cjk        target=12000 billed=12275 qwen=8119 server=151ms status=200
+[118/128] plain      target=20000 billed=20250 qwen=19977 server=319ms status=200
+[119/128] plain      target= 4000 billed=4278 qwen=4005 server=177ms status=200
+[120/128] plain      target=28000 billed=28258 qwen=27985 server=286ms status=200
+[121/128] cyrillic   target= 4000 billed=4270 qwen=5662 server=159ms status=200
+[122/128] cjk        target=28000 billed=28289 qwen=18952 server=165ms status=200
+[123/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=189ms status=200
+[124/128] cjk        target=20000 billed=20265 qwen=13524 server=152ms status=200
+[125/128] cjk        target= 4000 billed=4285 qwen=2714 server=106ms status=200
+[126/128] cjk        target=28000 billed=28289 qwen=18952 server=189ms status=200
+[127/128] cyrillic   target=20000 billed=20242 qwen=28289 server=154ms status=200
+[128/128] latin_x2   target= 4000 billed=4257 qwen=2191 server=181ms status=200
+saved /Users/xiaoanliu/Github/typesafe/results/counter_vs_model_trials.json
+
+Median server ms by family and target:
+family           4000    12000    20000    28000
+cjk               137      157      178      180
+cyrillic          128      170      202      294
+latin_x2          185      187      220      276
+plain             203      232      276      278
+
+Slope of server ms per 1k tokens (median-per-size fit):
+family      vs billed    vs qwen  billed/qwen
+cjk              1.86       2.74         1.50
+cyrillic         6.67       4.71         0.72
+latin_x2         3.84       6.98         1.85
+plain            3.35       3.35         1.02
+
+If the counter is the model tokenizer, the 'vs billed' column is flat across families; if not, the 'vs qwen' column is the flat one.
