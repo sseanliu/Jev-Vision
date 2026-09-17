@@ -14,8 +14,8 @@ if [ ! -d jev-probes/model ] && [ -n "${GH_TOKEN:-}" ]; then
 fi
 cd jev-probes/model
 
-python -m pip install -q --upgrade pip
-python -m pip install -q "torch>=2.4" transformers datasets accelerate tiktoken requests numpy
+export PIP_BREAK_SYSTEM_PACKAGES=1
+python -m pip install -q transformers datasets accelerate tiktoken requests numpy
 python -c "import torch, transformers; print('torch', torch.__version__, 'cuda', torch.cuda.is_available(), 'transformers', transformers.__version__)"
 
 export HF_HUB_DISABLE_PROGRESS_BARS=1 TRANSFORMERS_VERBOSITY=error TOKENIZERS_PARALLELISM=false
