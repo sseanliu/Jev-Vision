@@ -1,0 +1,832 @@
+{
+ "rows": [
+  [
+   326,
+   "cl100k",
+   {
+    "run": [
+     150,
+     181
+    ],
+    "word": [
+     141,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 59,
+    "jev<cand": 6
+   }
+  ],
+  [
+   326,
+   "Qwen2.5-7B",
+   {
+    "run": [
+     150,
+     181
+    ],
+    "word": [
+     141,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 65
+   }
+  ],
+  [
+   326,
+   "Hunyuan-A13B",
+   {
+    "run": [
+     150,
+     181
+    ],
+    "word": [
+     141,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 61,
+    "jev<cand": 4
+   }
+  ],
+  [
+   324,
+   "phi-4",
+   {
+    "run": [
+     150,
+     181
+    ],
+    "word": [
+     139,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 61,
+    "jev<cand": 6
+   }
+  ],
+  [
+   324,
+   "OLMo-2-7B",
+   {
+    "run": [
+     150,
+     181
+    ],
+    "word": [
+     139,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 61,
+    "jev<cand": 6
+   }
+  ],
+  [
+   323,
+   "o200k+per-digit",
+   {
+    "run": [
+     152,
+     181
+    ],
+    "word": [
+     137,
+     170
+    ],
+    "pretok": [
+     34,
+     40
+    ]
+   },
+   {
+    "jev>cand": 68
+   }
+  ],
+  [
+   322,
+   "gpt-oss-20b",
+   {
+    "run": [
+     152,
+     181
+    ],
+    "word": [
+     136,
+     170
+    ],
+    "pretok": [
+     34,
+     40
+    ]
+   },
+   {
+    "jev>cand": 69
+   }
+  ],
+  [
+   322,
+   "Llama-3.1-8B",
+   {
+    "run": [
+     149,
+     181
+    ],
+    "word": [
+     138,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 67,
+    "jev<cand": 2
+   }
+  ],
+  [
+   321,
+   "Arcee-AFM",
+   {
+    "run": [
+     149,
+     181
+    ],
+    "word": [
+     137,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 68,
+    "jev<cand": 2
+   }
+  ],
+  [
+   319,
+   "Seed-OSS-36B",
+   {
+    "run": [
+     147,
+     181
+    ],
+    "word": [
+     137,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 66,
+    "jev<cand": 6
+   }
+  ],
+  [
+   311,
+   "Step3",
+   {
+    "run": [
+     141,
+     181
+    ],
+    "word": [
+     135,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 66,
+    "jev<cand": 14
+   }
+  ],
+  [
+   310,
+   "InternLM2.5",
+   {
+    "run": [
+     148,
+     181
+    ],
+    "word": [
+     127,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev<cand": 30,
+    "jev>cand": 51
+   }
+  ],
+  [
+   310,
+   "Granite-3.3",
+   {
+    "run": [
+     145,
+     181
+    ],
+    "word": [
+     132,
+     170
+    ],
+    "pretok": [
+     33,
+     40
+    ]
+   },
+   {
+    "jev>cand": 67,
+    "jev<cand": 14
+   }
+  ],
+  [
+   309,
+   "MiniMax-M1",
+   {
+    "run": [
+     136,
+     181
+    ],
+    "word": [
+     138,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 76,
+    "jev<cand": 6
+   }
+  ],
+  [
+   308,
+   "gpt-neox-20b",
+   {
+    "run": [
+     141,
+     181
+    ],
+    "word": [
+     133,
+     170
+    ],
+    "pretok": [
+     34,
+     40
+    ]
+   },
+   {
+    "jev>cand": 57,
+    "jev<cand": 26
+   }
+  ],
+  [
+   302,
+   "Ling/Ring",
+   {
+    "run": [
+     135,
+     181
+    ],
+    "word": [
+     132,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev>cand": 67,
+    "jev<cand": 22
+   }
+  ],
+  [
+   302,
+   "Falcon-H1",
+   {
+    "run": [
+     147,
+     181
+    ],
+    "word": [
+     123,
+     170
+    ],
+    "pretok": [
+     32,
+     40
+    ]
+   },
+   {
+    "jev>cand": 67,
+    "jev<cand": 22
+   }
+  ],
+  [
+   298,
+   "bloom",
+   {
+    "run": [
+     141,
+     181
+    ],
+    "word": [
+     125,
+     170
+    ],
+    "pretok": [
+     32,
+     40
+    ]
+   },
+   {
+    "jev>cand": 67,
+    "jev<cand": 26
+   }
+  ],
+  [
+   293,
+   "Trillion-7B",
+   {
+    "run": [
+     131,
+     181
+    ],
+    "word": [
+     129,
+     170
+    ],
+    "pretok": [
+     33,
+     40
+    ]
+   },
+   {
+    "jev>cand": 87,
+    "jev<cand": 11
+   }
+  ],
+  [
+   289,
+   "SmolLM2-1.7B",
+   {
+    "run": [
+     131,
+     181
+    ],
+    "word": [
+     124,
+     170
+    ],
+    "pretok": [
+     34,
+     40
+    ]
+   },
+   {
+    "jev<cand": 59,
+    "jev>cand": 43
+   }
+  ],
+  [
+   287,
+   "Nemotron-H",
+   {
+    "run": [
+     119,
+     181
+    ],
+    "word": [
+     132,
+     170
+    ],
+    "pretok": [
+     36,
+     40
+    ]
+   },
+   {
+    "jev<cand": 60,
+    "jev>cand": 44
+   }
+  ],
+  [
+   287,
+   "Mistral-Nemo",
+   {
+    "run": [
+     119,
+     181
+    ],
+    "word": [
+     132,
+     170
+    ],
+    "pretok": [
+     36,
+     40
+    ]
+   },
+   {
+    "jev<cand": 60,
+    "jev>cand": 44
+   }
+  ],
+  [
+   286,
+   "Apertus-8B",
+   {
+    "run": [
+     119,
+     181
+    ],
+    "word": [
+     131,
+     170
+    ],
+    "pretok": [
+     36,
+     40
+    ]
+   },
+   {
+    "jev<cand": 60,
+    "jev>cand": 45
+   }
+  ],
+  [
+   271,
+   "Llama-2-7b",
+   {
+    "run": [
+     105,
+     181
+    ],
+    "word": [
+     131,
+     170
+    ],
+    "pretok": [
+     35,
+     40
+    ]
+   },
+   {
+    "jev<cand": 92,
+    "jev>cand": 28
+   }
+  ],
+  [
+   267,
+   "gpt2",
+   {
+    "run": [
+     119,
+     181
+    ],
+    "word": [
+     117,
+     170
+    ],
+    "pretok": [
+     31,
+     40
+    ]
+   },
+   {
+    "jev<cand": 75,
+    "jev>cand": 49
+   }
+  ],
+  [
+   266,
+   "Mixtral-8x22B",
+   {
+    "run": [
+     105,
+     181
+    ],
+    "word": [
+     133,
+     170
+    ],
+    "pretok": [
+     28,
+     40
+    ]
+   },
+   {
+    "jev<cand": 92,
+    "jev>cand": 33
+   }
+  ],
+  [
+   266,
+   "Mistral-7B-v0.1",
+   {
+    "run": [
+     105,
+     181
+    ],
+    "word": [
+     133,
+     170
+    ],
+    "pretok": [
+     28,
+     40
+    ]
+   },
+   {
+    "jev<cand": 92,
+    "jev>cand": 33
+   }
+  ],
+  [
+   265,
+   "Yi-1.5-9B",
+   {
+    "run": [
+     110,
+     181
+    ],
+    "word": [
+     124,
+     170
+    ],
+    "pretok": [
+     31,
+     40
+    ]
+   },
+   {
+    "jev<cand": 95,
+    "jev>cand": 31
+   }
+  ],
+  [
+   263,
+   "EXAONE-4",
+   {
+    "run": [
+     117,
+     181
+    ],
+    "word": [
+     120,
+     170
+    ],
+    "pretok": [
+     26,
+     40
+    ]
+   },
+   {
+    "jev>cand": 74,
+    "jev<cand": 54
+   }
+  ],
+  [
+   158,
+   "xlm-roberta",
+   {
+    "run": [
+     51,
+     181
+    ],
+    "word": [
+     93,
+     170
+    ],
+    "pretok": [
+     14,
+     40
+    ]
+   },
+   {
+    "jev>cand": 95,
+    "jev<cand": 138
+   }
+  ],
+  [
+   121,
+   "bert-uncased",
+   {
+    "run": [
+     11,
+     181
+    ],
+    "word": [
+     94,
+     170
+    ],
+    "pretok": [
+     16,
+     40
+    ]
+   },
+   {
+    "jev<cand": 189,
+    "jev>cand": 81
+   }
+  ],
+  [
+   94,
+   "t5",
+   {
+    "run": [
+     12,
+     181
+    ],
+    "word": [
+     72,
+     170
+    ],
+    "pretok": [
+     10,
+     40
+    ]
+   },
+   {
+    "jev<cand": 209,
+    "jev>cand": 88
+   }
+  ]
+ ],
+ "signed": {
+  "o200k+per-digit": {
+   "jev>cand": 68
+  },
+  "cl100k": {
+   "jev>cand": 59,
+   "jev<cand": 6
+  },
+  "Qwen2.5-7B": {
+   "jev>cand": 65
+  },
+  "gpt2": {
+   "jev<cand": 75,
+   "jev>cand": 49
+  },
+  "Llama-2-7b": {
+   "jev<cand": 92,
+   "jev>cand": 28
+  },
+  "Mistral-7B-v0.1": {
+   "jev<cand": 92,
+   "jev>cand": 33
+  },
+  "Llama-3.1-8B": {
+   "jev>cand": 67,
+   "jev<cand": 2
+  },
+  "phi-4": {
+   "jev>cand": 61,
+   "jev<cand": 6
+  },
+  "SmolLM2-1.7B": {
+   "jev<cand": 59,
+   "jev>cand": 43
+  },
+  "OLMo-2-7B": {
+   "jev>cand": 61,
+   "jev<cand": 6
+  },
+  "gpt-neox-20b": {
+   "jev>cand": 57,
+   "jev<cand": 26
+  },
+  "bloom": {
+   "jev>cand": 67,
+   "jev<cand": 26
+  },
+  "xlm-roberta": {
+   "jev>cand": 95,
+   "jev<cand": 138
+  },
+  "t5": {
+   "jev<cand": 209,
+   "jev>cand": 88
+  },
+  "bert-uncased": {
+   "jev<cand": 189,
+   "jev>cand": 81
+  },
+  "Yi-1.5-9B": {
+   "jev<cand": 95,
+   "jev>cand": 31
+  },
+  "InternLM2.5": {
+   "jev<cand": 30,
+   "jev>cand": 51
+  },
+  "Falcon-H1": {
+   "jev>cand": 67,
+   "jev<cand": 22
+  },
+  "Nemotron-H": {
+   "jev<cand": 60,
+   "jev>cand": 44
+  },
+  "MiniMax-M1": {
+   "jev>cand": 76,
+   "jev<cand": 6
+  },
+  "Hunyuan-A13B": {
+   "jev>cand": 61,
+   "jev<cand": 4
+  },
+  "Seed-OSS-36B": {
+   "jev>cand": 66,
+   "jev<cand": 6
+  },
+  "Apertus-8B": {
+   "jev<cand": 60,
+   "jev>cand": 45
+  },
+  "Granite-3.3": {
+   "jev>cand": 67,
+   "jev<cand": 14
+  },
+  "Arcee-AFM": {
+   "jev>cand": 68,
+   "jev<cand": 2
+  },
+  "Trillion-7B": {
+   "jev>cand": 87,
+   "jev<cand": 11
+  },
+  "EXAONE-4": {
+   "jev>cand": 74,
+   "jev<cand": 54
+  },
+  "Ling/Ring": {
+   "jev>cand": 67,
+   "jev<cand": 22
+  },
+  "Step3": {
+   "jev>cand": 66,
+   "jev<cand": 14
+  },
+  "Mixtral-8x22B": {
+   "jev<cand": 92,
+   "jev>cand": 33
+  },
+  "Mistral-Nemo": {
+   "jev<cand": 60,
+   "jev>cand": 44
+  },
+  "gpt-oss-20b": {
+   "jev>cand": 69
+  }
+ }
+}

@@ -1,0 +1,21 @@
+Total tokens over Hume's 170 non-digit 'word' probes (128 Latin, 42 non-Latin).
+Per probe, the candidate count closest to Jev's is used (leading "\n"/" " variants).
+
+tokenizer                  vocab     all   latin non-latin
+Llama-2 (32k sp)           32000     328     203       125
+Mistral-7B (32k sp)        32000     317     202       115
+t5 (32k sp)                32100     359     258       101
+SmolLM2 (49k)              49152     325     182       143
+gpt2 (50k)                 50257     342     192       150
+gpt-neox (50k)             50277     305     190       115
+Yi (64k)                   64000     348     191       157
+InternLM2.5 (92k)          92544     320     183       137
+cl100k (100k)             100277     291     189       102
+OLMo-2 (100k)             100278     280     178       102
+Llama-3.1 (128k)          128256     264     183        81
+DeepSeek-V3 (129k)        129280     274     193        81
+Qwen2.5 (151k)            151665     259     178        81
+o200k (200k)              200019     260     190        70
+xlm-roberta (250k sp)     250002     308     240        68
+bloom (250k)              250680     268     186        82
+** JEV **                            323     220       103
