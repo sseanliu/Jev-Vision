@@ -1,0 +1,105 @@
+[  1/95] bob        ok=False top=0.76 p_correct=0.24
+[  2/95] bob        ok=False top=0.72 p_correct=0.28
+[  3/95] bob        ok=False top=0.64 p_correct=0.36
+[  4/95] bob        ok=False top=0.71 p_correct=0.29
+[  5/95] bob        ok=False top=0.79 p_correct=0.21
+[  6/95] bob        ok=False top=0.75 p_correct=0.25
+[  7/95] bob        ok=False top=0.79 p_correct=0.21
+[  8/95] bob        ok=False top=0.7 p_correct=0.3
+[  9/95] bob        ok=False top=0.79 p_correct=0.21
+[ 10/95] bob        ok=False top=0.69 p_correct=0.31
+[ 11/95] bob        ok=False top=0.87 p_correct=0.13
+[ 12/95] bob        ok=False top=0.82 p_correct=0.18
+[ 13/95] bob        ok=False top=0.9 p_correct=0.1
+[ 14/95] bob        ok=False top=0.86 p_correct=0.14
+[ 15/95] bob        ok=False top=0.84 p_correct=0.16
+[ 16/95] bob        ok=False top=0.88 p_correct=0.12
+[ 17/95] bob        ok=False top=0.88 p_correct=0.12
+[ 18/95] bob        ok=False top=0.87 p_correct=0.13
+[ 19/95] bob        ok=False top=0.82 p_correct=0.18
+[ 20/95] bob        ok=False top=0.83 p_correct=0.17
+[ 21/95] word_2step ok=True top=0.68 p_correct=0.68
+[ 22/95] word_2step ok=True top=0.9400000000000001 p_correct=0.9400000000000001
+[ 23/95] word_2step ok=True top=0.82 p_correct=0.82
+[ 24/95] word_2step ok=True top=0.97 p_correct=0.97
+[ 25/95] word_2step ok=True top=0.78 p_correct=0.78
+[ 26/95] word_2step ok=True top=0.96 p_correct=0.96
+[ 27/95] word_2step ok=True top=1.0 p_correct=1.0
+[ 28/95] word_2step ok=True top=1.0 p_correct=1.0
+[ 29/95] word_2step ok=True top=0.64 p_correct=0.64
+[ 30/95] word_2step ok=True top=0.64 p_correct=0.64
+[ 31/95] word_2step ok=False top=0.85 p_correct=0.13
+[ 32/95] word_2step ok=True top=0.87 p_correct=0.87
+[ 33/95] word_2step ok=True top=0.49 p_correct=0.49
+[ 34/95] word_2step ok=True top=0.83 p_correct=0.83
+[ 35/95] word_2step ok=True top=0.47 p_correct=0.47
+[ 36/95] word_2step ok=True top=0.47000000000000003 p_correct=0.47000000000000003
+[ 37/95] word_2step ok=True top=0.87 p_correct=0.87
+[ 38/95] word_2step ok=True top=0.95 p_correct=0.95
+[ 39/95] word_2step ok=False top=0.54 p_correct=0.4
+[ 40/95] word_2step ok=True top=0.98 p_correct=0.98
+[ 41/95] word_2step ok=False top=0.57 p_correct=0.07
+[ 42/95] word_2step ok=True top=0.99 p_correct=0.99
+[ 43/95] word_2step ok=True top=0.95 p_correct=0.95
+[ 44/95] word_2step ok=True top=0.98 p_correct=0.98
+[ 45/95] word_2step ok=True top=0.86 p_correct=0.86
+[ 46/95] modexp     ok=False top=0.33 p_correct=0.27
+[ 47/95] modexp     ok=False top=0.36 p_correct=0.22
+[ 48/95] modexp     ok=False top=0.38 p_correct=0.11
+[ 49/95] modexp     ok=True top=0.78 p_correct=0.78
+[ 50/95] modexp     ok=True top=0.35 p_correct=0.35
+[ 51/95] modexp     ok=True top=0.34 p_correct=0.34
+[ 52/95] modexp     ok=True top=0.42 p_correct=0.42
+[ 53/95] modexp     ok=False top=0.47 p_correct=0.32
+[ 54/95] modexp     ok=True top=0.35 p_correct=0.35
+[ 55/95] modexp     ok=False top=0.35 p_correct=0.22
+[ 56/95] modexp     ok=True top=0.3 p_correct=0.3
+[ 57/95] modexp     ok=False top=0.31 p_correct=0.22
+[ 58/95] modexp     ok=False top=0.51 p_correct=0.16
+[ 59/95] modexp     ok=False top=0.47 p_correct=0.04
+[ 60/95] modexp     ok=False top=0.38 p_correct=0.16
+[ 61/95] modexp     ok=True top=0.75 p_correct=0.75
+[ 62/95] modexp     ok=True top=0.35 p_correct=0.35
+[ 63/95] modexp     ok=True top=0.36 p_correct=0.36
+[ 64/95] modexp     ok=False top=0.34 p_correct=0.32
+[ 65/95] modexp     ok=False top=0.31 p_correct=0.31
+[ 66/95] modexp     ok=True top=0.37 p_correct=0.37
+[ 67/95] modexp     ok=True top=0.83 p_correct=0.83
+[ 68/95] modexp     ok=True top=0.5700000000000001 p_correct=0.5700000000000001
+[ 69/95] modexp     ok=False top=0.45 p_correct=0.17
+[ 70/95] modexp     ok=False top=0.48 p_correct=0.13
+[ 71/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 72/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 73/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 74/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 75/95] mult3x3    ok=False top=0.49 p_correct=0.4
+[ 76/95] mult3x3    ok=True top=0.95 p_correct=0.95
+[ 77/95] mult3x3    ok=True top=0.96 p_correct=0.96
+[ 78/95] mult3x3    ok=True top=0.9 p_correct=0.9
+[ 79/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 80/95] mult3x3    ok=True top=0.99 p_correct=0.99
+[ 81/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 82/95] mult3x3    ok=True top=0.98 p_correct=0.98
+[ 83/95] mult3x3    ok=True top=0.97 p_correct=0.97
+[ 84/95] mult3x3    ok=True top=0.97 p_correct=0.97
+[ 85/95] mult3x3    ok=True top=0.76 p_correct=0.76
+[ 86/95] mult3x3    ok=True top=0.8 p_correct=0.8
+[ 87/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 88/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 89/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 90/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 91/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 92/95] mult3x3    ok=True top=0.99 p_correct=0.99
+[ 93/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 94/95] mult3x3    ok=True top=1.0 p_correct=1.0
+[ 95/95] mult3x3    ok=True top=1.0 p_correct=1.0
+saved /Users/xiaoanliu/Github/typesafe/results/capability_jev-1.13.0.json
+
+Capability baseline for jev-1.13.0
+family          n  accuracy  mean top-p  mean p(correct)
+bob            20      0.00        0.80             0.20
+word_2step     25      0.88        0.80             0.75
+modexp         25      0.48        0.44             0.34
+mult3x3        25      0.96        0.95             0.95
+  bob variant 0: chose correct 0/10, mean p(correct)=0.27
+  bob variant 1: chose correct 0/10, mean p(correct)=0.14

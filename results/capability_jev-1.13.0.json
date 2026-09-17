@@ -1,0 +1,2398 @@
+{
+ "schema": "jev-capability.v1",
+ "model": "jev-1.13.0",
+ "date": "2026-09-17T18:57:41.632493+00:00",
+ "seed": 20260917,
+ "results": [
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.76,
+   "p_correct": 0.24,
+   "probabilities": {
+    "B": 0.76,
+    "A": 0.24
+   },
+   "confidence": 0.53,
+   "model": "jev-1.13.0",
+   "server_ms": 95,
+   "family": "bob",
+   "repeat": 0,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.72,
+   "p_correct": 0.28,
+   "probabilities": {
+    "A": 0.28,
+    "B": 0.72
+   },
+   "confidence": 0.44,
+   "model": "jev-1.13.0",
+   "server_ms": 124,
+   "family": "bob",
+   "repeat": 1,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.64,
+   "p_correct": 0.36,
+   "probabilities": {
+    "A": 0.36,
+    "B": 0.64
+   },
+   "confidence": 0.28,
+   "model": "jev-1.13.0",
+   "server_ms": 292,
+   "family": "bob",
+   "repeat": 2,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.71,
+   "p_correct": 0.29,
+   "probabilities": {
+    "A": 0.29,
+    "B": 0.71
+   },
+   "confidence": 0.42,
+   "model": "jev-1.13.0",
+   "server_ms": 108,
+   "family": "bob",
+   "repeat": 3,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.79,
+   "p_correct": 0.21,
+   "probabilities": {
+    "B": 0.79,
+    "A": 0.21
+   },
+   "confidence": 0.58,
+   "model": "jev-1.13.0",
+   "server_ms": 215,
+   "family": "bob",
+   "repeat": 4,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.75,
+   "p_correct": 0.25,
+   "probabilities": {
+    "A": 0.25,
+    "B": 0.75
+   },
+   "confidence": 0.5,
+   "model": "jev-1.13.0",
+   "server_ms": 350,
+   "family": "bob",
+   "repeat": 5,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.79,
+   "p_correct": 0.21,
+   "probabilities": {
+    "A": 0.21,
+    "B": 0.79
+   },
+   "confidence": 0.59,
+   "model": "jev-1.13.0",
+   "server_ms": 142,
+   "family": "bob",
+   "repeat": 6,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.7,
+   "p_correct": 0.3,
+   "probabilities": {
+    "A": 0.3,
+    "B": 0.7
+   },
+   "confidence": 0.4,
+   "model": "jev-1.13.0",
+   "server_ms": 84,
+   "family": "bob",
+   "repeat": 7,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.79,
+   "p_correct": 0.21,
+   "probabilities": {
+    "A": 0.21,
+    "B": 0.79
+   },
+   "confidence": 0.59,
+   "model": "jev-1.13.0",
+   "server_ms": 191,
+   "family": "bob",
+   "repeat": 8,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "B",
+   "correct_key": "A",
+   "is_correct": false,
+   "top_prob": 0.69,
+   "p_correct": 0.31,
+   "probabilities": {
+    "A": 0.31,
+    "B": 0.69
+   },
+   "confidence": 0.39,
+   "model": "jev-1.13.0",
+   "server_ms": 89,
+   "family": "bob",
+   "repeat": 9,
+   "state": "Bob wins a prize if he wins two games in a row. He must play three games, alternating opponents. Option A: Teacher, Student, Teacher. Option B: Student, Teacher, Student. Everybody knows the teacher is the better player. Which option gives Bob the better chance at the prize?",
+   "criteria": {
+    "A": "Teacher, Student, Teacher",
+    "B": "Student, Teacher, Student"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.87,
+   "p_correct": 0.13,
+   "probabilities": {
+    "Y": 0.87,
+    "X": 0.13
+   },
+   "confidence": 0.75,
+   "model": "jev-1.13.0",
+   "server_ms": 80,
+   "family": "bob",
+   "repeat": 0,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.82,
+   "p_correct": 0.18,
+   "probabilities": {
+    "Y": 0.82,
+    "X": 0.18
+   },
+   "confidence": 0.65,
+   "model": "jev-1.13.0",
+   "server_ms": 189,
+   "family": "bob",
+   "repeat": 1,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.9,
+   "p_correct": 0.1,
+   "probabilities": {
+    "X": 0.1,
+    "Y": 0.9
+   },
+   "confidence": 0.8,
+   "model": "jev-1.13.0",
+   "server_ms": 174,
+   "family": "bob",
+   "repeat": 2,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.86,
+   "p_correct": 0.14,
+   "probabilities": {
+    "Y": 0.86,
+    "X": 0.14
+   },
+   "confidence": 0.71,
+   "model": "jev-1.13.0",
+   "server_ms": 130,
+   "family": "bob",
+   "repeat": 3,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.84,
+   "p_correct": 0.16,
+   "probabilities": {
+    "Y": 0.84,
+    "X": 0.16
+   },
+   "confidence": 0.69,
+   "model": "jev-1.13.0",
+   "server_ms": 172,
+   "family": "bob",
+   "repeat": 4,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.88,
+   "p_correct": 0.12,
+   "probabilities": {
+    "Y": 0.88,
+    "X": 0.12
+   },
+   "confidence": 0.76,
+   "model": "jev-1.13.0",
+   "server_ms": 125,
+   "family": "bob",
+   "repeat": 5,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.88,
+   "p_correct": 0.12,
+   "probabilities": {
+    "Y": 0.88,
+    "X": 0.12
+   },
+   "confidence": 0.75,
+   "model": "jev-1.13.0",
+   "server_ms": 160,
+   "family": "bob",
+   "repeat": 6,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.87,
+   "p_correct": 0.13,
+   "probabilities": {
+    "X": 0.13,
+    "Y": 0.87
+   },
+   "confidence": 0.73,
+   "model": "jev-1.13.0",
+   "server_ms": 157,
+   "family": "bob",
+   "repeat": 7,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.82,
+   "p_correct": 0.18,
+   "probabilities": {
+    "Y": 0.82,
+    "X": 0.18
+   },
+   "confidence": 0.64,
+   "model": "jev-1.13.0",
+   "server_ms": 182,
+   "family": "bob",
+   "repeat": 8,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "Y",
+   "correct_key": "X",
+   "is_correct": false,
+   "top_prob": 0.83,
+   "p_correct": 0.17,
+   "probabilities": {
+    "Y": 0.83,
+    "X": 0.17
+   },
+   "confidence": 0.67,
+   "model": "jev-1.13.0",
+   "server_ms": 140,
+   "family": "bob",
+   "repeat": 9,
+   "state": "To win, Mia needs two consecutive wins out of three matches against two opponents in alternation. Her sister is much stronger than her friend. Schedule X: sister, friend, sister. Schedule Y: friend, sister, friend. Which schedule maximises her chance of two consecutive wins?",
+   "criteria": {
+    "X": "sister, friend, sister",
+    "Y": "friend, sister, friend"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.68,
+   "p_correct": 0.68,
+   "probabilities": {
+    "o3": 0.0,
+    "o2": 0.02,
+    "o1": 0.68,
+    "o0": 0.3
+   },
+   "confidence": 0.56,
+   "model": "jev-1.13.0",
+   "server_ms": 193,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "Ana packs 51 boxes with 4 pears each and then finds 54 loose pears. How many pears does she have in total?",
+   "criteria": {
+    "o0": "288",
+    "o1": "258",
+    "o2": "267",
+    "o3": "233"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.9400000000000001,
+   "p_correct": 0.9400000000000001,
+   "probabilities": {
+    "o3": 0.06,
+    "o0": 0.0,
+    "o1": 0.0,
+    "o2": 0.9400000000000001
+   },
+   "confidence": 0.91,
+   "model": "jev-1.13.0",
+   "server_ms": 165,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 47 lamps at $4 each, then sells them all for a total that is $15 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "172",
+    "o1": "194",
+    "o2": "173",
+    "o3": "183"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.82,
+   "p_correct": 0.82,
+   "probabilities": {
+    "o2": 0.11,
+    "o1": 0.01,
+    "o3": 0.82,
+    "o0": 0.06
+   },
+   "confidence": 0.76,
+   "model": "jev-1.13.0",
+   "server_ms": 311,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 57 litres per minute for 7 minutes; then 35 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "326",
+    "o1": "381",
+    "o2": "370",
+    "o3": "364"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.97,
+   "p_correct": 0.97,
+   "probabilities": {
+    "o1": 0.0,
+    "o3": 0.03,
+    "o2": 0.97,
+    "o0": 0.0
+   },
+   "confidence": 0.95,
+   "model": "jev-1.13.0",
+   "server_ms": 175,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "Ana packs 45 boxes with 4 pears each and then finds 42 loose pears. How many pears does she have in total?",
+   "criteria": {
+    "o0": "257",
+    "o1": "241",
+    "o2": "222",
+    "o3": "204"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.78,
+   "p_correct": 0.78,
+   "probabilities": {
+    "o0": 0.06,
+    "o3": 0.78,
+    "o1": 0.15,
+    "o2": 0.01
+   },
+   "confidence": 0.72,
+   "model": "jev-1.13.0",
+   "server_ms": 184,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 54 lamps at $9 each, then sells them all for a total that is $65 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "394",
+    "o1": "382",
+    "o2": "416",
+    "o3": "421"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.96,
+   "p_correct": 0.96,
+   "probabilities": {
+    "o3": 0.01,
+    "o1": 0.02,
+    "o2": 0.96,
+    "o0": 0.01
+   },
+   "confidence": 0.96,
+   "model": "jev-1.13.0",
+   "server_ms": 196,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 35 lamps at $8 each, then sells them all for a total that is $20 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "241",
+    "o1": "231",
+    "o2": "260",
+    "o3": "276"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o0": 0.0,
+    "o3": 1.0,
+    "o2": 0.0,
+    "o1": 0.0
+   },
+   "confidence": 0.99,
+   "model": "jev-1.13.0",
+   "server_ms": 228,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "Ana packs 48 boxes with 9 pears each and then finds 30 loose pears. How many pears does she have in total?",
+   "criteria": {
+    "o0": "472",
+    "o1": "454",
+    "o2": "439",
+    "o3": "462"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o2": 0.0,
+    "o3": 0.0,
+    "o1": 1.0,
+    "o0": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 203,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "Ana packs 13 boxes with 6 pears each and then finds 15 loose pears. How many pears does she have in total?",
+   "criteria": {
+    "o0": "82",
+    "o1": "93",
+    "o2": "84",
+    "o3": "116"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.64,
+   "p_correct": 0.64,
+   "probabilities": {
+    "o1": 0.24,
+    "o0": 0.04,
+    "o2": 0.08,
+    "o3": 0.64
+   },
+   "confidence": 0.51,
+   "model": "jev-1.13.0",
+   "server_ms": 108,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 35 litres per minute for 7 minutes; then 51 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "191",
+    "o1": "196",
+    "o2": "176",
+    "o3": "194"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.64,
+   "p_correct": 0.64,
+   "probabilities": {
+    "o0": 0.0,
+    "o2": 0.36,
+    "o3": 0.64,
+    "o1": 0.0
+   },
+   "confidence": 0.51,
+   "model": "jev-1.13.0",
+   "server_ms": 201,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 34 lamps at $5 each, then sells them all for a total that is $43 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "146",
+    "o1": "104",
+    "o2": "91",
+    "o3": "127"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o3",
+   "is_correct": false,
+   "top_prob": 0.85,
+   "p_correct": 0.13,
+   "probabilities": {
+    "o1": 0.02,
+    "o0": 0.0,
+    "o3": 0.13,
+    "o2": 0.85
+   },
+   "confidence": 0.8,
+   "model": "jev-1.13.0",
+   "server_ms": 114,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 38 lamps at $6 each, then sells them all for a total that is $40 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "159",
+    "o1": "192",
+    "o2": "162",
+    "o3": "188"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.87,
+   "p_correct": 0.87,
+   "probabilities": {
+    "o2": 0.87,
+    "o3": 0.01,
+    "o0": 0.1,
+    "o1": 0.02
+   },
+   "confidence": 0.83,
+   "model": "jev-1.13.0",
+   "server_ms": 257,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 36 lamps at $7 each, then sells them all for a total that is $45 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "195",
+    "o1": "191",
+    "o2": "207",
+    "o3": "169"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.49,
+   "p_correct": 0.49,
+   "probabilities": {
+    "o0": 0.06,
+    "o3": 0.45,
+    "o2": 0.0,
+    "o1": 0.49
+   },
+   "confidence": 0.32,
+   "model": "jev-1.13.0",
+   "server_ms": 133,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 54 litres per minute for 7 minutes; then 32 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "368",
+    "o1": "346",
+    "o2": "351",
+    "o3": "334"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.83,
+   "p_correct": 0.83,
+   "probabilities": {
+    "o0": 0.04,
+    "o2": 0.83,
+    "o3": 0.08,
+    "o1": 0.05
+   },
+   "confidence": 0.77,
+   "model": "jev-1.13.0",
+   "server_ms": 164,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 18 lamps at $7 each, then sells them all for a total that is $78 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "74",
+    "o1": "21",
+    "o2": "48",
+    "o3": "75"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.47,
+   "p_correct": 0.47,
+   "probabilities": {
+    "o2": 0.32,
+    "o3": 0.47,
+    "o0": 0.11,
+    "o1": 0.1
+   },
+   "confidence": 0.29,
+   "model": "jev-1.13.0",
+   "server_ms": 188,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 18 lamps at $3 each, then sells them all for a total that is $50 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "7",
+    "o1": "29",
+    "o2": "28",
+    "o3": "4"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.47000000000000003,
+   "p_correct": 0.47000000000000003,
+   "probabilities": {
+    "o0": 0.09,
+    "o1": 0.03,
+    "o3": 0.41,
+    "o2": 0.47000000000000003
+   },
+   "confidence": 0.29,
+   "model": "jev-1.13.0",
+   "server_ms": 138,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 27 litres per minute for 5 minutes; then 47 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "70",
+    "o1": "112",
+    "o2": "88",
+    "o3": "64"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.87,
+   "p_correct": 0.87,
+   "probabilities": {
+    "o3": 0.05,
+    "o1": 0.87,
+    "o0": 0.07,
+    "o2": 0.01
+   },
+   "confidence": 0.83,
+   "model": "jev-1.13.0",
+   "server_ms": 129,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 25 lamps at $6 each, then sells them all for a total that is $75 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "39",
+    "o1": "75",
+    "o2": "73",
+    "o3": "66"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.95,
+   "p_correct": 0.95,
+   "probabilities": {
+    "o2": 0.01,
+    "o3": 0.95,
+    "o1": 0.04,
+    "o0": 0.0
+   },
+   "confidence": 0.93,
+   "model": "jev-1.13.0",
+   "server_ms": 257,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "Ana packs 56 boxes with 5 pears each and then finds 15 loose pears. How many pears does she have in total?",
+   "criteria": {
+    "o0": "290",
+    "o1": "329",
+    "o2": "283",
+    "o3": "295"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o2",
+   "is_correct": false,
+   "top_prob": 0.54,
+   "p_correct": 0.4,
+   "probabilities": {
+    "o0": 0.06,
+    "o1": 0.54,
+    "o3": 0.0,
+    "o2": 0.4
+   },
+   "confidence": 0.38,
+   "model": "jev-1.13.0",
+   "server_ms": 202,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 43 lamps at $3 each, then sells them all for a total that is $25 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "127",
+    "o1": "112",
+    "o2": "104",
+    "o3": "123"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.98,
+   "p_correct": 0.98,
+   "probabilities": {
+    "o0": 0.0,
+    "o3": 0.98,
+    "o2": 0.01,
+    "o1": 0.01
+   },
+   "confidence": 0.96,
+   "model": "jev-1.13.0",
+   "server_ms": 147,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 36 lamps at $9 each, then sells them all for a total that is $20 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "336",
+    "o1": "299",
+    "o2": "301",
+    "o3": "304"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o3",
+   "is_correct": false,
+   "top_prob": 0.57,
+   "p_correct": 0.07,
+   "probabilities": {
+    "o0": 0.0,
+    "o1": 0.57,
+    "o3": 0.07,
+    "o2": 0.36
+   },
+   "confidence": 0.42,
+   "model": "jev-1.13.0",
+   "server_ms": 95,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A shop buys 44 lamps at $8 each, then sells them all for a total that is $23 less than what it paid. How many dollars did the shop receive?",
+   "criteria": {
+    "o0": "324",
+    "o1": "355",
+    "o2": "313",
+    "o3": "329"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.99,
+   "p_correct": 0.99,
+   "probabilities": {
+    "o3": 0.0,
+    "o2": 0.01,
+    "o1": 0.99,
+    "o0": 0.0
+   },
+   "confidence": 0.99,
+   "model": "jev-1.13.0",
+   "server_ms": 170,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 27 litres per minute for 8 minutes; then 25 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "212",
+    "o1": "191",
+    "o2": "223",
+    "o3": "172"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.95,
+   "p_correct": 0.95,
+   "probabilities": {
+    "o3": 0.0,
+    "o1": 0.01,
+    "o0": 0.95,
+    "o2": 0.04
+   },
+   "confidence": 0.93,
+   "model": "jev-1.13.0",
+   "server_ms": 139,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 72 litres per minute for 7 minutes; then 36 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "468",
+    "o1": "452",
+    "o2": "480",
+    "o3": "461"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.98,
+   "p_correct": 0.98,
+   "probabilities": {
+    "o0": 0.0,
+    "o3": 0.98,
+    "o2": 0.01,
+    "o1": 0.01
+   },
+   "confidence": 0.96,
+   "model": "jev-1.13.0",
+   "server_ms": 267,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "A tap fills 85 litres per minute for 3 minutes; then 45 litres are drained. How many litres remain?",
+   "criteria": {
+    "o0": "233",
+    "o1": "185",
+    "o2": "215",
+    "o3": "210"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.86,
+   "p_correct": 0.86,
+   "probabilities": {
+    "o2": 0.0,
+    "o1": 0.01,
+    "o0": 0.13,
+    "o3": 0.86
+   },
+   "confidence": 0.82,
+   "model": "jev-1.13.0",
+   "server_ms": 122,
+   "family": "word_2step",
+   "repeat": 0,
+   "state": "Ana packs 15 boxes with 6 pears each and then finds 65 loose pears. How many pears does she have in total?",
+   "criteria": {
+    "o0": "145",
+    "o1": "153",
+    "o2": "120",
+    "o3": "155"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o0",
+   "is_correct": false,
+   "top_prob": 0.33,
+   "p_correct": 0.27,
+   "probabilities": {
+    "o0": 0.27,
+    "o1": 0.18,
+    "o3": 0.22,
+    "o2": 0.33
+   },
+   "confidence": 0.1,
+   "model": "jev-1.13.0",
+   "server_ms": 218,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 5^6 mod 19?",
+   "criteria": {
+    "o0": "7",
+    "o1": "3",
+    "o2": "8",
+    "o3": "11"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o2",
+   "is_correct": false,
+   "top_prob": 0.36,
+   "p_correct": 0.22,
+   "probabilities": {
+    "o1": 0.33,
+    "o0": 0.09,
+    "o3": 0.36,
+    "o2": 0.22
+   },
+   "confidence": 0.14,
+   "model": "jev-1.13.0",
+   "server_ms": 150,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 7^7 mod 23?",
+   "criteria": {
+    "o0": "7",
+    "o1": "10",
+    "o2": "5",
+    "o3": "9"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o1",
+   "is_correct": false,
+   "top_prob": 0.38,
+   "p_correct": 0.11,
+   "probabilities": {
+    "o1": 0.11,
+    "o3": 0.17,
+    "o2": 0.34,
+    "o0": 0.38
+   },
+   "confidence": 0.18,
+   "model": "jev-1.13.0",
+   "server_ms": 198,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 4^9 mod 19?",
+   "criteria": {
+    "o0": "6",
+    "o1": "1",
+    "o2": "5",
+    "o3": "2"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.78,
+   "p_correct": 0.78,
+   "probabilities": {
+    "o1": 0.2,
+    "o2": 0.78,
+    "o3": 0.01,
+    "o0": 0.01
+   },
+   "confidence": 0.72,
+   "model": "jev-1.13.0",
+   "server_ms": 211,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 6^12 mod 7?",
+   "criteria": {
+    "o0": "0",
+    "o1": "5",
+    "o2": "1",
+    "o3": "7"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.35,
+   "p_correct": 0.35,
+   "probabilities": {
+    "o1": 0.36,
+    "o2": 0.17,
+    "o3": 0.35,
+    "o0": 0.12
+   },
+   "confidence": 0.14,
+   "model": "jev-1.13.0",
+   "server_ms": 314,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 4^7 mod 19?",
+   "criteria": {
+    "o0": "2",
+    "o1": "5",
+    "o2": "4",
+    "o3": "6"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.34,
+   "p_correct": 0.34,
+   "probabilities": {
+    "o3": 0.26,
+    "o1": 0.22,
+    "o0": 0.34,
+    "o2": 0.18
+   },
+   "confidence": 0.12,
+   "model": "jev-1.13.0",
+   "server_ms": 202,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 8^4 mod 11?",
+   "criteria": {
+    "o0": "4",
+    "o1": "1",
+    "o2": "8",
+    "o3": "5"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.42,
+   "p_correct": 0.42,
+   "probabilities": {
+    "o2": 0.3,
+    "o3": 0.27,
+    "o1": 0.01,
+    "o0": 0.42
+   },
+   "confidence": 0.22,
+   "model": "jev-1.13.0",
+   "server_ms": 326,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 9^8 mod 19?",
+   "criteria": {
+    "o0": "17",
+    "o1": "22",
+    "o2": "15",
+    "o3": "12"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o1",
+   "is_correct": false,
+   "top_prob": 0.47,
+   "p_correct": 0.32,
+   "probabilities": {
+    "o1": 0.32,
+    "o3": 0.02,
+    "o0": 0.19,
+    "o2": 0.47
+   },
+   "confidence": 0.29,
+   "model": "jev-1.13.0",
+   "server_ms": 217,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 9^6 mod 23?",
+   "criteria": {
+    "o0": "9",
+    "o1": "3",
+    "o2": "7",
+    "o3": "0"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.35,
+   "p_correct": 0.35,
+   "probabilities": {
+    "o0": 0.29,
+    "o3": 0.13,
+    "o2": 0.35,
+    "o1": 0.23
+   },
+   "confidence": 0.14,
+   "model": "jev-1.13.0",
+   "server_ms": 68,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 3^10 mod 23?",
+   "criteria": {
+    "o0": "9",
+    "o1": "14",
+    "o2": "8",
+    "o3": "2"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o1",
+   "is_correct": false,
+   "top_prob": 0.35,
+   "p_correct": 0.22,
+   "probabilities": {
+    "o0": 0.29,
+    "o3": 0.35,
+    "o1": 0.22,
+    "o2": 0.14
+   },
+   "confidence": 0.13,
+   "model": "jev-1.13.0",
+   "server_ms": 171,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 3^10 mod 13?",
+   "criteria": {
+    "o0": "6",
+    "o1": "3",
+    "o2": "1",
+    "o3": "5"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.3,
+   "p_correct": 0.3,
+   "probabilities": {
+    "o2": 0.16,
+    "o1": 0.3,
+    "o3": 0.28,
+    "o0": 0.26
+   },
+   "confidence": 0.07,
+   "model": "jev-1.13.0",
+   "server_ms": 137,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 4^9 mod 23?",
+   "criteria": {
+    "o0": "9",
+    "o1": "13",
+    "o2": "12",
+    "o3": "16"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o3",
+   "is_correct": false,
+   "top_prob": 0.31,
+   "p_correct": 0.22,
+   "probabilities": {
+    "o1": 0.31,
+    "o0": 0.26,
+    "o3": 0.22,
+    "o2": 0.21
+   },
+   "confidence": 0.08,
+   "model": "jev-1.13.0",
+   "server_ms": 103,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 7^3 mod 23?",
+   "criteria": {
+    "o0": "16",
+    "o1": "17",
+    "o2": "15",
+    "o3": "21"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o3",
+   "is_correct": false,
+   "top_prob": 0.51,
+   "p_correct": 0.16,
+   "probabilities": {
+    "o3": 0.16,
+    "o1": 0.21,
+    "o0": 0.12,
+    "o2": 0.51
+   },
+   "confidence": 0.35,
+   "model": "jev-1.13.0",
+   "server_ms": 262,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 6^12 mod 11?",
+   "criteria": {
+    "o0": "5",
+    "o1": "8",
+    "o2": "1",
+    "o3": "3"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o2",
+   "is_correct": false,
+   "top_prob": 0.47,
+   "p_correct": 0.04,
+   "probabilities": {
+    "o3": 0.06,
+    "o1": 0.43,
+    "o0": 0.47,
+    "o2": 0.04
+   },
+   "confidence": 0.3,
+   "model": "jev-1.13.0",
+   "server_ms": 199,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 2^12 mod 23?",
+   "criteria": {
+    "o0": "8",
+    "o1": "5",
+    "o2": "2",
+    "o3": "1"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o1",
+   "is_correct": false,
+   "top_prob": 0.38,
+   "p_correct": 0.16,
+   "probabilities": {
+    "o3": 0.21,
+    "o2": 0.38,
+    "o1": 0.16,
+    "o0": 0.25
+   },
+   "confidence": 0.18,
+   "model": "jev-1.13.0",
+   "server_ms": 206,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 2^9 mod 7?",
+   "criteria": {
+    "o0": "4",
+    "o1": "1",
+    "o2": "2",
+    "o3": "6"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.75,
+   "p_correct": 0.75,
+   "probabilities": {
+    "o1": 0.11,
+    "o2": 0.08,
+    "o3": 0.75,
+    "o0": 0.06
+   },
+   "confidence": 0.66,
+   "model": "jev-1.13.0",
+   "server_ms": 102,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 3^9 mod 19?",
+   "criteria": {
+    "o0": "22",
+    "o1": "24",
+    "o2": "20",
+    "o3": "18"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.35,
+   "p_correct": 0.35,
+   "probabilities": {
+    "o1": 0.22,
+    "o0": 0.35,
+    "o3": 0.15,
+    "o2": 0.28
+   },
+   "confidence": 0.15,
+   "model": "jev-1.13.0",
+   "server_ms": 145,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 4^8 mod 17?",
+   "criteria": {
+    "o0": "1",
+    "o1": "3",
+    "o2": "6",
+    "o3": "7"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.36,
+   "p_correct": 0.36,
+   "probabilities": {
+    "o1": 0.24,
+    "o0": 0.15,
+    "o3": 0.36,
+    "o2": 0.25
+   },
+   "confidence": 0.14,
+   "model": "jev-1.13.0",
+   "server_ms": 174,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 3^10 mod 17?",
+   "criteria": {
+    "o0": "7",
+    "o1": "5",
+    "o2": "6",
+    "o3": "8"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o3",
+   "is_correct": false,
+   "top_prob": 0.34,
+   "p_correct": 0.32,
+   "probabilities": {
+    "o0": 0.14,
+    "o3": 0.32,
+    "o2": 0.2,
+    "o1": 0.34
+   },
+   "confidence": 0.12,
+   "model": "jev-1.13.0",
+   "server_ms": 154,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 4^12 mod 11?",
+   "criteria": {
+    "o0": "6",
+    "o1": "3",
+    "o2": "8",
+    "o3": "5"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o3",
+   "is_correct": false,
+   "top_prob": 0.31,
+   "p_correct": 0.31,
+   "probabilities": {
+    "o1": 0.25,
+    "o2": 0.31,
+    "o0": 0.13,
+    "o3": 0.31
+   },
+   "confidence": 0.08,
+   "model": "jev-1.13.0",
+   "server_ms": 227,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 9^3 mod 23?",
+   "criteria": {
+    "o0": "12",
+    "o1": "19",
+    "o2": "14",
+    "o3": "16"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.37,
+   "p_correct": 0.37,
+   "probabilities": {
+    "o1": 0.01,
+    "o0": 0.37,
+    "o2": 0.32,
+    "o3": 0.3
+   },
+   "confidence": 0.16,
+   "model": "jev-1.13.0",
+   "server_ms": 237,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 5^7 mod 23?",
+   "criteria": {
+    "o0": "17",
+    "o1": "23",
+    "o2": "22",
+    "o3": "12"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.83,
+   "p_correct": 0.83,
+   "probabilities": {
+    "o0": 0.83,
+    "o2": 0.1,
+    "o3": 0.03,
+    "o1": 0.04
+   },
+   "confidence": 0.78,
+   "model": "jev-1.13.0",
+   "server_ms": 112,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 6^12 mod 7?",
+   "criteria": {
+    "o0": "1",
+    "o1": "0",
+    "o2": "4",
+    "o3": "3"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.5700000000000001,
+   "p_correct": 0.5700000000000001,
+   "probabilities": {
+    "o3": 0.5700000000000001,
+    "o2": 0.01,
+    "o1": 0.01,
+    "o0": 0.41
+   },
+   "confidence": 0.42,
+   "model": "jev-1.13.0",
+   "server_ms": 216,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 5^4 mod 7?",
+   "criteria": {
+    "o0": "6",
+    "o1": "8",
+    "o2": "7",
+    "o3": "2"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o0",
+   "is_correct": false,
+   "top_prob": 0.45,
+   "p_correct": 0.17,
+   "probabilities": {
+    "o3": 0.37,
+    "o2": 0.01,
+    "o1": 0.45,
+    "o0": 0.17
+   },
+   "confidence": 0.26,
+   "model": "jev-1.13.0",
+   "server_ms": 217,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 9^10 mod 13?",
+   "criteria": {
+    "o0": "9",
+    "o1": "5",
+    "o2": "14",
+    "o3": "8"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o0",
+   "is_correct": false,
+   "top_prob": 0.48,
+   "p_correct": 0.13,
+   "probabilities": {
+    "o1": 0.23,
+    "o3": 0.48,
+    "o2": 0.16,
+    "o0": 0.13
+   },
+   "confidence": 0.31,
+   "model": "jev-1.13.0",
+   "server_ms": 94,
+   "family": "modexp",
+   "repeat": 0,
+   "state": "What is 8^12 mod 23?",
+   "criteria": {
+    "o0": "8",
+    "o1": "2",
+    "o2": "12",
+    "o3": "9"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 1.0,
+    "o0": 0.0,
+    "o3": 0.0,
+    "o2": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 190,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 400 x 505?",
+   "criteria": {
+    "o0": "201895",
+    "o1": "202000",
+    "o2": "202418",
+    "o3": "202775"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 0.0,
+    "o3": 1.0,
+    "o2": 0.0,
+    "o0": 0.0
+   },
+   "confidence": 0.99,
+   "model": "jev-1.13.0",
+   "server_ms": 113,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 571 x 547?",
+   "criteria": {
+    "o0": "312724",
+    "o1": "312498",
+    "o2": "311596",
+    "o3": "312337"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 0.0,
+    "o0": 1.0,
+    "o2": 0.0,
+    "o3": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 137,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 770 x 651?",
+   "criteria": {
+    "o0": "501270",
+    "o1": "501494",
+    "o2": "501369",
+    "o3": "501967"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o0": 1.0,
+    "o2": 0.0,
+    "o3": 0.0,
+    "o1": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 200,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 896 x 618?",
+   "criteria": {
+    "o0": "553728",
+    "o1": "553565",
+    "o2": "553221",
+    "o3": "553567"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o2",
+   "is_correct": false,
+   "top_prob": 0.49,
+   "p_correct": 0.4,
+   "probabilities": {
+    "o0": 0.1,
+    "o1": 0.01,
+    "o3": 0.49,
+    "o2": 0.4
+   },
+   "confidence": 0.32,
+   "model": "jev-1.13.0",
+   "server_ms": 143,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 428 x 807?",
+   "criteria": {
+    "o0": "345586",
+    "o1": "345314",
+    "o2": "345396",
+    "o3": "345706"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.95,
+   "p_correct": 0.95,
+   "probabilities": {
+    "o0": 0.0,
+    "o3": 0.95,
+    "o2": 0.0,
+    "o1": 0.05
+   },
+   "confidence": 0.93,
+   "model": "jev-1.13.0",
+   "server_ms": 100,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 478 x 112?",
+   "criteria": {
+    "o0": "53399",
+    "o1": "53476",
+    "o2": "53242",
+    "o3": "53536"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.96,
+   "p_correct": 0.96,
+   "probabilities": {
+    "o0": 0.0,
+    "o1": 0.96,
+    "o3": 0.03,
+    "o2": 0.01
+   },
+   "confidence": 0.95,
+   "model": "jev-1.13.0",
+   "server_ms": 223,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 586 x 635?",
+   "criteria": {
+    "o0": "371752",
+    "o1": "372110",
+    "o2": "372775",
+    "o3": "371714"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.9,
+   "p_correct": 0.9,
+   "probabilities": {
+    "o1": 0.02,
+    "o3": 0.0,
+    "o0": 0.9,
+    "o2": 0.08
+   },
+   "confidence": 0.87,
+   "model": "jev-1.13.0",
+   "server_ms": 152,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 496 x 227?",
+   "criteria": {
+    "o0": "112592",
+    "o1": "112877",
+    "o2": "113242",
+    "o3": "112241"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o2": 0.0,
+    "o1": 0.0,
+    "o3": 1.0,
+    "o0": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 241,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 264 x 161?",
+   "criteria": {
+    "o0": "42282",
+    "o1": "42588",
+    "o2": "41662",
+    "o3": "42504"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.99,
+   "p_correct": 0.99,
+   "probabilities": {
+    "o0": 0.01,
+    "o3": 0.0,
+    "o2": 0.99,
+    "o1": 0.0
+   },
+   "confidence": 0.98,
+   "model": "jev-1.13.0",
+   "server_ms": 153,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 450 x 531?",
+   "criteria": {
+    "o0": "239601",
+    "o1": "238640",
+    "o2": "238950",
+    "o3": "239631"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 0.0,
+    "o0": 0.0,
+    "o2": 0.0,
+    "o3": 1.0
+   },
+   "confidence": 0.99,
+   "model": "jev-1.13.0",
+   "server_ms": 289,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 594 x 649?",
+   "criteria": {
+    "o0": "385594",
+    "o1": "385159",
+    "o2": "385748",
+    "o3": "385506"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 0.98,
+   "p_correct": 0.98,
+   "probabilities": {
+    "o3": 0.0,
+    "o2": 0.0,
+    "o1": 0.98,
+    "o0": 0.02
+   },
+   "confidence": 0.97,
+   "model": "jev-1.13.0",
+   "server_ms": 189,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 673 x 763?",
+   "criteria": {
+    "o0": "513963",
+    "o1": "513499",
+    "o2": "512950",
+    "o3": "513028"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.97,
+   "p_correct": 0.97,
+   "probabilities": {
+    "o1": 0.02,
+    "o0": 0.01,
+    "o3": 0.97,
+    "o2": 0.0
+   },
+   "confidence": 0.96,
+   "model": "jev-1.13.0",
+   "server_ms": 127,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 975 x 119?",
+   "criteria": {
+    "o0": "116903",
+    "o1": "116550",
+    "o2": "116474",
+    "o3": "116025"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.97,
+   "p_correct": 0.97,
+   "probabilities": {
+    "o3": 0.0,
+    "o1": 0.03,
+    "o0": 0.97,
+    "o2": 0.0
+   },
+   "confidence": 0.95,
+   "model": "jev-1.13.0",
+   "server_ms": 159,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 973 x 816?",
+   "criteria": {
+    "o0": "793968",
+    "o1": "794576",
+    "o2": "793682",
+    "o3": "794637"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o0",
+   "correct_key": "o0",
+   "is_correct": true,
+   "top_prob": 0.76,
+   "p_correct": 0.76,
+   "probabilities": {
+    "o1": 0.06,
+    "o3": 0.01,
+    "o2": 0.17,
+    "o0": 0.76
+   },
+   "confidence": 0.69,
+   "model": "jev-1.13.0",
+   "server_ms": 350,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 299 x 985?",
+   "criteria": {
+    "o0": "294515",
+    "o1": "294130",
+    "o2": "294615",
+    "o3": "293913"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o3",
+   "correct_key": "o3",
+   "is_correct": true,
+   "top_prob": 0.8,
+   "p_correct": 0.8,
+   "probabilities": {
+    "o1": 0.0,
+    "o2": 0.18,
+    "o3": 0.8,
+    "o0": 0.02
+   },
+   "confidence": 0.73,
+   "model": "jev-1.13.0",
+   "server_ms": 133,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 459 x 584?",
+   "criteria": {
+    "o0": "268736",
+    "o1": "268625",
+    "o2": "267396",
+    "o3": "268056"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 1.0,
+    "o0": 0.0,
+    "o3": 0.0,
+    "o2": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 187,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 919 x 220?",
+   "criteria": {
+    "o0": "202635",
+    "o1": "202180",
+    "o2": "202448",
+    "o3": "201706"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 0.0,
+    "o0": 0.0,
+    "o3": 0.0,
+    "o2": 1.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 147,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 108 x 292?",
+   "criteria": {
+    "o0": "31823",
+    "o1": "32075",
+    "o2": "31536",
+    "o3": "32154"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o3": 0.0,
+    "o0": 0.0,
+    "o1": 1.0,
+    "o2": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 154,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 946 x 394?",
+   "criteria": {
+    "o0": "372885",
+    "o1": "372724",
+    "o2": "372055",
+    "o3": "372785"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o0": 0.0,
+    "o1": 1.0,
+    "o3": 0.0,
+    "o2": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 116,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 105 x 741?",
+   "criteria": {
+    "o0": "78034",
+    "o1": "77805",
+    "o2": "77597",
+    "o3": "78613"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o3": 0.0,
+    "o1": 1.0,
+    "o0": 0.0,
+    "o2": 0.0
+   },
+   "confidence": 0.99,
+   "model": "jev-1.13.0",
+   "server_ms": 206,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 750 x 538?",
+   "criteria": {
+    "o0": "403480",
+    "o1": "403500",
+    "o2": "403349",
+    "o3": "403190"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 0.99,
+   "p_correct": 0.99,
+   "probabilities": {
+    "o1": 0.0,
+    "o3": 0.0,
+    "o0": 0.01,
+    "o2": 0.99
+   },
+   "confidence": 0.98,
+   "model": "jev-1.13.0",
+   "server_ms": 206,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 505 x 604?",
+   "criteria": {
+    "o0": "304161",
+    "o1": "305579",
+    "o2": "305020",
+    "o3": "304875"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 0.0,
+    "o3": 0.0,
+    "o0": 0.0,
+    "o2": 1.0
+   },
+   "confidence": 0.99,
+   "model": "jev-1.13.0",
+   "server_ms": 138,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 122 x 120?",
+   "criteria": {
+    "o0": "14022",
+    "o1": "14404",
+    "o2": "14640",
+    "o3": "14009"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o1",
+   "correct_key": "o1",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o0": 0.0,
+    "o1": 1.0,
+    "o3": 0.0,
+    "o2": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 113,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 837 x 209?",
+   "criteria": {
+    "o0": "174584",
+    "o1": "174933",
+    "o2": "174164",
+    "o3": "175586"
+   }
+  },
+  {
+   "status": 200,
+   "choice": "o2",
+   "correct_key": "o2",
+   "is_correct": true,
+   "top_prob": 1.0,
+   "p_correct": 1.0,
+   "probabilities": {
+    "o1": 0.0,
+    "o0": 0.0,
+    "o2": 1.0,
+    "o3": 0.0
+   },
+   "confidence": 1.0,
+   "model": "jev-1.13.0",
+   "server_ms": 119,
+   "family": "mult3x3",
+   "repeat": 0,
+   "state": "What is 558 x 250?",
+   "criteria": {
+    "o0": "140127",
+    "o1": "138964",
+    "o2": "139500",
+    "o3": "139542"
+   }
+  }
+ ]
+}
