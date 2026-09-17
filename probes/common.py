@@ -24,14 +24,24 @@ def api_key() -> str:
     raise RuntimeError("TYPESAFE_API_KEY not found")
 
 
-_session = requests.Session()
-_session.headers.update(
-    {"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"}
-)
+_session = None
+
+
+def session() -> requests.Session:
+    """Lazy: importing this module must not require an API key (fingerprint.py
+    imports the probe designs on machines without .env)."""
+    global _session
+    if _session is None:
+        _session = requests.Session()
+        _session.headers.update(
+            {"Authorization": f"Bearer {api_key()}", "Content-Type": "application/json"}
+        )
+    return _session
 
 
 def call(payload: dict, retries: int = 3) -> dict:
     """POST one request; return body plus request id, server time and wall time."""
+    _session = session()
     last: dict = {"status": 0, "text": ""}
     for attempt in range(retries):
         t0 = time.perf_counter()
