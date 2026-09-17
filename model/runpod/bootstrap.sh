@@ -7,10 +7,12 @@ echo "=== bootstrap $(date -u) ==="
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader || true
 
 cd /workspace
-if [ ! -d jev-probes ]; then
+# Code arrives via scp into /workspace/jev-probes/model (no secrets on the pod).
+# Fallback: clone with GH_TOKEN if it was provided and the directory is absent.
+if [ ! -d jev-probes/model ] && [ -n "${GH_TOKEN:-}" ]; then
   git clone -q "https://${GH_TOKEN}@github.com/sseanliu/jev-probes.git"
 fi
-cd jev-probes && git pull -q && cd model
+cd jev-probes/model
 
 python -m pip install -q --upgrade pip
 python -m pip install -q "torch>=2.4" transformers datasets accelerate tiktoken requests numpy
