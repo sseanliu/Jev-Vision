@@ -125,6 +125,15 @@ def build(k: int, pool: list) -> dict:
 
 
 def main() -> None:
+    variant = "unknown"
+    if "--variant" in sys.argv:
+        variant = sys.argv[sys.argv.index("--variant") + 1]
+    if variant == "concrete":
+        # Control: replace the "none of the above" option with a fourth
+        # concrete cause. If the K effect is about "Cannot tell" semantics,
+        # it should vanish here.
+        ORIGINAL.pop("unknown")
+        ORIGINAL["hacker"] = "A hacker caused it"
     rng = random.Random(SEED)
     conditions = []
     for k in KS:
@@ -167,10 +176,10 @@ def main() -> None:
         "schema": "jev-k-sweep.v1",
         "date": datetime.now(timezone.utc).isoformat(),
         "seed": SEED,
-        "design": {"KS": KS, "BLOCKS": BLOCKS, "DUPS": DUPS},
+        "design": {"KS": KS, "BLOCKS": BLOCKS, "DUPS": DUPS, "variant": variant, "original": ORIGINAL},
         "trials": trials,
     }
-    path = save("k_sweep_trials.json", out)
+    path = save(f"k_sweep_{variant}_trials.json", out)
     print("saved", path)
     summarize(trials)
 

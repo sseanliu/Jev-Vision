@@ -1,0 +1,215 @@
+[  1/180] block=0 K= 8 B dup=0 status=200 server=126ms cust=0.44 unk=0.16 prov=0.38 bank=0.02
+[  2/180] block=0 K= 8 B dup=1 status=200 server=100ms cust=0.4 unk=0.15 prov=0.43 bank=0.02
+[  3/180] block=0 K=12 A dup=0 status=200 server=123ms cust=0.39 unk=0.15 prov=0.43 bank=0.03
+[  4/180] block=0 K=12 A dup=1 status=200 server=93ms cust=0.38 unk=0.14 prov=0.43 bank=0.05
+[  5/180] block=0 K=32 B dup=0 status=200 server=101ms cust=0.41 unk=0.08 prov=0.48 bank=0.03
+[  6/180] block=0 K=32 B dup=1 status=200 server=67ms cust=0.4 unk=0.1 prov=0.46 bank=0.04
+[  7/180] block=0 K= 8 A dup=0 status=200 server=68ms cust=0.52 unk=0.16 prov=0.29 bank=0.03
+[  8/180] block=0 K= 8 A dup=1 status=200 server=81ms cust=0.49 unk=0.17 prov=0.32 bank=0.02
+[  9/180] block=0 K=24 B dup=0 status=200 server=100ms cust=0.39 unk=0.11 prov=0.48 bank=0.02
+[ 10/180] block=0 K=24 B dup=1 status=200 server=132ms cust=0.39 unk=0.13 prov=0.44 bank=0.04
+[ 11/180] block=0 K=32 A dup=0 status=200 server=235ms cust=0.46 unk=0.09 prov=0.41000000000000003 bank=0.04
+[ 12/180] block=0 K=32 A dup=1 status=200 server=153ms cust=0.47000000000000003 unk=0.09 prov=0.42 bank=0.02
+[ 13/180] block=0 K= 5 A dup=0 status=200 server=123ms cust=0.38 unk=0.36 prov=0.24 bank=0.02
+[ 14/180] block=0 K= 5 A dup=1 status=200 server=118ms cust=0.42 unk=0.37 prov=0.19 bank=0.02
+[ 15/180] block=0 K= 4 A dup=0 status=200 server=92ms cust=0.48 unk=0.31 prov=0.2 bank=0.01
+[ 16/180] block=0 K= 4 A dup=1 status=200 server=118ms cust=0.53 unk=0.3 prov=0.16 bank=0.01
+[ 17/180] block=0 K= 6 A dup=0 status=200 server=118ms cust=0.43 unk=0.27 prov=0.27 bank=0.03
+[ 18/180] block=0 K= 6 A dup=1 status=200 server=118ms cust=0.44 unk=0.28 prov=0.25 bank=0.03
+[ 19/180] block=0 K=12 B dup=0 status=200 server=109ms cust=0.37 unk=0.13 prov=0.48 bank=0.02
+[ 20/180] block=0 K=12 B dup=1 status=200 server=74ms cust=0.43 unk=0.1 prov=0.46 bank=0.01
+[ 21/180] block=0 K=24 A dup=0 status=200 server=78ms cust=0.36 unk=0.11 prov=0.5 bank=0.03
+[ 22/180] block=0 K=24 A dup=1 status=200 server=164ms cust=0.42 unk=0.1 prov=0.46 bank=0.02
+[ 23/180] block=0 K= 6 B dup=0 status=200 server=118ms cust=0.49 unk=0.22 prov=0.28 bank=0.01
+[ 24/180] block=0 K= 6 B dup=1 status=200 server=74ms cust=0.49 unk=0.22 prov=0.27 bank=0.02
+[ 25/180] block=0 K=16 B dup=0 status=200 server=62ms cust=0.4 unk=0.15 prov=0.42 bank=0.03
+[ 26/180] block=0 K=16 B dup=1 status=200 server=97ms cust=0.44 unk=0.13 prov=0.41 bank=0.02
+[ 27/180] block=0 K= 5 B dup=0 status=200 server=145ms cust=0.38 unk=0.37 prov=0.24 bank=0.01
+[ 28/180] block=0 K= 5 B dup=1 status=200 server=99ms cust=0.35 unk=0.37 prov=0.27 bank=0.01
+[ 29/180] block=0 K=16 A dup=0 status=200 server=83ms cust=0.35 unk=0.13 prov=0.5 bank=0.02
+[ 30/180] block=0 K=16 A dup=1 status=200 server=100ms cust=0.37 unk=0.11 prov=0.5 bank=0.02
+[ 31/180] block=1 K=32 A dup=0 status=200 server=77ms cust=0.4 unk=0.13 prov=0.45 bank=0.02
+[ 32/180] block=1 K=32 A dup=1 status=200 server=132ms cust=0.45 unk=0.1 prov=0.41000000000000003 bank=0.04
+[ 33/180] block=1 K= 6 B dup=0 status=200 server=203ms cust=0.46 unk=0.24 prov=0.28 bank=0.02
+[ 34/180] block=1 K= 6 B dup=1 status=200 server=120ms cust=0.41000000000000003 unk=0.24 prov=0.33 bank=0.02
+[ 35/180] block=1 K= 5 B dup=0 status=200 server=79ms cust=0.42 unk=0.32 prov=0.25 bank=0.01
+[ 36/180] block=1 K= 5 B dup=1 status=200 server=120ms cust=0.42 unk=0.33 prov=0.24 bank=0.01
+[ 37/180] block=1 K= 5 A dup=0 status=200 server=95ms cust=0.41 unk=0.39 prov=0.19 bank=0.01
+[ 38/180] block=1 K= 5 A dup=1 status=200 server=61ms cust=0.44 unk=0.33 prov=0.21 bank=0.02
+[ 39/180] block=1 K=12 B dup=0 status=200 server=104ms cust=0.44 unk=0.13 prov=0.41000000000000003 bank=0.02
+[ 40/180] block=1 K=12 B dup=1 status=200 server=101ms cust=0.4 unk=0.15 prov=0.43 bank=0.02
+[ 41/180] block=1 K=16 A dup=0 status=200 server=82ms cust=0.37 unk=0.14 prov=0.47000000000000003 bank=0.02
+[ 42/180] block=1 K=16 A dup=1 status=200 server=151ms cust=0.39 unk=0.12 prov=0.47000000000000003 bank=0.02
+[ 43/180] block=1 K=24 A dup=0 status=200 server=72ms cust=0.41 unk=0.11 prov=0.45 bank=0.03
+[ 44/180] block=1 K=24 A dup=1 status=200 server=74ms cust=0.43 unk=0.09 prov=0.46 bank=0.02
+[ 45/180] block=1 K= 8 A dup=0 status=200 server=53ms cust=0.41 unk=0.17 prov=0.4 bank=0.02
+[ 46/180] block=1 K= 8 A dup=1 status=200 server=50ms cust=0.47000000000000003 unk=0.2 prov=0.31 bank=0.02
+[ 47/180] block=1 K= 4 A dup=0 status=200 server=92ms cust=0.46 unk=0.36 prov=0.17 bank=0.01
+[ 48/180] block=1 K= 4 A dup=1 status=200 server=94ms cust=0.51 unk=0.33 prov=0.15 bank=0.01
+[ 49/180] block=1 K= 8 B dup=0 status=200 server=110ms cust=0.42 unk=0.17 prov=0.39 bank=0.02
+[ 50/180] block=1 K= 8 B dup=1 status=200 server=114ms cust=0.45 unk=0.17 prov=0.37 bank=0.01
+[ 51/180] block=1 K=32 B dup=0 status=200 server=78ms cust=0.4 unk=0.1 prov=0.48 bank=0.02
+[ 52/180] block=1 K=32 B dup=1 status=200 server=114ms cust=0.41000000000000003 unk=0.11 prov=0.45 bank=0.03
+[ 53/180] block=1 K=12 A dup=0 status=200 server=80ms cust=0.41000000000000003 unk=0.15 prov=0.41000000000000003 bank=0.03
+[ 54/180] block=1 K=12 A dup=1 status=200 server=91ms cust=0.46 unk=0.15 prov=0.36 bank=0.03
+[ 55/180] block=1 K=24 B dup=0 status=200 server=63ms cust=0.45 unk=0.1 prov=0.42 bank=0.03
+[ 56/180] block=1 K=24 B dup=1 status=200 server=101ms cust=0.38 unk=0.1 prov=0.5 bank=0.02
+[ 57/180] block=1 K= 6 A dup=0 status=200 server=219ms cust=0.5 unk=0.26 prov=0.21 bank=0.03
+[ 58/180] block=1 K= 6 A dup=1 status=200 server=110ms cust=0.46 unk=0.26 prov=0.24 bank=0.04
+[ 59/180] block=1 K=16 B dup=0 status=200 server=62ms cust=0.37 unk=0.19 prov=0.43 bank=0.01
+[ 60/180] block=1 K=16 B dup=1 status=200 server=80ms cust=0.39 unk=0.13 prov=0.46 bank=0.02
+[ 61/180] block=2 K= 5 A dup=0 status=200 server=99ms cust=0.36 unk=0.38 prov=0.24 bank=0.02
+[ 62/180] block=2 K= 5 A dup=1 status=200 server=90ms cust=0.4 unk=0.36 prov=0.22 bank=0.02
+[ 63/180] block=2 K= 6 A dup=0 status=200 server=113ms cust=0.46 unk=0.28 prov=0.23 bank=0.03
+[ 64/180] block=2 K= 6 A dup=1 status=200 server=166ms cust=0.4 unk=0.33 prov=0.22 bank=0.05
+[ 65/180] block=2 K=16 B dup=0 status=200 server=61ms cust=0.38 unk=0.13 prov=0.47 bank=0.02
+[ 66/180] block=2 K=16 B dup=1 status=200 server=117ms cust=0.4 unk=0.2 prov=0.38 bank=0.02
+[ 67/180] block=2 K= 8 A dup=0 status=200 server=112ms cust=0.48 unk=0.19 prov=0.3 bank=0.03
+[ 68/180] block=2 K= 8 A dup=1 status=200 server=89ms cust=0.51 unk=0.16 prov=0.31 bank=0.02
+[ 69/180] block=2 K=16 A dup=0 status=200 server=64ms cust=0.46 unk=0.12 prov=0.39 bank=0.03
+[ 70/180] block=2 K=16 A dup=1 status=200 server=77ms cust=0.36 unk=0.16 prov=0.46 bank=0.02
+[ 71/180] block=2 K=32 B dup=0 status=200 server=92ms cust=0.32 unk=0.07 prov=0.5700000000000001 bank=0.03
+[ 72/180] block=2 K=32 B dup=1 status=200 server=81ms cust=0.36 unk=0.1 prov=0.52 bank=0.02
+[ 73/180] block=2 K= 8 B dup=0 status=200 server=89ms cust=0.37 unk=0.16 prov=0.45 bank=0.02
+[ 74/180] block=2 K= 8 B dup=1 status=200 server=95ms cust=0.41000000000000003 unk=0.18 prov=0.39 bank=0.02
+[ 75/180] block=2 K= 5 B dup=0 status=200 server=202ms cust=0.39 unk=0.34 prov=0.26 bank=0.01
+[ 76/180] block=2 K= 5 B dup=1 status=200 server=66ms cust=0.4 unk=0.3 prov=0.29 bank=0.01
+[ 77/180] block=2 K=12 B dup=0 status=200 server=92ms cust=0.35 unk=0.11 prov=0.51 bank=0.03
+[ 78/180] block=2 K=12 B dup=1 status=200 server=87ms cust=0.4 unk=0.14 prov=0.43 bank=0.03
+[ 79/180] block=2 K=24 A dup=0 status=200 server=92ms cust=0.41 unk=0.11 prov=0.46 bank=0.02
+[ 80/180] block=2 K=24 A dup=1 status=200 server=65ms cust=0.37 unk=0.14 prov=0.46 bank=0.03
+[ 81/180] block=2 K=32 A dup=0 status=200 server=129ms cust=0.4 unk=0.14 prov=0.41000000000000003 bank=0.04
+[ 82/180] block=2 K=32 A dup=1 status=200 server=110ms cust=0.4 unk=0.12 prov=0.46 bank=0.02
+[ 83/180] block=2 K=12 A dup=0 status=200 server=94ms cust=0.39 unk=0.15 prov=0.43 bank=0.03
+[ 84/180] block=2 K=12 A dup=1 status=200 server=72ms cust=0.41 unk=0.15 prov=0.41 bank=0.03
+[ 85/180] block=2 K= 4 A dup=0 status=200 server=92ms cust=0.45 unk=0.31 prov=0.23 bank=0.01
+[ 86/180] block=2 K= 4 A dup=1 status=200 server=65ms cust=0.48 unk=0.32 prov=0.19 bank=0.01
+[ 87/180] block=2 K=24 B dup=0 status=200 server=78ms cust=0.38 unk=0.11 prov=0.49 bank=0.02
+[ 88/180] block=2 K=24 B dup=1 status=200 server=130ms cust=0.41000000000000003 unk=0.11 prov=0.46 bank=0.02
+[ 89/180] block=2 K= 6 B dup=0 status=200 server=79ms cust=0.48 unk=0.22 prov=0.28 bank=0.02
+[ 90/180] block=2 K= 6 B dup=1 status=200 server=83ms cust=0.42 unk=0.24 prov=0.32 bank=0.02
+[ 91/180] block=3 K=32 A dup=0 status=200 server=124ms cust=0.4 unk=0.12 prov=0.46 bank=0.02
+[ 92/180] block=3 K=32 A dup=1 status=200 server=113ms cust=0.36 unk=0.1 prov=0.52 bank=0.02
+[ 93/180] block=3 K= 5 A dup=0 status=200 server=139ms cust=0.39 unk=0.38 prov=0.21 bank=0.02
+[ 94/180] block=3 K= 5 A dup=1 status=200 server=102ms cust=0.35 unk=0.39 prov=0.25 bank=0.01
+[ 95/180] block=3 K= 8 A dup=0 status=200 server=96ms cust=0.46 unk=0.17 prov=0.34 bank=0.02
+[ 96/180] block=3 K= 8 A dup=1 status=200 server=77ms cust=0.43 unk=0.22 prov=0.34 bank=0.01
+[ 97/180] block=3 K=24 A dup=0 status=200 server=71ms cust=0.41 unk=0.1 prov=0.45 bank=0.04
+[ 98/180] block=3 K=24 A dup=1 status=200 server=68ms cust=0.39 unk=0.1 prov=0.48 bank=0.03
+[ 99/180] block=3 K=16 B dup=0 status=200 server=112ms cust=0.37 unk=0.22 prov=0.38 bank=0.03
+[100/180] block=3 K=16 B dup=1 status=200 server=94ms cust=0.43 unk=0.17 prov=0.38 bank=0.02
+[101/180] block=3 K= 6 B dup=0 status=200 server=139ms cust=0.45 unk=0.21 prov=0.32 bank=0.02
+[102/180] block=3 K= 6 B dup=1 status=200 server=217ms cust=0.45 unk=0.27 prov=0.26 bank=0.02
+[103/180] block=3 K= 5 B dup=0 status=200 server=48ms cust=0.45 unk=0.31 prov=0.23 bank=0.01
+[104/180] block=3 K= 5 B dup=1 status=200 server=68ms cust=0.41000000000000003 unk=0.32 prov=0.26 bank=0.01
+[105/180] block=3 K=16 A dup=0 status=200 server=100ms cust=0.36 unk=0.14 prov=0.47000000000000003 bank=0.03
+[106/180] block=3 K=16 A dup=1 status=200 server=130ms cust=0.45 unk=0.14 prov=0.39 bank=0.02
+[107/180] block=3 K=24 B dup=0 status=200 server=94ms cust=0.32 unk=0.09 prov=0.56 bank=0.02
+[108/180] block=3 K=24 B dup=1 status=200 server=112ms cust=0.42 unk=0.14 prov=0.4 bank=0.04
+[109/180] block=3 K=12 B dup=0 status=200 server=97ms cust=0.44 unk=0.12 prov=0.42 bank=0.02
+[110/180] block=3 K=12 B dup=1 status=200 server=84ms cust=0.4 unk=0.14 prov=0.44 bank=0.02
+[111/180] block=3 K=32 B dup=0 status=200 server=91ms cust=0.31 unk=0.08 prov=0.59 bank=0.02
+[112/180] block=3 K=32 B dup=1 status=200 server=126ms cust=0.37 unk=0.09 prov=0.52 bank=0.02
+[113/180] block=3 K= 4 A dup=0 status=200 server=120ms cust=0.51 unk=0.28 prov=0.19 bank=0.02
+[114/180] block=3 K= 4 A dup=1 status=200 server=85ms cust=0.46 unk=0.33 prov=0.2 bank=0.01
+[115/180] block=3 K= 6 A dup=0 status=200 server=99ms cust=0.44 unk=0.29 prov=0.23 bank=0.04
+[116/180] block=3 K= 6 A dup=1 status=200 server=87ms cust=0.47 unk=0.28 prov=0.22 bank=0.03
+[117/180] block=3 K=12 A dup=0 status=200 server=132ms cust=0.38 unk=0.16 prov=0.43 bank=0.03
+[118/180] block=3 K=12 A dup=1 status=200 server=78ms cust=0.45 unk=0.16 prov=0.37 bank=0.02
+[119/180] block=3 K= 8 B dup=0 status=200 server=116ms cust=0.4 unk=0.19 prov=0.39 bank=0.02
+[120/180] block=3 K= 8 B dup=1 status=200 server=93ms cust=0.41 unk=0.17 prov=0.4 bank=0.02
+[121/180] block=4 K= 5 B dup=0 status=200 server=97ms cust=0.38 unk=0.31 prov=0.3 bank=0.01
+[122/180] block=4 K= 5 B dup=1 status=200 server=119ms cust=0.43 unk=0.32 prov=0.23 bank=0.02
+[123/180] block=4 K= 8 A dup=0 status=200 server=70ms cust=0.44 unk=0.22 prov=0.32 bank=0.02
+[124/180] block=4 K= 8 A dup=1 status=200 server=113ms cust=0.48 unk=0.17 prov=0.33 bank=0.02
+[125/180] block=4 K=16 B dup=0 status=200 server=117ms cust=0.36 unk=0.14 prov=0.46 bank=0.04
+[126/180] block=4 K=16 B dup=1 status=200 server=119ms cust=0.4 unk=0.15 prov=0.43 bank=0.02
+[127/180] block=4 K= 8 B dup=0 status=200 server=58ms cust=0.45 unk=0.19 prov=0.34 bank=0.02
+[128/180] block=4 K= 8 B dup=1 status=200 server=137ms cust=0.38 unk=0.21 prov=0.39 bank=0.02
+[129/180] block=4 K= 6 A dup=0 status=200 server=140ms cust=0.43 unk=0.3 prov=0.23 bank=0.04
+[130/180] block=4 K= 6 A dup=1 status=200 server=68ms cust=0.48 unk=0.25 prov=0.23 bank=0.04
+[131/180] block=4 K=12 A dup=0 status=200 server=80ms cust=0.41 unk=0.14 prov=0.42 bank=0.03
+[132/180] block=4 K=12 A dup=1 status=200 server=61ms cust=0.47000000000000003 unk=0.15 prov=0.35 bank=0.03
+[133/180] block=4 K=16 A dup=0 status=200 server=115ms cust=0.31 unk=0.11 prov=0.56 bank=0.02
+[134/180] block=4 K=16 A dup=1 status=200 server=115ms cust=0.41 unk=0.12 prov=0.45 bank=0.02
+[135/180] block=4 K=32 A dup=0 status=200 server=460ms cust=0.44 unk=0.13 prov=0.39 bank=0.04
+[136/180] block=4 K=32 A dup=1 status=200 server=110ms cust=0.41000000000000003 unk=0.12 prov=0.44 bank=0.03
+[137/180] block=4 K=24 A dup=0 status=200 server=79ms cust=0.41 unk=0.1 prov=0.45 bank=0.04
+[138/180] block=4 K=24 A dup=1 status=200 server=113ms cust=0.42 unk=0.11 prov=0.45 bank=0.02
+[139/180] block=4 K=12 B dup=0 status=200 server=71ms cust=0.41 unk=0.13 prov=0.43 bank=0.03
+[140/180] block=4 K=12 B dup=1 status=200 server=139ms cust=0.34 unk=0.11 prov=0.53 bank=0.02
+[141/180] block=4 K=24 B dup=0 status=200 server=122ms cust=0.42 unk=0.1 prov=0.46 bank=0.02
+[142/180] block=4 K=24 B dup=1 status=200 server=99ms cust=0.34 unk=0.09 prov=0.54 bank=0.02
+[143/180] block=4 K= 6 B dup=0 status=200 server=95ms cust=0.46 unk=0.22 prov=0.29 bank=0.03
+[144/180] block=4 K= 6 B dup=1 status=200 server=98ms cust=0.48 unk=0.22 prov=0.28 bank=0.02
+[145/180] block=4 K=32 B dup=0 status=200 server=140ms cust=0.31 unk=0.1 prov=0.55 bank=0.04
+[146/180] block=4 K=32 B dup=1 status=200 server=147ms cust=0.35 unk=0.12 prov=0.5 bank=0.03
+[147/180] block=4 K= 5 A dup=0 status=200 server=101ms cust=0.39 unk=0.41 prov=0.19 bank=0.01
+[148/180] block=4 K= 5 A dup=1 status=200 server=88ms cust=0.4 unk=0.36 prov=0.22 bank=0.02
+[149/180] block=4 K= 4 A dup=0 status=200 server=145ms cust=0.48 unk=0.29 prov=0.22 bank=0.01
+[150/180] block=4 K= 4 A dup=1 status=200 server=139ms cust=0.42 unk=0.34 prov=0.23 bank=0.01
+[151/180] block=5 K= 6 A dup=0 status=200 server=92ms cust=0.47000000000000003 unk=0.28 prov=0.22 bank=0.03
+[152/180] block=5 K= 6 A dup=1 status=200 server=86ms cust=0.44 unk=0.28 prov=0.25 bank=0.03
+[153/180] block=5 K=16 A dup=0 status=200 server=83ms cust=0.33 unk=0.14 prov=0.5 bank=0.03
+[154/180] block=5 K=16 A dup=1 status=200 server=201ms cust=0.37 unk=0.15 prov=0.45 bank=0.03
+[155/180] block=5 K= 8 A dup=0 status=200 server=129ms cust=0.51 unk=0.16 prov=0.31 bank=0.02
+[156/180] block=5 K= 8 A dup=1 status=200 server=156ms cust=0.43 unk=0.18 prov=0.38 bank=0.01
+[157/180] block=5 K=16 B dup=0 status=200 server=94ms cust=0.31 unk=0.15 prov=0.52 bank=0.02
+[158/180] block=5 K=16 B dup=1 status=200 server=204ms cust=0.42 unk=0.15 prov=0.4 bank=0.03
+[159/180] block=5 K=12 B dup=0 status=200 server=46ms cust=0.39 unk=0.13 prov=0.46 bank=0.02
+[160/180] block=5 K=12 B dup=1 status=200 server=93ms cust=0.35 unk=0.15 prov=0.47000000000000003 bank=0.03
+[161/180] block=5 K=32 A dup=0 status=200 server=66ms cust=0.42 unk=0.11 prov=0.44 bank=0.03
+[162/180] block=5 K=32 A dup=1 status=200 server=77ms cust=0.41000000000000003 unk=0.14 prov=0.39 bank=0.05
+[163/180] block=5 K=24 B dup=0 status=200 server=152ms cust=0.41000000000000003 unk=0.09 prov=0.48 bank=0.02
+[164/180] block=5 K=24 B dup=1 status=200 server=110ms cust=0.38 unk=0.13 prov=0.46 bank=0.03
+[165/180] block=5 K=32 B dup=0 status=200 server=81ms cust=0.38 unk=0.1 prov=0.49 bank=0.03
+[166/180] block=5 K=32 B dup=1 status=200 server=59ms cust=0.37 unk=0.1 prov=0.51 bank=0.02
+[167/180] block=5 K= 8 B dup=0 status=200 server=79ms cust=0.47 unk=0.15 prov=0.36 bank=0.02
+[168/180] block=5 K= 8 B dup=1 status=200 server=89ms cust=0.45 unk=0.16 prov=0.36 bank=0.03
+[169/180] block=5 K= 5 B dup=0 status=200 server=83ms cust=0.42 unk=0.32 prov=0.25 bank=0.01
+[170/180] block=5 K= 5 B dup=1 status=200 server=164ms cust=0.38 unk=0.36 prov=0.25 bank=0.01
+[171/180] block=5 K=24 A dup=0 status=200 server=95ms cust=0.45 unk=0.1 prov=0.42 bank=0.03
+[172/180] block=5 K=24 A dup=1 status=200 server=98ms cust=0.4 unk=0.1 prov=0.47000000000000003 bank=0.03
+[173/180] block=5 K= 5 A dup=0 status=200 server=128ms cust=0.39 unk=0.36 prov=0.23 bank=0.02
+[174/180] block=5 K= 5 A dup=1 status=200 server=143ms cust=0.41 unk=0.35 prov=0.22 bank=0.02
+[175/180] block=5 K=12 A dup=0 status=200 server=65ms cust=0.36 unk=0.18 prov=0.44 bank=0.02
+[176/180] block=5 K=12 A dup=1 status=200 server=71ms cust=0.39 unk=0.17 prov=0.42 bank=0.02
+[177/180] block=5 K= 6 B dup=0 status=200 server=90ms cust=0.5 unk=0.19 prov=0.29 bank=0.02
+[178/180] block=5 K= 6 B dup=1 status=200 server=96ms cust=0.52 unk=0.21 prov=0.25 bank=0.02
+[179/180] block=5 K= 4 A dup=0 status=200 server=87ms cust=0.4 unk=0.35 prov=0.24 bank=0.01
+[180/180] block=5 K= 4 A dup=1 status=200 server=62ms cust=0.41 unk=0.35 prov=0.23 bank=0.01
+saved /Users/xiaoanliu/Github/typesafe/results/k_sweep_trials.json
+
+Mean log-odds among original options, by K and content (pooled over blocks and dups)
+K  cont bank/prov  bank/cust  bank/unkn  prov/cust  prov/unkn  cust/unkn   irrelevant-mass
+ 4 A    -2.93      -3.78      -3.41      -0.85      -0.48      +0.37       0.000
+ 5 A    -2.56      -3.15      -3.09      -0.60      -0.53      +0.07       0.000
+ 5 B    -3.18      -3.64      -3.44      -0.45      -0.26      +0.20       0.000
+ 6 A    -1.91      -2.57      -2.09      -0.66      -0.18      +0.48       0.000
+ 6 B    -2.69      -3.17      -2.44      -0.49      +0.25      +0.73       0.000
+ 8 A    -2.84      -3.20      -2.24      -0.36      +0.60      +0.96       0.000
+ 8 B    -2.99      -3.07      -2.17      -0.08      +0.82      +0.90       0.000
+12 A    -2.67      -2.67      -1.69      +0.00      +0.97      +0.97       0.000
+12 B    -3.05      -2.90      -1.77      +0.15      +1.27      +1.12       0.000
+16 A    -3.01      -2.80      -1.74      +0.22      +1.27      +1.05       0.000
+16 B    -2.96      -2.86      -1.96      +0.10      +1.00      +0.90       0.000
+24 A    -2.81      -2.69      -1.34      +0.12      +1.47      +1.35       0.000
+24 B    -2.98      -2.79      -1.50      +0.19      +1.48      +1.29       0.000
+32 A    -2.70      -2.66      -1.37      +0.03      +1.33      +1.29       0.000
+32 B    -2.95      -2.62      -1.27      +0.33      +1.68      +1.34       0.000
+
+Ratio to K=4 (temperature-only predicts one common ratio per row):
+ 5 A     0.87  0.83  0.91  0.71  1.11  0.18
+ 5 B     1.09  0.96  1.01  0.54  0.54  0.53
+ 6 A     0.65  0.68  0.61  0.78  0.38  1.31
+ 6 B     0.92  0.84  0.72  0.57 -0.51  2.00
+ 8 A     0.97  0.85  0.66  0.42 -1.25  2.61
+ 8 B     1.02  0.81  0.64  0.10 -1.70  2.45
+12 A     0.91  0.71  0.50 -0.00 -2.02  2.65
+12 B     1.04  0.77  0.52 -0.17 -2.64  3.06
+16 A     1.03  0.74  0.51 -0.25 -2.64  2.87
+16 B     1.01  0.76  0.57 -0.11 -2.08  2.47
+24 A     0.96  0.71  0.39 -0.14 -3.06  3.68
+24 B     1.02  0.74  0.44 -0.23 -3.08  3.52
+32 A     0.92  0.70  0.40 -0.04 -2.76  3.52
+32 B     1.01  0.69  0.37 -0.39 -3.49  3.66
