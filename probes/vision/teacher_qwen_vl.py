@@ -55,6 +55,8 @@ def main():
     ap.add_argument("--temperature", type=float, default=1.0, help="global T applied to the stored soft targets")
     ap.add_argument("--requests-out", default=None,
                     help="also write s1 VL request rows with the (temperature-scaled) teacher distribution as targets")
+    ap.add_argument("--soft-max-top", type=float, default=1.0,
+                    help="only write soft rows whose scaled top-p is below this (the uncertain subset)")
     a = ap.parse_args()
     root = Path(a.items)
     items = [json.loads(l) for l in open(root / "items.jsonl")][: a.limit]
@@ -109,7 +111,11 @@ def main():
                 p = per_item[it["id"]]["logprob"]
                 z = {k: math.log(max(v, 1e-9)) / a.temperature for k, v in p.items()}
                 m = max(z.values()); e = {k: math.exp(v - m) for k, v in z.items()}; s = sum(e.values())
-                r = {**r, "targets": {"ground": {k: round(v / s, 5) for k, v in e.items()}}, "teacher": a.model, "teacher_T": a.temperature}
+                soft = {k: round(v / s, 5) for k, v in e.items()}
+                if max(soft.values()) >= a.soft_max_top:
+                    continue
+                r = {**r, "image": str((root / r["image"]).resolve()), "targets": {"ground": soft},
+                     "teacher": a.model, "teacher_T": a.temperature}
                 f.write(json.dumps(r, ensure_ascii=False) + "\n"); n += 1
         print(f"wrote {n} soft-labelled request rows to {a.requests_out}")
 
