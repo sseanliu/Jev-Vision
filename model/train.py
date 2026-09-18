@@ -127,6 +127,7 @@ def main():
     ap.add_argument("--lora-r", type=int, default=0, help=">0 enables LoRA on attention projections")
     ap.add_argument("--lora-alpha", type=int, default=0)
     ap.add_argument("--lora-targets", default="q_proj,k_proj,v_proj,o_proj")
+    ap.add_argument("--init-adapter", default=None, help="LoRA checkpoint dir (…/final/backbone) to continue training from")
     a = ap.parse_args()
 
     torch.manual_seed(a.seed)
@@ -145,9 +146,17 @@ def main():
         if a.lora_r > 0:
             lora = {"r": a.lora_r, "alpha": a.lora_alpha or 2 * a.lora_r, "targets": a.lora_targets.split(",")}
         new_ids = [tok.convert_tokens_to_ids(t) for t in SPECIAL_TOKENS]
-        model = DecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn,
-                              torch_dtype=dtype, lora=lora, trainable_token_ids=new_ids if lora else None)
-        if lora:
+        if a.init_adapter:
+            # stage-2 from a LoRA run: base + resized vocab, then the saved adapter (trainable)
+            from peft import PeftModel
+            model = DecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn, torch_dtype=dtype)
+            model.backbone = PeftModel.from_pretrained(model.backbone, a.init_adapter, is_trainable=True)
+            model.lora = json.loads((Path(a.init_adapter).parent / "s1_config.json").read_text()).get("lora")
+            print(f"loaded adapter from {a.init_adapter}")
+        else:
+            model = DecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn,
+                                  torch_dtype=dtype, lora=lora, trainable_token_ids=new_ids if lora else None)
+        if model.lora:
             model.backbone.print_trainable_parameters()
         if a.grad_ckpt:
             model.backbone.gradient_checkpointing_enable()
