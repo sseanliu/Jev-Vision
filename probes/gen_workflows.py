@@ -74,6 +74,14 @@ Rules:
 - No markdown, no commentary, JSON Lines only."""
 
 lock = threading.Lock()
+USAGE = {"in": 0, "out": 0, "cache_read": 0}
+# $/Mtok; update if pricing changes (Sonnet 5 at launch: 3 in / 15 out / 0.3 cache read)
+PRICE = {"claude-sonnet-5": (3.0, 15.0, 0.3), "claude-opus-5": (15.0, 75.0, 1.5)}
+
+
+def cost_usd(model: str) -> float:
+    pi, po, pc = PRICE.get(model, (3.0, 15.0, 0.3))
+    return (USAGE["in"] * pi + USAGE["out"] * po + USAGE["cache_read"] * pc) / 1e6
 
 
 def make_prompt(rng: random.Random, n_items: int) -> str:
@@ -135,6 +143,9 @@ def generate_batch(client: anthropic.Anthropic, model: str, rng: random.Random, 
     if bad or len(items) < len(raw):
         print(f"  {bad} unparseable lines, {len(raw) - len(items)} invalid items, {len(items)} kept "
               f"(stop={msg.stop_reason}, out={msg.usage.output_tokens})", flush=True)
+    with lock:
+        USAGE["in"] += msg.usage.input_tokens; USAGE["out"] += msg.usage.output_tokens
+        USAGE["cache_read"] += getattr(msg.usage, "cache_read_input_tokens", 0) or 0
     for it in items:
         it["source"] = "synth"
         it["generator"] = model
@@ -186,8 +197,9 @@ def main():
                     f.write(json.dumps(it, ensure_ascii=False) + "\n")
                 written += len(items)
             if k % 20 == 0:
-                print(f"  {k}/{n_calls} calls, {written} rows, {failed} empty, {time.time()-t0:.0f}s", flush=True)
-    print(f"done: +{written} rows ({failed} empty calls) -> {out} in {time.time()-t0:.0f}s")
+                print(f"  {k}/{n_calls} calls, {written} rows, {failed} empty, {time.time()-t0:.0f}s, "
+                      f"~${cost_usd(a.model):.2f} so far ({USAGE['out']/1e6:.2f}M out tok)", flush=True)
+    print(f"done: +{written} rows ({failed} empty calls) -> {out} in {time.time()-t0:.0f}s, ~${cost_usd(a.model):.2f}")
 
 
 if __name__ == "__main__":
