@@ -85,11 +85,19 @@ SETS = {"mmlu": set_mmlu, "mmlu_pro": set_mmlu_pro, "anli": set_anli}
 
 
 @torch.no_grad()
-def run_set(model, packer, items, device):
+def run_set(model, packer, items, device, temps=(1.0,)):
+    """Also reports ECE/NLL under global temperature scaling for each T in temps
+    (oracle per-set T shows how much of the miscalibration is mere sharpness)."""
     confs, hits, briers, nlls, perm = [], [], [], [], []
+    by_T = {T: {"confs": [], "hits": [], "nlls": []} for T in temps}
     for state, instr, crit, gold in items:
         q = Question("q", "choice", instr, crit)
         z = model(packer.pack(state, [q]), device)[0]
+        for T in temps:
+            pT = torch.softmax(z.float() / T, -1)
+            gi_ = list(crit).index(gold)
+            by_T[T]["confs"].append(pT.max().item()); by_T[T]["hits"].append(int(pT.argmax()) == gi_)
+            by_T[T]["nlls"].append(-torch.log(pT[gi_].clamp_min(1e-9)).item())
         p = torch.softmax(z.float(), -1)
         keys = list(crit)
         gi = keys.index(gold)
@@ -106,9 +114,14 @@ def run_set(model, packer, items, device):
         pr = torch.softmax(zr.float(), -1)
         perm.append(abs(p[gi].item() - pr[list(reversed(keys)).index(gold)].item()))
     n = len(items)
-    return {"n": n, "acc": sum(hits) / n, "ece": expected_calibration_error(confs, hits),
-            "brier": sum(briers) / n, "nll": sum(nlls) / n, "mean_top_p": sum(confs) / n,
-            "perm_abs_delta_p_gold": sum(perm) / n}
+    out = {"n": n, "acc": sum(hits) / n, "ece": expected_calibration_error(confs, hits),
+           "brier": sum(briers) / n, "nll": sum(nlls) / n, "mean_top_p": sum(confs) / n,
+           "perm_abs_delta_p_gold": sum(perm) / n}
+    if len(temps) > 1:
+        out["by_temperature"] = {str(T): {"ece": expected_calibration_error(d["confs"], d["hits"]),
+                                          "nll": sum(d["nlls"]) / n, "mean_top_p": sum(d["confs"]) / n}
+                                 for T, d in by_T.items()}
+    return out
 
 
 def main():
@@ -117,16 +130,18 @@ def main():
     ap.add_argument("--sets", nargs="+", default=["mmlu", "mmlu_pro", "anli"])
     ap.add_argument("--limit", type=int, default=500)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--temps", default="1.0", help="comma-separated global temperatures to report, e.g. 1,1.5,2,3")
     a = ap.parse_args()
+    temps = tuple(float(t) for t in a.temps.split(","))
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model, packer = load(Path(a.checkpoint), device)
     rng = random.Random(a.seed)
     out = {}
     for name in a.sets:
         items = SETS[name](a.limit, rng)
-        out[name] = run_set(model, packer, items, device)
+        out[name] = run_set(model, packer, items, device, temps)
         print(name, json.dumps(out[name]), flush=True)
-    (Path(a.checkpoint) / "eval.json").write_text(json.dumps(out, indent=1))
+    (Path(a.checkpoint) / ("eval.json" if temps == (1.0,) else "eval_temps.json")).write_text(json.dumps(out, indent=1))
 
 
 if __name__ == "__main__":
