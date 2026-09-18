@@ -114,7 +114,12 @@ def run_set(model, packer, items, device, temps=(1.0,)):
         pr = torch.softmax(zr.float(), -1)
         perm.append(abs(p[gi].item() - pr[list(reversed(keys)).index(gold)].item()))
     n = len(items)
-    out = {"n": n, "acc": sum(hits) / n, "ece": expected_calibration_error(confs, hits),
+    # AUROC of top-p as a predictor of correctness: instance-level uncertainty, independent of
+    # any global temperature (a format-locked constant confidence scores 0.5).
+    pos = [c for c, h in zip(confs, hits) if h]; neg = [c for c, h in zip(confs, hits) if not h]
+    auroc = (sum((p_ > n_) + 0.5 * (p_ == n_) for p_ in pos for n_ in neg) / (len(pos) * len(neg))) if pos and neg else float("nan")
+    out = {"n": n, "acc": sum(hits) / n, "ece": expected_calibration_error(confs, hits), "auroc": auroc,
+           "conf_std": (sum((c - sum(confs) / n) ** 2 for c in confs) / n) ** 0.5,
            "brier": sum(briers) / n, "nll": sum(nlls) / n, "mean_top_p": sum(confs) / n,
            "perm_abs_delta_p_gold": sum(perm) / n}
     if len(temps) > 1:
