@@ -175,6 +175,10 @@ def main():
                 failed += 1
                 print(f"  timeout/connection: {type(e).__name__}", flush=True)
                 continue
+            except Exception as e:  # anything else must not kill the writer loop (it would silently drain the pool)
+                failed += 1
+                print(f"  worker error {type(e).__name__}: {str(e)[:120]}", flush=True)
+                continue
             if not items:
                 failed += 1
             with lock:
