@@ -43,7 +43,8 @@ class DecisionModel(nn.Module):
                              target_modules=lora.get("targets", ["q_proj", "k_proj", "v_proj", "o_proj"]),
                              trainable_token_indices={"embed_tokens": trainable_token_ids} if trainable_token_ids else None)
             self.backbone = get_peft_model(self.backbone, cfg)
-        d = self.backbone.config.hidden_size
+        cfg = self.backbone.config
+        d = getattr(cfg, "text_config", cfg).hidden_size  # VL configs nest the LM config
         self.rank = rank
         self.q_proj = nn.Linear(d, rank, bias=False)
         self.k_proj = nn.Linear(d, rank, bias=False)

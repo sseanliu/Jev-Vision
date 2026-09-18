@@ -50,7 +50,12 @@ class Packer:
         return self.tok.encode(text, add_special_tokens=False)
 
     def pack(self, state: str, questions: list[Question]) -> Packed:
-        ids = self._enc(state)
+        return self.pack_ids(self._enc(state), questions)
+
+    def pack_ids(self, state_ids: list[int], questions: list[Question]) -> Packed:
+        """Same layout, but the state arrives pre-tokenised (e.g. from a multimodal processor
+        with image placeholder tokens already expanded)."""
+        ids = list(state_ids)
         seg = [0] * len(ids)
         pos = list(range(len(ids)))
         S = len(ids)
