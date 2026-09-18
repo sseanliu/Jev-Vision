@@ -6,7 +6,7 @@
 set -euo pipefail
 cd /workspace/jev-probes/model
 export HF_HUB_DISABLE_PROGRESS_BARS=1 TRANSFORMERS_VERBOSITY=error TOKENIZERS_PARALLELISM=false PIP_BREAK_SYSTEM_PACKAGES=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True HF_HOME=/workspace/hf
-python -m pip install -q peft
+python -m pip install -q peft datasets
 RUN_NAME=${RUN_NAME:-s1-8b-run3c}
 EXTRA="data/jsonl_jev_hard data/jsonl_synth_jev"
 for d in $EXTRA; do for f in data/jsonl/*.validation.jsonl; do ln -sf "$PWD/$f" "$d/"; done; done
