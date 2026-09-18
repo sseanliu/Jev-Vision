@@ -40,9 +40,12 @@ def option_texts(q: dict) -> tuple[list[str], list[str]]:
 
 
 @torch.no_grad()
-def score_sequences(model, tok, pairs: list[tuple[str, str]], device, bsz: int, max_len: int = 1536) -> list[float]:
-    """pairs: (prompt, continuation). Returns mean log p(continuation | prompt) per pair,
-    scored in length-sorted batches. Prompts longer than max_len are left-truncated."""
+def score_sequences(model, tok, pairs: list[tuple[str, str]], device, bsz: int, max_len: int = 1536,
+                    token_budget: int = 24000) -> list[float]:
+    """pairs: (prompt, continuation). Returns mean log p(continuation | prompt) per pair.
+    Length-sorted batches capped by both sequence count and total tokens; the vocabulary
+    log-softmax is taken only at continuation positions (a handful per sequence), so memory
+    is O(batch_tokens x hidden) instead of O(batch_tokens x vocab)."""
     enc = []
     for p, c in pairs:
         pi = tok.encode(p, add_special_tokens=False)
@@ -53,23 +56,28 @@ def score_sequences(model, tok, pairs: list[tuple[str, str]], device, bsz: int, 
     order = sorted(range(len(enc)), key=lambda i: len(enc[i][0]) + len(enc[i][1]))
     pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
     out = [0.0] * len(enc)
-    for b in range(0, len(order), bsz):
-        idx = order[b:b + bsz]
+    b = 0
+    while b < len(order):
+        idx, L = [], 0
+        while b < len(order) and len(idx) < bsz:
+            n = len(enc[order[b]][0]) + len(enc[order[b]][1])
+            if idx and max(L, n) * (len(idx) + 1) > token_budget:
+                break
+            idx.append(order[b]); L = max(L, n); b += 1
         seqs = [enc[i][0] + enc[i][1] for i in idx]
-        L = max(len(s) for s in seqs)
         ids = torch.full((len(seqs), L), pad, dtype=torch.long)
         att = torch.zeros((len(seqs), L), dtype=torch.long)
         for r, s in enumerate(seqs):
             ids[r, :len(s)] = torch.tensor(s)
             att[r, :len(s)] = 1
-        logits = model(input_ids=ids.to(device), attention_mask=att.to(device)).logits
-        logp = torch.log_softmax(logits.float(), -1)
+        logits = model(input_ids=ids.to(device), attention_mask=att.to(device)).logits  # [B, L, V] bf16
         for r, i in enumerate(idx):
             pi, ci = enc[i]
-            pos = torch.arange(len(pi) - 1, len(pi) - 1 + len(ci), device=logp.device)
-            tgt = torch.tensor(ci, device=logp.device)
-            out[i] = logp[r, pos, tgt].sum().item() / max(len(ci), 1)
-        del logits, logp
+            pos = torch.arange(len(pi) - 1, len(pi) - 1 + len(ci), device=logits.device)
+            tgt = torch.tensor(ci, device=logits.device)
+            lp = torch.log_softmax(logits[r, pos, :].float(), -1)  # [len(ci), V] only
+            out[i] = lp.gather(1, tgt[:, None]).sum().item() / max(len(ci), 1)
+        del logits
     return out
 
 
