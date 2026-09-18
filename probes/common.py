@@ -45,7 +45,12 @@ def call(payload: dict, retries: int = 3) -> dict:
     last: dict = {"status": 0, "text": ""}
     for attempt in range(retries):
         t0 = time.perf_counter()
-        r = _session.post(API, data=json.dumps(payload), timeout=60)
+        try:
+            r = _session.post(API, data=json.dumps(payload), timeout=60)
+        except requests.RequestException as e:  # read timeout / connection reset: retry like a 5xx
+            last = {"status": 0, "text": f"{type(e).__name__}: {e}"[:300]}
+            time.sleep(1.5 * (attempt + 1))
+            continue
         wall_ms = (time.perf_counter() - t0) * 1000
         if r.status_code == 200:
             body = r.json()
