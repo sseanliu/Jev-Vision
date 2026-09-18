@@ -58,7 +58,8 @@ SYSTEM = """You write training data for a decision model. The model reads a piec
 - noul: a yes/no judgement about the state.
 - score: an ordered set of levels (criteria: [level description, ...]), lowest first.
 Produce realistic, specific, varied text. Names, amounts, dates, products and jargon should look real but be fictional.
-Return ONLY a JSON object with a single key "items": a list of objects, each:
+Output format: JSON Lines. Exactly ONE item per line, each line a complete JSON object; no array, no wrapper key,
+no blank lines, no markdown fences. Escape newlines inside strings as \\n. Each object:
 {"state": str,
  "questions": [{"qid": str, "qtype": "choice"|"noul"|"score", "instructions": str, "criteria": {...}|[...]|null,
                 "designed_answer": str|bool|int, "ambiguous": bool}]}
@@ -69,7 +70,8 @@ Rules:
 - Vary instruction phrasing; never reuse the same wording twice in one response.
 - Option keys are short snake_case; descriptions are full sentences that define the option.
 - Score levels must describe concrete situations, not just "low/medium/high".
-- No markdown, no commentary, JSON only."""
+- Keep each state under 250 words.
+- No markdown, no commentary, JSON Lines only."""
 
 lock = threading.Lock()
 
@@ -112,26 +114,26 @@ def generate_batch(client: anthropic.Anthropic, model: str, rng: random.Random, 
         max_tokens=32000,
         system=[{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
         messages=[{"role": "user", "content": prompt}],
-        output_config={"effort": "medium"},
+        output_config={"effort": "low"},
     ) as stream:
         msg = stream.get_final_message()
     if msg.stop_reason == "refusal":
         print("  refusal", flush=True)
         return []
     text = "".join(b.text for b in msg.content if b.type == "text")
-    start, end = text.find("{"), text.rfind("}")
-    if start < 0 or end < 0:
-        print(f"  no json (stop={msg.stop_reason}, out={msg.usage.output_tokens})", flush=True)
-        return []
-    try:
-        data = json.loads(text[start:end + 1])
-    except json.JSONDecodeError as e:
-        print(f"  json error (stop={msg.stop_reason}, out={msg.usage.output_tokens}): {str(e)[:60]}", flush=True)
-        return []
-    raw = data.get("items", [])
+    raw, bad = [], 0
+    for line in text.splitlines():
+        line = line.strip().strip("`")
+        if not line.startswith("{"):
+            continue
+        try:
+            raw.append(json.loads(line))
+        except json.JSONDecodeError:
+            bad += 1
     items = [it for it in raw if validate(it)]
-    if len(items) < len(raw):
-        print(f"  {len(raw) - len(items)}/{len(raw)} items failed validation", flush=True)
+    if bad or len(items) < len(raw):
+        print(f"  {bad} unparseable lines, {len(raw) - len(items)} invalid items, {len(items)} kept "
+              f"(stop={msg.stop_reason}, out={msg.usage.output_tokens})", flush=True)
     for it in items:
         it["source"] = "synth"
         it["generator"] = model
@@ -143,7 +145,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="../model/data/jsonl_synth/synth.train.jsonl")
     ap.add_argument("--rows", type=int, default=30000)
-    ap.add_argument("--items-per-call", type=int, default=10)
+    ap.add_argument("--items-per-call", type=int, default=8)
     ap.add_argument("--model", default="claude-opus-5")
     ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--seed", type=int, default=0)
