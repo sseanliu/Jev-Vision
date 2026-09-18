@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 model/data/jsonl/
 model/runs/
+model/data/vision/
