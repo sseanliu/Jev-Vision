@@ -109,23 +109,29 @@ def generate_batch(client: anthropic.Anthropic, model: str, rng: random.Random, 
     prompt = make_prompt(rng, n_items)
     with client.messages.stream(
         model=model,
-        max_tokens=16000,
+        max_tokens=32000,
         system=[{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
         messages=[{"role": "user", "content": prompt}],
         output_config={"effort": "medium"},
     ) as stream:
         msg = stream.get_final_message()
     if msg.stop_reason == "refusal":
+        print("  refusal", flush=True)
         return []
     text = "".join(b.text for b in msg.content if b.type == "text")
     start, end = text.find("{"), text.rfind("}")
     if start < 0 or end < 0:
+        print(f"  no json (stop={msg.stop_reason}, out={msg.usage.output_tokens})", flush=True)
         return []
     try:
         data = json.loads(text[start:end + 1])
-    except json.JSONDecodeError:
+    except json.JSONDecodeError as e:
+        print(f"  json error (stop={msg.stop_reason}, out={msg.usage.output_tokens}): {str(e)[:60]}", flush=True)
         return []
-    items = [it for it in data.get("items", []) if validate(it)]
+    raw = data.get("items", [])
+    items = [it for it in raw if validate(it)]
+    if len(items) < len(raw):
+        print(f"  {len(raw) - len(items)}/{len(raw)} items failed validation", flush=True)
     for it in items:
         it["source"] = "synth"
         it["generator"] = model
@@ -137,9 +143,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="../model/data/jsonl_synth/synth.train.jsonl")
     ap.add_argument("--rows", type=int, default=30000)
-    ap.add_argument("--items-per-call", type=int, default=12)
+    ap.add_argument("--items-per-call", type=int, default=10)
     ap.add_argument("--model", default="claude-opus-5")
-    ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     out = Path(a.out)
@@ -151,7 +157,6 @@ def main():
     print(f"have {have} rows; requesting ~{n_calls} calls x {a.items_per_call} items with {a.model}", flush=True)
     t0 = time.time()
     written, failed = 0, 0
-    in_tok = out_tok = 0
     with out.open("a") as f, ThreadPoolExecutor(a.workers) as ex:
         futs = [ex.submit(generate_batch, client, a.model, random.Random(rng.random()), a.items_per_call) for _ in range(n_calls)]
         for k, fut in enumerate(as_completed(futs), 1):
