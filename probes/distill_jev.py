@@ -48,7 +48,7 @@ def distill_row(row: dict) -> dict | None:
             soft[q["qid"]] = a["noul"]
         else:
             soft[q["qid"]] = a["probabilities"]
-    return {**row, "targets_hard": row["targets"], "targets": soft,
+    return {**row, "targets_hard": row.get("targets"), "targets": soft,
             "jev_model": res["body"]["model"], "jev_request_id": res.get("request_id")}
 
 
