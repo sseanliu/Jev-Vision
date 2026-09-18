@@ -1,12 +1,16 @@
-"""Build `ground` choice items from Multimodal-Mind2Web for the teacher calibration test (V0).
+"""Build `ground` choice items from Multimodal-Mind2Web (teacher test set and student training set).
 
 Each Mind2Web step has a full-page screenshot, a natural task, the previous actions, one or two
 positive candidate elements and ~1000 negative candidates with bounding boxes. We crop a viewport
 around the target, keep the positive plus K hard negatives inside the crop (clickable, similar
 size, nearest first), draw numbered set-of-mark boxes, and emit one choice question:
-"which numbered element should be acted on next" with an extra `none` option.
+"which numbered element should be acted on next" with an extra `none` option. With --none-frac,
+that share of items drops the positive box so `none` is the gold answer.
 
-python build_m2w_items.py --out ../../model/data/vision/m2w_items --n 300 --k 9
+Outputs: items.jsonl (audit format) and requests.jsonl (s1 VL request format: image/state/questions/targets).
+
+python build_m2w_items.py --split test_domain --n 300 --out ../../model/data/vision/m2w_items
+python build_m2w_items.py --split train --n 8000 --none-frac 0.1 --out /workspace/m2w_train --files 27
 """
 
 from __future__ import annotations
@@ -15,18 +19,22 @@ import argparse
 import io
 import json
 import random
+import subprocess
 from pathlib import Path
 
 import duckdb
 from PIL import Image, ImageDraw, ImageFont
 
-PARQUETS = [
-    "https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web/resolve/refs%2Fconvert%2Fparquet/default/test_domain/0002.parquet",
-    "https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web/resolve/refs%2Fconvert%2Fparquet/default/test_domain/0001.parquet",
-]
 VIEW_H = 1000
 COLORS = ["#e6194b", "#3cb44b", "#0082c8", "#f58231", "#911eb4", "#46f0f0", "#f032e6", "#d2f53c",
           "#fabebe", "#008080", "#aa6e28", "#800000", "#808000", "#000080", "#808080", "#000000"]
+INSTR = "Which numbered element should be acted on next to make progress on the task?"
+
+
+def parquet_urls(split: str) -> list[str]:
+    out = subprocess.run(["hf", "datasets", "parquet", "osunlp/Multimodal-Mind2Web", "--format", "json"],
+                         capture_output=True, text=True, check=True).stdout
+    return [f["url"] for f in json.loads(out) if f["split"] == split]
 
 
 def parse_box(attrs: str):
@@ -45,19 +53,37 @@ def describe(cand: dict, attrs: dict) -> str:
     return " ".join(b for b in bits if b)
 
 
+def state_text(task: str, history: list[str]) -> str:
+    hist = "\n".join(f"  - {h}" for h in history) or "  (none)"
+    return f"Task: {task}\nActions already taken:\n{hist}\n"
+
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--split", default="test_domain")
+    ap.add_argument("--files", type=int, default=2, help="how many parquet files of the split to read")
     ap.add_argument("--out", default="../../model/data/vision/m2w_items")
     ap.add_argument("--n", type=int, default=300)
     ap.add_argument("--k", type=int, default=9, help="candidates per item (incl. the positive)")
+    ap.add_argument("--none-frac", type=float, default=0.0)
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     rng = random.Random(a.seed)
     out = Path(a.out)
     (out / "img").mkdir(parents=True, exist_ok=True)
     con = duckdb.connect()
-    items = []
-    for url in PARQUETS:
+    urls = parquet_urls(a.split)
+    rng.shuffle(urls)
+    urls = urls[: a.files]
+    items, requests = [], []
+    try:
+        font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 22)
+    except OSError:
+        try:
+            font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 22)
+        except OSError:
+            font = ImageFont.load_default()
+    for url in urls:
         if len(items) >= a.n:
             break
         rows = con.execute(
@@ -91,19 +117,19 @@ def main():
                     continue
                 d = abs((b[1] + b[3] / 2) - cy) + abs((b[0] + b[2] / 2) - (pb[0] + pb[2] / 2)) * 0.5
                 negs.append((d, b, cd, at))
-            if len(negs) < a.k - 1:
+            none_item = rng.random() < a.none_frac
+            need = a.k if none_item else a.k - 1
+            if len(negs) < need:
                 continue
             negs.sort(key=lambda t: t[0])
-            chosen = negs[: a.k - 1]
-            cands = [(pb, json.loads(pos[0]), pa, True)] + [(b, cd, at, False) for _, b, cd, at in chosen]
+            chosen = negs[:need]
+            cands = [(b, cd, at, False) for _, b, cd, at in chosen]
+            if not none_item:
+                cands.append((pb, json.loads(pos[0]), pa, True))
             rng.shuffle(cands)
             crop = im.crop(view)
             draw = ImageDraw.Draw(crop)
-            try:
-                font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 22)
-            except OSError:
-                font = ImageFont.load_default()
-            criteria, gold = {}, None
+            criteria, gold = {}, "none"
             for i, (b, cd, at, is_pos) in enumerate(cands, 1):
                 x0, y0 = b[0], b[1] - top
                 x1, y1 = x0 + b[2], y0 + b[3]
@@ -121,13 +147,20 @@ def main():
             name = f"{ann}_{uid}.png"
             crop.save(out / "img" / name)
             history = list(reprs)[: int(tidx)] if tidx and str(tidx).isdigit() else []
-            items.append({"id": f"{ann}_{uid}", "image": f"img/{name}", "task": task, "history": history,
+            iid = f"{ann}_{uid}"
+            items.append({"id": iid, "image": f"img/{name}", "task": task, "history": history,
                           "target_repr": tgt, "op": json.loads(op).get("op"), "criteria": criteria, "gold": gold,
                           "view_top": top, "page_size": [W, H]})
+            requests.append({"id": iid, "image": f"img/{name}", "state": state_text(task, history),
+                             "questions": [{"qid": "ground", "qtype": "choice", "instructions": INSTR, "criteria": criteria}],
+                             "targets": {"ground": gold}})
     with (out / "items.jsonl").open("w") as f:
         for it in items:
             f.write(json.dumps(it, ensure_ascii=False) + "\n")
-    print(f"wrote {len(items)} items to {out}")
+    with (out / "requests.jsonl").open("w") as f:
+        for r in requests:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    print(f"wrote {len(items)} items to {out} (none gold: {sum(i['gold'] == 'none' for i in items)})")
 
 
 if __name__ == "__main__":

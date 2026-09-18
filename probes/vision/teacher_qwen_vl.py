@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import time
 from pathlib import Path
 
@@ -51,6 +52,9 @@ def main():
     ap.add_argument("--limit", type=int, default=300)
     ap.add_argument("--max-pixels", type=int, default=1288 * 1000)
     ap.add_argument("--out", default="/workspace/teacher_qwen_vl.json")
+    ap.add_argument("--temperature", type=float, default=1.0, help="global T applied to the stored soft targets")
+    ap.add_argument("--requests-out", default=None,
+                    help="also write s1 VL request rows with the (temperature-scaled) teacher distribution as targets")
     a = ap.parse_args()
     root = Path(a.items)
     items = [json.loads(l) for l in open(root / "items.jsonl")][: a.limit]
@@ -93,6 +97,21 @@ def main():
     print("logprob", rep, flush=True)
     Path(a.out).write_text(json.dumps({"report": rep, "items": per_item}, indent=1))
     print("saved", a.out)
+    if a.requests_out:
+        # soft-labelled request rows: same image/state/question as requests.jsonl, targets = teacher p^(1/T)
+        req = {json.loads(l)["id"]: json.loads(l) for l in open(root / "requests.jsonl")} if (root / "requests.jsonl").exists() else {}
+        n = 0
+        with open(a.requests_out, "w") as f:
+            for it in items:
+                r = req.get(it["id"])
+                if r is None:
+                    continue
+                p = per_item[it["id"]]["logprob"]
+                z = {k: math.log(max(v, 1e-9)) / a.temperature for k, v in p.items()}
+                m = max(z.values()); e = {k: math.exp(v - m) for k, v in z.items()}; s = sum(e.values())
+                r = {**r, "targets": {"ground": {k: round(v / s, 5) for k, v in e.items()}}, "teacher": a.model, "teacher_T": a.temperature}
+                f.write(json.dumps(r, ensure_ascii=False) + "\n"); n += 1
+        print(f"wrote {n} soft-labelled request rows to {a.requests_out}")
 
 
 if __name__ == "__main__":
