@@ -109,6 +109,7 @@ def validate(item: dict) -> bool:
 
 def generate_batch(client: anthropic.Anthropic, model: str, rng: random.Random, n_items: int) -> list[dict]:
     prompt = make_prompt(rng, n_items)
+    t0 = time.time()
     with client.messages.stream(
         model=model,
         max_tokens=32000,
@@ -138,6 +139,7 @@ def generate_batch(client: anthropic.Anthropic, model: str, rng: random.Random, 
         it["source"] = "synth"
         it["generator"] = model
         it["prompt_seed"] = prompt
+    print(f"  call ok: {len(items)} items, {msg.usage.output_tokens} out tok, {time.time()-t0:.0f}s", flush=True)
     return items
 
 
@@ -147,13 +149,14 @@ def main():
     ap.add_argument("--rows", type=int, default=30000)
     ap.add_argument("--items-per-call", type=int, default=8)
     ap.add_argument("--model", default="claude-opus-5")
-    ap.add_argument("--workers", type=int, default=16)
+    ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     have = sum(1 for _ in open(out)) if out.exists() else 0
-    client = anthropic.Anthropic()
+    # Per-request timeout so a stalled stream fails fast and is retried instead of pinning a worker.
+    client = anthropic.Anthropic(timeout=240.0, max_retries=3)
     rng = random.Random(a.seed + have)
     n_calls = max(0, (a.rows - have + a.items_per_call - 1) // a.items_per_call)
     print(f"have {have} rows; requesting ~{n_calls} calls x {a.items_per_call} items with {a.model}", flush=True)
@@ -167,6 +170,10 @@ def main():
             except anthropic.APIStatusError as e:
                 failed += 1
                 print(f"  api error {e.status_code}: {e.message[:80]}", flush=True)
+                continue
+            except (anthropic.APITimeoutError, anthropic.APIConnectionError) as e:
+                failed += 1
+                print(f"  timeout/connection: {type(e).__name__}", flush=True)
                 continue
             if not items:
                 failed += 1
