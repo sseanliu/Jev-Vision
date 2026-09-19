@@ -66,6 +66,9 @@ def main():
     ap.add_argument("--n", type=int, default=300)
     ap.add_argument("--k", type=int, default=9, help="candidates per item (incl. the positive)")
     ap.add_argument("--none-frac", type=float, default=0.0)
+    ap.add_argument("--jitter", action="store_true",
+                    help="random viewport offset (target anywhere in the crop) and distractors sampled from the "
+                         "nearest 3(K-1) pool instead of strictly nearest: removes the centre-of-cluster cue")
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     rng = random.Random(a.seed)
@@ -101,7 +104,12 @@ def main():
             im = Image.open(io.BytesIO(shot["bytes"])).convert("RGB")
             W, H = im.size
             cy = pb[1] + pb[3] / 2
-            top = int(max(0, min(H - VIEW_H, cy - VIEW_H / 2)))
+            if a.jitter:
+                margin = 60
+                lo, hi = cy - VIEW_H + margin, cy - margin
+                top = int(max(0, min(H - VIEW_H, rng.uniform(lo, hi))))
+            else:
+                top = int(max(0, min(H - VIEW_H, cy - VIEW_H / 2)))
             view = (0, top, W, min(H, top + VIEW_H))
 
             def inside(b):
@@ -122,7 +130,7 @@ def main():
             if len(negs) < need:
                 continue
             negs.sort(key=lambda t: t[0])
-            chosen = negs[:need]
+            chosen = rng.sample(negs[: 3 * need], need) if a.jitter else negs[:need]
             cands = [(b, cd, at, False) for _, b, cd, at in chosen]
             if not none_item:
                 cands.append((pb, json.loads(pos[0]), pa, True))
