@@ -58,6 +58,14 @@ def main():
     d3 = (zac[0] - zca[1]).abs().max().item()
     d4 = (zac[1] - zca[0]).abs().max().item()
     print(f"isolation |dz| add noul: {d1:.2e}  add choice: {d2:.2e}  order swap a: {d3:.2e}  c: {d4:.2e}")
+    # two images in the state (before / after): packs, positions are valid, forward runs, isolation still holds
+    img2 = make_image(); ImageDraw.Draw(img2).rectangle([40, 40, 160, 90], fill="red")
+    qe = Question("e", "noul", "Did the last action change the page?")
+    with torch.no_grad():
+        p2 = packer.pack([img, img2], state + "Last action: click on element 1\n", [qe, qa])
+        z2 = model(p2); z2b = model(packer.pack([img, img2], state + "Last action: click on element 1\n", [qe]))
+    print(f"two images: n_images={p2.n_images} grid rows={p2.image_grid_thw.shape[0]} state tokens={p2.state_len} "
+          f"p(effect)={torch.sigmoid(z2[0]).item():.3f} isolation |dz|={(z2[0]-z2b[0]).abs().max().item():.2e}")
     ok = max(d1, d2, d3, d4) < 1e-3
     print("PASS" if ok else "FAIL")
 

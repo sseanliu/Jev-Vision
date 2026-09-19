@@ -39,7 +39,10 @@ class VLRequestDataset(torch.utils.data.Dataset):
             with open(p) as f:
                 for l in f:
                     r = json.loads(l)
-                    r["image"] = str(root / r["image"])
+                    if "images" in r:  # V5 rows: list of absolute or relative paths (before, after)
+                        r["images"] = [str(p) if str(p).startswith("/") else str(root / p) for p in r["images"]]
+                    else:
+                        r["image"] = str(root / r["image"])
                     self.rows.append(r)
         if limit:
             self.rows = random.Random(seed).sample(self.rows, min(limit, len(self.rows)))
@@ -63,7 +66,8 @@ class VLRequestDataset(torch.utils.data.Dataset):
                 questions.append(Question(q["qid"], "score", q["instructions"], q["criteria"]))
                 targets.append([float(t.get(str(i), 0.0)) for i in range(len(q["criteria"]))] if soft else int(t))
         budget = self.rng.choice(self.budgets) if self.budgets else None
-        return ExampleVL(self.packer.pack(row["image"], row["state"], questions, max_pixels=budget), targets)
+        imgs = row["images"] if "images" in row else row["image"]
+        return ExampleVL(self.packer.pack(imgs, row["state"], questions, max_pixels=budget), targets)
 
     def __getitem__(self, i):
         return self.build(self.rows[i])

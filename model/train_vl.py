@@ -32,9 +32,9 @@ class CollateVL:
 
 
 def batch_hidden(model, batch, device):
-    ids, seg, pos, pix, grid, slens, mm, examples = batch
+    ids, seg, pos, pix, grid, slens, mm, examples, n_images = batch
     h = model.hidden_vl(ids.to(device), seg.to(device), pos.to(device), pix.to(device, model.backbone.dtype),
-                        grid.to(device), slens, mm)
+                        grid.to(device), slens, mm, n_images)
     return h, examples
 
 
