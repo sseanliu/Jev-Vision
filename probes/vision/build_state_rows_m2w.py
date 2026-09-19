@@ -67,7 +67,7 @@ def main():
                 tdesc = attrs(prev["criteria"][prev["gold"]])
                 hit = next((k for k, d in cands.items() if attrs(d) == tdesc and k != it["gold"]), None)
                 if hit:
-                    subj = f"Candidate {hit}: {cands[hit]} (value already entered: '{prev['value']}')"
+                    subj = f"Candidate {hit}: {cands[hit]}"  # no value hint: the filled field is visible in the screenshot only
                     rows.append({"images": [img], "state": state_text(task, hist) + subj + "\n", "questions": [{"qid": "skip", "qtype": "noul", "instructions": rng.choice(SKIP_INSTR)}], "targets": {"skip": 1}}); n["skip1"] += 1
                     negs = [k for k in cands if k not in (hit,)]
                     for k in rng.sample(negs, min(a.neg_per_pos, len(negs))):
