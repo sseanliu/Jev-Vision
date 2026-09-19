@@ -72,6 +72,7 @@ def main():
     ap.add_argument("--max-steps", type=int, default=6); ap.add_argument("--min-confidence", type=float, default=0.3)
     ap.add_argument("--log", default="runs/browser_loop.jsonl"); ap.add_argument("--headless", action="store_true")
     ap.add_argument("--k", type=int, default=12, help="max candidates sent to the model")
+    ap.add_argument("--done-threshold", type=float, default=0.9, help="stop when the done noul exceeds this (V1b has an untrained noul head, so keep it high)")
     a = ap.parse_args()
     Path(a.log).parent.mkdir(parents=True, exist_ok=True); log = open(a.log, "a")
     history = []
@@ -93,7 +94,7 @@ def main():
             rec = {"step": step, "url": page.url, "n_candidates": len(els), "ground": g["choice"], "ground_conf": g["confidence"],
                    "act": act["choice"], "act_conf": act["confidence"], "done_p": done["noul"], "model_ms": res["usage"]["latency_ms"], "wall_ms": round(wall)}
             print(json.dumps(rec), flush=True); log.write(json.dumps(rec) + "\n"); log.flush()
-            if done["noul"] > 0.5 or act["choice"] == "done":
+            if done["noul"] > a.done_threshold or act["choice"] == "done":
                 print("model says done"); break
             if g["confidence"] < a.min_confidence or g["choice"] == "none" or act["choice"] == "ask_user":
                 print("low confidence / none / ask_user -> stopping (escalation point)"); break
