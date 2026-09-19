@@ -124,6 +124,7 @@ def main():
     ap.add_argument("--headless", action="store_true", default=True)
     ap.add_argument("--limit-sites", type=int, default=0)
     ap.add_argument("--goals", default=None, help="jsonl of exact goals {url, kind, goal, target_text, value, done_contains}; sites = its urls")
+    ap.add_argument("--start-site", type=int, default=0, help="skip the first N sites (resume); ids keep the global site index")
     a = ap.parse_args()
     rng = random.Random(a.seed); out = Path(a.out); (out / "img").mkdir(parents=True, exist_ok=True)
     mix = [float(x) for x in a.mix.split(",")]
@@ -137,10 +138,14 @@ def main():
     if a.limit_sites:
         sites = sites[: a.limit_sites]
     log = open(out / "steps.jsonl", "a"); n_steps = 0; t_start = time.time()
+    UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0 Safari/537.36"
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=a.headless)
-        ctx = browser.new_context(viewport={"width": 1280, "height": 900}, user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0 Safari/537.36")
         for si, site in enumerate(sites):
+            if si < a.start_site:
+                continue
+            # one context per site: popups, service workers and renderer processes die with it
+            ctx = browser.new_context(viewport={"width": 1280, "height": 900}, user_agent=UA)
             for ti in range(a.tasks_per_site):
                 page = ctx.new_page()
                 try:
@@ -229,7 +234,14 @@ def main():
                 except Exception as ex:
                     log.write(json.dumps({"site": site, "task": ti, "error": f"{type(ex).__name__}: {str(ex)[:120]}"}) + "\n"); log.flush()
                 finally:
-                    page.close()
+                    try:
+                        page.close()
+                    except Exception:
+                        pass
+            try:
+                ctx.close()
+            except Exception:
+                pass
             print(f"[{si+1}/{len(sites)}] {site} steps so far {n_steps} ({time.time()-t_start:.0f}s)", flush=True)
         browser.close()
     print("done", n_steps, "steps")
