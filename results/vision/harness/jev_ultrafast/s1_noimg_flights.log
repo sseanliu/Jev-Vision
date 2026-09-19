@@ -1,0 +1,21 @@
+2280 ready Where from?
+2846 ready Zürich, Switzerland
+3631 ready Zürich, Switzerland
+10557 ready Where from?
+11066 ready Open Where else?
+11572 ready Open Where else?
+12073 blocked Open Where else?
+{
+  "passed": false,
+  "checks": {
+    "search_page": false,
+    "one_way": false,
+    "origin": false,
+    "destination": false,
+    "date": false,
+    "year": false,
+    "results": false
+  },
+  "visible_flights": []
+}
+Final page did not satisfy the route/date checks

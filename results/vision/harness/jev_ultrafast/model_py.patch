@@ -1,0 +1,26 @@
+diff --git a/jev_ultrafast/model.py b/jev_ultrafast/model.py
+index d311747..79075ac 100644
+--- a/jev_ultrafast/model.py
++++ b/jev_ultrafast/model.py
+@@ -115,8 +115,11 @@ def choose(state, goal, history):
+         },
+         "questions": questions,
+     }
++    if os.environ.get("S1_SCREENSHOT") == "1" and state.get("screenshot"):
++        body["image"] = state["screenshot"]  # our open-weight server can look at the page; Jev ignores this field
+     started = time.perf_counter()
+-    result = post_json("https://api.typesafe.ai/v1/systemone", os.environ["TYPESAFE_API_KEY"], body)
++    result = post_json(os.environ.get("TYPESAFE_BASE_URL", "https://api.typesafe.ai/v1/systemone"),
++                       os.environ.get("TYPESAFE_API_KEY", "none"), body)
+     operation_answer = validate_choice(result["answers"].get("operation", {}), operations)
+     operation = operation_answer["choice"]
+     target = None
+@@ -166,6 +169,8 @@ def field_text(context):
+     reasoning = {"thinking": {"type": "disabled"}} if "api.deepseek.com/" in base else {"reasoning": {"effort": "low"}}
+     if os.environ.get("TEXT_MODEL_REASONING") == "none":
+         reasoning = {"reasoning": {"enabled": False}}
++    if os.environ.get("TEXT_MODEL_REASONING") == "off":
++        reasoning = {}  # providers that reject unknown fields (Gemini's OpenAI-compatible endpoint)
+     started = time.perf_counter()
+     result = post_json(
+         base + "/chat/completions",

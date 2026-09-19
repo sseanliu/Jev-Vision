@@ -1,0 +1,37 @@
+287 ready Change ticket type. Round trip
+613 ready One way
+2654 ready Where from?
+2855 ready Zürich, Switzerland
+3018 ready Zürich, Switzerland
+4831 ready Where to? 
+5157 ready London, United Kingdom
+5300 ready London, United Kingdom
+5495 ready Open Departure
+5738 ready Sunday, September 20, 2026
+5995 ready Done. Search for one-way flights, departing on September 20, 2026
+6289 ready Wait for the page to update
+6517 ready Search
+6846 ready Wait for the page to update
+7292 ready Wait for the page to update
+7481 ready Wait for the page to update
+7772 ready Wait for the page to update
+7968 done Wait for the page to update
+{
+  "passed": true,
+  "checks": {
+    "search_page": true,
+    "one_way": true,
+    "origin": true,
+    "destination": true,
+    "date": true,
+    "year": true,
+    "results": true
+  },
+  "visible_flights": [
+    "From 179 US dollars. Nonstop flight with British Airways. Leaves Zurich Airport at 7:40 AM on Sunday, September 20 and arrives at Heathrow Airport at 8:35 AM on Sunday, September 20. Total duration 1 hr 55 min.   Select flight",
+    "From 220 US dollars.This price does not include overhead bin access. Nonstop flight with easyJet. Leaves Zurich Airport at 4:45 PM on Sunday, September 20 and arrives at London Gatwick Airport at 5:35 PM on Sunday, September 20. Total duration 1 hr 50 min.   Select flight",
+    "From 250 US dollars. Nonstop flight with British Airways. Operated by BA Cityflyer. Leaves Zurich Airport at 8:25 PM on Sunday, September 20 and arrives at London City Airport at 9:00 PM on Sunday, September 20. Total duration 1 hr 35 min.   Select flight",
+    "From 135 US dollars. 1 stop flight with Condor. Leaves Zurich Airport at 11:20 AM on Sunday, September 20 and arrives at London Gatwick Airport at 6:45 PM on Sunday, September 20. Total duration 8 hr 25 min.  Layover (1 of 1) is a 5 hr 50 min layover at Frankfurt Airport in Frankfurt am Main. Select flight",
+    "From 214 US dollars.This price does not include overhead bin access. Nonstop flight with easyJet. Leaves Zurich Airport at 8:55 PM on Sunday, September 20 and arrives at London Luton Airport at 9:40 PM on Sunday, September 20. Total duration 1 hr 45 min.   Select flight"
+  ]
+}

@@ -1,0 +1,31 @@
+2718 ready Where from?
+3511 ready Zürich, Switzerland
+4619 ready Zürich, Switzerland
+6912 ready Where to? 
+7729 ready London, United Kingdom
+8803 ready London, United Kingdom
+9988 ready Open Departure
+11976 ready Open Departure
+14439 ready Sunday, September 20, 2026 , 283 US dollars
+16524 ready Sunday, September 20, 2026 , 283 US dollars
+18872 ready Done. Search for one-way flights, departing on September 20, 2026
+21028 ready Done. Search for one-way flights, departing on September 20, 2026
+22245 ready Search
+24245 ready Search
+26607 ready Done. Search for one-way flights, departing on September 20, 2026
+28872 ready Done. Search for one-way flights, departing on September 20, 2026
+30033 done Done. Search for one-way flights, departing on September 20, 2026
+{
+  "passed": false,
+  "checks": {
+    "search_page": false,
+    "one_way": false,
+    "origin": true,
+    "destination": true,
+    "date": true,
+    "year": true,
+    "results": false
+  },
+  "visible_flights": []
+}
+Final page did not satisfy the route/date checks
