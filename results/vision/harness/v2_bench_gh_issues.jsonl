@@ -1,0 +1,1 @@
+{"step": 0, "url": "https://github.com/huggingface/transformers", "n_candidates": 30, "ground": "17", "ground_conf": 0.9977, "act": "click", "act_conf": 1.0, "done_p": 0.7285235524177551, "model_ms": 179.1, "wall_ms": 681}

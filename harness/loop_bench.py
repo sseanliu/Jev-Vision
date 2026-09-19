@@ -40,13 +40,14 @@ def main():
     ap.add_argument("--server", default="http://127.0.0.1:8811"); ap.add_argument("--tag", required=True)
     ap.add_argument("--out", default="results/vision/harness"); ap.add_argument("--max-steps", type=int, default=4)
     ap.add_argument("--k", type=int, default=30); ap.add_argument("--only", default=None)
+    ap.add_argument("--done-threshold", type=float, default=0.5)
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); rows = []
     for t in TASKS:
         if a.only and t["id"] not in a.only.split(","):
             continue
         args = SimpleNamespace(url=t["url"], goal=t["goal"], server=a.server, text=t.get("text", ""), max_steps=a.max_steps,
-                               min_confidence=0.3, log=str(out / f"{a.tag}_bench_{t['id']}.jsonl"), headless=True, k=a.k, done_threshold=0.9)
+                               min_confidence=0.3, log=str(out / f"{a.tag}_bench_{t['id']}.jsonl"), headless=True, k=a.k, done_threshold=a.done_threshold)
         Path(args.log).unlink(missing_ok=True)
         t0 = time.time()
         try:

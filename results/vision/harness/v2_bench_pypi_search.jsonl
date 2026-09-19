@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://pypi.org/", "n_candidates": 11, "ground": "6", "ground_conf": 0.9866, "act": "type", "act_conf": 0.929, "done_p": 0.014549391344189644, "model_ms": 214.9, "wall_ms": 425}
+{"step": 1, "url": "https://pypi.org/search/?q=requests", "n_candidates": 4, "ground": "4", "ground_conf": 0.2407, "act": "click", "act_conf": 0.967, "done_p": 0.027750788256525993, "model_ms": 151.0, "wall_ms": 679}

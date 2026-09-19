@@ -44,8 +44,11 @@ JS_ELEMENTS = """
   return out;
 }
 """
-ACTIONS = {"click": "click on the chosen element", "type": "type text into the chosen field", "select": "choose an option in the chosen dropdown",
-           "scroll": "scroll the page down", "done": "stop, the goal is achieved", "ask_user": "ask the user for clarification"}
+# same option phrasing as the V2 training schema (build_schema_rows.ACT_VOCAB); the trained head only ever saw
+# click/type/select as gold, so `done` is signalled by the `final` noul question, not by the act head
+ACTIONS = {"click": "click on an element", "type": "type text into a field", "select": "choose an option from a dropdown",
+           "scroll": "scroll the page", "done": "stop, the task is complete", "ask_user": "ask the user for clarification"}
+FINAL_INSTR = "After this action, will the task be complete?"
 
 
 def render(png: bytes, els):
@@ -76,7 +79,7 @@ def main():
     ap.add_argument("--max-steps", type=int, default=6); ap.add_argument("--min-confidence", type=float, default=0.3)
     ap.add_argument("--log", default="runs/browser_loop.jsonl"); ap.add_argument("--headless", action="store_true")
     ap.add_argument("--k", type=int, default=30, help="max candidates sent to the model")
-    ap.add_argument("--done-threshold", type=float, default=0.9, help="stop when the done noul exceeds this (V1b has an untrained noul head, so keep it high)")
+    ap.add_argument("--done-threshold", type=float, default=0.5, help="stop after acting when the `final` noul exceeds this")
     a = ap.parse_args()
     print(json.dumps(run_task(a)))
 
@@ -97,16 +100,17 @@ def run_task(a):
             state = f"Task: {a.goal}\nActions already taken:\n{hist}\n"
             qs = {"ground": {"type": "choice", "instructions": "Which numbered element should be acted on next to make progress on the task?", "criteria": crit},
                   "act": {"type": "choice", "instructions": "What kind of action should be taken next?", "criteria": ACTIONS},
-                  "done": {"type": "noul", "instructions": "Has the task already been completed on this screen?"}}
+                  "done": {"type": "noul", "instructions": FINAL_INSTR}}
             t0 = time.time(); res = ask(a.server, state, marked, qs); wall = (time.time() - t0) * 1000
             g, act, done = res["answers"]["ground"], res["answers"]["act"], res["answers"]["done"]
             rec = {"step": step, "url": page.url, "n_candidates": len(els), "ground": g["choice"], "ground_conf": g["confidence"],
                    "act": act["choice"], "act_conf": act["confidence"], "done_p": done["noul"], "model_ms": res["usage"]["latency_ms"], "wall_ms": round(wall)}
             print(json.dumps(rec), flush=True); log.write(json.dumps(rec) + "\n"); log.flush(); steps.append(rec)
-            if done["noul"] > a.done_threshold or act["choice"] == "done":
+            if act["choice"] == "done":
                 stop = "done"; break
             if g["confidence"] < a.min_confidence or g["choice"] == "none" or act["choice"] == "ask_user":
                 stop = "escalate"; break
+            final = done["noul"] > a.done_threshold  # trained semantics: "after this action, will the task be complete?"
             if act["choice"] == "scroll":
                 page.mouse.wheel(0, 600); history.append("scrolled down"); page.wait_for_timeout(500); continue
             e = els[int(g["choice"]) - 1]; cx, cy = e["x"] + e["w"] / 2, e["y"] + e["h"] / 2
@@ -116,6 +120,8 @@ def run_task(a):
             else:
                 page.mouse.click(cx, cy); history.append(f"clicked {e['tag']} '{e['text']}'")
             page.wait_for_timeout(1200)
+            if final:
+                stop = "done"; break
         Path(a.log).with_suffix(".final.png").write_bytes(page.screenshot())
         final = page.url; browser.close()
     return {"final_url": final, "steps": steps, "stop": stop}
