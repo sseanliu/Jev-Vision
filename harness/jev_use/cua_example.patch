@@ -1,0 +1,53 @@
+diff --git a/libs/cua-driver/examples/jev-use/python/run.py b/libs/cua-driver/examples/jev-use/python/run.py
+index ef05eebef..3fa46ee05 100644
+--- a/libs/cua-driver/examples/jev-use/python/run.py
++++ b/libs/cua-driver/examples/jev-use/python/run.py
+@@ -22,6 +22,7 @@ from core import (
+     parse_visual_regions,
+     validate_choice,
+ )
++from s1_adapter import choose_s1
+ from jev_adapter import choose_live, choose_mock_adapter
+ 
+ 
+@@ -221,6 +222,10 @@ async def run(args: argparse.Namespace) -> str:
+                     choice, confidence, probabilities = choose_mock_adapter(
+                         candidates, snapshot, visual, history
+                     )
++                elif args.provider == "s1":
++                    choice, confidence, probabilities = await asyncio.to_thread(
++                        choose_s1, candidates, snapshot, visual, history
++                    )
+                 else:
+                     choice, confidence, probabilities = await asyncio.to_thread(
+                         choose_live, candidates, snapshot, visual, history
+@@ -319,7 +324,7 @@ async def run(args: argparse.Namespace) -> str:
+ 
+ def parse_args() -> argparse.Namespace:
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("--provider", choices=("mock", "live"), default="mock")
++    parser.add_argument("--provider", choices=("mock", "live", "s1"), default="mock")
+     parser.add_argument(
+         "--fixture-url", type=validate_fixture_url, default="http://127.0.0.1:8765/"
+     )
+diff --git a/libs/cua-driver/examples/jev-use/verify_setup.py b/libs/cua-driver/examples/jev-use/verify_setup.py
+index 5a85df7fb..52f5f70e1 100644
+--- a/libs/cua-driver/examples/jev-use/verify_setup.py
++++ b/libs/cua-driver/examples/jev-use/verify_setup.py
+@@ -63,6 +63,7 @@ def main() -> None:
+     parser = argparse.ArgumentParser(description='Verify Jev setup with an owned, automatically cleaned-up fixture.')
+     parser.add_argument('--live', action='store_true', help='also verify live Jev; requires a TypeSafe key')
+     parser.add_argument('--typescript', action='store_true', help='also verify the installed TypeScript agent')
++    parser.add_argument('--s1', action='store_true', help='also verify the open-weight s1 decision server (S1_SERVER, default http://127.0.0.1:8811)')
+     parser.add_argument('--port', type=int, default=0, help='fixture port; defaults to an unused loopback port')
+     parser.add_argument('--max-steps', type=int, default=4, help='maximum decisions per runner')
+     parser.add_argument('--output-dir', type=Path, required=True, help='new directory for evidence; existing paths are refused')
+@@ -77,7 +78,7 @@ def main() -> None:
+             print(json.dumps({'event': 'fixture_ready', 'url': url}), flush=True)
+             summary['fixture_url'] = url
+             for language in (['python', 'typescript'] if args.typescript else ['python']):
+-                for provider in (['mock', 'live'] if args.live else ['mock']):
++                for provider in (['mock'] + (['s1'] if args.s1 else []) + (['live'] if args.live else [])):
+                     token = f'jev-guide-{provider}'
+                     log = output / f'{language}-{provider}.jsonl'
+                     command = runner_command(language, provider)

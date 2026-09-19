@@ -1,0 +1,3 @@
+{"action_ms": 1623.27, "candidate": "type-verification-value", "confidence": 0.9972, "decision_ms": 248.52, "dry_run": false, "event": "step", "probabilities": {"abstain": 0.0015981451142579317, "reobserve": 0.0002490179322194308, "type-verification-value": 0.9981527924537659}, "step": 1}
+{"action_ms": 1551.58, "candidate": "submit-form", "confidence": 0.9999, "decision_ms": 127.26, "dry_run": false, "event": "step", "probabilities": {"abstain": 6.073503027437255e-05, "reobserve": 1.063734816852957e-05, "submit-form": 0.9999285936355591}, "step": 2}
+{"event": "outcome", "outcome": "verified", "token": "jev-guide-s1"}

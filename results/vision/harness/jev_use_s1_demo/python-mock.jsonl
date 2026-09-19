@@ -1,0 +1,3 @@
+{"action_ms": 1616.71, "candidate": "type-verification-value", "confidence": 1.0, "decision_ms": 21.39, "dry_run": false, "event": "step", "probabilities": {"abstain": 0.0, "reobserve": 0.0, "type-verification-value": 1.0}, "step": 1}
+{"action_ms": 1542.9, "candidate": "submit-form", "confidence": 1.0, "decision_ms": 4.7, "dry_run": false, "event": "step", "probabilities": {"abstain": 0.0, "reobserve": 0.0, "submit-form": 1.0}, "step": 2}
+{"event": "outcome", "outcome": "verified", "token": "jev-guide-mock"}

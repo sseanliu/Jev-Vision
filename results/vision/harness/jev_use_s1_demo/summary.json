@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "live_requested": false,
+  "typescript_requested": false,
+  "checks": [
+    {
+      "language": "python",
+      "provider": "mock",
+      "outcome": "verified",
+      "token": "jev-guide-mock",
+      "observed": {
+        "submitted": "jev-guide-mock"
+      }
+    },
+    {
+      "language": "python",
+      "provider": "s1",
+      "outcome": "verified",
+      "token": "jev-guide-s1",
+      "observed": {
+        "submitted": "jev-guide-s1"
+      }
+    }
+  ],
+  "fixture_url": "http://127.0.0.1:61633/"
+}
