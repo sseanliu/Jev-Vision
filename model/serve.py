@@ -33,6 +33,11 @@ from s1.packing import Question
 MODEL = {}
 
 
+def as_text(v) -> str:
+    """Instructions and criteria values may be JSON objects (jev-ultrafast sends dicts); render them as text."""
+    return v if isinstance(v, str) else json.dumps(v, ensure_ascii=False)
+
+
 def render_state(state) -> str:
     return state if isinstance(state, str) else json.dumps(state, indent=1, ensure_ascii=False)
 
@@ -51,7 +56,12 @@ def answer(req: dict) -> dict:
     model, packer, name = MODEL["model"], MODEL["packer"], MODEL["name"]
     qs, order = [], []
     for qid, q in req["questions"].items():
-        qs.append(Question(qid, q["type"], q["instructions"], q.get("criteria"))); order.append(qid)
+        crit = q.get("criteria")
+        if isinstance(crit, dict):
+            crit = {k: as_text(v) for k, v in crit.items()}
+        elif isinstance(crit, list):
+            crit = [as_text(v) for v in crit]
+        qs.append(Question(qid, q["type"], as_text(q["instructions"]), crit)); order.append(qid)
     img = decode_image(req.get("image"))
     state = render_state(req["state"])
     t0 = time.perf_counter()
