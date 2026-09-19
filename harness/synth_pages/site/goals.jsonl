@@ -4,7 +4,7 @@
 {"url": "http://127.0.0.1:8765/search__checked1.html", "variant": "checked1", "kind": "search", "goal": "Search for 'widget'", "target_text": "Search products", "value": "widget", "done_contains": "q=widget"}
 {"url": "http://127.0.0.1:8765/search__disabled1.html", "variant": "disabled1", "kind": "search", "goal": "Search for 'widget'", "target_text": "Search products", "value": "widget", "done_contains": "q=widget"}
 {"url": "http://127.0.0.1:8765/search__overlay1.html", "variant": "overlay1", "kind": "search", "goal": "Search for 'widget'", "target_text": "Search products", "value": "widget", "done_contains": "q=widget"}
-{"url": "http://127.0.0.1:8765/search__done1.html", "variant": "done1", "kind": "search", "goal": "Search for 'widget'", "target_text": "Search products", "value": "widget", "done_contains": "q=widget"}
+{"url": "http://127.0.0.1:8765/search__done1.html", "variant": "done1", "kind": "search", "goal": "Search for 'widget'", "target_text": "Search products", "value": "widget", "done_contains": "__done1"}
 {"url": "http://127.0.0.1:8765/signup__base.html", "variant": "base", "kind": "search", "goal": "Enter the name 'Ada Lovelace'", "target_text": "Name", "value": "Ada Lovelace", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/signup__base.html", "variant": "base", "kind": "click", "goal": "Click 'Create account'", "target_text": "Create account", "value": "", "done_contains": "created=1"}
 {"url": "http://127.0.0.1:8765/signup__filled1.html", "variant": "filled1", "kind": "search", "goal": "Enter the name 'Ada Lovelace'", "target_text": "Name", "value": "Ada Lovelace", "done_contains": ""}
@@ -17,8 +17,8 @@
 {"url": "http://127.0.0.1:8765/signup__disabled1.html", "variant": "disabled1", "kind": "click", "goal": "Click 'Create account'", "target_text": "Create account", "value": "", "done_contains": "created=1"}
 {"url": "http://127.0.0.1:8765/signup__overlay1.html", "variant": "overlay1", "kind": "search", "goal": "Enter the name 'Ada Lovelace'", "target_text": "Name", "value": "Ada Lovelace", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/signup__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Click 'Create account'", "target_text": "Create account", "value": "", "done_contains": "created=1"}
-{"url": "http://127.0.0.1:8765/signup__done1.html", "variant": "done1", "kind": "search", "goal": "Enter the name 'Ada Lovelace'", "target_text": "Name", "value": "Ada Lovelace", "done_contains": ""}
-{"url": "http://127.0.0.1:8765/signup__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Create account'", "target_text": "Create account", "value": "", "done_contains": "created=1"}
+{"url": "http://127.0.0.1:8765/signup__done1.html", "variant": "done1", "kind": "search", "goal": "Enter the name 'Ada Lovelace'", "target_text": "Name", "value": "Ada Lovelace", "done_contains": "__done1"}
+{"url": "http://127.0.0.1:8765/signup__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Create account'", "target_text": "Create account", "value": "", "done_contains": "__done1"}
 {"url": "http://127.0.0.1:8765/settings__base.html", "variant": "base", "kind": "click", "goal": "Turn on 'Dark mode'", "target_text": "Dark mode", "value": "", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/settings__base.html", "variant": "base", "kind": "click", "goal": "Click 'Save settings'", "target_text": "Save settings", "value": "", "done_contains": "saved=1"}
 {"url": "http://127.0.0.1:8765/settings__filled1.html", "variant": "filled1", "kind": "click", "goal": "Turn on 'Dark mode'", "target_text": "Dark mode", "value": "", "done_contains": ""}
@@ -31,8 +31,8 @@
 {"url": "http://127.0.0.1:8765/settings__disabled1.html", "variant": "disabled1", "kind": "click", "goal": "Click 'Save settings'", "target_text": "Save settings", "value": "", "done_contains": "saved=1"}
 {"url": "http://127.0.0.1:8765/settings__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Turn on 'Dark mode'", "target_text": "Dark mode", "value": "", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/settings__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Click 'Save settings'", "target_text": "Save settings", "value": "", "done_contains": "saved=1"}
-{"url": "http://127.0.0.1:8765/settings__done1.html", "variant": "done1", "kind": "click", "goal": "Turn on 'Dark mode'", "target_text": "Dark mode", "value": "", "done_contains": ""}
-{"url": "http://127.0.0.1:8765/settings__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Save settings'", "target_text": "Save settings", "value": "", "done_contains": "saved=1"}
+{"url": "http://127.0.0.1:8765/settings__done1.html", "variant": "done1", "kind": "click", "goal": "Turn on 'Dark mode'", "target_text": "Dark mode", "value": "", "done_contains": "__done1"}
+{"url": "http://127.0.0.1:8765/settings__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Save settings'", "target_text": "Save settings", "value": "", "done_contains": "__done1"}
 {"url": "http://127.0.0.1:8765/booking__base.html", "variant": "base", "kind": "search", "goal": "Enter the date '2026-10-01'", "target_text": "YYYY-MM-DD", "value": "2026-10-01", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/booking__base.html", "variant": "base", "kind": "click", "goal": "Click 'Book'", "target_text": "Book", "value": "", "done_contains": "booked="}
 {"url": "http://127.0.0.1:8765/booking__filled1.html", "variant": "filled1", "kind": "search", "goal": "Enter the date '2026-10-01'", "target_text": "YYYY-MM-DD", "value": "2026-10-01", "done_contains": ""}
@@ -45,8 +45,8 @@
 {"url": "http://127.0.0.1:8765/booking__disabled1.html", "variant": "disabled1", "kind": "click", "goal": "Click 'Book'", "target_text": "Book", "value": "", "done_contains": "booked="}
 {"url": "http://127.0.0.1:8765/booking__overlay1.html", "variant": "overlay1", "kind": "search", "goal": "Enter the date '2026-10-01'", "target_text": "YYYY-MM-DD", "value": "2026-10-01", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/booking__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Click 'Book'", "target_text": "Book", "value": "", "done_contains": "booked="}
-{"url": "http://127.0.0.1:8765/booking__done1.html", "variant": "done1", "kind": "search", "goal": "Enter the date '2026-10-01'", "target_text": "YYYY-MM-DD", "value": "2026-10-01", "done_contains": ""}
-{"url": "http://127.0.0.1:8765/booking__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Book'", "target_text": "Book", "value": "", "done_contains": "booked="}
+{"url": "http://127.0.0.1:8765/booking__done1.html", "variant": "done1", "kind": "search", "goal": "Enter the date '2026-10-01'", "target_text": "YYYY-MM-DD", "value": "2026-10-01", "done_contains": "__done1"}
+{"url": "http://127.0.0.1:8765/booking__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Book'", "target_text": "Book", "value": "", "done_contains": "__done1"}
 {"url": "http://127.0.0.1:8765/catalog__base.html", "variant": "base", "kind": "click", "goal": "Open the 'On sale' tab", "target_text": "On sale", "value": "", "done_contains": "tab=sale"}
 {"url": "http://127.0.0.1:8765/catalog__base.html", "variant": "base", "kind": "click", "goal": "Click 'Add to cart' for Item A", "target_text": "Add to cart", "value": "", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/catalog__filled1.html", "variant": "filled1", "kind": "click", "goal": "Open the 'On sale' tab", "target_text": "On sale", "value": "", "done_contains": "tab=sale"}
@@ -59,8 +59,8 @@
 {"url": "http://127.0.0.1:8765/catalog__disabled1.html", "variant": "disabled1", "kind": "click", "goal": "Click 'Add to cart' for Item A", "target_text": "Add to cart", "value": "", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/catalog__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Open the 'On sale' tab", "target_text": "On sale", "value": "", "done_contains": "tab=sale"}
 {"url": "http://127.0.0.1:8765/catalog__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Click 'Add to cart' for Item A", "target_text": "Add to cart", "value": "", "done_contains": ""}
-{"url": "http://127.0.0.1:8765/catalog__done1.html", "variant": "done1", "kind": "click", "goal": "Open the 'On sale' tab", "target_text": "On sale", "value": "", "done_contains": "tab=sale"}
-{"url": "http://127.0.0.1:8765/catalog__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Add to cart' for Item A", "target_text": "Add to cart", "value": "", "done_contains": ""}
+{"url": "http://127.0.0.1:8765/catalog__done1.html", "variant": "done1", "kind": "click", "goal": "Open the 'On sale' tab", "target_text": "On sale", "value": "", "done_contains": "__done1"}
+{"url": "http://127.0.0.1:8765/catalog__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Add to cart' for Item A", "target_text": "Add to cart", "value": "", "done_contains": "__done1"}
 {"url": "http://127.0.0.1:8765/help__base.html", "variant": "base", "kind": "follow", "goal": "Open 'Contact support'", "target_text": "Contact support", "value": "", "done_contains": "page=contact"}
 {"url": "http://127.0.0.1:8765/help__base.html", "variant": "base", "kind": "click", "goal": "Click 'Start chat'", "target_text": "Start chat", "value": "", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/help__filled1.html", "variant": "filled1", "kind": "follow", "goal": "Open 'Contact support'", "target_text": "Contact support", "value": "", "done_contains": "page=contact"}
@@ -73,12 +73,12 @@
 {"url": "http://127.0.0.1:8765/help__disabled1.html", "variant": "disabled1", "kind": "click", "goal": "Click 'Start chat'", "target_text": "Start chat", "value": "", "done_contains": ""}
 {"url": "http://127.0.0.1:8765/help__overlay1.html", "variant": "overlay1", "kind": "follow", "goal": "Open 'Contact support'", "target_text": "Contact support", "value": "", "done_contains": "page=contact"}
 {"url": "http://127.0.0.1:8765/help__overlay1.html", "variant": "overlay1", "kind": "click", "goal": "Click 'Start chat'", "target_text": "Start chat", "value": "", "done_contains": ""}
-{"url": "http://127.0.0.1:8765/help__done1.html", "variant": "done1", "kind": "follow", "goal": "Open 'Contact support'", "target_text": "Contact support", "value": "", "done_contains": "page=contact"}
-{"url": "http://127.0.0.1:8765/help__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Start chat'", "target_text": "Start chat", "value": "", "done_contains": ""}
+{"url": "http://127.0.0.1:8765/help__done1.html", "variant": "done1", "kind": "follow", "goal": "Open 'Contact support'", "target_text": "Contact support", "value": "", "done_contains": "__done1"}
+{"url": "http://127.0.0.1:8765/help__done1.html", "variant": "done1", "kind": "click", "goal": "Click 'Start chat'", "target_text": "Start chat", "value": "", "done_contains": "__done1"}
 {"url": "http://127.0.0.1:8765/index__base.html", "variant": "base", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
 {"url": "http://127.0.0.1:8765/index__filled1.html", "variant": "filled1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
 {"url": "http://127.0.0.1:8765/index__wrong1.html", "variant": "wrong1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
 {"url": "http://127.0.0.1:8765/index__checked1.html", "variant": "checked1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
 {"url": "http://127.0.0.1:8765/index__disabled1.html", "variant": "disabled1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
 {"url": "http://127.0.0.1:8765/index__overlay1.html", "variant": "overlay1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
-{"url": "http://127.0.0.1:8765/index__done1.html", "variant": "done1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}
+{"url": "http://127.0.0.1:8765/index__done1.html", "variant": "done1", "kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "__done1"}

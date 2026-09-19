@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 model/data/jsonl/
 model/runs/
-model/data/vision/
+model/data/vision/*
 # small recipe inputs are tracked even though the data dirs are ignored
 !model/data/vision/state_rows/
 !model/data/vision/m2w_train_j/

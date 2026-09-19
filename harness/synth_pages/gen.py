@@ -137,7 +137,10 @@ def main():
             for v in VARIANTS:
                 tag = "_".join(f"{k}{val}" for k, val in v.items()) or "base"
                 for g in GOALS.get(name, []):
-                    f.write(json.dumps({"url": f"http://127.0.0.1:{a.port}/{name[:-5]}__{tag}.html", "variant": tag, **g}) + "\n")
+                    gg = dict(g)
+                    if tag == "done1":
+                        gg["done_contains"] = "__done1"  # the page is already in the goal state
+                    f.write(json.dumps({"url": f"http://127.0.0.1:{a.port}/{name[:-5]}__{tag}.html", "variant": tag, **gg}) + "\n")
     if a.serve:
         os.chdir(out)
         srv = http.server.ThreadingHTTPServer(("127.0.0.1", a.port), http.server.SimpleHTTPRequestHandler)
