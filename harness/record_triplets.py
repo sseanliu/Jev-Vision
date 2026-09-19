@@ -108,7 +108,11 @@ def search_done(url: str, q: str) -> bool:
     u = unquote_plus(url).lower(); q = q.lower()
     if re.search(SEARCH_PARAMS + r"[^&#]*" + re.escape(q), u):
         return True
-    return bool(re.search(r"/search[^?]*/" + re.escape(q) + r"(?:[/?&#]|$)", u))
+    if re.search(r"/search[^?]*/" + re.escape(q) + r"(?:[/?&#]|$)", u):
+        return True
+    # exact-title landing (Wikipedia-style "search jumps to the article"): last path segment equals the query
+    last = u.split("?")[0].split("#")[0].rstrip("/").rsplit("/", 1)[-1].replace("_", " ")
+    return last == q
 
 
 def main():
