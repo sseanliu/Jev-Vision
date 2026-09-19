@@ -99,6 +99,7 @@ def main():
     ap.add_argument("--val-limit", type=int, default=300)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--max-pixels", type=int, default=1288 * 1000)
+    ap.add_argument("--multires", default=None, help="comma-separated pixel budgets sampled per training example, e.g. 1288000,640000,320000")
     ap.add_argument("--lora-r", type=int, default=64)
     ap.add_argument("--lora-alpha", type=int, default=0)
     ap.add_argument("--lora-targets", default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj")
@@ -140,7 +141,8 @@ def main():
     data = Path(a.data)
     train_paths = sorted(data.glob("*.train.jsonl")) + [p for d in a.extra_data for p in sorted(Path(d).glob("*.train.jsonl"))]
     val_paths = sorted(data.glob("*.validation.jsonl"))
-    train_ds = VLRequestDataset(train_paths, packer, seed=a.seed, limit=a.limit)
+    budgets = [int(x) for x in a.multires.split(",")] if a.multires else None
+    train_ds = VLRequestDataset(train_paths, packer, seed=a.seed, limit=a.limit, budgets=budgets)
     val_ds = VLRequestDataset(val_paths, packer, seed=1, limit=a.val_limit)
     pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
     col = CollateVL(pad)

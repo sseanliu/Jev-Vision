@@ -38,10 +38,12 @@ class VLPacker:
         self.text = Packer(processor.tokenizer)  # adds <|q|> <|opt|> <|/opt|> <|read|>
         self.max_pixels = max_pixels
 
-    def pack(self, image: Image.Image | str, state_text: str, questions: list[Question]) -> PackedVL:
+    def pack(self, image: Image.Image | str, state_text: str, questions: list[Question],
+             max_pixels: int | None = None) -> PackedVL:
         img = Image.open(image).convert("RGB") if isinstance(image, str) else image
         # transformers 5.x Qwen3-VL processors ignore a bare `max_pixels`; the budget goes through `size`
-        kw = {"size": {"shortest_edge": 3136, "longest_edge": self.max_pixels}} if self.max_pixels else {}
+        budget = max_pixels or self.max_pixels
+        kw = {"size": {"shortest_edge": 3136, "longest_edge": budget}} if budget else {}
         enc = self.proc(text=[IMAGE_PREFIX + state_text], images=[img], return_tensors="pt",
                         add_special_tokens=False, images_kwargs=kw)
         state_ids = enc["input_ids"][0].tolist()

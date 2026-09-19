@@ -27,7 +27,12 @@ class ExampleVL:
 
 
 class VLRequestDataset(torch.utils.data.Dataset):
-    def __init__(self, paths: list[Path], packer: VLPacker, seed: int = 0, limit: int = 0):
+    def __init__(self, paths: list[Path], packer: VLPacker, seed: int = 0, limit: int = 0,
+                 budgets: list[int] | None = None):
+        """budgets: if given, each example is packed at a pixel budget drawn uniformly from this list
+        (multi-resolution training); None keeps the packer's fixed budget."""
+        self.budgets = budgets
+        self.rng = random.Random(seed + 17)
         self.rows = []
         for p in paths:
             root = Path(p).parent
@@ -57,7 +62,8 @@ class VLRequestDataset(torch.utils.data.Dataset):
             else:
                 questions.append(Question(q["qid"], "score", q["instructions"], q["criteria"]))
                 targets.append([float(t.get(str(i), 0.0)) for i in range(len(q["criteria"]))] if soft else int(t))
-        return ExampleVL(self.packer.pack(row["image"], row["state"], questions), targets)
+        budget = self.rng.choice(self.budgets) if self.budgets else None
+        return ExampleVL(self.packer.pack(row["image"], row["state"], questions, max_pixels=budget), targets)
 
     def __getitem__(self, i):
         return self.build(self.rows[i])
