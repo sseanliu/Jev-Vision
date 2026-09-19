@@ -103,6 +103,8 @@ def main():
     ap.add_argument("--lora-alpha", type=int, default=0)
     ap.add_argument("--lora-targets", default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj")
     ap.add_argument("--attn", default="sdpa")
+    ap.add_argument("--init-adapter", default=None, help="LoRA checkpoint dir (…/final/backbone) to continue from")
+    ap.add_argument("--init-heads", default=None, help="heads.pt to continue from")
     ap.add_argument("--grad-ckpt", action="store_true")
     ap.add_argument("--keep", type=int, default=1)
     ap.add_argument("--seed", type=int, default=0)
@@ -116,10 +118,21 @@ def main():
     tok = proc.tokenizer
     new_ids = [tok.convert_tokens_to_ids(t) for t in SPECIAL_TOKENS]
     lora = {"r": a.lora_r, "alpha": a.lora_alpha or 2 * a.lora_r, "targets": a.lora_targets.split(",")} if a.lora_r > 0 else None
-    model = VLDecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn, torch_dtype=dtype,
-                            lora=lora, trainable_token_ids=new_ids if lora else None)
-    if lora:
+    if a.init_adapter:
+        from peft import PeftModel
+        model = VLDecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn, torch_dtype=dtype)
+        model.backbone = PeftModel.from_pretrained(model.backbone, a.init_adapter, is_trainable=True)
+        model.lora = json.loads((Path(a.init_adapter).parent / "s1_config.json").read_text()).get("lora")
+        print(f"loaded adapter from {a.init_adapter}")
+    else:
+        model = VLDecisionModel(a.base, rank=256, new_vocab_size=len(tok), attn_implementation=a.attn, torch_dtype=dtype,
+                                lora=lora, trainable_token_ids=new_ids if lora else None)
+    if model.lora:
         model.backbone.print_trainable_parameters()
+    if a.init_heads:
+        missing, unexpected = model.load_state_dict(torch.load(a.init_heads, map_location="cpu"), strict=False)
+        assert not unexpected, unexpected
+        print(f"loaded heads from {a.init_heads}")
     if a.grad_ckpt:
         model.backbone.gradient_checkpointing_enable()
     model.to(device)
