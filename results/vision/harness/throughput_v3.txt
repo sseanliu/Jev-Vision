@@ -1,0 +1,10 @@
+V3 server (serve.py, ThreadingHTTPServer, no batching), H100, one 1280x1000 screenshot + 3 typed questions per request, 24 requests per row.
+On the pod (localhost):
+{"concurrency": 1, "n": 24, "req_per_s": 5.24, "e2e_p50_ms": 190.5, "e2e_p90_ms": 192.0, "model_p50_ms": 156.5}
+{"concurrency": 2, "n": 24, "req_per_s": 6.15, "e2e_p50_ms": 311.7, "e2e_p90_ms": 357.5, "model_p50_ms": 273.6}
+{"concurrency": 4, "n": 24, "req_per_s": 5.84, "e2e_p50_ms": 685.6, "e2e_p90_ms": 688.2, "model_p50_ms": 621.2}
+{"concurrency": 8, "n": 24, "req_per_s": 5.84, "e2e_p50_ms": 1351.3, "e2e_p90_ms": 1420.4, "model_p50_ms": 1252.2}
+From the Mac through an ssh tunnel (1.7 MB base64 PNG per request):
+{"concurrency": 1, "n": 24, "req_per_s": 0.59, "e2e_p50_ms": 1292.3, "e2e_p90_ms": 2222.8, "model_p50_ms": 157.7}
+{"concurrency": 4, "n": 24, "req_per_s": 1.06, "e2e_p50_ms": 3066.7, "e2e_p90_ms": 6559.5, "model_p50_ms": 466.2}
+{"concurrency": 8, "n": 24, "req_per_s": 1.28, "e2e_p50_ms": 4514.4, "e2e_p90_ms": 11485.9, "model_p50_ms": 793.9}
