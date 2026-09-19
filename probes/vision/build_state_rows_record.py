@@ -48,23 +48,25 @@ def main():
         split = "validation" if r["site"] in val_sites else "train"
         before = str(root / r["before_img"]); after = str(root / r["after_img"]); st = state_text(r["goal"], r["history"])
         L = r["labels"]
+        tb = "\n".join(r["candidates"].values()); ta = "\n".join(r.get("candidates_after", {}).values())
+        meta = {"site": r["site"], "step_id": r["id"], "text_before": tb, "text_after": ta, "url_before": r["before_url"], "url_after": r["after_url"], "goal_kind": r["goal_kind"]}
         # effect
         if not L["noisy"]:
             act = f"{r['action']} on {r['candidates'].get(r['chosen'], '?')}" + (f" typed '{r['typed']}'" if r["typed"] else "")
-            out[split].append({"images": [before, after], "state": st + f"Last action: {act}\n", "questions": [{"qid": "effect", "qtype": "noul", "instructions": rng.choice(EFFECT_INSTR)}], "targets": {"effect": L["effect"]}}); n[f"{split}/effect{L['effect']}"] += 1
+            out[split].append({"images": [before, after], "state": st + f"Last action: {act}\n", "questions": [{"qid": "effect", "qtype": "noul", "instructions": rng.choice(EFFECT_INSTR)}], "targets": {"effect": L["effect"]}, "meta": meta}); n[f"{split}/effect{L['effect']}"] += 1
         # done: before image (done_before) and after image (done_after)
-        out[split].append({"images": [before], "state": st, "questions": [{"qid": "done", "qtype": "noul", "instructions": rng.choice(DONE_INSTR)}], "targets": {"done": L["done_before"]}}); n[f"{split}/done{L['done_before']}"] += 1
+        out[split].append({"images": [before], "state": st, "questions": [{"qid": "done", "qtype": "noul", "instructions": rng.choice(DONE_INSTR)}], "targets": {"done": L["done_before"]}, "meta": {**meta, "which": "before"}}); n[f"{split}/done{L['done_before']}"] += 1
         hist_after = r["history"] + [f"{r['action']} on {r['candidates'].get(r['chosen'], '?')[:40]}" + (f" typed '{r['typed']}'" if r["typed"] else "")]
-        out[split].append({"images": [after], "state": state_text(r["goal"], hist_after), "questions": [{"qid": "done", "qtype": "noul", "instructions": rng.choice(DONE_INSTR)}], "targets": {"done": L["done_after"]}}); n[f"{split}/done{L['done_after']}"] += 1
+        out[split].append({"images": [after], "state": state_text(r["goal"], hist_after), "questions": [{"qid": "done", "qtype": "noul", "instructions": rng.choice(DONE_INSTR)}], "targets": {"done": L["done_after"]}, "meta": {**meta, "which": "after"}}); n[f"{split}/done{L['done_after']}"] += 1
         # skip: balanced sample of candidates
         pos = [k for k, v in L["skip"].items() if v]; neg = [k for k, v in L["skip"].items() if not v]
         picks = rng.sample(pos, min(a.skip_per_step, len(pos))) + rng.sample(neg, min(a.skip_per_step, len(neg)))
         for k in picks:
-            out[split].append({"images": [before], "state": st + f"Candidate {k}: {r['candidates'][k]}\n", "questions": [{"qid": "skip", "qtype": "noul", "instructions": rng.choice(SKIP_INSTR)}], "targets": {"skip": L["skip"][k]}}); n[f"{split}/skip{L['skip'][k]}"] += 1
+            out[split].append({"images": [before], "state": st + f"Candidate {k}: {r['candidates'][k]}\n", "questions": [{"qid": "skip", "qtype": "noul", "instructions": rng.choice(SKIP_INSTR)}], "targets": {"skip": L["skip"][k]}, "meta": {**meta, "candidate": k}}); n[f"{split}/skip{L['skip'][k]}"] += 1
         # ground: goal target known and task not yet done
         if r["target_idx"] and not L["done_before"] and rng.random() < 0.5:
             crit = dict(r["candidates"]); crit["none"] = "none of the marked elements is the right target"
-            out[split].append({"images": [before], "state": st, "questions": [{"qid": "ground", "qtype": "choice", "instructions": GROUND_INSTR, "criteria": crit}], "targets": {"ground": r["target_idx"]}}); n[f"{split}/ground"] += 1
+            out[split].append({"images": [before], "state": st, "questions": [{"qid": "ground", "qtype": "choice", "instructions": GROUND_INSTR, "criteria": crit}], "targets": {"ground": r["target_idx"]}, "meta": meta}); n[f"{split}/ground"] += 1
     od = Path(a.out_dir); od.mkdir(parents=True, exist_ok=True)
     for split, rows in out.items():
         rng.shuffle(rows)
