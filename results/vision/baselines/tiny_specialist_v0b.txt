@@ -1,0 +1,7 @@
+epoch 1: train loss 2.168  test acc 0.373  top-p 0.372  AUROC 0.781  77s
+epoch 2: train loss 1.948  test acc 0.373  top-p 0.336  AUROC 0.811  153s
+epoch 3: train loss 1.875  test acc 0.397  top-p 0.370  AUROC 0.856  235s
+epoch 4: train loss 1.825  test acc 0.383  top-p 0.388  AUROC 0.863  315s
+epoch 5: train loss 1.809  test acc 0.397  top-p 0.395  AUROC 0.861  391s
+epoch 6: train loss 1.809  test acc 0.397  top-p 0.391  AUROC 0.863  471s
+chance 0.100
