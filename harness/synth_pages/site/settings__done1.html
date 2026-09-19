@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset=utf-8><title>Settings</title>
+<style>body{font-family:system-ui;margin:24px;max-width:900px} .row{margin:10px 0} input,select,button{font-size:16px;padding:6px 10px}
+button{cursor:pointer} button:disabled{opacity:.5} .results{margin-top:16px;padding:12px;background:#f3f3f3} .hidden{display:none}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center} #overlay.hidden{display:none}
+#overlay div{background:#fff;padding:24px;border-radius:8px} nav a{margin-right:14px} .tab{display:inline-block;padding:8px 14px;border:1px solid #ccc;margin-right:4px;cursor:pointer} .tab.active{background:#ddd}
+</style></head><body>
+<nav><a href="/index__base.html">Home</a><a href="/search__base.html">Search</a><a href="/signup__base.html">Sign up</a><a href="/settings__base.html">Settings</a><a href="/booking__base.html">Booking</a><a href="/catalog__base.html">Catalog</a><a href="/help__base.html">Help</a></nav>
+<h2>Settings</h2>
+
+<div class=row><label><input type=checkbox id=dark checked> Dark mode</label></div>
+<div class=row><label><input type=checkbox id=notif > Email notifications</label></div>
+<div class=row><label>Language <select id=lang><option>English</option><option >Spanish</option><option >German</option></select></label></div>
+<div class=row><button id=save >Save settings</button></div>
+<div id=saved class="results ">Settings saved</div>
+
+<div id="overlay" class="hidden"><div><p>We use cookies.</p><button id="ovl-accept" onclick="document.getElementById('overlay').remove()">Accept</button> <button onclick="document.getElementById('overlay').remove()">Decline</button></div></div>
+<script>
+const q = new URLSearchParams(location.search);
+
+document.getElementById('save').onclick = () => { document.getElementById('saved').classList.remove('hidden'); history.pushState({}, '', '/settings.html?saved=1'); };
+
+</script></body></html>
