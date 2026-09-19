@@ -93,6 +93,14 @@ def main():
         rows = con.execute(
             f"SELECT annotation_id, action_uid, confirmed_task, action_reprs, target_action_index, "
             f"target_action_reprs, operation, pos_candidates, neg_candidates, screenshot FROM '{url}'").fetchall()
+        # later-step targets per annotation: a candidate that is the positive of a *later* step is an
+        # alternative valid answer now (Mind2Web records one order of several valid ones)
+        by_ann = {}
+        for r in rows:
+            ann_, tidx_, pos_ = r[0], r[4], r[7]
+            if tidx_ and str(tidx_).isdigit() and pos_:
+                ids_ = {json.loads(p).get("backend_node_id") for p in pos_}
+                by_ann.setdefault(ann_, []).append((int(tidx_), ids_))
         rng.shuffle(rows)
         for ann, uid, task, reprs, tidx, tgt, op, pos, neg, shot in rows:
             if len(items) >= a.n:
@@ -153,6 +161,10 @@ def main():
                 if is_pos:
                     gold = str(i)
             criteria["none"] = "none of the marked elements is the right target"
+            cur = int(tidx) if tidx and str(tidx).isdigit() else -1
+            later_ids = set().union(*[ids_ for t_, ids_ in by_ann.get(ann, []) if t_ > cur]) if cur >= 0 else set()
+            alt_gold = [str(i) for i, (b, cd, at, is_pos) in enumerate(cands, 1)
+                        if not is_pos and cd.get("backend_node_id") in later_ids]
             name = f"{ann}_{uid}.png"
             crop.save(out / "img" / name)
             history = list(reprs)[: int(tidx)] if tidx and str(tidx).isdigit() else []
@@ -163,7 +175,7 @@ def main():
                           "target_repr": tgt, "op": opj.get("op"), "value": opj.get("value", ""),
                           "target_tag": m.group(1) if m else None,
                           "step_index": int(tidx) if tidx and str(tidx).isdigit() else None, "n_steps": len(list(reprs)),
-                          "criteria": criteria, "gold": gold, "view_top": top, "page_size": [W, H]})
+                          "criteria": criteria, "gold": gold, "alt_gold": alt_gold, "view_top": top, "page_size": [W, H]})
             requests.append({"id": iid, "image": f"img/{name}", "state": state_text(task, history),
                              "questions": [{"qid": "ground", "qtype": "choice", "instructions": INSTR, "criteria": criteria}],
                              "targets": {"ground": gold}})
