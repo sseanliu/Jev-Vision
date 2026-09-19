@@ -28,8 +28,6 @@ with open("/workspace/m2w_train/v0.validation.jsonl", "w") as f:
         f.write(json.dumps({**r, "image": "/workspace/m2w_items/" + r["image"]}) + "\n")
 print("validation rows", len(rows))
 PY
-mv /workspace/m2w_train/requests.jsonl /workspace/m2w_train/m2w.train.jsonl 2>/dev/null || true
-
 if [ ! -f /workspace/m2w_train_soft/soft.train.jsonl ]; then
   echo "=== teacher soft labels $(date -u) ==="
   mkdir -p /workspace/m2w_train_soft
@@ -37,8 +35,8 @@ if [ ! -f /workspace/m2w_train_soft/soft.train.jsonl ]; then
     --out /workspace/teacher_qwen3vl32b_train.json --temperature 4 --soft-max-top 0.8 \
     --requests-out /workspace/m2w_train_soft/soft.train.jsonl
 fi
-# the teacher reads items.jsonl + requests.jsonl; restore the name it expects for future runs
-[ -f /workspace/m2w_train/requests.jsonl ] || cp /workspace/m2w_train/m2w.train.jsonl /workspace/m2w_train/requests.jsonl
+# the teacher reads items.jsonl + requests.jsonl; the trainer globs *.train.jsonl
+cp -n /workspace/m2w_train/requests.jsonl /workspace/m2w_train/m2w.train.jsonl
 wc -l /workspace/m2w_train/*.jsonl /workspace/m2w_train_soft/*.jsonl
 
 echo "=== train $RUN_NAME $(date -u) ==="
