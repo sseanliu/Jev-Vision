@@ -1,0 +1,1 @@
+{"step": 0, "url": "https://news.ycombinator.com/", "n_candidates": 30, "ground": "2", "ground_conf": 0.999, "act": "click", "act_conf": 0.9997, "done_p": 0.72685706615448, "model_ms": 329.7, "wall_ms": 4566}

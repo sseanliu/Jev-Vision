@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://en.wikipedia.org/wiki/Main_Page", "n_candidates": 30, "ground": "1", "ground_conf": 0.9997, "act": "type", "act_conf": 0.9883, "done_p": 0.0026433945167809725, "model_ms": 285.4, "wall_ms": 2163}
+{"step": 1, "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning)", "n_candidates": 30, "ground": "2", "ground_conf": 0.9992, "act": "click", "act_conf": 1.0, "done_p": 0.8734334111213684, "model_ms": 180.9, "wall_ms": 1683}

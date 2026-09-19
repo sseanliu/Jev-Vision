@@ -1,0 +1,1 @@
+{"step": 0, "url": "https://example.com/", "n_candidates": 1, "ground": "1", "ground_conf": 0.9992, "act": "click", "act_conf": 0.9999, "done_p": 0.7472861409187317, "model_ms": 535.3, "wall_ms": 823}

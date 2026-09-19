@@ -1,0 +1,4 @@
+{"step": 0, "url": "https://pypi.org/", "n_candidates": 11, "ground": "6", "ground_conf": 0.9998, "act": "type", "act_conf": 0.9613, "done_p": 0.0441710501909256, "model_ms": 330.5, "wall_ms": 1189}
+{"step": 1, "url": "https://pypi.org/search/?q=requests", "n_candidates": 4, "ground": "1", "ground_conf": 0.6749, "act": "click", "act_conf": 0.9589, "done_p": 0.03743068501353264, "model_ms": 301.2, "wall_ms": 1678}
+{"step": 2, "url": "https://pypi.org/search/?q=requests", "n_candidates": 4, "ground": "3", "ground_conf": 0.5413, "act": "type", "act_conf": 0.9829, "done_p": 0.0074783689342439175, "model_ms": 321.9, "wall_ms": 2129}
+{"step": 3, "url": "https://pypi.org/search/?q=requests", "n_candidates": 4, "ground": "3", "ground_conf": 0.7284, "act": "type", "act_conf": 0.927, "done_p": 0.13189969956874847, "model_ms": 277.8, "wall_ms": 3348}
