@@ -94,6 +94,23 @@ def main():
     ax.set_title("Accuracy vs latency: trained 8B (circles) vs zero-shot (squares)"); ax.grid(alpha=0.25)
     fig.tight_layout(); fig.savefig(out / "latency_vs_accuracy.png", dpi=160); print("saved", out / "latency_vs_accuracy.png")
 
+    # --- 4. desktop transfer: V2 zero-shot at step 0, then V3 desktop stage-2 evals by step ---
+    v3log = R / "v3-8b-desktop" / "log.jsonl"; zs = R / "v3-8b-desktop" / "eval_desktop_zeroshot.json"
+    if v3log.exists() and zs.exists():
+        z = json.load(open(zs))["report"]["by_temperature"]["0.5"]
+        steps, accs, aurocs = [0], [z["acc"]], [z["auroc"]]
+        for line in open(v3log):
+            r = json.loads(line)
+            if "eval" in r:
+                steps.append(r["step"]); accs.append(r["eval"]["acc"]); aurocs.append(r["eval"]["auroc"])
+        fig, ax = plt.subplots(figsize=(6.5, 4.0))
+        ax.plot(steps, accs, marker="o", color="black", label="accuracy")
+        ax.plot(steps, aurocs, marker="s", color="gray", label="AUROC (confidence vs correctness)")
+        ax.annotate("V2, never saw a desktop", (0, accs[0]), textcoords="offset points", xytext=(6, -12), fontsize=8)
+        ax.set_xlabel("desktop stage-2 steps (bsz 16; 3k desktop rows + 4k web replay)"); ax.set_ylabel("macOS grounding, OS-Atlas validation (360)")
+        ax.set_ylim(0.78, 1.0); ax.grid(alpha=0.25); ax.legend(fontsize=8)
+        fig.tight_layout(); fig.savefig(out / "desktop_transfer.png", dpi=160); print("saved", out / "desktop_transfer.png")
+
 
 if __name__ == "__main__":
     main()
