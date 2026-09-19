@@ -106,7 +106,7 @@ def main():
     ap.add_argument("--temp", type=float, default=0.5)
     ap.add_argument("--max-pixels", type=int, default=1288 * 1000)
     a = ap.parse_args()
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     model, packer = load(Path(a.checkpoint), device, a.max_pixels)
     MODEL.update(model=model, packer=packer, temp=a.temp, device=device, name=Path(a.checkpoint).parent.name)
     print(f"serving {MODEL['name']} on :{a.port} ({device})", flush=True)

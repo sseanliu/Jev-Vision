@@ -24,7 +24,7 @@ def load(path: Path, device, max_pixels: int, attn="sdpa"):
     cfg = json.loads((path / "s1_config.json").read_text())
     proc = AutoProcessor.from_pretrained(path / "backbone")
     tok = proc.tokenizer
-    dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
+    dtype = torch.bfloat16 if device.type in ("cuda", "mps") else torch.float32
     adapter = path / "backbone" / "adapter_config.json"
     if adapter.exists():
         from peft import PeftModel
