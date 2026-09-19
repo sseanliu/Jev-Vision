@@ -94,14 +94,21 @@ def done_check(goal, page, start_url) -> bool:
         href = goal["target"]["href"]
         return url != start_url and (href.split("#")[0].rstrip("/") in url or url.rstrip("/").endswith(href.rstrip("/")) or (href.startswith("http") and url.startswith(href.split("?")[0][:60])))
     if goal["kind"] == "search":
-        q = goal["value"]
-        if q.lower() in url.lower():
-            return True
-        try:
-            return url != start_url and q.lower() in page.inner_text("body").lower()[:20000]
-        except Exception:
-            return False
+        return search_done(url, goal["value"])
     return False  # click goals: done is decided from effect at the oracle step
+
+
+SEARCH_PARAMS = r"(?:[?&#](?:q|query|search|search_query|s|k|keyword|keywords|term|text|p|wd|find|searchTerm)=)"
+
+
+def search_done(url: str, q: str) -> bool:
+    """A search counts as submitted only when the query appears as a search parameter or a /search path
+    segment of the URL. Page text and incidental URL matches (a page titled '...Recipe') do not count."""
+    from urllib.parse import unquote_plus
+    u = unquote_plus(url).lower(); q = q.lower()
+    if re.search(SEARCH_PARAMS + r"[^&#]*" + re.escape(q), u):
+        return True
+    return bool(re.search(r"/search[^?]*/" + re.escape(q) + r"(?:[/?&#]|$)", u))
 
 
 def main():

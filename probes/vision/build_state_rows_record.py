@@ -17,12 +17,44 @@ import collections
 import json
 import random
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "harness"))
+from record_triplets import search_done  # strict URL rule
 
 SKIP_INSTR = ["Is this element already in the state the task needs, so it should be left alone?",
               "Has this element already been handled for the task (no action needed on it)?"]
 EFFECT_INSTR = ["Did the last action change the page as intended?", "Compare the two screenshots: did the action take effect?"]
 DONE_INSTR = ["Is the task already complete on this screen?", "Has the goal been fully achieved, with nothing left to do?"]
 GROUND_INSTR = "Which numbered element should be acted on next to make progress on the task?"
+
+
+def _field_value(cand: str) -> str:
+    import re
+    m = re.search(r" value='([^']*)'$", cand); return m.group(1) if m else ""
+
+
+def relabel(recs):
+    """Recompute done_before / done_after (search goals: strict URL rule; sticky within a task) and the skip labels
+    that depend on done_before. Follow / click goals keep their recorded labels."""
+    n_flip = 0
+    by_task = {}
+    for r in recs:
+        by_task.setdefault((r["site"], r["id"].rsplit("_", 1)[0]), []).append(r)
+    for task, steps in by_task.items():
+        steps.sort(key=lambda r: r["step"]); reached = False
+        for r in steps:
+            if r["goal_kind"] != "search":
+                continue
+            L = r["labels"]; old = (L["done_before"], L["done_after"])
+            done_before = int(reached or search_done(r["before_url"], r["goal_value"]))
+            reached = bool(done_before) or search_done(r["after_url"], r["goal_value"])
+            L["done_before"] = done_before; L["done_after"] = int(reached)
+            for k, cand in r["candidates"].items():
+                val_ok = (r["target_idx"] == k) and _field_value(cand).strip().lower() == r["goal_value"].lower()
+                L["skip"][k] = int(val_ok or done_before)
+            n_flip += (old != (L["done_before"], L["done_after"]))
+    print("done labels flipped on", n_flip, "search steps")
+    return recs
 
 
 def state_text(goal, history):
@@ -38,6 +70,7 @@ def main():
     a = ap.parse_args(); rng = random.Random(a.seed)
     steps_path = Path(a.steps).resolve(); root = steps_path.parent
     recs = [json.loads(l) for l in open(steps_path)]; recs = [r for r in recs if "error" not in r]
+    recs = relabel(recs); print("relabelled done/skip with the strict search rule")
     sites = []
     for r in recs:
         if r["site"] not in sites:
