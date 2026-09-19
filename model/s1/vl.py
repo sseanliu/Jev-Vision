@@ -40,7 +40,8 @@ class VLPacker:
 
     def pack(self, image: Image.Image | str, state_text: str, questions: list[Question]) -> PackedVL:
         img = Image.open(image).convert("RGB") if isinstance(image, str) else image
-        kw = {"max_pixels": self.max_pixels} if self.max_pixels else {}
+        # transformers 5.x Qwen3-VL processors ignore a bare `max_pixels`; the budget goes through `size`
+        kw = {"size": {"shortest_edge": 3136, "longest_edge": self.max_pixels}} if self.max_pixels else {}
         enc = self.proc(text=[IMAGE_PREFIX + state_text], images=[img], return_tensors="pt",
                         add_special_tokens=False, images_kwargs=kw)
         state_ids = enc["input_ids"][0].tolist()
