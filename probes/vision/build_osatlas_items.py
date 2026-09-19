@@ -93,7 +93,7 @@ def main():
             task = rng.choice(TASKS).format(n=tgt["instruction"])
             iid = f"osatlas_{Path(f).stem}_{k}"
             items[split].append({"id": iid, "image": f"img/{name}", "task": task, "history": [], "target_repr": f"[{tgt['data_type']}] {tgt['instruction']}",
-                                 "op": "CLICK", "target_tag": ROLE.get(tgt["data_type"], tgt["data_type"]), "step_index": 0, "n_steps": 1,
+                                 "op": "CLICK", "target_tag": ROLE.get(tgt["data_type"], tgt["data_type"]),
                                  "criteria": criteria, "gold": gold, "source": "osatlas_macos"})
             requests[split].append({"id": iid, "image": f"img/{name}", "state": f"Task: {task}\nActions already taken:\n  (none)\n",
                                     "questions": [{"qid": "ground", "qtype": "choice", "instructions": INSTR, "criteria": criteria}],
