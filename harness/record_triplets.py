@@ -88,6 +88,8 @@ def find_target(els, target):
 
 def done_check(goal, page, start_url) -> bool:
     url = page.url
+    if goal.get("done_contains"):
+        return goal["done_contains"] in url
     if goal["kind"] == "follow":
         href = goal["target"]["href"]
         return url != start_url and (href.split("#")[0].rstrip("/") in url or url.rstrip("/").endswith(href.rstrip("/")) or (href.startswith("http") and url.startswith(href.split("?")[0][:60])))
@@ -110,10 +112,17 @@ def main():
     ap.add_argument("--mix", default="0.5,0.25,0.15,0.10", help="oracle, random, repeat, unrelated")
     ap.add_argument("--headless", action="store_true", default=True)
     ap.add_argument("--limit-sites", type=int, default=0)
+    ap.add_argument("--goals", default=None, help="jsonl of exact goals {url, kind, goal, target_text, value, done_contains}; sites = its urls")
     a = ap.parse_args()
     rng = random.Random(a.seed); out = Path(a.out); (out / "img").mkdir(parents=True, exist_ok=True)
     mix = [float(x) for x in a.mix.split(",")]
-    sites = [l.strip() for l in open(a.sites) if l.strip() and not l.startswith("#")]
+    goals_by_url = {}
+    if a.goals:
+        for l in open(a.goals):
+            g = json.loads(l); goals_by_url.setdefault(g["url"], []).append(g)
+        sites = list(goals_by_url)
+    else:
+        sites = [l.strip() for l in open(a.sites) if l.strip() and not l.startswith("#")]
     if a.limit_sites:
         sites = sites[: a.limit_sites]
     log = open(out / "steps.jsonl", "a"); n_steps = 0; t_start = time.time()
@@ -126,7 +135,12 @@ def main():
                 try:
                     page.goto(site, wait_until="domcontentloaded", timeout=25000); page.wait_for_timeout(1200)
                     els = candidates(page, a.k)
-                    goal = make_goal(rng, els, page.url)
+                    if site in goals_by_url:
+                        g = goals_by_url[site][ti % len(goals_by_url[site])]
+                        tgt = next((e for e in els if e["text"] == g["target_text"] or (e["tag"] in ("input", "textarea") and g["target_text"] in (e["text"], ""))), None)
+                        goal = {"kind": g["kind"], "goal": g["goal"], "target": tgt, "value": g.get("value", ""), "done_contains": g.get("done_contains", "")} if tgt else None
+                    else:
+                        goal = make_goal(rng, els, page.url)
                     if not goal:
                         page.close(); continue
                     start_url = page.url; history = []; last_action = None; goal_reached = False
@@ -194,6 +208,7 @@ def main():
                                "step": step, "history": list(history), "policy": kind, "action": act, "typed": typed, "chosen": str(idx + 1), "target_idx": (str(tidx + 1) if tidx is not None else None),
                                "before_img": f"img/{sid}_before.png", "after_img": f"img/{sid}_after.png", "before_url": before_url, "after_url": after_url,
                                "candidates": {str(i + 1): f"element {i+1}: {c['tag']}{(' ' + c['type']) if c['type'] else ''} '{c['text']}'" + (f" value='{before_vals[i][:40]}'" if i < len(before_vals) and before_vals[i] else "") for i, c in enumerate(before_els)},
+                               "candidates_after": {str(i + 1): f"element {i+1}: {c['tag']}{(' ' + c['type']) if c['type'] else ''} '{c['text']}'" + (f" value='{after_vals[i][:40]}'" if i < len(after_vals) and after_vals[i] else "") for i, c in enumerate(after_els)},
                                "labels": {"skip": skip, "effect": effect, "done_before": int(done_before), "done_after": done_after, "noisy": int(noisy)},
                                "signals": {"url_changed": url_changed, "dom_changed": dom_changed, "value_applied": value_applied, "pix_change": round(d_change, 4), "pix_noise": round(d_noise, 4), "act_err": act_err}}
                         log.write(json.dumps(rec, ensure_ascii=False) + "\n"); log.flush(); n_steps += 1

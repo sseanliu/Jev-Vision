@@ -26,10 +26,10 @@ from pathlib import Path
 BASE = """<!doctype html><html><head><meta charset=utf-8><title>{title}</title>
 <style>body{{font-family:system-ui;margin:24px;max-width:900px}} .row{{margin:10px 0}} input,select,button{{font-size:16px;padding:6px 10px}}
 button{{cursor:pointer}} button:disabled{{opacity:.5}} .results{{margin-top:16px;padding:12px;background:#f3f3f3}} .hidden{{display:none}}
-#overlay{{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}}
+#overlay{{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}} #overlay.hidden{{display:none}}
 #overlay div{{background:#fff;padding:24px;border-radius:8px}} nav a{{margin-right:14px}} .tab{{display:inline-block;padding:8px 14px;border:1px solid #ccc;margin-right:4px;cursor:pointer}} .tab.active{{background:#ddd}}
 </style></head><body>
-<nav><a href="/">Home</a><a href="/search.html">Search</a><a href="/signup.html">Sign up</a><a href="/settings.html">Settings</a><a href="/booking.html">Booking</a><a href="/catalog.html">Catalog</a><a href="/help.html">Help</a></nav>
+<nav><a href="/index__base.html">Home</a><a href="/search__base.html">Search</a><a href="/signup__base.html">Sign up</a><a href="/settings__base.html">Settings</a><a href="/booking__base.html">Booking</a><a href="/catalog__base.html">Catalog</a><a href="/help__base.html">Help</a></nav>
 <h2>{title}</h2>
 {body}
 <div id="overlay" class="{overlay_cls}"><div><p>We use cookies.</p><button id="ovl-accept" onclick="document.getElementById('overlay').remove()">Accept</button> <button onclick="document.getElementById('overlay').remove()">Decline</button></div></div>
@@ -84,18 +84,32 @@ function show(t){ document.querySelectorAll('.tab').forEach(x=>x.classList.remov
 function cart(b){ const n=document.getElementById('cartn'); n.textContent=(parseInt(n.textContent)||0)+1; document.getElementById('cart').classList.remove('hidden'); b.textContent='Added'; b.disabled=true; }
 """),
     "help.html": ("Help center", """
-<div class=row><a href="/help.html#faq" id=faq>Frequently asked questions</a></div>
-<div class=row><a href="/help.html?page=contact" id=contact>Contact support</a></div>
-<div class=row><a href="/help.html?page=status">Service status</a></div>
+<div class=row><a href="/help__base.html#faq" id=faq>Frequently asked questions</a></div>
+<div class=row><a href="/help__base.html?page=contact" id=contact>Contact support</a></div>
+<div class=row><a href="/help__base.html?page=status">Service status</a></div>
 <div class=row><button id=chat {dis}>Start chat</button></div>
 <div id=page class="results {res_cls}">Page: <span>{page}</span></div>
 """, ""),
     "index.html": ("Welcome", """
-<p>Demo site for state-judgement data.</p><div class=row><a href="/search.html">Go to search</a> · <a href="/signup.html">Sign up</a> · <a href="/booking.html">Book</a></div>
+<p>Demo site for state-judgement data.</p><div class=row><a href="/search__base.html">Go to search</a> · <a href="/signup__base.html">Sign up</a> · <a href="/booking__base.html">Book</a></div>
 """, ""),
 }
 
 VARIANTS = [{}, {"filled": 1}, {"wrong": 1}, {"checked": 1}, {"disabled": 1}, {"overlay": 1}, {"done": 1}]
+GOALS = {  # exact goals whose values match the "filled" variants, so skip positives and overwrite cases both occur
+    "search.html": [{"kind": "search", "goal": "Search for 'widget'", "target_text": "Search products", "value": "widget", "done_contains": "q=widget"}],
+    "signup.html": [{"kind": "search", "goal": "Enter the name 'Ada Lovelace'", "target_text": "Name", "value": "Ada Lovelace", "done_contains": ""},
+                    {"kind": "click", "goal": "Click 'Create account'", "target_text": "Create account", "value": "", "done_contains": "created=1"}],
+    "settings.html": [{"kind": "click", "goal": "Turn on 'Dark mode'", "target_text": "Dark mode", "value": "", "done_contains": ""},
+                      {"kind": "click", "goal": "Click 'Save settings'", "target_text": "Save settings", "value": "", "done_contains": "saved=1"}],
+    "booking.html": [{"kind": "search", "goal": "Enter the date '2026-10-01'", "target_text": "YYYY-MM-DD", "value": "2026-10-01", "done_contains": ""},
+                     {"kind": "click", "goal": "Click 'Book'", "target_text": "Book", "value": "", "done_contains": "booked="}],
+    "catalog.html": [{"kind": "click", "goal": "Open the 'On sale' tab", "target_text": "On sale", "value": "", "done_contains": "tab=sale"},
+                     {"kind": "click", "goal": "Click 'Add to cart' for Item A", "target_text": "Add to cart", "value": "", "done_contains": ""}],
+    "help.html": [{"kind": "follow", "goal": "Open 'Contact support'", "target_text": "Contact support", "value": "", "done_contains": "page=contact"},
+                  {"kind": "click", "goal": "Click 'Start chat'", "target_text": "Start chat", "value": "", "done_contains": ""}],
+    "index.html": [{"kind": "follow", "goal": "Open 'Go to search'", "target_text": "Go to search", "value": "", "done_contains": "search__base"}],
+}
 
 
 def render(name, v):
@@ -118,6 +132,12 @@ def main():
             tag = "_".join(f"{k}{val}" for k, val in v.items()) or "base"
             fn = f"{name[:-5]}__{tag}.html"; (out / fn).write_text(render(name, v)); urls.append(f"http://127.0.0.1:{a.port}/{fn}")
     (out / "urls.txt").write_text("\n".join(urls) + "\n"); print("wrote", len(urls), "pages")
+    with (out / "goals.jsonl").open("w") as f:
+        for name in TEMPLATES:
+            for v in VARIANTS:
+                tag = "_".join(f"{k}{val}" for k, val in v.items()) or "base"
+                for g in GOALS.get(name, []):
+                    f.write(json.dumps({"url": f"http://127.0.0.1:{a.port}/{name[:-5]}__{tag}.html", "variant": tag, **g}) + "\n")
     if a.serve:
         os.chdir(out)
         srv = http.server.ThreadingHTTPServer(("127.0.0.1", a.port), http.server.SimpleHTTPRequestHandler)
