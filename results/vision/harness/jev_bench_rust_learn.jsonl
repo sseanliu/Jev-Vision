@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://rust-lang.org/", "n_candidates": 11, "ground": "2", "ground_conf": 0.99, "act": "click", "act_conf": 0.92, "done_p": 0.31, "model_ms": 190.2, "wall_ms": 190}
+{"step": 1, "url": "https://rust-lang.org/learn/", "n_candidates": 13, "ground": "none", "ground_conf": 0.85, "act": "done", "act_conf": 0.95, "done_p": 0.69, "model_ms": 213.6, "wall_ms": 214}

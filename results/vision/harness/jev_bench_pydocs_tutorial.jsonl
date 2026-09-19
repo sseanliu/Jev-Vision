@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://docs.python.org/3/", "n_candidates": 30, "ground": "12", "ground_conf": 0.85, "act": "click", "act_conf": 0.55, "done_p": 0.2, "model_ms": 187.7, "wall_ms": 188}
+{"step": 1, "url": "https://docs.python.org/3/tutorial/index.html", "n_candidates": 24, "ground": "9", "ground_conf": 0.77, "act": "done", "act_conf": 0.66, "done_p": 0.43, "model_ms": 320.7, "wall_ms": 321}

@@ -65,7 +65,34 @@ def render(png: bytes, els):
     buf = io.BytesIO(); im.save(buf, format="PNG"); return buf.getvalue()
 
 
+def ask_jev(state, questions):
+    """TypeSafe Jev with the same state and questions; its contract carries no screenshot."""
+    import os
+    from typesafe_sdk import Choice, Noul, TypeSafeClient
+    if not os.environ.get("TYPESAFE_API_KEY"):
+        for line in (Path(__file__).resolve().parents[1] / ".env").read_text().splitlines():
+            if line.startswith("TYPESAFE_API_KEY="):
+                os.environ["TYPESAFE_API_KEY"] = line.split("=", 1)[1].strip()
+    qs = {}
+    for qid, q in questions.items():
+        qs[qid] = Choice(instructions=q["instructions"], criteria=q["criteria"]) if q["type"] == "choice" else Noul(instructions=q["instructions"])
+    t0 = time.time()
+    with TypeSafeClient(timeout=60.0) as c:
+        r = c.system_one(state=state, questions=qs)
+    ms = (time.time() - t0) * 1000
+    out = {}
+    for qid, q in questions.items():
+        a = r.answers[qid]
+        if q["type"] == "choice":
+            out[qid] = {"choice": a.choice, "confidence": float(a.confidence), "probabilities": dict(a.probabilities)}
+        else:
+            out[qid] = {"noul": float(a.noul), "confidence": round(abs(float(a.noul) - 0.5) * 2, 4)}
+    return {"model": r.model, "answers": out, "usage": {"latency_ms": round(ms, 1)}}
+
+
 def ask(server, state, image_png, questions):
+    if server == "jev":
+        return ask_jev(state, questions)
     payload = {"model": "s1", "state": state, "image": base64.b64encode(image_png).decode(), "questions": questions}
     r = urllib.request.Request(server.rstrip("/") + "/v1/systemone", data=json.dumps(payload).encode(), headers={"Content-Type": "application/json"})
     return json.loads(urllib.request.urlopen(r, timeout=300).read())
@@ -74,7 +101,7 @@ def ask(server, state, image_png, questions):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", required=True); ap.add_argument("--goal", required=True)
-    ap.add_argument("--server", default="http://127.0.0.1:8811")
+    ap.add_argument("--server", default="http://127.0.0.1:8811", help="decision server URL, or 'jev' for TypeSafe Jev (no screenshot)")
     ap.add_argument("--text", default="", help="text to type when the model decides to type")
     ap.add_argument("--max-steps", type=int, default=6); ap.add_argument("--min-confidence", type=float, default=0.3)
     ap.add_argument("--log", default="runs/browser_loop.jsonl"); ap.add_argument("--headless", action="store_true")

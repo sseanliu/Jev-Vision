@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://www.python.org/", "n_candidates": 29, "ground": "13", "ground_conf": 0.99, "act": "click", "act_conf": 0.91, "done_p": 0.32, "model_ms": 236.1, "wall_ms": 236}
+{"step": 1, "url": "https://www.python.org/downloads/", "n_candidates": 28, "ground": "none", "ground_conf": 0.75, "act": "done", "act_conf": 0.96, "done_p": 0.73, "model_ms": 208.8, "wall_ms": 209}

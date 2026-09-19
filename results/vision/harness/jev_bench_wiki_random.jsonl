@@ -1,0 +1,1 @@
+{"step": 0, "url": "https://en.wikipedia.org/wiki/Main_Page", "n_candidates": 30, "ground": "none", "ground_conf": 0.54, "act": "click", "act_conf": 0.94, "done_p": 0.32, "model_ms": 302.2, "wall_ms": 302}
