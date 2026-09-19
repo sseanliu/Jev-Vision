@@ -78,14 +78,12 @@ def main():
     # --- 3. latency vs accuracy (per decision; API latencies are wall-clock means from the teacher runs) ---
     lat = [  # (label, ms, acc, trained)
         ("tiny text-only specialist", 1, 0.397, True),
-        ("V1b 8B (ours)", 153, 0.847, True),
+        ("V1b / V2 8B (ours, both 0.847)", 153, 0.847, True),
         ("DiffusionGemma 26B-A4B", 154, acc_from("baselines/teacher_dgemma_m2w300_j.json", "logprob"), False),
         ("Qwen3-VL-32B logprob", 600, acc_from("v1b-8b-m2w-jitter/teacher_qwen3vl32b_m2w300_j.json", "logprob"), False),
         ("Gemini 3.8 Flash thinking-high", 3000, acc_from("teacher_gemini-3.8-flash-high_m2w300_j.json", "verbal"), False),
         ("Claude Opus 5 thinking", 7800, acc_from("teacher_claude-opus-5-thinking_m2w300_j.json", "verbal"), False),
     ]
-    if v2.exists():
-        lat.append(("V2 8B schema-mix (ours)", 154, json.load(open(v2))["report"]["by_temperature"]["0.5"]["acc"], True))
     fig, ax = plt.subplots(figsize=(7.5, 4.5))
     for label, ms, acc, trained in lat:
         if acc is None:
