@@ -70,7 +70,7 @@ class Gemini:
 
     def call(self, png: Path, text: str):
         t = self.types
-        cfg = t.GenerateContentConfig(system_instruction=SYSTEM, max_output_tokens=2000, thinking_config=self.thinking)
+        cfg = t.GenerateContentConfig(system_instruction=SYSTEM, max_output_tokens=8000, thinking_config=self.thinking)
         r = self.c.models.generate_content(model=self.model, config=cfg,
                                            contents=[t.Part.from_bytes(data=png.read_bytes(), mime_type="image/png"), text])
         u = r.usage_metadata
