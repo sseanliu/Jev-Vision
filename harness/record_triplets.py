@@ -221,7 +221,7 @@ def main():
                         sid = f"{si:03d}_{ti}_{step}"
                         (out / "img" / f"{sid}_before.png").write_bytes(render(before_shot, before_els)); (out / "img" / f"{sid}_after.png").write_bytes(render(after1, after_els))
                         rec = {"id": sid, "site": site, "goal": goal["goal"], "goal_kind": goal["kind"], "goal_value": goal["value"], "target_text": goal["target"]["text"],
-                               "step": step, "history": list(history), "policy": kind, "action": act, "typed": typed, "chosen": str(idx + 1), "target_idx": (str(tidx + 1) if tidx is not None else None),
+                               "step": step, "history": list(history), "policy": kind, "target_href": goal["target"].get("href", ""), "start_url": start_url, "action": act, "typed": typed, "chosen": str(idx + 1), "target_idx": (str(tidx + 1) if tidx is not None else None),
                                "before_img": f"img/{sid}_before.png", "after_img": f"img/{sid}_after.png", "before_url": before_url, "after_url": after_url,
                                "candidates": {str(i + 1): f"element {i+1}: {c['tag']}{(' ' + c['type']) if c['type'] else ''} '{c['text']}'" + (f" value='{before_vals[i][:40]}'" if i < len(before_vals) and before_vals[i] else "") for i, c in enumerate(before_els)},
                                "candidates_after": {str(i + 1): f"element {i+1}: {c['tag']}{(' ' + c['type']) if c['type'] else ''} '{c['text']}'" + (f" value='{after_vals[i][:40]}'" if i < len(after_vals) and after_vals[i] else "") for i, c in enumerate(after_els)},

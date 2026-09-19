@@ -34,26 +34,49 @@ def _field_value(cand: str) -> str:
 
 
 def relabel(recs):
-    """Recompute done_before / done_after (search goals: strict URL rule; sticky within a task) and the skip labels
-    that depend on done_before. Follow / click goals keep their recorded labels."""
+    """Recompute done_before / done_after from the CURRENT URL (not sticky): a follow goal is done only while on
+    the target page, a search goal only while on the results page. Click goals keep the recorded (effect-based)
+    labels. skip labels are recomputed as value-match OR done_before."""
+    from urllib.parse import unquote_plus
     n_flip = 0
-    by_task = {}
+
+    # older recordings lack target_href: the target page of a follow task is the after_url of the first step whose
+    # recorded (URL-based) done check passed
+    target_url = {}
     for r in recs:
-        by_task.setdefault((r["site"], r["id"].rsplit("_", 1)[0]), []).append(r)
-    for task, steps in by_task.items():
-        steps.sort(key=lambda r: r["step"]); reached = False
-        for r in steps:
-            if r["goal_kind"] != "search":
+        if r["goal_kind"] == "follow" and r["labels"]["done_after"] and not r.get("target_href"):
+            key = (r["site"], r["id"].rsplit("_", 1)[0]); target_url.setdefault(key, r["after_url"])
+
+    def norm(u):
+        return unquote_plus(u).lower().split("#")[0].rstrip("/")
+
+    def follow_done(url, r):
+        href = r.get("target_href") or ""
+        if href:
+            u = norm(url); h = norm(href)
+            return int(u != norm(r["start_url"]) and (h in u or u.endswith(h)))
+        t = target_url.get((r["site"], r["id"].rsplit("_", 1)[0]))
+        if t is None:
+            return None  # task never reached its page: keep recorded labels (all zero)
+        return int(norm(url) == norm(t))
+
+    for r in recs:
+        if r["goal_kind"] not in ("search", "follow"):
+            continue
+        L = r["labels"]; old = (L["done_before"], L["done_after"])
+        if r["goal_kind"] == "search":
+            db = int(search_done(r["before_url"], r["goal_value"])); da = int(search_done(r["after_url"], r["goal_value"]))
+        else:
+            fb = follow_done(r["before_url"], r); fa = follow_done(r["after_url"], r)
+            if fb is None:
                 continue
-            L = r["labels"]; old = (L["done_before"], L["done_after"])
-            done_before = int(reached or search_done(r["before_url"], r["goal_value"]))
-            reached = bool(done_before) or search_done(r["after_url"], r["goal_value"])
-            L["done_before"] = done_before; L["done_after"] = int(reached)
-            for k, cand in r["candidates"].items():
-                val_ok = (r["target_idx"] == k) and _field_value(cand).strip().lower() == r["goal_value"].lower()
-                L["skip"][k] = int(val_ok or done_before)
-            n_flip += (old != (L["done_before"], L["done_after"]))
-    print("done labels flipped on", n_flip, "search steps")
+            db, da = fb, fa
+        L["done_before"], L["done_after"] = db, da
+        for k, cand in r["candidates"].items():
+            val_ok = (r["target_idx"] == k) and _field_value(cand).strip().lower() == r["goal_value"].lower() and r["goal_kind"] == "search"
+            L["skip"][k] = int(val_ok or db)
+        n_flip += (old != (db, da))
+    print("done labels recomputed (non-sticky) on", n_flip, "steps")
     return recs
 
 
