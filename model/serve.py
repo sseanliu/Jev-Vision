@@ -3,7 +3,8 @@ written for Jev (e.g. Cua's jev-use adapter) can point at it instead.
 
 POST /v1/system-one
   {"model": "...", "state": <str | object>, "image": <base64 PNG | file path | null>,
-   "questions": {qid: {"type": "choice"|"noul"|"score", "instructions": str, "criteria": {...}|[...]}}}
+   "questions": {qid: {"type": "choice"|"noul"|"score", "instructions": str, "criteria": {...}|[...],
+                       "temperature": float (optional, overrides --temp; formats calibrate differently)}}}
   -> {"model": "<checkpoint>", "answers": {qid: {"type", "choice"|"noul"|"score", "confidence", "probabilities"}},
       "usage": {"visual_tokens": int, "latency_ms": float}}
 
@@ -47,7 +48,7 @@ def decode_image(img):
 
 @torch.no_grad()
 def answer(req: dict) -> dict:
-    model, packer, temp, name = MODEL["model"], MODEL["packer"], MODEL["temp"], MODEL["name"]
+    model, packer, name = MODEL["model"], MODEL["packer"], MODEL["name"]
     qs, order = [], []
     for qid, q in req["questions"].items():
         qs.append(Question(qid, q["type"], q["instructions"], q.get("criteria"))); order.append(qid)
@@ -66,6 +67,7 @@ def answer(req: dict) -> dict:
     out = {}
     for qid, z, qtype, keys in zip(order, logits, packed.qtypes, packed.option_keys):
         z = z.float()
+        temp = float(req["questions"][qid].get("temperature", MODEL["temp"]))  # per-question / per-platform override
         if qtype == "noul":
             p = float(torch.sigmoid(z)); out[qid] = {"type": "noul", "noul": p, "confidence": round(abs(p - 0.5) * 2, 4)}
         else:
