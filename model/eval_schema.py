@@ -55,7 +55,7 @@ def main():
                 per[qid]["conf"].append(pr.max().item()); per[qid]["hit"].append(int(pr.argmax()) == gi)
                 per[qid]["nll"].append(-math.log(max(pr[gi].item(), 1e-9))); per[qid]["n_opts"].append(len(keys))
                 if qtype == "score":
-                    per[qid]["abs_err"].append(abs(float((pr * torch.arange(len(pr))).sum()) - gi))
+                    per[qid]["abs_err"].append(abs(float((pr * torch.arange(len(pr), device=pr.device)).sum()) - gi))
     rep = {"n_rows": len(ds), "mean_ms": round(sum(ms) / len(ms), 1), "temp": a.temp, "by_question": {}}
     print(f"{'qid':12s} {'n':>5s} {'acc':>6s} {'chance':>7s} {'ece':>6s} {'auroc':>6s} {'nll':>6s} {'mae':>5s}")
     for qid, d in sorted(per.items()):
