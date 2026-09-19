@@ -1,0 +1,70 @@
+{
+ "n_rows": 300,
+ "mean_ms": 157.6,
+ "temp": 0.5,
+ "by_question": {
+  "act": {
+   "n": 60,
+   "acc": 0.983,
+   "chance": 0.293,
+   "ece": 0.019,
+   "auroc": 0.966,
+   "nll": 0.1,
+   "mae": null
+  },
+  "final": {
+   "n": 72,
+   "acc": 0.972,
+   "chance": 0.5,
+   "ece": 0.063,
+   "auroc": 0.886,
+   "nll": 0.132,
+   "mae": null
+  },
+  "ground": {
+   "n": 300,
+   "acc": 0.85,
+   "chance": 0.1,
+   "ece": 0.132,
+   "auroc": 0.871,
+   "nll": 1.234,
+   "mae": null
+  },
+  "history_len": {
+   "n": 65,
+   "acc": 1.0,
+   "chance": 0.2,
+   "ece": 0.0,
+   "auroc": NaN,
+   "nll": 0.0,
+   "mae": 0.0
+  },
+  "needs_text": {
+   "n": 76,
+   "acc": 0.947,
+   "chance": 0.5,
+   "ece": 0.036,
+   "auroc": 0.913,
+   "nll": 0.133,
+   "mae": null
+  },
+  "progress": {
+   "n": 81,
+   "acc": 0.654,
+   "chance": 0.2,
+   "ece": 0.22,
+   "auroc": 0.684,
+   "nll": 1.245,
+   "mae": 0.39
+  },
+  "tag": {
+   "n": 82,
+   "acc": 0.817,
+   "chance": 0.229,
+   "ece": 0.149,
+   "auroc": 0.771,
+   "nll": 1.036,
+   "mae": null
+  }
+ }
+}
