@@ -33,9 +33,13 @@ JS_ELEMENTS = """
     const r = el.getBoundingClientRect();
     if (r.width < 6 || r.height < 6 || r.bottom < 0 || r.right < 0 || r.top > vh || r.left > vw) continue;
     const st = getComputedStyle(el); if (st.visibility === 'hidden' || st.display === 'none') continue;
-    const txt = (el.innerText || el.value || el.getAttribute('aria-label') || el.getAttribute('placeholder') || el.getAttribute('title') || '').trim().slice(0, 60);
-    out.push({tag: el.tagName.toLowerCase(), type: el.getAttribute('type') || '', text: txt, x: r.left, y: r.top, w: r.width, h: r.height});
-    if (out.length >= 40) break;
+    const type = (el.getAttribute('type') || '').toLowerCase();
+    if (type === 'hidden' || type === 'checkbox' || type === 'radio') continue;
+    const txt = (el.innerText || el.getAttribute('aria-label') || el.getAttribute('placeholder') || el.getAttribute('title') || el.getAttribute('alt') || el.value || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+    const isField = ['input', 'textarea', 'select'].includes(el.tagName.toLowerCase()) || el.getAttribute('contenteditable') === 'true';
+    if (!txt && !isField) continue;
+    out.push({tag: el.tagName.toLowerCase(), type: type, text: txt, x: r.left, y: r.top, w: r.width, h: r.height});
+    if (out.length >= 120) break;
   }
   return out;
 }
@@ -71,11 +75,16 @@ def main():
     ap.add_argument("--text", default="", help="text to type when the model decides to type")
     ap.add_argument("--max-steps", type=int, default=6); ap.add_argument("--min-confidence", type=float, default=0.3)
     ap.add_argument("--log", default="runs/browser_loop.jsonl"); ap.add_argument("--headless", action="store_true")
-    ap.add_argument("--k", type=int, default=12, help="max candidates sent to the model")
+    ap.add_argument("--k", type=int, default=30, help="max candidates sent to the model")
     ap.add_argument("--done-threshold", type=float, default=0.9, help="stop when the done noul exceeds this (V1b has an untrained noul head, so keep it high)")
     a = ap.parse_args()
+    print(json.dumps(run_task(a)))
+
+
+def run_task(a):
+    """Run one task; returns {"final_url", "steps", "stop"}. `a` needs the CLI attributes."""
     Path(a.log).parent.mkdir(parents=True, exist_ok=True); log = open(a.log, "a")
-    history = []
+    history, steps, stop = [], [], "max_steps"
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=a.headless); page = browser.new_page(viewport={"width": 1280, "height": 900})
         page.goto(a.url, wait_until="domcontentloaded"); page.wait_for_timeout(800)
@@ -93,11 +102,11 @@ def main():
             g, act, done = res["answers"]["ground"], res["answers"]["act"], res["answers"]["done"]
             rec = {"step": step, "url": page.url, "n_candidates": len(els), "ground": g["choice"], "ground_conf": g["confidence"],
                    "act": act["choice"], "act_conf": act["confidence"], "done_p": done["noul"], "model_ms": res["usage"]["latency_ms"], "wall_ms": round(wall)}
-            print(json.dumps(rec), flush=True); log.write(json.dumps(rec) + "\n"); log.flush()
+            print(json.dumps(rec), flush=True); log.write(json.dumps(rec) + "\n"); log.flush(); steps.append(rec)
             if done["noul"] > a.done_threshold or act["choice"] == "done":
-                print("model says done"); break
+                stop = "done"; break
             if g["confidence"] < a.min_confidence or g["choice"] == "none" or act["choice"] == "ask_user":
-                print("low confidence / none / ask_user -> stopping (escalation point)"); break
+                stop = "escalate"; break
             if act["choice"] == "scroll":
                 page.mouse.wheel(0, 600); history.append("scrolled down"); page.wait_for_timeout(500); continue
             e = els[int(g["choice"]) - 1]; cx, cy = e["x"] + e["w"] / 2, e["y"] + e["h"] / 2
@@ -108,7 +117,8 @@ def main():
                 page.mouse.click(cx, cy); history.append(f"clicked {e['tag']} '{e['text']}'")
             page.wait_for_timeout(1200)
         Path(a.log).with_suffix(".final.png").write_bytes(page.screenshot())
-        browser.close()
+        final = page.url; browser.close()
+    return {"final_url": final, "steps": steps, "stop": stop}
 
 
 if __name__ == "__main__":

@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://en.wikipedia.org/wiki/Python_(programming_language)", "n_candidates": 30, "ground": "28", "ground_conf": 0.9979, "act": "click", "act_conf": 0.6825, "done_p": 0.6259422898292542, "model_ms": 478.7, "wall_ms": 606}
+{"step": 1, "url": "https://en.wikipedia.org/wiki/Talk:Python_(programming_language)", "n_candidates": 30, "ground": "18", "ground_conf": 0.8169, "act": "done", "act_conf": 0.8009, "done_p": 0.6290851831436157, "model_ms": 477.9, "wall_ms": 586}

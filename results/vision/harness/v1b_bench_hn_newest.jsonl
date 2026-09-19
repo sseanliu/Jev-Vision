@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://news.ycombinator.com/", "n_candidates": 30, "ground": "2", "ground_conf": 0.9765, "act": "click", "act_conf": 0.3973, "done_p": 0.6268296837806702, "model_ms": 438.0, "wall_ms": 632}
+{"step": 1, "url": "https://news.ycombinator.com/newest", "n_candidates": 30, "ground": "2", "ground_conf": 0.8203, "act": "done", "act_conf": 0.5323, "done_p": 0.628474235534668, "model_ms": 270.4, "wall_ms": 388}

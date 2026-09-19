@@ -1,0 +1,2 @@
+{"step": 0, "url": "https://example.com/", "n_candidates": 1, "ground": "1", "ground_conf": 0.999, "act": "click", "act_conf": 0.935, "done_p": 0.6273667216300964, "model_ms": 398.6, "wall_ms": 496}
+{"step": 1, "url": "https://www.iana.org/help/example-domains", "n_candidates": 30, "ground": "8", "ground_conf": 0.5761, "act": "done", "act_conf": 0.1968, "done_p": 0.627648651599884, "model_ms": 485.2, "wall_ms": 590}
