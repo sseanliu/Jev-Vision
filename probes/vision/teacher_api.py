@@ -43,13 +43,20 @@ def parse_vote(text: str) -> str:
 
 
 class Anthropic:
-    def __init__(self, model):
+    def __init__(self, model, thinking: bool = False, effort: str | None = None):
         import anthropic
-        self.c = anthropic.Anthropic(timeout=120.0, max_retries=3); self.model = model
+        self.c = anthropic.Anthropic(timeout=300.0, max_retries=3); self.model = model
+        self.extra = {}
+        if thinking:
+            self.extra["thinking"] = {"type": "adaptive"}
+        if effort:
+            self.extra["output_config"] = {"effort": effort}
 
     def call(self, png: Path, text: str):
-        msg = self.c.messages.create(model=self.model, max_tokens=300, system=SYSTEM,
-                                     messages=[{"role": "user", "content": [image_block(png), {"type": "text", "text": text}]}])
+        with self.c.messages.stream(model=self.model, max_tokens=8000 if self.extra.get("thinking") else 300, system=SYSTEM,
+                                    messages=[{"role": "user", "content": [image_block(png), {"type": "text", "text": text}]}],
+                                    **self.extra) as stream:
+            msg = stream.get_final_message()
         return "".join(b.text for b in msg.content if b.type == "text"), msg.usage.input_tokens, msg.usage.output_tokens
 
 
@@ -76,6 +83,8 @@ def main():
     ap.add_argument("--provider", choices=["anthropic", "gemini"], default="gemini")
     ap.add_argument("--model", default="gemini-3.8-flash")
     ap.add_argument("--thinking-level", default=None, help="gemini: low|medium|high (default: model default)")
+    ap.add_argument("--thinking", action="store_true", help="anthropic: adaptive thinking")
+    ap.add_argument("--effort", default=None, help="anthropic: low|medium|high|max output effort")
     ap.add_argument("--votes", type=int, default=0)
     ap.add_argument("--limit", type=int, default=300)
     ap.add_argument("--workers", type=int, default=8)
@@ -84,7 +93,7 @@ def main():
     a = ap.parse_args()
     root = Path(a.items)
     items = [json.loads(l) for l in open(root / "items.jsonl")][: a.limit]
-    be = Anthropic(a.model) if a.provider == "anthropic" else Gemini(a.model, a.thinking_level)
+    be = Anthropic(a.model, a.thinking, a.effort) if a.provider == "anthropic" else Gemini(a.model, a.thinking_level)
     usage = Counter(); lock = threading.Lock(); per_item = {}; errors = Counter()
 
     def work(item):
