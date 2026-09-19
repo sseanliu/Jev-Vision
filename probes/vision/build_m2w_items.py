@@ -19,6 +19,7 @@ import argparse
 import io
 import json
 import random
+import re
 import subprocess
 from pathlib import Path
 
@@ -156,9 +157,13 @@ def main():
             crop.save(out / "img" / name)
             history = list(reprs)[: int(tidx)] if tidx and str(tidx).isdigit() else []
             iid = f"{ann}_{uid}"
+            opj = json.loads(op)
+            m = re.match(r"\[(\w+)\]", tgt or "")
             items.append({"id": iid, "image": f"img/{name}", "task": task, "history": history,
-                          "target_repr": tgt, "op": json.loads(op).get("op"), "criteria": criteria, "gold": gold,
-                          "view_top": top, "page_size": [W, H]})
+                          "target_repr": tgt, "op": opj.get("op"), "value": opj.get("value", ""),
+                          "target_tag": m.group(1) if m else None,
+                          "step_index": int(tidx) if tidx and str(tidx).isdigit() else None, "n_steps": len(list(reprs)),
+                          "criteria": criteria, "gold": gold, "view_top": top, "page_size": [W, H]})
             requests.append({"id": iid, "image": f"img/{name}", "state": state_text(task, history),
                              "questions": [{"qid": "ground", "qtype": "choice", "instructions": INSTR, "criteria": criteria}],
                              "targets": {"ground": gold}})
