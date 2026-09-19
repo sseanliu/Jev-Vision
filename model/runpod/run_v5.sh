@@ -15,7 +15,7 @@ MAC_PREFIX=${MAC_PREFIX:-/Users/xiaoanliu/Github/typesafe/model/data/vision}
 cd $REPO
 echo "=== data $(date -u) ==="
 for f in $V/state_rows/*.train.jsonl; do sed "s#$MAC_PREFIX#$V#g" "$f" > $D/$(basename $f); done
-sed "s#$MAC_PREFIX#$V#g" $V/state_rows/rec1.validation.jsonl > $D/state.validation.jsonl
+sed "s#$MAC_PREFIX#$V#g" $V/state_rows/rec1b.validation.jsonl > $D/state.validation.jsonl
 # replay: 4k web schema rows + 1.5k desktop schema rows keep grounding and the other heads
 python - <<'PY'
 import json, random
