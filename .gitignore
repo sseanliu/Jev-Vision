@@ -13,3 +13,6 @@ model/data/cua_s1_forms/
 model/data/cua_s1_synth/
 results/*.log
 results/vision/*.log
+
+# benchmark release bundles (images go to HF, items are tracked under bench/)
+release/
