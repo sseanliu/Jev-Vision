@@ -57,7 +57,7 @@ show(i);
 </script></body></html>"""
 
 
-def build(name, per_question, seed):
+def build(name, per_question, seed, img_prefix=None):
     items = [json.loads(l) for l in open(ROOT / "bench" / f"{name}_items.jsonl")]
     by = defaultdict(list)
     for it in items:
@@ -73,7 +73,8 @@ def build(name, per_question, seed):
     rng.shuffle(sample)
     blocks, meta = [], []
     for it in sample:
-        imgs = "".join(f'<img class="{"single" if len(it["images"]) == 1 else ""}" src="{p}" loading="lazy">' for p in it["images"])
+        srcs = [(img_prefix.rstrip("/") + "/" + p.split("/", 1)[1]) if img_prefix else p for p in it["images"]]
+        imgs = "".join(f'<img class="{"single" if len(it["images"]) == 1 else ""}" src="{p}" loading="lazy">' for p in srcs)
         cap = " (left: before, right: after)" if len(it["images"]) == 2 else ""
         blocks.append(
             f'<div class="item"><div class="q"><b>{html.escape(it["question"])}</b>{cap}\n{html.escape(it["state"])}\n<b>Q:</b> {html.escape(it["instructions"])}'
@@ -101,11 +102,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--name", default="v0"); ap.add_argument("--per-question", type=int, default=120); ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--score", default=None)
+    ap.add_argument("--img-prefix", default=None, help="replace the leading images/ of item paths with this (e.g. an absolute recording dir)")
     a = ap.parse_args()
     if a.score:
         score(a.score)
     else:
-        build(a.name, a.per_question, a.seed)
+        build(a.name, a.per_question, a.seed, a.img_prefix)
 
 
 if __name__ == "__main__":
