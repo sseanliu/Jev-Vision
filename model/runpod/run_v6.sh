@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # V6: V5b recipe + the new 138-site recording in both renderings (candidate track and pixel track), so one model
-# serves both tracks. Stage-2 from V3, full V5 state rows + rec2train candidate rows (subsampled) + rec2train pixel
+# serves both tracks, plus jev-ultrafast-format `operation` / `*_target` rows (rules text, DONE at real terminal states)
+# so the decider head sees the same question the harness sends at run time. Stage-2 from V3, full V5 state rows + rec2train candidate rows (subsampled) + rec2train pixel
 # rows + web/desktop replay. Evals: v0 state validation, v1 candidate + pixel tracks, V0b schema, desktop.
 #   RUN_NAME=v6-8b-pixel REPLAY_WEB=8000 REPLAY_DESK=3072 LR=3e-5 HEAD_LR=3e-4 CAND_FRAC=0.5 bash run_v6.sh
 set -euo pipefail
@@ -16,6 +17,7 @@ cd $REPO
 echo "=== data $(date -u) ==="
 for f in $V/state_rows/*.train.jsonl; do sed "s#$MAC_PREFIX#$V#g; s#$V/m2w_train_j#/workspace/m2w_train_j#g" "$f" > $D/$(basename $f); done
 sed "s#$MAC_PREFIX#$V#g" $V/state_rows/rec1b.validation.jsonl > $D/state.validation.jsonl
+sed "s#$MAC_PREFIX#$V#g" $V/state_rows/rec2_ops.validation.jsonl > $D/ops.validation.jsonl
 CAND_FRAC=$CAND_FRAC REPLAY_WEB=$REPLAY_WEB REPLAY_DESK=$REPLAY_DESK python - <<'PY'
 import json, random, os
 rng = random.Random(6); D = "/workspace/v6_data"
@@ -49,6 +51,7 @@ python train_vl.py --data $D --init-adapter $INIT/backbone --init-heads $INIT/he
 F="runs/$RUN_NAME/final"
 echo "=== eval $(date -u) ==="
 python eval_schema.py $F --data $D/state.validation.jsonl --temp 0.5 --out $F/eval_state.json 2>&1 | grep -v Warning | tail -n 8
+python eval_schema.py $F --data $D/ops.validation.jsonl --temp 0.5 --out $F/eval_ops.json 2>&1 | grep -v Warning | tail -n 8
 for T in candidate pixel; do
   [ -f /workspace/bench/v1.$T.rows.jsonl ] && python eval_schema.py $F --data /workspace/bench/v1.$T.rows.jsonl --temp 0.5 --out $F/eval_v1_$T.json 2>&1 | grep -v Warning | tail -n 8
 done
