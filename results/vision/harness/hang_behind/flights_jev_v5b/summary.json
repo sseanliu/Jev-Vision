@@ -1,0 +1,31 @@
+{
+ "task": "flights",
+ "goal": "Find one-way flights from Zurich to London on September 20, 2026, for one adult in economy. Stop when matching flight options are visible. Do not select or book a flight.",
+ "status": "ready",
+ "steps": 10,
+ "elapsed_ms": 14052,
+ "jev_no_change_steps": 1,
+ "verifier_skip_flags": 1,
+ "verifier_no_effect_flags": 0,
+ "verifier_done_first_step": 10,
+ "jev_terminal": "DONE",
+ "verifier_done_at_terminal": 0.9495468139648438,
+ "verification": {
+  "passed": true,
+  "checks": {
+   "search_page": true,
+   "one_way": true,
+   "origin": true,
+   "destination": true,
+   "date": true,
+   "year": true,
+   "results": true
+  },
+  "visible_flights": [
+   "From 220 US dollars.This price does not include overhead bin access. Nonstop flight with easyJet. Leaves Zurich Airport at 4:45 PM on Sunday, September 20 and arrives at London Gatwick Airport at 5:35 PM on Sunday, September 20. Total duration 1 hr 50 min.   Select flight",
+   "From 224 US dollars. Nonstop flight with British Airways. Leaves Zurich Airport at 7:45 PM on Sunday, September 20 and arrives at Heathrow Airport at 8:30 PM on Sunday, September 20. Total duration 1 hr 45 min.   Select flight",
+   "From 278 US dollars. Nonstop flight with British Airways. Operated by BA Cityflyer. Leaves Zurich Airport at 8:25 PM on Sunday, September 20 and arrives at London City Airport at 9:00 PM on Sunday, September 20. Total duration 1 hr 35 min.   Select flight"
+  ]
+ },
+ "effect_vs_page_changed_agreement": 0.9
+}

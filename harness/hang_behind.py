@@ -92,7 +92,10 @@ def main():
                 rec.update(jev_terminal=dec["choice"], done_p=p, done_ms=ms)
                 steps.append(rec)
                 print(f"step {rec['step']:>2}  Jev says {dec['choice']}   verifier done={p:.2f}", flush=True)
-                agent.command("act", {"fingerprint": before["fingerprint"]})
+                try:
+                    agent.command("act", {"fingerprint": before["fingerprint"]})
+                except Exception as e:  # StalePage on a terminal decision: the run still ends here
+                    rec.update(act_error=f"{type(e).__name__}: {e}")
                 break
             action = next(x for x in before["actions"] if x["id"] == dec["choice"])
             label = action["label"].strip()
@@ -130,7 +133,7 @@ def main():
             "task": a.task or url, "goal": goal, "status": snap["status"], "steps": len(snap["history"]),
             "elapsed_ms": snap["elapsed_ms"],
             "jev_no_change_steps": sum(1 for h in snap["history"] if h.get("page_changed") is False),
-            "verifier_skip_flags": sum(1 for s in steps if s.get("skip_p", 0) > 0.5),
+            "verifier_skip_flags": sum(1 for s in steps if s.get("skip_p", 0) > 0.5 and "effect_p" in s),
             "verifier_no_effect_flags": sum(1 for s in steps if "effect_p" in s and s["effect_p"] < 0.5),
             "verifier_done_first_step": next((s["step"] for s in steps if s.get("done_p", 0) > 0.5), None),
             "jev_terminal": next((s.get("jev_terminal") for s in steps if s.get("jev_terminal")), None),
