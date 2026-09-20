@@ -13,7 +13,7 @@ INIT=${INIT:-$REPO/model/runs/v6-8b-pixel/final}
 V=/workspace/vision; D=/workspace/v7_data; mkdir -p $D; rm -f $D/*.jsonl
 cd $REPO
 echo "=== data $(date -u) ==="
-cp $V/general_rows/general.train.jsonl $D/general.train.jsonl
+for f in $V/general_rows/*.train.jsonl; do cp "$f" $D/general_$(basename $f); done
 cp /workspace/v6_data/state.validation.jsonl $D/state.validation.jsonl
 REPLAY_STATE=$REPLAY_STATE REPLAY_PIXEL=$REPLAY_PIXEL REPLAY_OPS=$REPLAY_OPS REPLAY_WEB=$REPLAY_WEB REPLAY_DESK=$REPLAY_DESK python - <<'PY'
 import random, os, glob
