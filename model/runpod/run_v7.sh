@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# V7: general vision mix. Stage-3 from V6 (candidate + pixel + ops) on typed questions from public vision train
-# splits (A-OKVQA, Food-101, VQAv2 yes/no, GQA yes/no, NLVR2) plus screen replay (state rows, pixel rows, ops rows,
-# Mind2Web schema, desktop grounding), so one model serves general images and screens. Evals: general track (1,500),
+# V7: general vision mix. Stage-2 from V5b on typed questions from public vision train splits (A-OKVQA, Food-101,
+# GQA yes/no, NLVR2) merged with the V6 screen data (all ops rows, most pixel rows, candidate/state replay, Mind2Web
+# schema, desktop grounding), so one model serves general images and screens. V6 was stopped at step 340 in favour
+# of this single merged run. Evals: general track (1,500),
 # state validation, v1 candidate + pixel, ops validation, V0b, desktop.
 #   RUN_NAME=v7-8b-general LR=2e-5 HEAD_LR=2e-4 bash run_v7.sh
 set -euo pipefail
 export HF_HUB_DISABLE_PROGRESS_BARS=1 TRANSFORMERS_VERBOSITY=error TOKENIZERS_PARALLELISM=false PIP_BREAK_SYSTEM_PACKAGES=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True HF_HOME=${HF_HOME:-/workspace/hf}
 RUN_NAME=${RUN_NAME:-v7-8b-general}; LR=${LR:-2e-5}; HEAD_LR=${HEAD_LR:-2e-4}
-REPLAY_STATE=${REPLAY_STATE:-3000}; REPLAY_PIXEL=${REPLAY_PIXEL:-2500}; REPLAY_OPS=${REPLAY_OPS:-1500}; REPLAY_WEB=${REPLAY_WEB:-3000}; REPLAY_DESK=${REPLAY_DESK:-1500}
+REPLAY_STATE=${REPLAY_STATE:-3000}; REPLAY_PIXEL=${REPLAY_PIXEL:-6000}; REPLAY_OPS=${REPLAY_OPS:-2700}; REPLAY_WEB=${REPLAY_WEB:-3000}; REPLAY_DESK=${REPLAY_DESK:-1500}
 REPO=${REPO:-/workspace/jev-probes}
-INIT=${INIT:-$REPO/model/runs/v6-8b-pixel/final}
+INIT=${INIT:-$REPO/model/runs/v5b-8b-state/final}
 V=/workspace/vision; D=/workspace/v7_data; mkdir -p $D; rm -f $D/*.jsonl
 cd $REPO
 echo "=== data $(date -u) ==="
@@ -39,7 +40,7 @@ print(f"image paths checked {total}, missing {missing}"); assert missing == 0
 PY
 wc -l $D/*.jsonl
 cd model
-echo "=== train $RUN_NAME (stage-3 from $INIT, general mix + screen replay) $(date -u) ==="
+echo "=== train $RUN_NAME (stage-2 from $INIT, general mix + merged screen data) $(date -u) ==="
 python train_vl.py --data $D --init-adapter $INIT/backbone --init-heads $INIT/heads.pt \
   --out "runs/$RUN_NAME" --epochs 1 --bsz 2 --grad-accum 8 --grad-ckpt --lr $LR --head-lr $HEAD_LR --warmup 30 \
   --eval-every 200 --val-limit 600 --keep 1 2>&1 | grep -v Warning
