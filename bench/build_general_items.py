@@ -5,7 +5,7 @@ Sources (sampled with a fixed seed, images resized to <= 1024 px on the long sid
   mme      lmms-lab/MME             perception/cognition yes/no                  -> noul
   aokvqa   HuggingFaceM4/A-OKVQA    4-way multiple choice                        -> choice
   food101  ethz/food101             dish classification, 20 options incl. gold   -> choice
-  nlvr2    HuggingFaceM4/NLVR2      two images + statement, true/false           -> noul (multi-image)
+  nlvr2    lmms-lab/NLVR2           two images + statement, true/false           -> noul (multi-image)
 
 Writes <out>/items.jsonl (benchmark item schema, track "general") and <out>/general.rows.jsonl (training-row
 schema for model/eval_schema.py), images under <out>/images/.
@@ -51,8 +51,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True); ap.add_argument("--per-source", type=int, default=300); ap.add_argument("--seed", type=int, default=11)
     ap.add_argument("--sources", default="pope,mme,aokvqa,food101,nlvr2")
+    ap.add_argument("--append", action="store_true", help="keep existing items.jsonl entries from other sources")
     a = ap.parse_args(); out = Path(a.out); img_dir = out / "images"; out.mkdir(parents=True, exist_ok=True)
     rng = random.Random(a.seed); items = []; counts = {}
+    srcs = a.sources.split(",")
+    if a.append and (out / "items.jsonl").exists():
+        items = [json.loads(l) for l in open(out / "items.jsonl")]
+        items = [it for it in items if it["source"] not in srcs]
+        for it in items:
+            counts[it["source"]] = counts.get(it["source"], 0) + 1
 
     def add(src, i, qtype, instructions, images, label, state="", criteria=None, meta=None):
         it = {"id": f"{src}_{i}", "track": "general", "source": src, "question": src, "type": qtype, "instructions": instructions,
@@ -63,7 +70,6 @@ def main():
             it["meta"] = meta
         items.append(it); counts[src] = counts.get(src, 0) + 1
 
-    srcs = a.sources.split(",")
     if "pope" in srcs:
         try:
             for i, ex in enumerate(load("lmms-lab/POPE", "test", a.per_source, a.seed)):
@@ -100,21 +106,14 @@ def main():
         except Exception as e:
             print("food101 failed:", e)
     if "nlvr2" in srcs:
-        loaded = False
-        for name, split in [("HuggingFaceM4/NLVR2", "validation"), ("lmms-lab/NLVR2", "test")]:
-            try:
-                for i, ex in enumerate(load(name, split, a.per_source, a.seed)):
-                    left = ex.get("left_image") or ex.get("image_0") or ex.get("images", [None])[0]
-                    right = ex.get("right_image") or ex.get("image_1") or ex.get("images", [None, None])[1]
-                    pl = img_dir / f"nlvr2_{i}_left.jpg"; pr = img_dir / f"nlvr2_{i}_right.jpg"; save(left, pl); save(right, pr)
-                    sent = ex.get("sentence") or ex.get("statement") or ex.get("question")
-                    lab = ex.get("label"); lab = int(lab) if isinstance(lab, (int, bool)) else int(str(lab).strip().lower() in {"true", "1", "yes"})
-                    add("nlvr2", i, "noul", "Is the statement true of the pair of images (left image first, right image second)?", [pl, pr], lab, state=f"Statement: {sent}")
-                loaded = True; break
-            except Exception as e:
-                print(name, "failed:", e)
-        if not loaded:
-            print("nlvr2 skipped")
+        try:
+            for i, ex in enumerate(load("lmms-lab/NLVR2", "balanced_test_public", a.per_source, a.seed)):
+                pl = img_dir / f"nlvr2_{i}_left.jpg"; pr = img_dir / f"nlvr2_{i}_right.jpg"; save(ex["left_image"], pl); save(ex["right_image"], pr)
+                lab = int(str(ex["answer"]).strip().lower() == "true")
+                add("nlvr2", i, "noul", "Is the statement true of the pair of images (left image first, right image second)?", [pl, pr], lab,
+                    state=f"Statement: {ex['question'].strip()}", meta={"question_id": ex.get("question_id")})
+        except Exception as e:
+            print("nlvr2 failed:", e)
 
     with open(out / "items.jsonl", "w") as f:
         for it in items:
