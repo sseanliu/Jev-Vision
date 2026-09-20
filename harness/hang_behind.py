@@ -69,11 +69,16 @@ def main():
     ap.add_argument("--url"); ap.add_argument("--goal")
     ap.add_argument("--verifier", default="http://127.0.0.1:8811")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--show", action="store_true", help="bring the agent's tab to the front so a person can watch")
+    ap.add_argument("--keep-open", action="store_true", help="leave the tab open at the end")
     a = ap.parse_args()
     url, goal = (TASKS[a.task]["url"], TASKS[a.task]["goal"]) if a.task else (a.url, a.goal)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
 
     agent = Agent(url, goal, screenshots=True)
+    if a.show:
+        from browser_harness.helpers import cdp
+        cdp("Target.activateTarget", targetId=agent.browser.target)
     steps = []
     try:
         while agent.state["status"] not in {"done", "blocked"}:
@@ -146,7 +151,8 @@ def main():
         (out / "steps.jsonl").write_text("\n".join(json.dumps(s) for s in steps) + "\n")
         (out / "summary.json").write_text(json.dumps(summary, indent=1))
         print(json.dumps(summary, indent=1))
-        agent.close()
+        if not a.keep_open:
+            agent.close()
 
 
 if __name__ == "__main__":
