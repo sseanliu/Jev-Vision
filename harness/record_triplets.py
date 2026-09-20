@@ -126,7 +126,7 @@ def main():
     ap.add_argument("--goals", default=None, help="jsonl of exact goals {url, kind, goal, target_text, value, done_contains}; sites = its urls")
     ap.add_argument("--start-site", type=int, default=0, help="skip the first N sites (resume); ids keep the global site index")
     a = ap.parse_args()
-    rng = random.Random(a.seed); out = Path(a.out); (out / "img").mkdir(parents=True, exist_ok=True)
+    rng = random.Random(a.seed); out = Path(a.out); (out / "img").mkdir(parents=True, exist_ok=True); (out / "raw").mkdir(exist_ok=True)
     mix = [float(x) for x in a.mix.split(",")]
     goals_by_url = {}
     if a.goals:
@@ -220,11 +220,16 @@ def main():
                         done_after = int(goal_reached)
                         sid = f"{si:03d}_{ti}_{step}"
                         (out / "img" / f"{sid}_before.png").write_bytes(render(before_shot, before_els)); (out / "img" / f"{sid}_after.png").write_bytes(render(after1, after_els))
+                        # pixel track: unmarked screenshots plus element boxes, so any action rendering can be produced later
+                        (out / "raw" / f"{sid}_before.png").write_bytes(before_shot); (out / "raw" / f"{sid}_after.png").write_bytes(after1)
+                        boxes = lambda els: [{"tag": c["tag"], "type": c.get("type", ""), "text": c["text"][:80], "x": round(c["x"]), "y": round(c["y"]), "w": round(c["w"]), "h": round(c["h"])} for c in els]
                         rec = {"id": sid, "site": site, "goal": goal["goal"], "goal_kind": goal["kind"], "goal_value": goal["value"], "target_text": goal["target"]["text"],
                                "step": step, "history": list(history), "policy": kind, "target_href": goal["target"].get("href", ""), "start_url": start_url, "action": act, "typed": typed, "chosen": str(idx + 1), "target_idx": (str(tidx + 1) if tidx is not None else None),
                                "before_img": f"img/{sid}_before.png", "after_img": f"img/{sid}_after.png", "before_url": before_url, "after_url": after_url,
                                "candidates": {str(i + 1): f"element {i+1}: {c['tag']}{(' ' + c['type']) if c['type'] else ''} '{c['text']}'" + (f" value='{before_vals[i][:40]}'" if i < len(before_vals) and before_vals[i] else "") for i, c in enumerate(before_els)},
                                "candidates_after": {str(i + 1): f"element {i+1}: {c['tag']}{(' ' + c['type']) if c['type'] else ''} '{c['text']}'" + (f" value='{after_vals[i][:40]}'" if i < len(after_vals) and after_vals[i] else "") for i, c in enumerate(after_els)},
+                               "raw_before_img": f"raw/{sid}_before.png", "raw_after_img": f"raw/{sid}_after.png",
+                               "boxes_before": boxes(before_els), "boxes_after": boxes(after_els),
                                "labels": {"skip": skip, "effect": effect, "done_before": int(done_before), "done_after": done_after, "noisy": int(noisy)},
                                "signals": {"url_changed": url_changed, "dom_changed": dom_changed, "value_applied": value_applied, "pix_change": round(d_change, 4), "pix_noise": round(d_noise, 4), "act_err": act_err}}
                         log.write(json.dumps(rec, ensure_ascii=False) + "\n"); log.flush(); n_steps += 1
