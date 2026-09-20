@@ -1,0 +1,43 @@
+{
+ "n_rows": 2223,
+ "mean_ms": 189.9,
+ "temp": 1.0,
+ "by_question": {
+  "done": {
+   "n": 836,
+   "acc": 0.928,
+   "chance": 0.5,
+   "ece": 0.033,
+   "auroc": 0.916,
+   "nll": 0.184,
+   "mae": null
+  },
+  "effect": {
+   "n": 404,
+   "acc": 0.931,
+   "chance": 0.5,
+   "ece": 0.044,
+   "auroc": 0.928,
+   "nll": 0.184,
+   "mae": null
+  },
+  "ground": {
+   "n": 147,
+   "acc": 0.946,
+   "chance": 0.059,
+   "ece": 0.035,
+   "auroc": 0.924,
+   "nll": 0.17,
+   "mae": null
+  },
+  "skip": {
+   "n": 836,
+   "acc": 0.957,
+   "chance": 0.5,
+   "ece": 0.03,
+   "auroc": 0.939,
+   "nll": 0.132,
+   "mae": null
+  }
+ }
+}
