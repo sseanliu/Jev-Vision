@@ -35,7 +35,8 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model, packer = load(Path(a.checkpoint), device, a.max_pixels)
     ds = VLRequestDataset([Path(a.data)], packer, limit=a.limit)
-    per = defaultdict(lambda: {"conf": [], "hit": [], "nll": [], "abs_err": [], "n_opts": []})
+    per = defaultdict(lambda: {"conf": [], "hit": [], "nll": [], "abs_err": [], "n_opts": [], "pos_hit": [], "neg_hit": []})
+    items = []
     ms = []
     for i in range(len(ds)):
         ex = ds.build(ds.rows[i])
@@ -49,6 +50,8 @@ def main():
             if qtype == "noul":
                 p = torch.sigmoid(z).item(); pred = p >= 0.5; gold = t >= 0.5
                 per[qid]["conf"].append(max(p, 1 - p)); per[qid]["hit"].append(pred == gold)
+                per[qid]["pos_hit" if gold else "neg_hit"].append(pred == gold)
+                items.append({"i": i, "qid": qid, "p": round(p, 4), "y": int(gold), "meta": ds.rows[i].get("meta", {})})
                 per[qid]["nll"].append(-math.log(max(p if gold else 1 - p, 1e-9))); per[qid]["n_opts"].append(2)
             else:
                 pr = torch.softmax(z / a.temp, -1); gi = int(torch.tensor(t).argmax()) if isinstance(t, list) else int(t)
@@ -62,10 +65,14 @@ def main():
         n = len(d["hit"]); acc = sum(d["hit"]) / n; chance = sum(1 / k for k in d["n_opts"]) / n
         r = {"n": n, "acc": round(acc, 3), "chance": round(chance, 3), "ece": round(expected_calibration_error(d["conf"], d["hit"]), 3),
              "auroc": round(auroc(d["conf"], d["hit"]), 3), "nll": round(sum(d["nll"]) / n, 3),
-             "mae": round(sum(d["abs_err"]) / len(d["abs_err"]), 2) if d["abs_err"] else None}
+             "mae": round(sum(d["abs_err"]) / len(d["abs_err"]), 2) if d["abs_err"] else None,
+             "acc_pos": round(sum(d["pos_hit"]) / len(d["pos_hit"]), 3) if d["pos_hit"] else None,
+             "acc_neg": round(sum(d["neg_hit"]) / len(d["neg_hit"]), 3) if d["neg_hit"] else None,
+             "n_pos": len(d["pos_hit"])}
         rep["by_question"][qid] = r
         print(f"{qid:12s} {n:5d} {r['acc']:6.3f} {r['chance']:7.3f} {r['ece']:6.3f} {r['auroc']:6.3f} {r['nll']:6.3f} {r['mae'] if r['mae'] is not None else '':>5}")
     print(f"mean {rep['mean_ms']} ms per screenshot (all questions in one forward)")
+    rep["items"] = items  # per-item noul predictions (p, gold, meta) for per-class and threshold analysis
     out = Path(a.out or (Path(a.checkpoint) / f"eval_schema_{Path(a.data).stem}.json"))
     out.write_text(json.dumps(rep, indent=1)); print("saved", out)
 
