@@ -1,4 +1,4 @@
-# Step-verifier benchmark (v0, candidate track)
+# Step-verifier benchmark (v0 candidate track; v1 candidate + pixel tracks)
 
 Per-step judgments a computer-use agent loop needs, scored on real web pages with labels derived from the environment.
 One item = a goal, the screenshot(s), the proposed or executed action, and one typed question. The thing under test is a
@@ -50,9 +50,19 @@ skip and 0.77 on done.
 Claude Sonnet 5 with screenshots (verbal probability, 300 per question), and our V5 / V5b 8B decision models
 (all items). Zero-shot V3 (no state training) is in `results/vision/v5-8b-state/eval_state_zeroshot_v3.json`.
 
+## v1: two tracks from the same episodes
+
+`bench/v1_items.jsonl` (2,141 items, candidate track) and `bench/v1_items_pixel.jsonl` (2,003 items, pixel track) come
+from a fresh recording of the same 30 held-out sites (407 steps) made with `harness/record_triplets.py` after it started
+saving unmarked screenshots and element boxes. The pixel track renders each step as the raw screenshot with one red
+marker at the action point and no candidate table (`bench/build_pixel_track.py`); ids are `pixel:` + the candidate id.
+Images: HF private dataset `SeanLiu/step-verifier-bench-v1` (`images/`, `pixel/`). Baselines: `bench/baselines/v1_*.jsonl`;
+leaderboard: `bench/v1_leaderboard.md` (candidate table, then the pixel row). Score a checkpoint on either track with
+`bench/items_to_rows.py` + `model/eval_schema.py` (`scripts/pod_eval_tracks.sh`).
+
 ## Not in v0
 
-- pixel track (the same items with the action rendered as a coordinate marker instead of a numbered element)
+- pixel track: added in v1 (see above); ground on the pixel track still needs a coordinate output
 - desktop items (OS-Atlas macOS rows exist for ground only)
 - human audit sample of the rule labels
 - a normalized latency harness across judges (ms in the table are self-reported: ours on one H100, batch 1, full-res)
