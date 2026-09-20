@@ -1,0 +1,27 @@
+=== eval v1 candidate Sun Sep 20 09:48:03 UTC 2026 ===
+---------------+------------+--+-
+lm_head.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+qid              n    acc  chance    ece  auroc    nll   mae
+done           806  0.896   0.500  0.055  0.885  0.270      
+effect         390  0.967   0.500  0.020  0.932  0.106      
+ground         138  0.913   0.058  0.067  0.958  0.437      
+skip           807  0.936   0.500  0.042  0.924  0.183      
+mean 157.2 ms per screenshot (all questions in one forward)
+saved /workspace/bench/v1.candidate.eval.json
+=== eval v1 pixel Sun Sep 20 09:55:21 UTC 2026 ===
+Key            | Status     |  | 
+---------------+------------+--+-
+lm_head.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+qid              n    acc  chance    ece  auroc    nll   mae
+done           806  0.902   0.500  0.046  0.877  0.253      
+effect         390  0.908   0.500  0.080  0.905  0.315      
+skip           807  0.931   0.500  0.039  0.926  0.189      
+mean 182.0 ms per screenshot (all questions in one forward)
+saved /workspace/bench/v1.pixel.eval.json
+=== tracks done Sun Sep 20 10:03:07 UTC 2026 ===

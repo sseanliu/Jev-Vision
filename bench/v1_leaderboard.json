@@ -1,0 +1,192 @@
+{
+ "v1_jev": {
+  "_name": "Jev 1.13 (text only, candidate table)",
+  "_missing": 1241,
+  "_ms": null,
+  "skip": {
+   "n": 300,
+   "acc": 0.87,
+   "ece": 0.105,
+   "sel80": 0.929,
+   "sel90": 0.9,
+   "auroc": 0.902,
+   "acc_pos": 0.55,
+   "acc_neg": 0.919,
+   "n_pos": 40
+  },
+  "done": {
+   "n": 300,
+   "acc": 0.887,
+   "ece": 0.049,
+   "sel80": 0.933,
+   "sel90": 0.907,
+   "auroc": 0.936,
+   "acc_pos": 0.89,
+   "acc_neg": 0.885,
+   "n_pos": 73
+  },
+  "effect": {
+   "n": 300,
+   "acc": 0.733,
+   "ece": 0.096,
+   "sel80": 0.792,
+   "sel90": 0.774,
+   "auroc": 0.904,
+   "acc_pos": 0.661,
+   "acc_neg": 0.985,
+   "n_pos": 233
+  }
+ },
+ "v1_claude": {
+  "_name": "Claude Sonnet 5 (screenshots, verbal probability)",
+  "_missing": 1611,
+  "_ms": null,
+  "skip": {
+   "n": 200,
+   "acc": 0.85,
+   "ece": 0.119,
+   "sel80": 0.887,
+   "sel90": 0.867,
+   "auroc": 0.769,
+   "acc_pos": 0.308,
+   "acc_neg": 0.931,
+   "n_pos": 26
+  },
+  "done": {
+   "n": 200,
+   "acc": 0.78,
+   "ece": 0.105,
+   "sel80": 0.844,
+   "sel90": 0.806,
+   "auroc": 0.819,
+   "acc_pos": 0.353,
+   "acc_neg": 0.926,
+   "n_pos": 51
+  },
+  "effect": {
+   "n": 130,
+   "acc": 0.477,
+   "ece": 0.301,
+   "sel80": 0.538,
+   "sel90": 0.521,
+   "auroc": 0.721,
+   "acc_pos": 0.327,
+   "acc_neg": 0.938,
+   "n_pos": 98
+  }
+ },
+ "v1_v5b": {
+  "_name": "V5b (ours, 8B, screenshots + candidate table)",
+  "_missing": 138,
+  "_ms": 157.0,
+  "skip": {
+   "n": 807,
+   "acc": 0.936,
+   "ece": 0.042,
+   "sel80": 0.986,
+   "sel90": 0.972,
+   "auroc": 0.972,
+   "acc_pos": 0.789,
+   "acc_neg": 0.958,
+   "n_pos": 109
+  },
+  "done": {
+   "n": 806,
+   "acc": 0.896,
+   "ece": 0.055,
+   "sel80": 0.957,
+   "sel90": 0.932,
+   "auroc": 0.956,
+   "acc_pos": 0.826,
+   "acc_neg": 0.918,
+   "n_pos": 195
+  },
+  "effect": {
+   "n": 390,
+   "acc": 0.967,
+   "ece": 0.02,
+   "sel80": 0.997,
+   "sel90": 0.989,
+   "auroc": 0.991,
+   "acc_pos": 0.97,
+   "acc_neg": 0.956,
+   "n_pos": 300
+  }
+ },
+ "rules": {
+  "_name": "rules: URL/DOM change for effect, constant no for skip/done",
+  "_missing": 138,
+  "_ms": 0.0,
+  "skip": {
+   "n": 807,
+   "acc": 0.865,
+   "ece": 0.035,
+   "sel80": 0.867,
+   "sel90": 0.866,
+   "auroc": 0.5,
+   "acc_pos": 0.0,
+   "acc_neg": 1.0,
+   "n_pos": 109
+  },
+  "done": {
+   "n": 806,
+   "acc": 0.758,
+   "ece": 0.142,
+   "sel80": 0.763,
+   "sel90": 0.756,
+   "auroc": 0.5,
+   "acc_pos": 0.0,
+   "acc_neg": 1.0,
+   "n_pos": 195
+  },
+  "effect": {
+   "n": 390,
+   "acc": 0.892,
+   "ece": 0.008,
+   "sel80": 0.881,
+   "sel90": 0.883,
+   "auroc": 0.93,
+   "acc_pos": 0.86,
+   "acc_neg": 1.0,
+   "n_pos": 300
+  }
+ },
+ "v1_v5b_pixel": {
+  "_name": "V5b, pixel track (zero-shot: raw screenshot + marker, no table)",
+  "_missing": 0,
+  "_ms": 182,
+  "skip": {
+   "n": 807,
+   "acc": 0.931,
+   "ece": 0.039,
+   "sel80": 0.992,
+   "sel90": 0.963,
+   "auroc": 0.972,
+   "acc_pos": 0.89,
+   "acc_neg": 0.937,
+   "n_pos": 109
+  },
+  "done": {
+   "n": 806,
+   "acc": 0.902,
+   "ece": 0.046,
+   "sel80": 0.964,
+   "sel90": 0.941,
+   "auroc": 0.958,
+   "acc_pos": 0.882,
+   "acc_neg": 0.908,
+   "n_pos": 195
+  },
+  "effect": {
+   "n": 390,
+   "acc": 0.908,
+   "ece": 0.08,
+   "sel80": 0.974,
+   "sel90": 0.946,
+   "auroc": 0.978,
+   "acc_pos": 0.973,
+   "acc_neg": 0.689,
+   "n_pos": 300
+  }
+ }
+}

@@ -19,7 +19,9 @@ ROOT = Path(__file__).resolve().parents[1]
 LABELS = {"jev": "Jev 1.13 (text only, candidate table)", "claude": "Claude Sonnet 5 (screenshots, verbal probability)",
           "djev": "DJev (DiffusionGemma-as-Jev API, screenshot)", "v5": "V5 (ours, 8B, screenshots)",
           "v5b": "V5b (ours, 8B, screenshots)", "rules": "rules: URL/DOM change for effect, constant no for skip/done",
-          "v5b_pixel": "V5b on the pixel track (zero-shot, no candidate table)"}
+          "v5b_pixel": "V5b on the pixel track (zero-shot, no candidate table)",
+          "v1_jev": "Jev 1.13 (text only, candidate table)", "v1_claude": "Claude Sonnet 5 (screenshots, verbal probability)",
+          "v1_v5b": "V5b (ours, 8B, screenshots + candidate table)", "v1_v5b_pixel": "V5b, pixel track (zero-shot: raw screenshot + marker, no table)"}
 
 
 def rules_preds(items):
