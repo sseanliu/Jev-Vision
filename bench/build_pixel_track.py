@@ -46,7 +46,9 @@ def main():
     a = ap.parse_args()
     steps = {}
     for l in open(a.steps):
-        s = json.loads(l); steps[s["id"]] = s
+        s = json.loads(l)
+        if "id" in s:
+            steps[s["id"]] = s
     rec_dir = Path(a.steps).parent
     items = [json.loads(l) for l in open(ROOT / "bench" / f"{a.name}_items.jsonl")]
     out_dir = ROOT / "release" / a.name / "pixel"; out_dir.mkdir(parents=True, exist_ok=True)
