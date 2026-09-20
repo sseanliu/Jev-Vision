@@ -66,3 +66,21 @@ leaderboard: `bench/v1_leaderboard.md` (candidate table, then the pixel row). Sc
 - desktop items (OS-Atlas macOS rows exist for ground only)
 - human audit sample of the rule labels
 - a normalized latency harness across judges (ms in the table are self-reported: ours on one H100, batch 1, full-res)
+
+## General track (v2 draft)
+
+Typed vision decisions on public datasets, so the same decision model can be scored on general images next to the
+screen tracks. Built by `bench/build_general_items.py` (fixed seed, 300 items per source, images resized to 1024 px
+on the long side):
+
+| source | question | type | label |
+|---|---|---|---|
+| POPE | is the named object in the image | noul | dataset |
+| MME | perception / cognition yes-no | noul | dataset |
+| A-OKVQA | 4-way multiple choice about the image | choice | dataset |
+| Food-101 | which of 20 dish names (gold plus 19 sampled) | choice | dataset |
+| NLVR2 | is the statement true of the pair of images | noul, two images | dataset |
+
+1,500 items. Same metrics as the screen tracks (accuracy, per-class accuracy, ECE, AUROC, latency). Baselines:
+the fine-tuned checkpoints (`model/eval_schema.py`) and the frozen backbone read out from next-token logits
+(`probes/vision/baseline_frozen_vl.py`).
