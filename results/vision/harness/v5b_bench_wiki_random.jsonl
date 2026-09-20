@@ -1,0 +1,3 @@
+{"step": 0, "url": "https://en.wikipedia.org/wiki/Main_Page", "n_candidates": 30, "ground": "1", "ground_conf": 0.9997, "act": "type", "act_conf": 0.7998, "done_p": 0.014365549199283123, "model_ms": 218.5, "wall_ms": 654}
+{"step": 1, "url": "https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch", "n_candidates": 22, "ground": "2", "ground_conf": 0.7763, "act": "click", "act_conf": 0.9999, "done_p": 0.09428630769252777, "model_ms": 291.5, "wall_ms": 361}
+{"step": 2, "url": "https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch", "n_candidates": 22, "ground": "none", "ground_conf": 0.5625, "act": "click", "act_conf": 0.9999, "done_p": 0.27747607231140137, "model_ms": 369.4, "wall_ms": 519}

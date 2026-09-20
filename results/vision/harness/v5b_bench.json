@@ -1,0 +1,176 @@
+{
+ "tag": "v5b",
+ "n": 12,
+ "success": 10,
+ "first_action_success": 11,
+ "mean_model_ms": 258.0,
+ "rows": [
+  {
+   "id": "example_more_info",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 1,
+   "stop": "done",
+   "final_url": "https://www.iana.org/help/example-domains",
+   "model_ms": [
+    526.4
+   ],
+   "secs": 4.0,
+   "error": null
+  },
+  {
+   "id": "wiki_search",
+   "success": false,
+   "first_action_success": true,
+   "n_steps": 2,
+   "stop": "done",
+   "final_url": "https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch",
+   "model_ms": [
+    231.2,
+    278.1
+   ],
+   "secs": 5.0,
+   "error": null
+  },
+  {
+   "id": "wiki_talk_tab",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 2,
+   "stop": "done",
+   "final_url": "https://en.wikipedia.org/wiki/Talk:Python_(programming_language)",
+   "model_ms": [
+    274.7,
+    307.3
+   ],
+   "secs": 4.0,
+   "error": null
+  },
+  {
+   "id": "wiki_history",
+   "success": false,
+   "first_action_success": false,
+   "n_steps": 4,
+   "stop": "max_steps",
+   "final_url": "https://en.wikipedia.org/wiki/Python_(programming_language)#History",
+   "model_ms": [
+    264.5,
+    365.1,
+    223.2,
+    280.8
+   ],
+   "secs": 8.6,
+   "error": null
+  },
+  {
+   "id": "wiki_random",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 3,
+   "stop": "escalate",
+   "final_url": "https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch",
+   "model_ms": [
+    218.5,
+    291.5,
+    369.4
+   ],
+   "secs": 5.8,
+   "error": null
+  },
+  {
+   "id": "python_downloads",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 1,
+   "stop": "done",
+   "final_url": "https://www.python.org/downloads/",
+   "model_ms": [
+    335.5
+   ],
+   "secs": 3.3,
+   "error": null
+  },
+  {
+   "id": "pydocs_tutorial",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 1,
+   "stop": "done",
+   "final_url": "https://docs.python.org/3/tutorial/index.html",
+   "model_ms": [
+    255.5
+   ],
+   "secs": 3.1,
+   "error": null
+  },
+  {
+   "id": "gh_issues",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 1,
+   "stop": "done",
+   "final_url": "https://github.com/huggingface/transformers/issues",
+   "model_ms": [
+    198.3
+   ],
+   "secs": 4.7,
+   "error": null
+  },
+  {
+   "id": "hn_newest",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 1,
+   "stop": "done",
+   "final_url": "https://news.ycombinator.com/newest",
+   "model_ms": [
+    192.4
+   ],
+   "secs": 3.1,
+   "error": null
+  },
+  {
+   "id": "ddg_search",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 2,
+   "stop": "escalate",
+   "final_url": "https://duckduckgo.com/?ia=web&origin=funnel_home_website_measuresearchesaa_treatment&t=h_&we_featur",
+   "model_ms": [
+    171.5,
+    156.0
+   ],
+   "secs": 5.1,
+   "error": null
+  },
+  {
+   "id": "pypi_search",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 4,
+   "stop": "max_steps",
+   "final_url": "https://pypi.org/search/?q=requests",
+   "model_ms": [
+    168.7,
+    162.7,
+    330.2,
+    164.3
+   ],
+   "secs": 8.0,
+   "error": null
+  },
+  {
+   "id": "rust_learn",
+   "success": true,
+   "first_action_success": true,
+   "n_steps": 1,
+   "stop": "done",
+   "final_url": "https://rust-lang.org/learn/",
+   "model_ms": [
+    167.3
+   ],
+   "secs": 3.1,
+   "error": null
+  }
+ ]
+}

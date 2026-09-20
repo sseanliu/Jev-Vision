@@ -1,0 +1,1 @@
+{"step": 0, "url": "https://rust-lang.org/", "n_candidates": 11, "ground": "2", "ground_conf": 1.0, "act": "click", "act_conf": 1.0, "done_p": 0.7327902317047119, "model_ms": 167.3, "wall_ms": 304}

@@ -1,0 +1,4 @@
+{"step": 0, "url": "https://en.wikipedia.org/wiki/Python_(programming_language)", "n_candidates": 30, "ground": "29", "ground_conf": 0.9053, "act": "click", "act_conf": 1.0, "done_p": 0.16639135777950287, "model_ms": 264.5, "wall_ms": 389}
+{"step": 1, "url": "https://en.wikipedia.org/wiki/Python_(programming_language)", "n_candidates": 30, "ground": "26", "ground_conf": 0.8487, "act": "click", "act_conf": 1.0, "done_p": 0.03147372230887413, "model_ms": 365.1, "wall_ms": 478}
+{"step": 2, "url": "https://en.wikipedia.org/wiki/Python_(programming_language)#History", "n_candidates": 30, "ground": "6", "ground_conf": 1.0, "act": "click", "act_conf": 1.0, "done_p": 0.46502137184143066, "model_ms": 223.2, "wall_ms": 317}
+{"step": 3, "url": "https://en.wikipedia.org/wiki/Python_(programming_language)#History", "n_candidates": 30, "ground": "6", "ground_conf": 1.0, "act": "click", "act_conf": 1.0, "done_p": 0.4035625159740448, "model_ms": 280.8, "wall_ms": 373}

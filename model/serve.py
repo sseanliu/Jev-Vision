@@ -62,7 +62,11 @@ def answer(req: dict) -> dict:
         elif isinstance(crit, list):
             crit = [as_text(v) for v in crit]
         qs.append(Question(qid, q["type"], as_text(q["instructions"]), crit)); order.append(qid)
-    img = decode_image(req.get("image"))
+    # `images`: list of base64/paths for multi-image state (e.g. before/after screenshots); `image`: single.
+    if req.get("images"):
+        img = [decode_image(i) for i in req["images"]]
+    else:
+        img = decode_image(req.get("image"))
     state = render_state(req["state"])
     t0 = time.perf_counter()
     if img is not None:
