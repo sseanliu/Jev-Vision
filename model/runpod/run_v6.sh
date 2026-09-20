@@ -4,6 +4,8 @@
 # so the decider head sees the same question the harness sends at run time. Stage-2 from V3, full V5 state rows + rec2train candidate rows (subsampled) + rec2train pixel
 # rows + web/desktop replay. Evals: v0 state validation, v1 candidate + pixel tracks, V0b schema, desktop.
 #   RUN_NAME=v6-8b-pixel REPLAY_WEB=8000 REPLAY_DESK=3072 LR=3e-5 HEAD_LR=3e-4 CAND_FRAC=0.5 bash run_v6.sh
+# The ops rows carry the full harness JSON state (~1.2k text tokens, 17x the candidate rows), so bsz 4 without
+# checkpointing OOMs on 80 GB; bsz 2 x accum 8 with --grad-ckpt keeps the effective batch at 16.
 set -euo pipefail
 export HF_HUB_DISABLE_PROGRESS_BARS=1 TRANSFORMERS_VERBOSITY=error TOKENIZERS_PARALLELISM=false PIP_BREAK_SYSTEM_PACKAGES=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True HF_HOME=${HF_HOME:-/workspace/hf}
 RUN_NAME=${RUN_NAME:-v6-8b-pixel}
@@ -46,7 +48,7 @@ wc -l $D/*.jsonl
 cd model
 echo "=== train $RUN_NAME (stage-2 from V3, candidate + pixel) $(date -u) ==="
 python train_vl.py --data $D --init-adapter $INIT/backbone --init-heads $INIT/heads.pt \
-  --out "runs/$RUN_NAME" --epochs 1 --bsz 4 --grad-accum 4 --lr $LR --head-lr $HEAD_LR --warmup 30 \
+  --out "runs/$RUN_NAME" --epochs 1 --bsz 2 --grad-accum 8 --grad-ckpt --lr $LR --head-lr $HEAD_LR --warmup 30 \
   --eval-every 200 --val-limit 600 --keep 1 2>&1 | grep -v Warning
 F="runs/$RUN_NAME/final"
 echo "=== eval $(date -u) ==="
