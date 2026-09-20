@@ -1,0 +1,44 @@
+{
+ "n_rows": 629,
+ "mean_ms": 250.5,
+ "temp": 0.5,
+ "by_question": {
+  "click_target": {
+   "n": 138,
+   "acc": 0.471,
+   "chance": 0.069,
+   "ece": 0.512,
+   "auroc": 0.669,
+   "nll": 9.564,
+   "mae": null,
+   "acc_pos": null,
+   "acc_neg": null,
+   "n_pos": 0
+  },
+  "operation": {
+   "n": 486,
+   "acc": 0.656,
+   "chance": 0.294,
+   "ece": 0.293,
+   "auroc": 0.734,
+   "nll": 2.177,
+   "mae": null,
+   "acc_pos": null,
+   "acc_neg": null,
+   "n_pos": 0
+  },
+  "type_text_target": {
+   "n": 5,
+   "acc": 0.8,
+   "chance": 0.333,
+   "ece": 0.24,
+   "auroc": 0.75,
+   "nll": 1.481,
+   "mae": null,
+   "acc_pos": null,
+   "acc_neg": null,
+   "n_pos": 0
+  }
+ },
+ "items": []
+}
