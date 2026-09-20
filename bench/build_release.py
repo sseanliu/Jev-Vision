@@ -22,8 +22,8 @@ def item_id(meta, qid):
     return f"{meta['step_id']}:{qid}:{meta.get('candidate', '')}:{meta.get('which', '')}"
 
 
-def build_items(split):
-    rows = [json.loads(l) for l in open(ROOT / "model/data/vision/state_rows" / f"{split}.jsonl")]
+def build_items(split, rows_path=None):
+    rows = [json.loads(l) for l in open(rows_path or ROOT / "model/data/vision/state_rows" / f"{split}.jsonl")]
     items, seen = [], Counter()
     for r in rows:
         q = r["questions"][0]; m = r["meta"]; qid = q["qid"]
@@ -88,9 +88,9 @@ def convert_baselines(items):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--split", default="rec1b.validation"); ap.add_argument("--name", default="v0")
+    ap.add_argument("--split", default="rec1b.validation"); ap.add_argument("--name", default="v0"); ap.add_argument("--rows", default=None, help="explicit rows jsonl (overrides --split)")
     a = ap.parse_args()
-    items = build_items(a.split)
+    items = build_items(a.split, a.rows)
     rel = ROOT / "release" / a.name; (rel / "images").mkdir(parents=True, exist_ok=True)
     copied = 0
     for it in items:
