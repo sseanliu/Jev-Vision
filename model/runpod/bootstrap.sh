@@ -10,7 +10,7 @@ cd /workspace
 # Code arrives via scp into /workspace/jev-probes/model (no secrets on the pod).
 # Fallback: clone with GH_TOKEN if it was provided and the directory is absent.
 if [ ! -d jev-probes/model ] && [ -n "${GH_TOKEN:-}" ]; then
-  git clone -q "https://${GH_TOKEN}@github.com/sseanliu/jev-probes.git"
+  git clone -q "https://${GH_TOKEN}@github.com/sseanliu/Jev-Vision.git"
 fi
 cd jev-probes/model
 
