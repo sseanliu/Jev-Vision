@@ -1,4 +1,156 @@
 {
+ "claude": {
+  "_name": "Claude Sonnet 5 (screenshots, verbal probability)",
+  "_missing": 1623,
+  "_ms": null,
+  "effect": {
+   "n": 200,
+   "acc": 0.495,
+   "ece": 0.277,
+   "sel80": 0.581,
+   "sel90": 0.533,
+   "auroc": 0.772,
+   "acc_pos": 0.402,
+   "acc_neg": 1.0,
+   "n_pos": 169
+  },
+  "skip": {
+   "n": 200,
+   "acc": 0.835,
+   "ece": 0.107,
+   "sel80": 0.9,
+   "sel90": 0.861,
+   "auroc": 0.775,
+   "acc_pos": 0.259,
+   "acc_neg": 0.925,
+   "n_pos": 27
+  },
+  "done": {
+   "n": 200,
+   "acc": 0.845,
+   "ece": 0.052,
+   "sel80": 0.906,
+   "sel90": 0.867,
+   "auroc": 0.901,
+   "acc_pos": 0.522,
+   "acc_neg": 0.942,
+   "n_pos": 46
+  }
+ },
+ "jev": {
+  "_name": "Jev 1.13 (text only, candidate table)",
+  "_missing": 1323,
+  "_ms": null,
+  "effect": {
+   "n": 300,
+   "acc": 0.71,
+   "ece": 0.128,
+   "sel80": 0.75,
+   "sel90": 0.719,
+   "auroc": 0.899,
+   "acc_pos": 0.653,
+   "acc_neg": 0.981,
+   "n_pos": 248
+  },
+  "skip": {
+   "n": 300,
+   "acc": 0.887,
+   "ece": 0.113,
+   "sel80": 0.954,
+   "sel90": 0.915,
+   "auroc": 0.927,
+   "acc_pos": 0.475,
+   "acc_neg": 0.95,
+   "n_pos": 40
+  },
+  "done": {
+   "n": 300,
+   "acc": 0.897,
+   "ece": 0.08,
+   "sel80": 0.983,
+   "sel90": 0.944,
+   "auroc": 0.966,
+   "acc_pos": 0.886,
+   "acc_neg": 0.9,
+   "n_pos": 70
+  }
+ },
+ "v5": {
+  "_name": "V5 (ours, 8B, screenshots)",
+  "_missing": 147,
+  "_ms": 190.0,
+  "effect": {
+   "n": 404,
+   "acc": 0.931,
+   "ece": 0.044,
+   "sel80": 0.988,
+   "sel90": 0.973,
+   "auroc": 0.972,
+   "acc_pos": 0.941,
+   "acc_neg": 0.89,
+   "n_pos": 322
+  },
+  "skip": {
+   "n": 836,
+   "acc": 0.957,
+   "ece": 0.03,
+   "sel80": 0.999,
+   "sel90": 0.987,
+   "auroc": 0.983,
+   "acc_pos": 0.823,
+   "acc_neg": 0.974,
+   "n_pos": 96
+  },
+  "done": {
+   "n": 836,
+   "acc": 0.928,
+   "ece": 0.033,
+   "sel80": 0.982,
+   "sel90": 0.963,
+   "auroc": 0.976,
+   "acc_pos": 0.843,
+   "acc_neg": 0.953,
+   "n_pos": 191
+  }
+ },
+ "v5b": {
+  "_name": "V5b (ours, 8B, screenshots)",
+  "_missing": 147,
+  "_ms": 190.0,
+  "effect": {
+   "n": 404,
+   "acc": 0.941,
+   "ece": 0.046,
+   "sel80": 0.985,
+   "sel90": 0.967,
+   "auroc": 0.972,
+   "acc_pos": 0.944,
+   "acc_neg": 0.927,
+   "n_pos": 322
+  },
+  "skip": {
+   "n": 836,
+   "acc": 0.953,
+   "ece": 0.025,
+   "sel80": 0.997,
+   "sel90": 0.984,
+   "auroc": 0.984,
+   "acc_pos": 0.833,
+   "acc_neg": 0.969,
+   "n_pos": 96
+  },
+  "done": {
+   "n": 836,
+   "acc": 0.932,
+   "ece": 0.031,
+   "sel80": 0.981,
+   "sel90": 0.959,
+   "auroc": 0.973,
+   "acc_pos": 0.901,
+   "acc_neg": 0.941,
+   "n_pos": 191
+  }
+ },
  "rules": {
   "_name": "rules: URL/DOM change for effect, constant no for skip/done",
   "_missing": 147,

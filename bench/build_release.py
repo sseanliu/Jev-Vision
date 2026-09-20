@@ -104,6 +104,8 @@ def main():
     shutil.copy2(rel / "items.jsonl", ROOT / "bench" / f"{a.name}_items.jsonl")
     (ROOT / "bench/baselines").mkdir(exist_ok=True)
     for name, preds in convert_baselines(items).items():
+        if not preds:  # do not clobber another release's baseline file with an empty one
+            continue
         with open(ROOT / "bench/baselines" / f"{name}.jsonl", "w") as f:
             for p in preds:
                 f.write(json.dumps(p) + "\n")
