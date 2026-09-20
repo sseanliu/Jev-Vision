@@ -3,6 +3,8 @@
   jev     TypeSafe Jev, text only: state text + the candidate table(s) as text, one Noul question
   claude  Anthropic model with the screenshot(s), asked for a probability (verbal)
   gemini  same with Gemini
+  djev    DJev (djev.dev, DiffusionGemma-as-Jev): Jev-shaped request with the screenshot attached (before/after stacked
+          into one image for effect rows); needs DJEV_API_KEY in .env
 Reports per qid: n, acc (p>0.5), AUROC, ECE, plus acc on the positive and negative class (the "should not act"
 half is the negative class for effect and the positive class for skip/done).
 
@@ -78,6 +80,55 @@ def judge_gemini(row, model):
     m = re.search(r"[01](?:\.\d+)?|\.\d+", r.text or ""); return float(m.group(0)) if m else 0.5
 
 
+def _data_url(png_bytes):
+    return "data:image/png;base64," + base64.b64encode(png_bytes).decode()
+
+
+def _djev_image(row):
+    """DJev takes one state image (<=2048x2048). For effect rows stack before/after vertically with labels."""
+    from io import BytesIO
+    from PIL import Image, ImageDraw
+    ims = [Image.open(p).convert("RGB") for p in row["images"]]
+    if len(ims) == 1:
+        im = ims[0]
+    else:
+        w = max(i.width for i in ims); band = 28
+        im = Image.new("RGB", (w, sum(i.height for i in ims) + band * len(ims)), "white"); y = 0
+        for lab, i in zip(["BEFORE the action", "AFTER the action"], ims):
+            ImageDraw.Draw(im).text((8, y + 6), lab, fill="red"); y += band; im.paste(i, (0, y)); y += i.height
+    if max(im.size) > 2048:
+        im.thumbnail((2048, 2048))
+    buf = BytesIO(); im.save(buf, format="PNG"); return _data_url(buf.getvalue())
+
+
+def djev_payload(row):
+    q = row["questions"][0]
+    state = row["state"]
+    if len(row["images"]) == 2:
+        state += "\nThe attached image shows the screen BEFORE the action (top) and AFTER the action (bottom)."
+    return {"model": "djev", "state": state, "images": [_djev_image(row)],
+            "questions": {q["qid"]: {"type": "noul", "instructions": q["instructions"]}}, "options": {"seed": 0}}
+
+
+def judge_djev(row, base_url="https://api.djev.dev/v1/request"):
+    """DJev (DiffusionGemma-as-Jev hosted API, djev.dev): Jev-shaped request with the screenshot attached."""
+    import secrets
+    import requests
+    key = os.environ.get("DJEV_API_KEY")
+    if not key:
+        raise RuntimeError("DJEV_API_KEY missing (add it to .env)")
+    r = requests.post(base_url, json=djev_payload(row), timeout=120,
+                      headers={"Authorization": f"Bearer {key}", "X-Djev-Operation-Id": secrets.token_hex(24)})
+    r.raise_for_status(); body = r.json()
+    q = row["questions"][0]["qid"]; ans = body.get("answers", body).get(q, {})
+    for k in ("noul", "yes", "probability", "value", "p"):
+        if isinstance(ans.get(k), (int, float)):
+            return float(ans[k])
+    if isinstance(ans.get("probabilities"), dict):
+        return float(ans["probabilities"].get("true", ans["probabilities"].get("yes", 0.5)))
+    raise ValueError(f"unrecognised DJev answer: {json.dumps(ans)[:200]}")
+
+
 def metrics(rows):
     n = len(rows); acc = sum((r["p"] > 0.5) == bool(r["y"]) for r in rows) / n
     bins = [[] for _ in range(10)]
@@ -92,18 +143,19 @@ def metrics(rows):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--rows", required=True); ap.add_argument("--judge", choices=["jev", "claude", "gemini"], required=True)
+    ap.add_argument("--rows", required=True); ap.add_argument("--judge", choices=["jev", "claude", "gemini", "djev"], required=True)
     ap.add_argument("--model", default=None); ap.add_argument("--limit", type=int, default=300, help="rows per qid")
     ap.add_argument("--workers", type=int, default=6); ap.add_argument("--out", default=None)
     a = ap.parse_args(); load_env()
-    model = a.model or {"claude": "claude-sonnet-5", "gemini": "gemini-3.8-flash", "jev": None}[a.judge]
+    model = a.model or {"claude": "claude-sonnet-5", "gemini": "gemini-3.8-flash", "jev": None, "djev": "djev"}[a.judge]
     rows = [json.loads(l) for l in open(a.rows)]
     by = defaultdict(list)
     for r in rows:
         if r["questions"][0]["qtype"] == "noul":
             by[r["questions"][0]["qid"]].append(r)
     sel = [r for q, rs in by.items() for r in rs[: a.limit]]
-    fn = {"jev": lambda r: judge_jev(r), "claude": lambda r: judge_claude(r, model), "gemini": lambda r: judge_gemini(r, model)}[a.judge]
+    fn = {"jev": lambda r: judge_jev(r), "claude": lambda r: judge_claude(r, model), "gemini": lambda r: judge_gemini(r, model),
+          "djev": lambda r: judge_djev(r)}[a.judge]
     res = defaultdict(list); errors = 0; lock = threading.Lock(); t0 = time.time()
 
     def work(r):
