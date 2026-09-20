@@ -1,4 +1,4 @@
-# A step verifier for computer-use agents, with open weights
+# Jev-Vision: a step verifier for computer-use agents, with open weights
 
 An 8B vision model that watches a computer-use agent work and answers, in one forward pass of about 160 ms, the
 bounded questions the agent loop needs at every step:
