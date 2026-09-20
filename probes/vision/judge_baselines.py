@@ -159,19 +159,23 @@ def main():
     res = defaultdict(list); errors = 0; lock = threading.Lock(); t0 = time.time()
 
     def work(r):
-        return r, fn(r)
+        t = time.perf_counter(); p = fn(r)
+        return r, p, round((time.perf_counter() - t) * 1000)
 
     with ThreadPoolExecutor(a.workers) as ex:
         for k, f in enumerate(as_completed([ex.submit(work, r) for r in sel]), 1):
             try:
-                r, p = f.result(); qid = r["questions"][0]["qid"]
+                r, p, ms = f.result(); qid = r["questions"][0]["qid"]
                 with lock:
-                    res[qid].append({"p": p, "y": r["targets"][qid], "meta": r.get("meta", {})})
+                    res[qid].append({"p": p, "y": r["targets"][qid], "ms": ms, "meta": r.get("meta", {})})
             except Exception as e:
                 errors += 1; print("  error", type(e).__name__, str(e)[:100], flush=True)
             if k % 100 == 0:
                 print(f"  {k}/{len(sel)} {time.time()-t0:.0f}s", flush=True)
     report = {qid: metrics(rs) for qid, rs in res.items()}; report["_judge"] = a.judge; report["_model"] = model; report["_errors"] = errors
+    allms = sorted(x["ms"] for rs in res.values() for x in rs)
+    if allms:
+        report["_ms_p50"] = allms[len(allms) // 2]; report["_ms_mean"] = round(sum(allms) / len(allms))
     print(json.dumps(report, indent=1))
     out = Path(a.out or ROOT / "results" / "state" / f"judge_{a.judge}_{Path(a.rows).stem}.json"); out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"report": report, "rows": {q: rs for q, rs in res.items()}}, indent=1)); print("saved", out)
