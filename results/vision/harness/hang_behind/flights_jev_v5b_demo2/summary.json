@@ -1,0 +1,33 @@
+{
+ "task": "flights",
+ "goal": "Find one-way flights from Zurich to London on September 20, 2026, for one adult in economy. Stop when matching flight options are visible. Do not select or book a flight.",
+ "status": "done",
+ "steps": 10,
+ "elapsed_ms": 40272,
+ "jev_no_change_steps": 1,
+ "verifier_skip_flags": 0,
+ "verifier_no_effect_flags": 1,
+ "verifier_done_first_step": 10,
+ "jev_terminal": "DONE",
+ "verifier_done_at_terminal": 0.965938150882721,
+ "verification": {
+  "passed": true,
+  "checks": {
+   "search_page": true,
+   "one_way": true,
+   "origin": true,
+   "destination": true,
+   "date": true,
+   "year": true,
+   "results": true
+  },
+  "visible_flights": [
+   "From 371 US dollars. 1 stop flight with SunExpress. Leaves Zurich Airport at 8:50 PM on Sunday, September 20 and arrives at London Stansted Airport at 8:50 AM on Monday, September 21. Total duration 13 hr.  Layover (1 of 1) is a 6 hr layover at Izmir Adnan Menderes Airport in \u0130zmir. Select flight",
+   "From 430 US dollars. 1 stop flight with SWISS and Lufthansa. Operated by Helvetic. Leaves Zurich Airport at 9:15 PM on Sunday, September 20 and arrives at Heathrow Airport at 8:15 AM on Monday, September 21. Total duration 12 hr.  Layover (1 of 1) is a 8 hr 55 min layover at Munich International Airport in Munich. Select flight",
+   "From 431 US dollars. 1 stop flight with SWISS. Leaves Zurich Airport at 10:45 PM on Sunday, September 20 and arrives at Heathrow Airport at 8:15 AM on Monday, September 21. Total duration 10 hr 30 min.  Layover (1 of 1) is a 7 hr 55 min layover at Geneva Airport in Geneva. Select flight",
+   "From 492 US dollars. Nonstop flight with SWISS. Operated by Air Baltic. Leaves Zurich Airport at 8:55 PM on Sunday, September 20 and arrives at Heathrow Airport at 9:45 PM on Sunday, September 20. Total duration 1 hr 50 min.   Select flight",
+   "Total price is unavailable. Nonstop flight with British Airways. Operated by BA Cityflyer. Leaves Zurich Airport at 8:25 PM on Sunday, September 20 and arrives at London City Airport at 9:00 PM on Sunday, September 20. Total duration 1 hr 35 min.   Select flight"
+  ]
+ },
+ "effect_vs_page_changed_agreement": 0.8
+}
