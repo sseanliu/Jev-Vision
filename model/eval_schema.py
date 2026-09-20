@@ -57,6 +57,7 @@ def main():
                 pr = torch.softmax(z / a.temp, -1); gi = int(torch.tensor(t).argmax()) if isinstance(t, list) else int(t)
                 per[qid]["conf"].append(pr.max().item()); per[qid]["hit"].append(int(pr.argmax()) == gi)
                 per[qid]["nll"].append(-math.log(max(pr[gi].item(), 1e-9))); per[qid]["n_opts"].append(len(keys))
+                items.append({"i": i, "qid": qid, "pred": keys[int(pr.argmax())], "gold": keys[gi], "p": round(pr.max().item(), 4), "meta": ds.rows[i].get("meta", {})})
                 if qtype == "score":
                     per[qid]["abs_err"].append(abs(float((pr * torch.arange(len(pr), device=pr.device)).sum()) - gi))
     rep = {"n_rows": len(ds), "mean_ms": round(sum(ms) / len(ms), 1), "temp": a.temp, "by_question": {}}
