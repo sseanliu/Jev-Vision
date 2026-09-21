@@ -2,11 +2,11 @@
 # Bootstrap a fresh pod (no network volume) for V5 training: packages, base model, Mind2Web + OS-Atlas rebuild.
 # Code, the V3 adapter, triplet images and state rows are rsync'd from the Mac by scripts/sync_v5_data.sh.
 set -euo pipefail
-export PIP_BREAK_SYSTEM_PACKAGES=1 HF_HUB_DISABLE_PROGRESS_BARS=1 HF_HOME=/root/hf PATH="$HOME/.local/bin:$PATH"
+export PIP_BREAK_SYSTEM_PACKAGES=1 HF_HUB_DISABLE_PROGRESS_BARS=1 HF_HOME=/workspace/hf PATH="$HOME/.local/bin:$PATH"
 echo "=== pip $(date -u)"; python -m pip install -q transformers==5.17.* peft accelerate pillow duckdb 2>&1 | tail -1
 curl -LsSf https://hf.co/cli/install.sh | bash -s 2>&1 | tail -1
 echo "=== base model $(date -u)"; hf download Qwen/Qwen3-VL-8B-Instruct 2>&1 | tail -1
-mkdir -p /workspace && cd /root/jev-probes/probes/vision
+mkdir -p /workspace && cd /workspace/jev-probes/probes/vision
 echo "=== mind2web items (same seeds as V1b) $(date -u)"
 python build_m2w_items.py --split test_domain --files 3 --n 300 --jitter --seed 1 --out /workspace/m2w_items_j 2>&1 | tail -1
 python build_m2w_items.py --split train --files 27 --n 8000 --none-frac 0.1 --jitter --seed 2 --out /workspace/m2w_train_j 2>&1 | tail -1
