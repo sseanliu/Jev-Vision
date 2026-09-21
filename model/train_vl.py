@@ -38,13 +38,19 @@ def batch_hidden(model, batch, device):
     return h, examples
 
 
+NOUL_SMOOTH = 0.0
+
+
 def loss_for(model, batch, device):
     h, examples = batch_hidden(model, batch, device)
     total, n = 0.0, 0
     for b, ex in enumerate(examples):
         for z, t, qtype in zip(model.readout(h[b], ex.packed), ex.targets, ex.packed.qtypes):
             if qtype == "noul":
-                total = total + F.binary_cross_entropy_with_logits(z.float(), torch.tensor(t, device=device))
+                tt = torch.tensor(float(t), device=device)
+                if NOUL_SMOOTH > 0:  # label smoothing keeps the sigmoid head from saturating out of domain
+                    tt = tt * (1 - NOUL_SMOOTH) + 0.5 * NOUL_SMOOTH
+                total = total + F.binary_cross_entropy_with_logits(z.float(), tt)
             elif isinstance(t, list):
                 tt = torch.tensor(t, device=device); tt = tt / tt.sum().clamp_min(1e-9)
                 total = total - (tt * F.log_softmax(z.float(), -1)).sum()
@@ -109,7 +115,9 @@ def main():
     ap.add_argument("--grad-ckpt", action="store_true")
     ap.add_argument("--keep", type=int, default=1)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--noul-smooth", type=float, default=0.0, help="label smoothing for yes/no targets (e.g. 0.05)")
     a = ap.parse_args()
+    global NOUL_SMOOTH; NOUL_SMOOTH = a.noul_smooth
     torch.manual_seed(a.seed); random.seed(a.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
