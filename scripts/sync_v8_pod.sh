@@ -10,7 +10,7 @@ $R "$E" --exclude '.venv' --exclude '__pycache__' --exclude 'runs' --exclude 'da
 $R "$E" model/runs/v7-8b-general/final/ root@$POD_HOST:/workspace/jev-probes/model/runs/v7-8b-general/final/
 $R "$E" model/data/vision/state_rows/ root@$POD_HOST:/workspace/vision/state_rows/
 cat ~/.cache/huggingface/token | $E root@$POD_HOST 'cat > /workspace/hf/token && chmod 600 /workspace/hf/token'
-$E root@$POD_HOST 'cd /workspace && nohup bash /workspace/jev-probes/model/runpod/bootstrap_v8_pod.sh > /workspace/bootstrap.out 2>&1 < /dev/null & disown; echo bootstrap started'
+$E root@$POD_HOST 'cd /workspace && (nohup bash /workspace/jev-probes/model/runpod/bootstrap_v8_pod.sh > /workspace/bootstrap.out 2>&1 < /dev/null &) ; echo bootstrap started' || true
 # recordings (big): img + pixel + raw for run2_train, raw for run2_val
 $R "$E" model/data/vision/triplets/run2_train/img model/data/vision/triplets/run2_train/pixel model/data/vision/triplets/run2_train/raw root@$POD_HOST:/workspace/vision/triplets/run2_train/
 $R "$E" model/data/vision/triplets/run2_val/raw root@$POD_HOST:/workspace/vision/triplets/run2_val/
