@@ -1,0 +1,31 @@
+{
+ "easy": {
+  "n": 48,
+  "acc": 1.0,
+  "p50_ms": 531,
+  "by_type": {
+   "choice": 1.0,
+   "noul": 1.0
+  }
+ },
+ "original": {
+  "n": 72,
+  "acc": 0.958,
+  "p50_ms": 528,
+  "by_type": {
+   "noul": 0.958,
+   "choice": 0.944,
+   "score": 1.0
+  }
+ },
+ "hard": {
+  "n": 111,
+  "acc": 0.523,
+  "p50_ms": 608,
+  "by_type": {
+   "choice": 0.507,
+   "noul": 0.579,
+   "score": 0.333
+  }
+ }
+}
