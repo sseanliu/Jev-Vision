@@ -1,0 +1,27 @@
+{
+ "task": "flights",
+ "goal": "Find one-way flights from Zurich to London on September 20, 2026, for one adult in economy. Stop when matching flight options are visible. Do not select or book a flight.",
+ "status": "blocked",
+ "steps": 11,
+ "elapsed_ms": 39946,
+ "jev_no_change_steps": 3,
+ "verifier_skip_flags": 0,
+ "verifier_no_effect_flags": 3,
+ "verifier_done_first_step": null,
+ "jev_terminal": null,
+ "verifier_done_at_terminal": null,
+ "verification": {
+  "passed": false,
+  "checks": {
+   "search_page": false,
+   "one_way": false,
+   "origin": false,
+   "destination": false,
+   "date": false,
+   "year": false,
+   "results": false
+  },
+  "visible_flights": []
+ },
+ "effect_vs_page_changed_agreement": 1.0
+}

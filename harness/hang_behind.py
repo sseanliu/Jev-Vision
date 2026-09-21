@@ -13,11 +13,15 @@ Run from the jev-ultrafast checkout so its .env (Jev key, text helper) applies:
 """
 
 import argparse
+import base64
+import datetime as dt
 import json
+import os
 import sys
 import time
 import urllib.request
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 from jev_ultrafast import Agent
 
@@ -25,10 +29,13 @@ Q_SKIP = "Is this element already in the state the task needs, so it should be l
 Q_EFFECT = "Did the last action change the page as intended?"
 Q_DONE = "Has the goal been fully achieved, with nothing left to do?"
 
+# The flights date must be in the future; default: three weeks from today, or FLIGHT_DATE=YYYY-MM-DD.
+FLIGHT_DATE = dt.date.fromisoformat(os.environ["FLIGHT_DATE"]) if os.environ.get("FLIGHT_DATE") else dt.date.today() + dt.timedelta(days=21)
+_D = FLIGHT_DATE
 TASKS = {
     "flights": {
         "url": "https://www.google.com/travel/flights?hl=en",
-        "goal": "Find one-way flights from Zurich to London on September 20, 2026, for one adult in economy. "
+        "goal": f"Find one-way flights from Zurich to London on {_D:%B} {_D.day}, {_D.year}, for one adult in economy. "
                 "Stop when matching flight options are visible. Do not select or book a flight.",
     },
     "wiki": {
@@ -51,6 +58,30 @@ def ask(server, state, images, qid, instructions):
     if "error" in r:
         raise RuntimeError(r["error"])
     return float(r["answers"][qid]["noul"]), round((time.perf_counter() - t) * 1000)
+
+
+def verify_flights(page):
+    """Independent checks on the resulting page (jev-ultrafast examples/flights_s1.verify, with the date parameterised)."""
+    parsed = urlparse(page["url"])
+    encoded = parse_qs(parsed.query).get("tfs", [""])[0]
+    try:
+        date_in_url = _D.isoformat().encode() in base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
+    except ValueError:
+        date_in_url = False
+    actions = page["actions"]
+    values = {a["label"].strip(): a.get("value") for a in actions}
+    flights = [a["label"] for a in actions if "Select flight" in a["label"]]
+    long_day = f"{_D:%A}, {_D:%B} {_D.day}"
+    checks = {
+        "search_page": parsed.hostname == "www.google.com" and parsed.path == "/travel/flights/search",
+        "one_way": values.get("Change ticket type. One way") == "One way",
+        "origin": values.get("Where from?") == "Zürich",
+        "destination": values.get("Where to?") == "London",
+        "date": values.get("Departure") == f"{_D:%a}, {_D:%b} {_D.day}",
+        "year": date_in_url or f"departing {_D.isoformat()}" in page["text"],
+        "results": bool(flights) and all(long_day in f for f in flights),
+    }
+    return {"passed": all(checks.values()), "checks": checks, "visible_flights": flights}
 
 
 def history_text(history):
@@ -131,9 +162,7 @@ def main():
         snap = agent.snapshot()
         verification = None
         if a.task == "flights":
-            sys.path.insert(0, str(Path.home() / "Github/jev-ultrafast/examples"))
-            from flights_s1 import verify  # independent page checks
-            verification = verify(snap["page"])
+            verification = verify_flights(snap["page"])
         summary = {
             "task": a.task or url, "goal": goal, "status": snap["status"], "steps": len(snap["history"]),
             "elapsed_ms": snap["elapsed_ms"],
