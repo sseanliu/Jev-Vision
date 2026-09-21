@@ -2,7 +2,7 @@
 Reports per-tier accuracy (the harness's Intelligence inputs) and latency; not the official score."""
 import json, sys, time, urllib.request, statistics
 URL = sys.argv[1]; name = sys.argv[2]
-out = {}
+out = {}; items = []  # per-item yes/no probabilities, for temperature fitting / ECE offline
 for tier in ["easy", "original", "hard"]:
     rows = [json.loads(l) for l in open(f"{tier}.jsonl") if l.strip()]
     hits = []; ms = []; per_type = {}
@@ -19,6 +19,8 @@ for tier in ["easy", "original", "hard"]:
         exp = str(r["expected"])
         if q["type"] == "noul":
             p = a.get("noul"); pred = None if p is None else ("yes" if p >= 0.5 else "no")
+            if p is not None:
+                items.append({"tier": tier, "id": r["id"], "qid": tier, "p": p, "y": int(exp == "yes")})
         elif q["type"] == "choice":
             pred = a.get("choice")
         else:
@@ -26,4 +28,4 @@ for tier in ["easy", "original", "hard"]:
         hit = int(pred == exp); hits.append(hit); per_type.setdefault(q["type"], []).append(hit)
     out[tier] = {"n": len(rows), "acc": round(sum(hits) / len(hits), 3), "p50_ms": round(statistics.median(ms)), "by_type": {k: round(sum(v) / len(v), 3) for k, v in per_type.items()}}
     print(name, tier, out[tier], flush=True)
-json.dump(out, open(f"result_{name}.json", "w"), indent=1)
+json.dump({**out, "items": items}, open(f"result_{name}.json", "w"), indent=1)

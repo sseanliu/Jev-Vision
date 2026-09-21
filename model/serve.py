@@ -83,7 +83,8 @@ def answer(req: dict) -> dict:
         z = z.float()
         temp = float(req["questions"][qid].get("temperature", MODEL["temp"]))  # per-question / per-platform override
         if qtype == "noul":
-            p = float(torch.sigmoid(z)); out[qid] = {"type": "noul", "noul": p, "confidence": round(abs(p - 0.5) * 2, 4)}
+            nt = float(req["questions"][qid].get("temperature", MODEL["noul_temp"]))  # yes/no logit temperature (calibration)
+            p = float(torch.sigmoid(z / nt)); out[qid] = {"type": "noul", "noul": p, "confidence": round(abs(p - 0.5) * 2, 4)}
         else:
             pr = torch.softmax(z / temp, -1); probs = {k: float(v) for k, v in zip(keys, pr)}
             top = max(probs, key=probs.get); K = len(keys)
@@ -118,11 +119,15 @@ def main():
     ap.add_argument("checkpoint")
     ap.add_argument("--port", type=int, default=8811)
     ap.add_argument("--temp", type=float, default=0.5)
+    ap.add_argument("--noul-temp", type=float, default=None, help="divide yes/no logits by this before the sigmoid (default: the checkpoint's s1_config noul_temp, else 1)")
     ap.add_argument("--max-pixels", type=int, default=1288 * 1000)
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     model, packer = load(Path(a.checkpoint), device, a.max_pixels)
-    MODEL.update(model=model, packer=packer, temp=a.temp, device=device, name=Path(a.checkpoint).parent.name)
+    cfg = json.loads((Path(a.checkpoint) / "s1_config.json").read_text())
+    noul_temp = a.noul_temp if a.noul_temp is not None else float(cfg.get("noul_temp", 1.0))
+    MODEL.update(model=model, packer=packer, temp=a.temp, noul_temp=noul_temp, device=device, name=Path(a.checkpoint).parent.name)
+    print(f"noul temperature {noul_temp}")
     print(f"serving {MODEL['name']} on :{a.port} ({device})", flush=True)
     ThreadingHTTPServer(("0.0.0.0", a.port), Handler).serve_forever()
 
