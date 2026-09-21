@@ -45,7 +45,7 @@ def main():
     a = ap.parse_args()
     device = "cuda" if torch.cuda.is_available() else "cpu"
     proc = AutoProcessor.from_pretrained(a.model, max_pixels=a.max_pixels)
-    model = AutoModelForImageTextToText.from_pretrained(a.model, torch_dtype=torch.bfloat16, device_map=device).eval()
+    model = AutoModelForImageTextToText.from_pretrained(a.model, dtype=torch.bfloat16, device_map=device).eval()
     tok = proc.tokenizer
     yes_ids = [tok.encode(" yes")[-1], tok.encode("yes")[-1], tok.encode(" Yes")[-1], tok.encode("Yes")[-1]]
     no_ids = [tok.encode(" no")[-1], tok.encode("no")[-1], tok.encode(" No")[-1], tok.encode("No")[-1]]
@@ -55,7 +55,7 @@ def main():
         rows = rows[: a.limit]
     per = {}; items = []; ms = []
     for i, r in enumerate(rows):
-        imgs = [Image.open(p).convert("RGB") for p in r["images"]]
+        imgs = [Image.open(p).convert("RGB") for p in (r.get("images") or [])]
         for q in r["questions"]:
             qid = q["qid"]; gold = r["targets"][qid]
             content = [{"type": "image"} for _ in imgs]
@@ -68,7 +68,7 @@ def main():
             content.append({"type": "text", "text": text})
             msgs = [{"role": "user", "content": content}]
             prompt = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
-            inputs = proc(text=[prompt], images=imgs, return_tensors="pt").to(device)
+            inputs = (proc(text=[prompt], images=imgs, return_tensors="pt") if imgs else proc(text=[prompt], return_tensors="pt")).to(device)
             t0 = time.perf_counter()
             with torch.no_grad():
                 logits = model(**inputs).logits[0, -1].float()

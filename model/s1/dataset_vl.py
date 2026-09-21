@@ -66,7 +66,9 @@ class VLRequestDataset(torch.utils.data.Dataset):
                 questions.append(Question(q["qid"], "score", q["instructions"], q["criteria"]))
                 targets.append([float(t.get(str(i), 0.0)) for i in range(len(q["criteria"]))] if soft else int(t))
         budget = self.rng.choice(self.budgets) if self.budgets else None
-        imgs = row["images"] if "images" in row else row["image"]
+        imgs = row["images"] if "images" in row else row.get("image")
+        if not imgs:  # text-only row: pack with the text packer; the model's text forward handles it
+            return ExampleVL(self.packer.text.pack(row["state"], questions), targets)
         return ExampleVL(self.packer.pack(imgs, row["state"], questions, max_pixels=budget), targets)
 
     def __getitem__(self, i):

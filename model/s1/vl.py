@@ -91,6 +91,8 @@ class VLDecisionModel(DecisionModel):
         return out.last_hidden_state
 
     def forward(self, packed: PackedVL, device=None):
+        if not isinstance(packed, PackedVL):  # text-only request: plain DecisionModel forward
+            return DecisionModel.forward(self, packed, device)
         dev = device or next(self.parameters()).device
         ids = torch.tensor([packed.input_ids], device=dev)
         seg = torch.tensor([packed.segment_ids], device=dev)
