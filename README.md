@@ -16,11 +16,26 @@ and from the prompt-only open re-creations is that this one looks at the screens
 labels that come from the environment (URL and DOM change, field values, target page reached) rather than from a
 model or a human.
 
-This repository is updated as results land. Numbers below are from the current checkpoint (V5b); a V6 that also
-trains the decision head in the harness's own question format is in progress. Status and plans are tracked in the
-commit log.
+This repository is updated as results land. Current checkpoint: V7 (general vision mix + screens). Status and plans
+are tracked in the commit log.
 
 ## Results
+
+### General track: typed decisions on general images
+
+1,500 items from public datasets (POPE, MME, NLVR2 two-image, A-OKVQA 4-way, Food-101 20-way), built by
+`bench/build_general_items.py`. The frozen backbone with a prompt and next-token logit readout is what a prompt-only
+open "vision Jev" gets from the same 8B model.
+
+| system | POPE | MME | NLVR2 | A-OKVQA | Food-101 | mean | ECE (yes/no) | ms |
+|---|---|---|---|---|---|---|---|---|
+| Qwen3-VL-8B frozen, prompt + logit readout | 0.900 | 0.903 | 0.897 | 0.903 | 0.950 | 0.911 | 0.072 to 0.085 | 185 per question |
+| V5b (screens only) | 0.860 | 0.890 | 0.917 | 0.890 | 0.937 | 0.899 | 0.016 to 0.094 | 269 |
+| **V7 (general mix + screens)** | **0.913** | **0.927** | **0.933** | **0.903** | 0.937 | **0.923** | **0.022 to 0.054** | **112** |
+
+Full table with AUROC in `bench/general_leaderboard.md`.
+
+### Screen tracks: per-step judgments for computer-use agents
 
 Benchmark v1: fresh episodes on 30 web sites held out from training (site-level split), labels from the environment.
 Accuracy per question with positive / negative class accuracy in brackets, expected calibration error, and latency.
@@ -32,22 +47,26 @@ Candidate track (screenshot with numbered marks plus a text table of the candida
 | Jev 1.13 (text only, candidate table) | 0.870 (0.55/0.92) | 0.733 (0.66/0.98) | 0.887 (0.89/0.89) | 0.105/0.096/0.049 | 238 (API p50) |
 | Claude Sonnet 5 (screenshots, verbal probability) | 0.850 (0.31/0.93) | 0.477 (0.33/0.94) | 0.780 (0.35/0.93) | 0.119/0.301/0.105 | n/a |
 | rules (URL/DOM change for effect, constant no) | 0.865 | 0.892 | 0.758 | 0.035/0.008/0.142 | 0 |
-| **ours, V5b 8B** | **0.936** (0.79/0.96) | **0.967** (0.97/0.96) | **0.896** (0.83/0.92) | 0.042/0.020/0.055 | **157** |
+| ours, V5b 8B | **0.936** (0.79/0.96) | **0.967** (0.97/0.96) | 0.896 (0.83/0.92) | 0.042/0.020/0.055 | **157** |
+| **ours, V7 8B** | 0.928 | 0.962 | **0.898** | 0.048/0.019/0.066 | 185 |
 
 Pixel track (raw screenshot with one marker on the candidate, no table; the same episodes):
 
 | system | skip | effect | done | ECE | ms |
 |---|---|---|---|---|---|
 | ours, V5b 8B, zero-shot on this rendering | 0.931 (0.89/0.94) | 0.908 (0.97/0.69) | 0.902 (0.88/0.91) | 0.039/0.080/0.046 | 182 |
+| **ours, V7 8B, trained on this rendering** | **0.933** | **0.915** | 0.902 | 0.042/0.052/0.061 | 187 |
 
-Benchmark v0 (2,223 items, same 30 sites, earlier episodes): skip 0.953, effect 0.941, done 0.932, ground 0.952 for
-V5b; full tables with AUROC and selective accuracy in `bench/v0_leaderboard.md` and `bench/v1_leaderboard.md`.
+Benchmark v0 (2,223 items, same 30 sites, earlier episodes): skip 0.952, effect 0.941, done 0.935, ground 0.946 for
+V7 (V5b: 0.953 / 0.941 / 0.932 / 0.952); full tables with AUROC and selective accuracy in `bench/v0_leaderboard.md` and `bench/v1_leaderboard.md`.
 Latency is one H100, batch 1, 1280x1000 screenshots, all questions of a step in one forward.
 
-Closed loop (`harness/hang_behind.py`): with Jev as the decider on a Google Flights task, the verifier passes every
-one of Jev's 10 actions and rates the final state done at 0.97; the task's independent page checks all pass. With
-our model as the decider it makes 6 correct moves and then stops early, which is what V6 addresses (see
-`probes/vision/build_operation_rows.py`).
+Deciding, not only verifying: on the harness's own `operation` question (CLICK / TYPE_TEXT / DONE / BLOCKED with the
+rules text jev-ultrafast sends, 629 held-out rows), V5b answered zero-shot at 0.656 and recognised 21 of 137 terminal
+states as DONE; V7, trained on 2,700 such rows, scores 0.850 and recognises 125 of 137 (21 of 310 CLICK states
+mis-called DONE). Closed loop (`harness/hang_behind.py`): with Jev as the decider on a Google Flights task, the
+verifier passes every one of Jev's 10 actions and rates the final state done at 0.97; the task's independent page
+checks all pass.
 
 ## Layout
 
