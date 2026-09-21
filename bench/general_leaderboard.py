@@ -10,6 +10,13 @@ import sys
 SOURCES = ["pope", "mme", "nlvr2", "aokvqa", "food101"]
 
 
+def class_auroc(r, q):
+    """AUROC of P(yes) against the label for a yes/no source, from the saved items (same definition for every system)."""
+    xs = [(it["p"], it["y"]) for it in r.get("items", []) if it.get("qid") == q and "y" in it]
+    pos = [p for p, y in xs if y]; neg = [p for p, y in xs if not y]
+    return sum((a > b) + 0.5 * (a == b) for a in pos for b in neg) / (len(pos) * len(neg)) if pos and neg else None
+
+
 def item_hits(r):
     """Per-item (correct, confidence) from the saved predictions, for CIs and high-confidence errors."""
     out = []
@@ -41,8 +48,9 @@ def main():
             if not e:
                 cells.append("-"); continue
             c = f"{e['acc']:.3f}"
-            if e.get("auroc") is not None:
-                c += f" / {e['auroc']:.2f}"
+            ca = class_auroc(r, s)
+            if ca is not None:
+                c += f" / {ca:.2f}"
             c += f" (ECE {e['ece']:.3f})"
             cells.append(c)
         accs = [bq[s]["acc"] for s in SOURCES if s in bq]
@@ -55,7 +63,7 @@ def main():
     for name, cells, mean, (lo, hi), (he, ne), ms in rows:
         ci = f" [{lo:.3f}-{hi:.3f}]" if lo is not None else ""
         print(f"| {name} | " + " | ".join(cells) + f" | {mean:.3f}{ci} | {he} of {ne} ({100 * he / max(1, ne):.0f}%) | {ms} |")
-    print("\nCells: accuracy / AUROC (yes-no sources) (ECE). CI: 2,000-resample item bootstrap over all 1,500 items. Errors stated at p>=0.99: wrong answers given with at least 0.99 confidence (the Solomon card's high-confidence-error column). ms: mean per request on one H100, batch 1; ours packs all questions of an image in one forward, the frozen baseline is one forward per question.")
+    print("\nCells: accuracy / class AUROC of P(yes) vs label (yes-no sources) (ECE). CI: 2,000-resample item bootstrap over all 1,500 items. Errors stated at p>=0.99: wrong answers given with at least 0.99 confidence (the Solomon card's high-confidence-error column). ms: mean per request on one H100, batch 1; ours packs all questions of an image in one forward, the frozen baseline is one forward per question.")
 
 
 if __name__ == "__main__":

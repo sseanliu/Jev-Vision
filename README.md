@@ -38,11 +38,15 @@ open "vision Jev" gets from the same 8B model.
 | V5b (screens only) | 0.860 | 0.890 | 0.917 | 0.890 | 0.937 | 0.899 | 0.016 to 0.094 | 269 |
 | V7 (general mix + screens) | 0.913 | 0.927 | 0.933 | 0.903 | 0.937 | 0.923 | 0.022 to 0.054 | 112 |
 | **V9 (released)** | 0.907 | 0.927 | 0.930 | 0.893 | 0.930 | 0.917 | 0.034 to 0.047 | **74** |
+| Qwen3.5-9B frozen, prompt + logit readout | 0.910 | 0.897 | 0.857 | 0.917 | 0.933 | 0.903 | 0.016 to 0.048 | 207 |
 
-The 95% bootstrap intervals of the mean overlap (V7 0.909 to 0.937, frozen 0.897 to 0.925): accuracy is a tie. The
-fine-tuned models state far fewer of their errors at p>=0.99 (13% of errors vs 37% for the frozen readout). Their
-yes/no ranking (AUROC 0.84 to 0.91) is still below the frozen readout's 0.96; V10 tests a readout that keeps the
-backbone's yes/no geometry. Full table with AUROC, CIs and high-confidence errors in `bench/general_leaderboard.md`.
+The 95% bootstrap intervals of the mean overlap (V9 0.902 to 0.932, frozen 0.897 to 0.925): accuracy is a tie. The
+fine-tuned models state far fewer of their errors at p>=0.99 (13% of errors vs 37% for the frozen readout), and their
+yes/no class AUROC (P(yes) against the label) is equal or better: V9 0.97 / 0.97 / 0.98 on POPE / MME / NLVR2 against
+0.95 / 0.97 / 0.96 for the frozen readout. (An earlier revision of this README reported a ranking gap; it compared two
+different AUROC definitions. Corrected 2026-09-21.) Frozen Qwen3.5-9B with the same readout scores 0.903 with the
+best out-of-the-box calibration on the table. Full table with CIs and high-confidence errors in
+`bench/general_leaderboard.md`.
 
 ### Screen tracks: per-step judgments for computer-use agents
 

@@ -35,7 +35,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model, packer = load(Path(a.checkpoint), device, a.max_pixels)
     ds = VLRequestDataset([Path(a.data)], packer, limit=a.limit)
-    per = defaultdict(lambda: {"conf": [], "hit": [], "nll": [], "abs_err": [], "n_opts": [], "pos_hit": [], "neg_hit": []})
+    per = defaultdict(lambda: {"conf": [], "hit": [], "nll": [], "abs_err": [], "n_opts": [], "pos_hit": [], "neg_hit": [], "p": [], "y": []})
     items = []
     ms = []
     for i in range(len(ds)):
@@ -51,6 +51,7 @@ def main():
                 p = torch.sigmoid(z).item(); pred = p >= 0.5; gold = t >= 0.5
                 per[qid]["conf"].append(max(p, 1 - p)); per[qid]["hit"].append(pred == gold)
                 per[qid]["pos_hit" if gold else "neg_hit"].append(pred == gold)
+                per[qid]["p"].append(p); per[qid]["y"].append(int(gold))
                 items.append({"i": i, "qid": qid, "p": round(p, 4), "y": int(gold), "meta": ds.rows[i].get("meta", {})})
                 per[qid]["nll"].append(-math.log(max(p if gold else 1 - p, 1e-9))); per[qid]["n_opts"].append(2)
             else:
@@ -65,7 +66,10 @@ def main():
     for qid, d in sorted(per.items()):
         n = len(d["hit"]); acc = sum(d["hit"]) / n; chance = sum(1 / k for k in d["n_opts"]) / n
         r = {"n": n, "acc": round(acc, 3), "chance": round(chance, 3), "ece": round(expected_calibration_error(d["conf"], d["hit"]), 3),
-             "auroc": round(auroc(d["conf"], d["hit"]), 3), "nll": round(sum(d["nll"]) / n, 3),
+             # auroc: for yes/no, the class AUROC of P(yes) against the label (comparable to logit-readout baselines);
+             # sel_auroc: does the stated confidence separate right from wrong answers (selective prediction)
+             "auroc": round(auroc(d["p"], d["y"]), 3) if d["p"] else round(auroc(d["conf"], d["hit"]), 3),
+             "sel_auroc": round(auroc(d["conf"], d["hit"]), 3), "nll": round(sum(d["nll"]) / n, 3),
              "mae": round(sum(d["abs_err"]) / len(d["abs_err"]), 2) if d["abs_err"] else None,
              "acc_pos": round(sum(d["pos_hit"]) / len(d["pos_hit"]), 3) if d["pos_hit"] else None,
              "acc_neg": round(sum(d["neg_hit"]) / len(d["neg_hit"]), 3) if d["neg_hit"] else None,
