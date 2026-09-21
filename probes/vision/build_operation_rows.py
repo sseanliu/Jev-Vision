@@ -7,8 +7,11 @@ Question format is copied from jev_ultrafast/model.py `choose()`:
 State is the harness's JSON state (page url, elements, recent_actions) rendered like serve.py does. Images are the raw
 screenshots (no marks), which is what S1_SCREENSHOT=1 sends.
 
-Gold: DONE on the before image when labels.done_before, and on the after image when labels.done_after (terminal
-states); otherwise CLICK / TYPE_TEXT from the recorded action. Target rows use the recorded chosen index.
+Gold comes from the TASK, not from the recorded policy: 57% of recorded steps are deliberately wrong actions (random /
+unrelated / repeat policies, there to label effect and skip negatives). DONE on the before image when
+labels.done_before and on the after image when labels.done_after; otherwise the operation the oracle would take at
+that state (TYPE_TEXT into the goal field while it lacks the goal value, else CLICK). Target rows use the goal's
+target element (target_idx) and are skipped when it is unknown.
 
 python build_operation_rows.py --steps ../../model/data/vision/triplets/run2_train/steps.jsonl --out ../../model/data/vision/state_rows/rec2train_ops.train.jsonl
 """
@@ -108,19 +111,26 @@ def main():
         before = str(root / r["raw_before_img"]); after = str(root / r["raw_after_img"])
         meta = {"site": r["site"], "step_id": r["id"], "url_before": r["before_url"], "url_after": r["after_url"], "goal_kind": r["goal_kind"]}
         st, typeable = make_state(r["before_url"], r["candidates"], r["history"])
+        tidx = r.get("target_idx")
+        tcand = r["candidates"].get(str(tidx), "") if tidx else ""
         if L["done_before"]:
             gold = "DONE"
-        else:
+        elif r["goal_kind"] == "search" and tidx:
+            e = parse_candidate(tcand); gv = (r.get("goal_value") or "").strip().lower()
+            gold = "CLICK" if (e.get("value", "").strip().lower() == gv and gv) else "TYPE_TEXT"
+        elif r["policy"] == "oracle":
             gold = "TYPE_TEXT" if r["action"] == "type" else "CLICK"
+        else:
+            gold = "CLICK"
         q = op_question(goal, typeable or gold == "TYPE_TEXT")
         if gold == "TYPE_TEXT" and "TYPE_TEXT" not in q["criteria"]:
             q["criteria"] = {"CLICK": OP_LABELS["CLICK"], "TYPE_TEXT": OP_LABELS["TYPE_TEXT"], **TERMINAL}
-        rows.append({"images": [before], "state": st, "questions": [q], "targets": {"operation": gold}, "meta": {**meta, "which": "before"}}); n[f"op/{gold}"] += 1
-        # target question on the same before state (recorded chosen element), when not terminal
-        if gold != "DONE" and r.get("chosen") in r["candidates"] and rng.random() < a.target_frac:
+        rows.append({"images": [before], "state": st, "questions": [q], "targets": {"operation": gold}, "meta": {**meta, "which": "before", "policy": r["policy"]}}); n[f"op/{gold}"] += 1
+        # target question on the same before state: the goal's target element, whatever the recorded policy did
+        if gold != "DONE" and tidx and str(tidx) in r["candidates"] and rng.random() < a.target_frac:
             tq = target_question(goal, gold, r["candidates"], only_typeable=(gold == "TYPE_TEXT"))
-            if str(r["chosen"]) in tq["criteria"] and len(tq["criteria"]) >= 2:
-                rows.append({"images": [before], "state": st, "questions": [tq], "targets": {tq["qid"]: str(r["chosen"])}, "meta": {**meta, "which": "before"}}); n[f"target/{gold}"] += 1
+            if str(tidx) in tq["criteria"] and len(tq["criteria"]) >= 2:
+                rows.append({"images": [before], "state": st, "questions": [tq], "targets": {tq["qid"]: str(tidx)}, "meta": {**meta, "which": "before", "policy": r["policy"]}}); n[f"target/{gold}"] += 1
         # after image: terminal state -> DONE
         if L["done_after"] and r.get("candidates_after") and rng.random() < a.after_done_frac:
             hist_after = r["history"] + [f"{r['action']} on {r['candidates'].get(r['chosen'], '?')[:40]}" + (f" typed '{r['typed']}'" if r["typed"] else "")]
