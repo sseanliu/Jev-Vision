@@ -14,4 +14,7 @@ $E root@$POD_HOST 'cd /workspace && (nohup bash /workspace/jev-probes/model/runp
 # recordings (big): img + pixel + raw for run2_train, raw for run2_val
 $R "$E" model/data/vision/triplets/run2_train/img model/data/vision/triplets/run2_train/pixel model/data/vision/triplets/run2_train/raw root@$POD_HOST:/workspace/vision/triplets/run2_train/
 $R "$E" model/data/vision/triplets/run2_val/raw root@$POD_HOST:/workspace/vision/triplets/run2_val/
+$E root@$POD_HOST 'mkdir -p /workspace/vision/triplets/run1b /workspace/vision/triplets/run1'
+$R "$E" model/data/vision/triplets/run1b/img root@$POD_HOST:/workspace/vision/triplets/run1b/
+$R "$E" model/data/vision/triplets/run1/img root@$POD_HOST:/workspace/vision/triplets/run1/
 echo "sync done $(date -u)"
