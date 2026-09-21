@@ -12,7 +12,7 @@ V=/workspace/vision; D=/workspace/v8_data; mkdir -p $D; rm -f $D/*.jsonl
 MAC_PREFIX=${MAC_PREFIX:-/Users/xiaoanliu/Github/typesafe/model/data/vision}
 cd $REPO
 echo "=== data $(date -u) ==="
-for f in rec2train_ops_full.train rec2train_pixel.train rec1b.train rec2train.train rec1.train; do sed "s#$MAC_PREFIX#$V#g" $V/state_rows/$f.jsonl > $D/src_$f.jsonl; done
+for f in rec2train_ops_full.train rec2train_pixel.train rec2train.train; do sed "s#$MAC_PREFIX#$V#g" $V/state_rows/$f.jsonl > $D/src_$f.jsonl; done
 sed "s#$MAC_PREFIX#$V#g" $V/state_rows/rec1b.validation.jsonl > $D/state.validation.jsonl
 sed "s#$MAC_PREFIX#$V#g" $V/state_rows/rec2_ops.validation.jsonl > $D/ops.validation.jsonl
 GEN_SAMPLE=$GEN_SAMPLE GQA_SAMPLE=$GQA_SAMPLE REPLAY_PIXEL=$REPLAY_PIXEL REPLAY_STATE=$REPLAY_STATE REPLAY_WEB=$REPLAY_WEB REPLAY_DESK=$REPLAY_DESK python - <<'PY'
@@ -28,7 +28,7 @@ open(f"{D}/ops.train.jsonl", "w").writelines(ops + dup); print("ops rows", len(o
 take([f"{V}/general_rows/general.train.jsonl"], int(os.environ["GEN_SAMPLE"]), f"{D}/general.train.jsonl")
 take([f"{V}/general_rows/gqa_yn.train.jsonl"], int(os.environ["GQA_SAMPLE"]), f"{D}/gqa.train.jsonl")
 take([f"{D}/src_rec2train_pixel.train.jsonl"], int(os.environ["REPLAY_PIXEL"]), f"{D}/replay_pixel.train.jsonl")
-take([f"{D}/src_rec1b.train.jsonl", f"{D}/src_rec2train.train.jsonl", f"{D}/src_rec1.train.jsonl"], int(os.environ["REPLAY_STATE"]), f"{D}/replay_state.train.jsonl")
+take([f"{D}/src_rec2train.train.jsonl"], int(os.environ["REPLAY_STATE"]), f"{D}/replay_state.train.jsonl")  # rec1/rec1b images are not on this pod
 take(["/workspace/m2w_schema/schema.train.jsonl"], int(os.environ["REPLAY_WEB"]), f"{D}/replay_web.train.jsonl")
 take(["/workspace/v3_data/osatlas_schema.train.jsonl"], int(os.environ["REPLAY_DESK"]), f"{D}/replay_desktop.train.jsonl")
 PY
