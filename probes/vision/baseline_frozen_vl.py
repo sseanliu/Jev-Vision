@@ -62,12 +62,20 @@ def main():
             if q["qtype"] == "noul":
                 text = f"{r['state']}\n{q['instructions']}\nAnswer with yes or no."
             else:
-                keys = list(q["criteria"].keys()); letters = LETTERS[: len(keys)]
-                opts = "\n".join(f"{L}. {q['criteria'][k]}" for L, k in zip(letters, keys))
+                crit = q["criteria"]
+                if isinstance(crit, list):  # score: ordered levels -> letters, gold is the level index
+                    keys = list(range(len(crit))); descs = list(crit)
+                else:
+                    keys = list(crit.keys()); descs = [crit[k] for k in keys]
+                letters = LETTERS[: len(keys)]
+                opts = "\n".join(f"{L}. {d}" for L, d in zip(letters, descs))
                 text = f"{r['state']}\n{q['instructions']}\n{opts}\nAnswer with the letter only."
             content.append({"type": "text", "text": text})
             msgs = [{"role": "user", "content": content}]
-            prompt = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
+            try:  # Qwen3.5+ chat templates open a thinking block unless told not to; the answer letter must be the next token
+                prompt = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False, enable_thinking=False)
+            except TypeError:
+                prompt = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
             inputs = (proc(text=[prompt], images=imgs, return_tensors="pt") if imgs else proc(text=[prompt], return_tensors="pt")).to(device)
             t0 = time.perf_counter()
             with torch.no_grad():
@@ -84,7 +92,7 @@ def main():
             else:
                 lg = torch.stack([torch.logsumexp(logits[letter_ids[L]], 0) for L in letters])
                 pr = torch.softmax(lg, 0); k = int(pr.argmax()); pred_key = keys[k]
-                d["conf"].append(pr.max().item()); d["hit"].append(pred_key == gold); d["n_opts"] = len(keys)
+                d["conf"].append(pr.max().item()); d["hit"].append(str(pred_key) == str(gold)); d["n_opts"] = len(keys)
                 items.append({"i": i, "qid": qid, "pred": pred_key, "gold": gold, "p": round(pr.max().item(), 4), "meta": r.get("meta", {})})
     rep = {"model": a.model, "n_rows": len(rows), "mean_ms": round(sum(ms) / max(1, len(ms)), 1), "by_question": {}}
     for qid, d in sorted(per.items()):
