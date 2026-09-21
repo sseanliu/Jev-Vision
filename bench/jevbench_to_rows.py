@@ -8,6 +8,7 @@ with open(a.out, "w") as f:
         for l in open(f"{a.dir}/{tier}.jsonl"):
             if not l.strip(): continue
             r = json.loads(l); q = dict(r["question"]); exp = str(r["expected"])
+            state = r["state"] if isinstance(r["state"], str) else json.dumps(r["state"], indent=1, ensure_ascii=False)  # as serve.py renders it
             qq = {"qid": f"jb_{tier}", "qtype": q["type"], "instructions": q["instructions"]}
             if q["type"] == "noul":
                 target = int(exp == "yes")
@@ -15,5 +16,5 @@ with open(a.out, "w") as f:
                 qq["criteria"] = q["criteria"]; target = exp
             else:
                 qq["criteria"] = q["criteria"]; target = int(exp)
-            f.write(json.dumps({"images": [], "state": r["state"], "questions": [qq], "targets": {qq["qid"]: target}, "meta": {"id": r["id"], "tier": tier, "family": r.get("family")}}, ensure_ascii=False) + "\n"); n += 1
+            f.write(json.dumps({"images": [], "state": state, "questions": [qq], "targets": {qq["qid"]: target}, "meta": {"id": r["id"], "tier": tier, "family": r.get("family")}}, ensure_ascii=False) + "\n"); n += 1
 print(n, "rows ->", a.out)

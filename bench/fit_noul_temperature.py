@@ -25,7 +25,8 @@ def items_of(path):
 
 
 def sig(z):
-    return 1 / (1 + math.exp(-z))
+    z = max(-30.0, min(30.0, z))
+    return min(max(1 / (1 + math.exp(-z)), 1e-9), 1 - 1e-9)
 
 
 def metrics(items, T):
